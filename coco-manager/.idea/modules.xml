@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/coco-manager.iml" filepath="$PROJECT_DIR$/coco-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coco-manager-mapper/coco-manager-mapper.iml" filepath="$PROJECT_DIR$/coco-manager-mapper/coco-manager-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coco-manager-pojo/coco-manager-pojo.iml" filepath="$PROJECT_DIR$/coco-manager-pojo/coco-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coco-manager-service/coco-manager-service.iml" filepath="$PROJECT_DIR$/coco-manager-service/coco-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/coco-manager-web/coco-manager-web.iml" filepath="$PROJECT_DIR$/coco-manager-web/coco-manager-web.iml" />
+    </modules>
+  </component>
+</project>

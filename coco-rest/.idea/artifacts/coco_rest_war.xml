@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="coco-rest:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="coco-rest.war">
+      <element id="artifact" artifact-name="coco-rest:war exploded" />
+    </root>
+  </artifact>
+</component>

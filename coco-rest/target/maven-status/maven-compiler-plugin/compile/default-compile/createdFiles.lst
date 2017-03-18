@@ -1,0 +1,3 @@
+com\coco\rest\dao\JedisClient.class
+com\coco\rest\dao\impl\JedisClientCluster.class
+com\coco\rest\dao\impl\JedisClientSingle.class
