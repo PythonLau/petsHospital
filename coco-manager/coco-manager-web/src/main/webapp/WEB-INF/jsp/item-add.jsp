@@ -51,12 +51,6 @@
 	</div>
 </div>
 <script type="text/javascript">
-	$(function(){
-		TAOTAO.init({fun:function(node){
-			//根据商品的分类id取商品 的规格模板，生成规格信息。第四天内容。
-			TAOTAO.changeItemParam(node, "itemAddForm");
-		}});
-	});
 	//提交表单
 	function submitForm(){
 		//有效性验证
@@ -78,6 +72,5 @@
 	
 	function clearForm(){
 		$('#itemAddForm').form('reset');
-		itemAddEditor.html('');
 	}
 </script>

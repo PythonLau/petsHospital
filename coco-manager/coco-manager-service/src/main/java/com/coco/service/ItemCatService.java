@@ -11,4 +11,5 @@ public interface ItemCatService {
 	TaotaoResult insertItemCat(long parentId, String name);
 	TaotaoResult deleteItemCat(long id);
 	TaotaoResult updateItemCat(long id,String name);
+	boolean judgeDeleteItemCat(long id);
 }

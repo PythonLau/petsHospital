@@ -5,13 +5,15 @@ import java.util.List;
 
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.mapper.TbItemCatMapper;
+import com.coco.mapper.TbItemMapper;
+import com.coco.pojo.TbItem;
+import com.coco.pojo.TbItemExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.coco.common.pojo.EUTreeNode;
 import com.coco.pojo.TbItemCat;
 import com.coco.pojo.TbItemCatExample;
-import com.coco.pojo.TbItemCatExample.Criteria;
 import com.coco.service.ItemCatService;
 
 /**
@@ -28,6 +30,8 @@ public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
+	@Autowired
+	private TbItemMapper itemMapper;
 	@Override
 	public List<EUTreeNode> getCatList(long parentId) {
 		
@@ -35,7 +39,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		System.out.println("service....");
 		System.out.println(parentId);
 		TbItemCatExample example = new TbItemCatExample();
-		Criteria criteria = example.createCriteria();
+		TbItemCatExample.Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(parentId);
 		//根据条件查询
 		List<TbItemCat> list = itemCatMapper.selectByExample(example);
@@ -78,27 +82,57 @@ public class ItemCatServiceImpl implements ItemCatService {
 	}
 
 	@Override
-	public TaotaoResult deleteItemCat(long id){
-		//查询要删除节点自身的实例
-		TbItemCat itemCat = itemCatMapper.selectByPrimaryKey(id);
-		//找出他的父节点ID
-		Long parentId = itemCat.getParentId();
-		//删除Example，并且删除
-		TbItemCatExample deleteExample = new TbItemCatExample();
-		Criteria criteria2 = deleteExample.createCriteria();
-		criteria2.andIdEqualTo(id);
-		itemCatMapper.deleteByExample(deleteExample);
-		//查询父节点下面的子节点个数
-		TbItemCatExample selectExample = new TbItemCatExample();
-		Criteria criteria = selectExample.createCriteria();
-		criteria.andParentIdEqualTo(parentId);
-		List<TbItemCat> list = itemCatMapper.selectByExample(selectExample);
-		if(list.size() == 0){
-			TbItemCat parentCat = itemCatMapper.selectByPrimaryKey(parentId);
-			parentCat.setIsParent(false);
-			itemCatMapper.updateByPrimaryKey(parentCat);
+	public boolean judgeDeleteItemCat(long id){
+		//假如他下面没有分类并且没有商品，就返回true,否则返回false,如果还有分类就递归查询。
+		TbItemCatExample judgeCatExample = new TbItemCatExample();
+		TbItemCatExample.Criteria judgeCatCriteria = judgeCatExample.createCriteria();
+		judgeCatCriteria.andParentIdEqualTo(id);
+		List<TbItemCat> judgeCatList = itemCatMapper.selectByExample(judgeCatExample);
+
+		if(judgeCatList.size() == 0){
+			TbItemExample judgeItemExample = new TbItemExample();
+			TbItemExample.Criteria judgeItemCriteria = judgeItemExample.createCriteria();
+			judgeItemCriteria.andCidEqualTo(id);
+			List<TbItem> judgeItemList = itemMapper.selectByExample(judgeItemExample);
+			if(judgeItemList.size() == 0){
+				return true;
+			}else{
+				return false;
+			}
+		}else {
+			return false;
 		}
-		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TaotaoResult deleteItemCat(long id){
+		//判断该分类是否能删除
+		//判断下面是否还存在有分类
+        boolean canDelete = judgeDeleteItemCat(id);
+		if(canDelete){
+			//查询要删除节点自身的实例
+			TbItemCat itemCat = itemCatMapper.selectByPrimaryKey(id);
+			//找出他的父节点ID
+			Long parentId = itemCat.getParentId();
+			//删除Example，并且删除
+			TbItemCatExample deleteExample = new TbItemCatExample();
+			TbItemCatExample.Criteria criteria2 = deleteExample.createCriteria();
+			criteria2.andIdEqualTo(id);
+			itemCatMapper.deleteByExample(deleteExample);
+			//查询父节点下面的子节点个数
+			TbItemCatExample selectExample = new TbItemCatExample();
+			TbItemCatExample.Criteria criteria = selectExample.createCriteria();
+			criteria.andParentIdEqualTo(parentId);
+			List<TbItemCat> list = itemCatMapper.selectByExample(selectExample);
+			if(list.size() == 0){
+				TbItemCat parentCat = itemCatMapper.selectByPrimaryKey(parentId);
+				parentCat.setIsParent(false);
+				itemCatMapper.updateByPrimaryKey(parentCat);
+			}
+			return TaotaoResult.build(200,"删除分类成功");
+		}else{
+			return TaotaoResult.build(500,"需要清空该分类下所有的分类以及物品才能删除该分类");
+		}
 	}
 
 	@Override

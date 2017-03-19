@@ -1,16 +1,17 @@
 package com.coco.controller;
 
+import com.coco.common.pojo.Ids;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbItem;
 import com.coco.service.ItemService;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 商品管理Controller
@@ -31,14 +32,31 @@ public class ItemController {
 	@RequestMapping(value="/item/save", method=RequestMethod.POST)
 	@ResponseBody
 	private TaotaoResult createItem(TbItem item) throws Exception {
-		System.out.println(item.getCid());
-		System.out.println(item.getImage());
-		System.out.println(item.getSupplier());
-		System.out.println(item.getPrice());
-		System.out.println(item.getBarcode());
-		System.out.println(item.getNum());
-		System.out.println(item.getTitle());
 		TaotaoResult result = itemService.createItem(item);
+		return result;
+	}
+	@RequestMapping("/item/list")
+	@ResponseBody
+	public EUDataGridResult getItemList(Integer page, Integer rows) {
+		System.out.println(page);
+		System.out.println(rows);
+		System.out.println("itemlist...controller");
+		EUDataGridResult result = itemService.getItemList(page, rows);
+		return result;
+	}
+
+	@RequestMapping("/item/{itemId}")
+	@ResponseBody
+	public TbItem getItemById(@PathVariable Long itemId) {
+		TbItem tbItem = itemService.getItemById(itemId);
+		return tbItem;
+	}
+
+	@RequestMapping("/item/delete")
+	@ResponseBody
+	public TaotaoResult deleteItem(@RequestBody Ids ids) throws Exception{
+		String deleteIds = ids.getIds();
+        TaotaoResult result = itemService.deleteItem(deleteIds);
 		return result;
 	}
 }

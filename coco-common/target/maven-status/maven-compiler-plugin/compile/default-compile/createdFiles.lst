@@ -7,3 +7,4 @@ com\coco\common\utils\HttpClientUtil.class
 com\coco\common\pojo\TaotaoResult.class
 com\coco\common\utils\FtpUtil.class
 com\coco\common\utils\IDUtils.class
+com\coco\common\pojo\Ids.class

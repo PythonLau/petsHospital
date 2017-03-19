@@ -1,9 +1,0 @@
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:06 +0800] "GET /index HTTP/1.1" 200 2365 http-bio-8080-exec-1 1057
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:07 +0800] "GET /item-cat?_=1489827846191 HTTP/1.1" 200 2247 http-bio-8080-exec-7 109
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:08 +0800] "GET /item/cat/list HTTP/1.1" 200 96 http-bio-8080-exec-8 1472
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:09 +0800] "GET /item/cat/list HTTP/1.1" 200 96 http-bio-8080-exec-9 16
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:10 +0800] "GET /item/cat/list?id=1 HTTP/1.1" 200 12 http-bio-8080-exec-1 19
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:12 +0800] "GET /item/cat/list?id=5 HTTP/1.1" 200 129 http-bio-8080-exec-1 25
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:13 +0800] "GET /item/cat/list?id=6 HTTP/1.1" 200 116 http-bio-8080-exec-1 19
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:18 +0800] "POST /item/cat/delete/ HTTP/1.1" 200 48 http-bio-8080-exec-1 55
-0:0:0:0:0:0:0:1 - - [18/Mar/2017:17:04:26 +0800] "POST /item/cat/delete/ HTTP/1.1" 200 48 http-bio-8080-exec-1 41
