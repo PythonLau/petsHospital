@@ -8,6 +8,24 @@ import java.io.Serializable;
 public class search_params implements Serializable{
     private String search_condition;
     private String search_key;
+    private String rows;
+    private String pageNumber;
+
+    public String getPageNumber() {
+        return pageNumber;
+    }
+
+    public void setPageNumber(String pageNumber) {
+        this.pageNumber = pageNumber;
+    }
+
+    public String getRows() {
+        return rows;
+    }
+
+    public void setRows(String rows) {
+        this.rows = rows;
+    }
 
     public String getSearch_condition() {
         return search_condition;

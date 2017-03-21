@@ -9,10 +9,10 @@
         <option value="status">状态</option>
     </select>
     <input id="search_key" style="line-height:26px;border:1px solid #ccc">
-    <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch()">搜索</a>
+    <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
 </div>
 <table class="easyui-datagrid" id="itemList" title="商品列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/list',method:'get',pageSize:30,toolbar:toolbar">
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/list',method:'get',pageSize:10,toolbar:toolbar">
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
@@ -112,10 +112,15 @@
     }];
 </script>
 <script>
-    function doSearch(){
+    function doSearch(pageNumber, pageSize){
         var search_condition =document.getElementById("search_condition").value;
         var search_key =document.getElementById("search_key").value;
-        var search_params = {"search_condition":search_condition,"search_key":search_key};
+
+        var rows = $(".pagination-page-list").val()
+        if(rows != pageSize){
+            pageSize = rows ;
+        }
+        var search_params = {"search_condition":search_condition,"search_key":search_key,"rows":pageSize,'pageNumber':pageNumber};
         $.ajax({
             url: "/item/search",
             type: "POST",
@@ -124,10 +129,21 @@
             data: JSON.stringify(search_params),
             async: true,
             success: function(data) {
-               $('#itemList').datagrid('loadData',data);
+                alert("重新加载数据");
+                $("#itemList").datagrid('getPager').pagination({
+                    pageNumber:pageNumber,
+                    pageSize:pageSize,
+                    onSelectPage: function(pageNumber, pageSize){
+                        doSearch(pageNumber, pageSize);
+                    }
+                })
+                $('#itemList').datagrid('loadData',data);
+
+               alert("加载完毕");
             }
         });
     }
+
 </script>
 
 

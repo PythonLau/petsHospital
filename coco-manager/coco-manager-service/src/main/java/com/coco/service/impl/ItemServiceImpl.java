@@ -92,4 +92,9 @@ public class ItemServiceImpl implements ItemService {
 		}
 		return TaotaoResult.build(200,"删除物品成功");
 	}
+
+	@Override
+	public EUDataGridResult searchItemList(String search_condition,String search_key){
+		return null;
+	}
 }

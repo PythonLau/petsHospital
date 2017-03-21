@@ -10,4 +10,5 @@ public interface ItemService {
 	TbItem getItemById(long itemId);
 	TaotaoResult updateItem(TbItem item) throws Exception;
 	TaotaoResult deleteItem(String ids) throws Exception;
+	EUDataGridResult searchItemList(String search_condition,String search_key);
 }

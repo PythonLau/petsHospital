@@ -63,9 +63,15 @@ public class ItemController {
 	@RequestMapping("/item/search")
 	@ResponseBody
 	public EUDataGridResult searchItem(@RequestBody search_params search_params) throws Exception{
-		System.out.println(search_params.getSearch_condition());
-		System.out.println(search_params.getSearch_key());
-		return null;
+		String search_condition = search_params.getSearch_condition();
+		String search_key = search_params.getSearch_key();
+		Integer page = Integer.valueOf(search_params.getPageNumber());
+		Integer rows = Integer.valueOf(search_params.getRows());
+		System.out.println("page=" + page);
+		System.out.println("rows=" + rows);
+		System.out.println("search...controller");
+		EUDataGridResult result = itemService.getItemList(page, rows);
+		return result;
 	}
 
 	@RequestMapping(value="/item/update", method=RequestMethod.POST)
