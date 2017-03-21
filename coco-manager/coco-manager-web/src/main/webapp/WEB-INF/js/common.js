@@ -57,15 +57,19 @@ var TT = TAOTAO = {
     },
 
     init : function(data){
-        // 初始化图片上传组件
+        //新增物品界面初始化图片上传组件
+        this.initAddPicUpload(data)
+        // 新增物品界面初始化选择类目组件
         this.initAddItemCat(data);
+        // 编辑物品界面初始化选择类目组件
         this.initPicUpload(data);
-        // 初始化选择类目组件
+        // 编辑物品界面初始化选择类目组件
         this.initItemCat(data);
 
         // this.initAddItemPicUpload(data);
     },
-    // 初始化图片上传组件
+
+    // 编辑物品界面初始化图片上传组件
     initPicUpload : function(data){
         $(".picFileUpload").each(function(i,e){
             var _ele = $(e);
@@ -106,9 +110,48 @@ var TT = TAOTAO = {
     },
 
 
-    // 初始化选择类目组件
+    // 新增物品界面初始化图片上传组件
+    initAddPicUpload : function(data){
+        $(".addItemPicFileUpload").each(function(i,e){
+            var _ele = $(e);
+            _ele.siblings("div.pics").remove();
+            _ele.after('\
+    			<div class="pics">\
+        			<ul></ul>\
+        		</div>');
+            // 回显图片
+            if(data && data.pics){
+                var imgs = data.pics.split(",");
+                for(var i in imgs){
+                    if($.trim(imgs[i]).length > 0){
+                        _ele.siblings(".pics").find("ul").append("<li><a href='"+imgs[i]+"' target='_blank'><img src='"+imgs[i]+"' width='80' height='50' /></a></li>");
+                    }
+                }
+            }
+            //给“上传图片按钮”绑定click事件
+            $(e).click(function(){
+                var form = $(this).parentsUntil("form").parent("form");
+                //打开图片上传窗口
+                KindEditor.editor(TT.kingEditorParams).loadPlugin('multiimage',function(){
+                    var editor = this;
+                    editor.plugin.multiImageDialog({
+                        clickFn : function(urlList) {
+                            var imgArray = [];
+                            KindEditor.each(urlList, function(i, data) {
+                                imgArray.push(data.url);
+                                form.find(".pics ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");
+                            });
+                            form.find("[name=image]").val(imgArray.join(","));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+    },
+
+    // 编辑物品界面初始化选择类目组件
     initItemCat : function(data){
-        alert("come in");
         $(".selectItemCat").each(function(i,e){
             var _ele = $(e);
             if(data && data.cid){
@@ -151,10 +194,8 @@ var TT = TAOTAO = {
         });
     },
 
-    //buxing
-    // 初始化选择类目组件
+    // 新增物品界面初始化选择类目组件
     initAddItemCat : function(data){
-        alert("come out");
         $(".addItemSelectItemCat").each(function(i,e){
             var _ele = $(e);
             if(data && data.cid){

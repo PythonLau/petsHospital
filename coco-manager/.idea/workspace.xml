@@ -20,7 +20,36 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1180">
+              <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+              <folding>
+                <marker date="1490074270493" expanded="true" signature="1571:1581" ph="..." />
+                <marker date="1490074270493" expanded="true" signature="2213:2253" ph="..." />
+                <marker date="1490074270493" expanded="true" signature="3932:3972" ph="..." />
+                <marker date="1490074270493" expanded="true" signature="5615:5632" ph="..." />
+                <marker date="1490074270493" expanded="true" signature="5717:5734" ph="..." />
+                <marker date="1490074270493" expanded="true" signature="7524:7541" ph="..." />
+                <marker date="1490074270493" expanded="true" signature="7626:7643" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item-add.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="97">
+              <caret line="40" column="95" lean-forward="false" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="95" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -120,8 +149,8 @@
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/index.jsp" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemController.java" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-list.jsp" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js" />
       </list>
     </option>
   </component>
@@ -1109,16 +1138,16 @@
       <workItem from="1489975480632" duration="10511000" />
       <workItem from="1490020125712" duration="5488000" />
       <workItem from="1490028801612" duration="381000" />
-      <workItem from="1490073455477" duration="52000" />
+      <workItem from="1490073455477" duration="959000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128676000" />
+    <option name="totallyTimeSpent" value="129583000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1138,7 +1167,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4442623" sideWeight="0.86913764" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23442623" sideWeight="0.86913764" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24281392" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1440,7 +1469,7 @@
         <state relative-caret-position="617">
           <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
           <folding>
-            <element signature="e#703#704#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1453,33 +1482,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
-          <folding>
-            <marker date="1490025239731" expanded="true" signature="1571:1581" ph="..." />
-            <marker date="1490025239731" expanded="true" signature="2105:2145" ph="..." />
-            <marker date="1490025239731" expanded="true" signature="3809:3826" ph="..." />
-            <marker date="1490025239731" expanded="true" signature="3911:3928" ph="..." />
-            <marker date="1490025239731" expanded="true" signature="5752:5769" ph="..." />
-            <marker date="1490025239731" expanded="true" signature="5854:5871" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="77" column="22" lean-forward="false" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1489,6 +1495,30 @@
         <state relative-caret-position="20">
           <caret line="12" column="45" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="40" column="95" lean-forward="false" selection-start-line="40" selection-start-column="75" selection-end-line="40" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1180">
+          <caret line="64" column="22" lean-forward="true" selection-start-line="64" selection-start-column="22" selection-end-line="64" selection-end-column="22" />
+          <folding>
+            <marker date="1490074270493" expanded="true" signature="1571:1581" ph="..." />
+            <marker date="1490074270493" expanded="true" signature="2213:2253" ph="..." />
+            <marker date="1490074270493" expanded="true" signature="3932:3972" ph="..." />
+            <marker date="1490074270493" expanded="true" signature="5615:5632" ph="..." />
+            <marker date="1490074270493" expanded="true" signature="5717:5734" ph="..." />
+            <marker date="1490074270493" expanded="true" signature="7524:7541" ph="..." />
+            <marker date="1490074270493" expanded="true" signature="7626:7643" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
