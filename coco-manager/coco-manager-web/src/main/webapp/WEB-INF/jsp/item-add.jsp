@@ -7,8 +7,8 @@
 	        <tr>
 	            <td>物品类目:</td>
 	            <td>
-	            	<a href="javascript:void(0)" class="easyui-linkbutton selectItemCat">选择类目</a>
-	            	<input type="hidden" name="cid" style="width: 280px;"></input>
+	            	<a href="javascript:void(0)" class="easyui-linkbutton addItemSelectItemCat">选择类目</a>
+	            	<input type="hidden" name="addItemCid" style="width: 280px;"></input>
 	            </td>
 	        </tr>
 	        <tr>
@@ -38,7 +38,7 @@
 	        <tr>
 	            <td>物品图片:</td>
 	            <td>
-	            	 <a href="javascript:void(0)" class="easyui-linkbutton picFileUpload">上传图片</a>
+	            	 <a href="javascript:void(0)" class="easyui-linkbutton addItemPicFileUpload">上传图片</a>
 	                 <input type="hidden" name="image"/>
 	            </td>
 	        </tr>
@@ -73,4 +73,8 @@
 	function clearForm(){
 		$('#itemAddForm').form('reset');
 	}
+
+	$(document).ready(function(){
+		TAOTAO.init();
+	})
 </script>

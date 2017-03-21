@@ -24,7 +24,7 @@
          		<span>库存管理</span>
          		<ul>
 	         		<li data-options="attributes:{'url':'item-add'}">新增物品</li>
-	         		<li data-options="attributes:{'url':'item-list'}">查询物品</li>
+	         		<li data-options="attributes:{'url':'item-list'}">物品管理</li>
 					<li data-options="attributes:{'url':'item-cat'}">分类管理</li>
 	         	</ul>
          	</li>

@@ -1,6 +1,7 @@
 package com.coco.controller;
 
 import com.coco.common.pojo.Ids;
+import com.coco.common.pojo.search_params;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -58,5 +59,13 @@ public class ItemController {
 		String deleteIds = ids.getIds();
         TaotaoResult result = itemService.deleteItem(deleteIds);
 		return result;
+	}
+
+	@RequestMapping("/item/search")
+	@ResponseBody
+	public EUDataGridResult searchItem(@RequestBody search_params search_params) throws Exception{
+		System.out.println(search_params.getSearch_condition());
+		System.out.println(search_params.getSearch_key());
+		return null;
 	}
 }
