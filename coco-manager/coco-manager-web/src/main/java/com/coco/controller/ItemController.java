@@ -11,8 +11,6 @@ import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbItem;
 import com.coco.service.ItemService;
 
-import java.util.List;
-import java.util.Map;
 
 /**
  * 商品管理Controller
@@ -36,6 +34,7 @@ public class ItemController {
 		TaotaoResult result = itemService.createItem(item);
 		return result;
 	}
+
 	@RequestMapping("/item/list")
 	@ResponseBody
 	public EUDataGridResult getItemList(Integer page, Integer rows) {
@@ -67,5 +66,12 @@ public class ItemController {
 		System.out.println(search_params.getSearch_condition());
 		System.out.println(search_params.getSearch_key());
 		return null;
+	}
+
+	@RequestMapping(value="/item/update", method=RequestMethod.POST)
+	@ResponseBody
+	private TaotaoResult updateItem(TbItem item) throws Exception {
+		TaotaoResult result = itemService.updateItem(item);
+		return result;
 	}
 }

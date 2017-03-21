@@ -152,14 +152,19 @@ var TT = TAOTAO = {
 
     // 编辑物品界面初始化选择类目组件
     initItemCat : function(data){
+        alert("初始化编辑物品类目控件")
         $(".selectItemCat").each(function(i,e){
             var _ele = $(e);
             if(data && data.cid){
+                alert("编辑物品有cid:")
+                alert(data.cid)
                 _ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");
             }else{
+                alert("编辑物品没有cid:")
                 _ele.after("<span style='margin-left:10px;'></span>");
             }
             _ele.unbind('click').click(function(){
+                alert("点击了编辑物品类目按钮")
                 $("<div>").css({padding:"5px"}).html("<ul>")
                     .window({
                         width:'500',
@@ -175,7 +180,11 @@ var TT = TAOTAO = {
                                 animate:true,
                                 onClick : function(node){
                                     if($(this).tree("isLeaf",node.target)){
+                                        alert(node.id)
                                         // 填写到cid中
+                                        alert("编辑后物品的cid是:")
+                                        alert(node.id)
+                                        alert("准备把编辑物品分类写入到表单中")
                                         _ele.parent().find("[name=cid]").val(node.id);
                                         _ele.next().text(node.text).attr("cid",node.id);
                                         $(_win).window('close');
@@ -196,14 +205,18 @@ var TT = TAOTAO = {
 
     // 新增物品界面初始化选择类目组件
     initAddItemCat : function(data){
+        alert("初始化新增物品类目控件")
         $(".addItemSelectItemCat").each(function(i,e){
             var _ele = $(e);
             if(data && data.cid){
+                alert("新增物品有cid")
                 _ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");
             }else{
+                alert("新增物品没有cid")
                 _ele.after("<span style='margin-left:10px;'></span>");
             }
             _ele.unbind('click').click(function(){
+                alert("点击了新增物品类目按钮")
                 $("<div>").css({padding:"5px"}).html("<ul>")
                     .window({
                         width:'500',
@@ -219,7 +232,10 @@ var TT = TAOTAO = {
                                 animate:true,
                                 onClick : function(node){
                                     if($(this).tree("isLeaf",node.target)){
-                                        // 填写到cid中
+                                        // 填写到addItemCid中
+                                        alert("新增物品的cid是:")
+                                        alert(node.id)
+                                        alert("准备把新增物品分类写入到表单中")
                                         _ele.parent().find("[name=cid]").val(node.id);
                                         _ele.next().text(node.text).attr("cid",node.id);
                                         $(_win).window('close');

@@ -55,6 +55,7 @@
 
 
     function submitForm(){
+        alert("准备修改物品")
         if(!$('#itemeEditForm').form('validate')){
             $.messager.alert('提示','表单还未填写完成!');
             return ;

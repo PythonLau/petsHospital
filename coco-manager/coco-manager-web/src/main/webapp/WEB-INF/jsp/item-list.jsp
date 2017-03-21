@@ -49,14 +49,6 @@
     }
 
     var toolbar = [{
-        text:'新增',
-        iconCls:'icon-add',
-        handler:function(){
-            $("#itemAddWindow").window(
-
-            ).window("open");
-        }
-    },{
         text:'编辑',
         iconCls:'icon-edit',
         handler:function(){

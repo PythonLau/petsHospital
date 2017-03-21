@@ -8,7 +8,7 @@
 	            <td>物品类目:</td>
 	            <td>
 	            	<a href="javascript:void(0)" class="easyui-linkbutton addItemSelectItemCat">选择类目</a>
-	            	<input type="hidden" name="addItemCid" style="width: 280px;"></input>
+	            	<input type="hidden" name="cid" style="width: 280px;"></input>
 	            </td>
 	        </tr>
 	        <tr>
