@@ -70,7 +70,7 @@ public class ItemController {
 		System.out.println("page=" + page);
 		System.out.println("rows=" + rows);
 		System.out.println("search...controller");
-		EUDataGridResult result = itemService.getItemList(page, rows);
+		EUDataGridResult result = itemService.searchItemList(search_condition,search_key,page,rows);
 		return result;
 	}
 

@@ -28,6 +28,14 @@
 					<li data-options="attributes:{'url':'item-cat'}">分类管理</li>
 	         	</ul>
          	</li>
+			<li>
+				<span>人事管理</span>
+				<ul>
+					<li data-options="attributes:{'url':'item-add'}">新增员工</li>
+					<li data-options="attributes:{'url':'item-list'}">员工管理</li>
+					<li data-options="attributes:{'url':'item-cat'}">部门管理</li>
+				</ul>
+			</li>
          	<li>
          		<span>网站内容管理</span>
          		<ul>

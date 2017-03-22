@@ -115,8 +115,9 @@
     function doSearch(pageNumber, pageSize){
         var search_condition =document.getElementById("search_condition").value;
         var search_key =document.getElementById("search_key").value;
-
+        //获取分页大小
         var rows = $(".pagination-page-list").val()
+        //页面分页大小与参数是否一样
         if(rows != pageSize){
             pageSize = rows ;
         }
@@ -130,10 +131,20 @@
             async: true,
             success: function(data) {
                 alert("重新加载数据");
+                //获取分页控件
                 $("#itemList").datagrid('getPager').pagination({
+                    //重新load分页控件
+                    //自带属性
+                    //原来右边这个是1
                     pageNumber:pageNumber,
                     pageSize:pageSize,
+                    //分页触发事件
+                    //参数是上面左边紫色自带控件属性传进来的
+                    //按上一页或者下一页就会触发这个事件
+                    //点击下一页或者上一页pageNumber就会变成2
                     onSelectPage: function(pageNumber, pageSize){
+                        //点击一下还是执行search方法
+                        alert("还是执行search方法")
                         doSearch(pageNumber, pageSize);
                     }
                 })

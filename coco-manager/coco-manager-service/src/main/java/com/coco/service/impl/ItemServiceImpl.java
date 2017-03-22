@@ -94,7 +94,35 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public EUDataGridResult searchItemList(String search_condition,String search_key){
-		return null;
+	public EUDataGridResult searchItemList(String search_condition,String search_key,Integer page,Integer rows){
+		System.out.println("service"  + search_condition);
+		System.out.println("service" + search_key);
+		TbItemExample example = new TbItemExample();
+		Criteria criteria = example.createCriteria();
+		if(search_condition.equals("id")){
+			Long id = Long.parseLong(search_key);
+			criteria.andIdEqualTo(id);
+		}else if(search_condition.equals("title")){
+			criteria.andTitleEqualTo(search_key);
+		}else if(search_condition.equals("cid")){
+			Long cid = Long.parseLong(search_key);
+			criteria.andCidEqualTo(cid);
+		}else if(search_condition.equals("supplier")){
+			criteria.andSupplierEqualTo(search_key);
+		}else if(search_condition.equals("barcode")){
+			criteria.andBarcodeEqualTo(search_condition);
+		}else if(search_condition.equals("status")){
+			byte status = Byte.parseByte(search_key);
+			criteria.andStatusEqualTo(status);
+		}
+		PageHelper.startPage(page, rows);
+		List<TbItem> list = itemMapper.selectByExample(example);
+		//创建一个返回值对象
+		EUDataGridResult result = new EUDataGridResult();
+		result.setRows(list);
+		//取记录总条数
+		PageInfo<TbItem> pageInfo = new PageInfo<>(list);
+		result.setTotal(pageInfo.getTotal());
+		return result;
 	}
 }
