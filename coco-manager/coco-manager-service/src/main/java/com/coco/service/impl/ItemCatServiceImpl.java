@@ -34,7 +34,6 @@ public class ItemCatServiceImpl implements ItemCatService {
 	private TbItemMapper itemMapper;
 	@Override
 	public List<EUTreeNode> getCatList(long parentId) {
-		
 		//创建查询条件
 		System.out.println("service....");
 		System.out.println(parentId);

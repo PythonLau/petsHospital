@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.coco.mapper.TbPositionCatMapper" >
-  <resultMap id="BaseResultMap" type="com.coco.pojo.TbPositionCat" >
+<mapper namespace="com.coco.mapper.TbEmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.coco.pojo.TbEmployee" >
     <id column="ID" property="id" jdbcType="DECIMAL" />
-    <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="IDCARD" property="idcard" jdbcType="VARCHAR" />
+    <result column="SALARY" property="salary" jdbcType="DECIMAL" />
+    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
+    <result column="IMAGE" property="image" jdbcType="VARCHAR" />
+    <result column="CID" property="cid" jdbcType="DECIMAL" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
-    <result column="SORT_ORDER" property="sortOrder" jdbcType="DECIMAL" />
-    <result column="IS_PARENT" property="isParent" jdbcType="DECIMAL" />
+    <result column="DIMISSIONREASON" property="dimissionreason" jdbcType="VARCHAR" />
     <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
     <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
@@ -70,15 +74,16 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, PARENT_ID, NAME, STATUS, SORT_ORDER, IS_PARENT, CREATED, UPDATED
+    ID, NAME, SEX, IDCARD, SALARY, TELEPHONE, IMAGE, CID, STATUS, DIMISSIONREASON, CREATED, 
+    UPDATED
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbPositionCatExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbEmployeeExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from TB_POSITION_CAT
+    from TB_EMPLOYEE
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,47 +94,63 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
     select 
     <include refid="Base_Column_List" />
-    from TB_POSITION_CAT
+    from TB_EMPLOYEE
     where ID = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
-    delete from TB_POSITION_CAT
+    delete from TB_EMPLOYEE
     where ID = #{id,jdbcType=DECIMAL}
   </delete>
-  <delete id="deleteByExample" parameterType="com.coco.pojo.TbPositionCatExample" >
-    delete from TB_POSITION_CAT
+  <delete id="deleteByExample" parameterType="com.coco.pojo.TbEmployeeExample" >
+    delete from TB_EMPLOYEE
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.coco.pojo.TbPositionCat" >
-    insert into TB_POSITION_CAT (ID, PARENT_ID, NAME, 
-      STATUS, SORT_ORDER, IS_PARENT, 
-      CREATED, UPDATED)
-    values (#{id,jdbcType=DECIMAL}, #{parentId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, 
-      #{status,jdbcType=DECIMAL}, #{sortOrder,jdbcType=DECIMAL}, #{isParent,jdbcType=DECIMAL}, 
-      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.coco.pojo.TbEmployee" >
+    insert into TB_EMPLOYEE (ID, NAME, SEX, 
+      IDCARD, SALARY, TELEPHONE, 
+      IMAGE, CID, STATUS, 
+      DIMISSIONREASON, CREATED, UPDATED
+      )
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{idcard,jdbcType=VARCHAR}, #{salary,jdbcType=DECIMAL}, #{telephone,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{cid,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, 
+      #{dimissionreason,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.coco.pojo.TbPositionCat" >
-    insert into TB_POSITION_CAT
+  <insert id="insertSelective" parameterType="com.coco.pojo.TbEmployee" >
+    insert into TB_EMPLOYEE
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
       </if>
-      <if test="parentId != null" >
-        PARENT_ID,
-      </if>
       <if test="name != null" >
         NAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="idcard != null" >
+        IDCARD,
+      </if>
+      <if test="salary != null" >
+        SALARY,
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE,
+      </if>
+      <if test="image != null" >
+        IMAGE,
+      </if>
+      <if test="cid != null" >
+        CID,
       </if>
       <if test="status != null" >
         STATUS,
       </if>
-      <if test="sortOrder != null" >
-        SORT_ORDER,
-      </if>
-      <if test="isParent != null" >
-        IS_PARENT,
+      <if test="dimissionreason != null" >
+        DIMISSIONREASON,
       </if>
       <if test="created != null" >
         CREATED,
@@ -142,20 +163,32 @@
       <if test="id != null" >
         #{id,jdbcType=DECIMAL},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=DECIMAL},
-      </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        #{salary,jdbcType=DECIMAL},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=DECIMAL},
       </if>
       <if test="status != null" >
         #{status,jdbcType=DECIMAL},
       </if>
-      <if test="sortOrder != null" >
-        #{sortOrder,jdbcType=DECIMAL},
-      </if>
-      <if test="isParent != null" >
-        #{isParent,jdbcType=DECIMAL},
+      <if test="dimissionreason != null" >
+        #{dimissionreason,jdbcType=VARCHAR},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -165,32 +198,44 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.coco.pojo.TbPositionCatExample" resultType="java.lang.Integer" >
-    select count(*) from TB_POSITION_CAT
+  <select id="countByExample" parameterType="com.coco.pojo.TbEmployeeExample" resultType="java.lang.Integer" >
+    select count(*) from TB_EMPLOYEE
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update TB_POSITION_CAT
+    update TB_EMPLOYEE
     <set >
       <if test="record.id != null" >
         ID = #{record.id,jdbcType=DECIMAL},
       </if>
-      <if test="record.parentId != null" >
-        PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
-      </if>
       <if test="record.name != null" >
         NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idcard != null" >
+        IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salary != null" >
+        SALARY = #{record.salary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.telephone != null" >
+        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.image != null" >
+        IMAGE = #{record.image,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cid != null" >
+        CID = #{record.cid,jdbcType=DECIMAL},
       </if>
       <if test="record.status != null" >
         STATUS = #{record.status,jdbcType=DECIMAL},
       </if>
-      <if test="record.sortOrder != null" >
-        SORT_ORDER = #{record.sortOrder,jdbcType=DECIMAL},
-      </if>
-      <if test="record.isParent != null" >
-        IS_PARENT = #{record.isParent,jdbcType=DECIMAL},
+      <if test="record.dimissionreason != null" >
+        DIMISSIONREASON = #{record.dimissionreason,jdbcType=VARCHAR},
       </if>
       <if test="record.created != null" >
         CREATED = #{record.created,jdbcType=TIMESTAMP},
@@ -204,36 +249,52 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update TB_POSITION_CAT
+    update TB_EMPLOYEE
     set ID = #{record.id,jdbcType=DECIMAL},
-      PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
       NAME = #{record.name,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      IDCARD = #{record.idcard,jdbcType=VARCHAR},
+      SALARY = #{record.salary,jdbcType=DECIMAL},
+      TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
+      IMAGE = #{record.image,jdbcType=VARCHAR},
+      CID = #{record.cid,jdbcType=DECIMAL},
       STATUS = #{record.status,jdbcType=DECIMAL},
-      SORT_ORDER = #{record.sortOrder,jdbcType=DECIMAL},
-      IS_PARENT = #{record.isParent,jdbcType=DECIMAL},
+      DIMISSIONREASON = #{record.dimissionreason,jdbcType=VARCHAR},
       CREATED = #{record.created,jdbcType=TIMESTAMP},
       UPDATED = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbPositionCat" >
-    update TB_POSITION_CAT
+  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbEmployee" >
+    update TB_EMPLOYEE
     <set >
-      <if test="parentId != null" >
-        PARENT_ID = #{parentId,jdbcType=DECIMAL},
-      </if>
       <if test="name != null" >
         NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null" >
+        SALARY = #{salary,jdbcType=DECIMAL},
+      </if>
+      <if test="telephone != null" >
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null" >
+        IMAGE = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        CID = #{cid,jdbcType=DECIMAL},
       </if>
       <if test="status != null" >
         STATUS = #{status,jdbcType=DECIMAL},
       </if>
-      <if test="sortOrder != null" >
-        SORT_ORDER = #{sortOrder,jdbcType=DECIMAL},
-      </if>
-      <if test="isParent != null" >
-        IS_PARENT = #{isParent,jdbcType=DECIMAL},
+      <if test="dimissionreason != null" >
+        DIMISSIONREASON = #{dimissionreason,jdbcType=VARCHAR},
       </if>
       <if test="created != null" >
         CREATED = #{created,jdbcType=TIMESTAMP},
@@ -244,13 +305,17 @@
     </set>
     where ID = #{id,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbPositionCat" >
-    update TB_POSITION_CAT
-    set PARENT_ID = #{parentId,jdbcType=DECIMAL},
-      NAME = #{name,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbEmployee" >
+    update TB_EMPLOYEE
+    set NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      SALARY = #{salary,jdbcType=DECIMAL},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      IMAGE = #{image,jdbcType=VARCHAR},
+      CID = #{cid,jdbcType=DECIMAL},
       STATUS = #{status,jdbcType=DECIMAL},
-      SORT_ORDER = #{sortOrder,jdbcType=DECIMAL},
-      IS_PARENT = #{isParent,jdbcType=DECIMAL},
+      DIMISSIONREASON = #{dimissionreason,jdbcType=VARCHAR},
       CREATED = #{created,jdbcType=TIMESTAMP},
       UPDATED = #{updated,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=DECIMAL}

@@ -56,17 +56,31 @@ var TT = TAOTAO = {
         }
     },
 
+    formatEmployeeStatus : function formatStatus(val,row){
+        if (val == 1){
+            return '在职';
+        } else if(val == 0){
+            return '<span style="color:red;">离职</span>';
+        } else {
+            return '未知';
+        }
+    },
+
     init : function(data){
         //新增物品界面初始化图片上传组件
         this.initAddPicUpload(data)
         // 新增物品界面初始化选择类目组件
         this.initAddItemCat(data);
-        // 编辑物品界面初始化选择类目组件
+        // 编辑物品界面初始化上传图片组件
         this.initPicUpload(data);
         // 编辑物品界面初始化选择类目组件
         this.initItemCat(data);
-
-        // this.initAddItemPicUpload(data);
+        //新增员工界面初始化图片上传组件
+        this.initAddEmployeeCat(data);
+        //新增员工界面初始化照片上传组件
+        this.initAddEmployeePicUpload(data);
+        //编辑员工界面初始化类目选择组件
+        this.initEditEmployeeCat(data);
     },
 
     // 编辑物品界面初始化图片上传组件
@@ -149,6 +163,48 @@ var TT = TAOTAO = {
             });
         });
     },
+
+
+    // 新增物品界面初始化图片上传组件
+    initAddEmployeePicUpload : function(data){
+        $(".addEmployeePicFileUpload").each(function(i,e){
+            var _ele = $(e);
+            _ele.siblings("div.pics").remove();
+            _ele.after('\
+    			<div class="pics">\
+        			<ul></ul>\
+        		</div>');
+            // 回显图片
+            if(data && data.pics){
+                var imgs = data.pics.split(",");
+                for(var i in imgs){
+                    if($.trim(imgs[i]).length > 0){
+                        _ele.siblings(".pics").find("ul").append("<li><a href='"+imgs[i]+"' target='_blank'><img src='"+imgs[i]+"' width='80' height='50' /></a></li>");
+                    }
+                }
+            }
+            //给“上传图片按钮”绑定click事件
+            $(e).click(function(){
+                var form = $(this).parentsUntil("form").parent("form");
+                //打开图片上传窗口
+                KindEditor.editor(TT.kingEditorParams).loadPlugin('multiimage',function(){
+                    var editor = this;
+                    editor.plugin.multiImageDialog({
+                        clickFn : function(urlList) {
+                            var imgArray = [];
+                            KindEditor.each(urlList, function(i, data) {
+                                imgArray.push(data.url);
+                                form.find(".pics ul").append("<li><a href='"+data.url+"' target='_blank'><img src='"+data.url+"' width='80' height='50' /></a></li>");
+                            });
+                            form.find("[name=image]").val(imgArray.join(","));
+                            editor.hideDialog();
+                        }
+                    });
+                });
+            });
+        });
+    },
+
 
     // 编辑物品界面初始化选择类目组件
     initItemCat : function(data){
@@ -253,6 +309,111 @@ var TT = TAOTAO = {
             });
         });
     },
+
+
+    // 新增员工界面初始化选择类目组件
+    initAddEmployeeCat : function(data){
+        //alert("初始化新增物品类目控件")
+        $(".addEmployeeSelectPositionCat").each(function(i,e){
+            var _ele = $(e);
+            if(data && data.cid){
+                //alert("新增物品有cid")
+                _ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");
+            }else{
+                //alert("新增物品没有cid")
+                _ele.after("<span style='margin-left:10px;'></span>");
+            }
+            _ele.unbind('click').click(function(){
+                //alert("点击了新增物品类目按钮")
+                $("<div>").css({padding:"5px"}).html("<ul>")
+                    .window({
+                        width:'500',
+                        height:"450",
+                        modal:true,
+                        closed:true,
+                        iconCls:'icon-save',
+                        title:'选择类目',
+                        onOpen : function(){
+                            var _win = this;
+                            $("ul",_win).tree({
+                                url:'/position/cat/list',
+                                animate:true,
+                                onClick : function(node){
+                                    if($(this).tree("isLeaf",node.target)){
+                                        // 填写到addItemCid中
+                                        //alert("新增物品的cid是:")
+                                        //alert(node.id)
+                                        //alert("准备把新增物品分类写入到表单中")
+                                        _ele.parent().find("[name=cid]").val(node.id);
+                                        _ele.next().text(node.text).attr("cid",node.id);
+                                        $(_win).window('close');
+                                        if(data && data.fun){
+                                            data.fun.call(this,node);
+                                        }
+                                    }
+                                }
+                            });
+                        },
+                        onClose : function(){
+                            $(this).window("destroy");
+                        }
+                    }).window('open');
+            });
+        });
+    },
+
+
+    // 新增员工界面初始化选择类目组件
+    initEditEmployeeCat : function(data){
+        //alert("初始化新增物品类目控件")
+        $(".editEmployeeSelectPositionCat").each(function(i,e){
+            var _ele = $(e);
+            if(data && data.cid){
+                //alert("新增物品有cid")
+                _ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");
+            }else{
+                //alert("新增物品没有cid")
+                _ele.after("<span style='margin-left:10px;'></span>");
+            }
+            _ele.unbind('click').click(function(){
+                //alert("点击了新增物品类目按钮")
+                $("<div>").css({padding:"5px"}).html("<ul>")
+                    .window({
+                        width:'500',
+                        height:"450",
+                        modal:true,
+                        closed:true,
+                        iconCls:'icon-save',
+                        title:'选择类目',
+                        onOpen : function(){
+                            var _win = this;
+                            $("ul",_win).tree({
+                                url:'/position/cat/list',
+                                animate:true,
+                                onClick : function(node){
+                                    if($(this).tree("isLeaf",node.target)){
+                                        // 填写到addItemCid中
+                                        //alert("新增物品的cid是:")
+                                        //alert(node.id)
+                                        //alert("准备把新增物品分类写入到表单中")
+                                        _ele.parent().find("[name=cid]").val(node.id);
+                                        _ele.next().text(node.text).attr("cid",node.id);
+                                        $(_win).window('close');
+                                        if(data && data.fun){
+                                            data.fun.call(this,node);
+                                        }
+                                    }
+                                }
+                            });
+                        },
+                        onClose : function(){
+                            $(this).window("destroy");
+                        }
+                    }).window('open');
+            });
+        });
+    },
+
 
 
     createEditor : function(select){

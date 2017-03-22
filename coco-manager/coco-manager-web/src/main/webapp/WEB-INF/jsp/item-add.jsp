@@ -43,7 +43,6 @@
 	            </td>
 	        </tr>
 	    </table>
-	    <input type="hidden" name="itemParams"/>
 	</form>
 	<div style="padding:5px">
 	    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">提交</a>

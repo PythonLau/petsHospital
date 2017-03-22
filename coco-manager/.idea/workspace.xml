@@ -21,11 +21,70 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <file leaf-file-name="employee-edit.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-edit.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+            <state relative-caret-position="200">
+              <caret line="73" column="31" lean-forward="false" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="employee-add.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-add.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="152">
+              <caret line="81" column="90" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="81" selection-end-column="90" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/EmployeeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="44" column="57" lean-forward="true" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/EmployeeServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TbEmployeeMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbEmployeeMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="74">
+              <caret line="309" column="25" lean-forward="true" selection-start-line="309" selection-start-column="25" selection-end-line="309" selection-end-column="25" />
+              <folding>
+                <marker date="1490195727736" expanded="true" signature="4088:4195" ph="select from TB_EMPLOYEE" />
+                <marker date="1490195727736" expanded="true" signature="4285:4346" ph="delete from " />
+                <marker date="1490195727736" expanded="true" signature="4444:4467" ph="delete from " />
+                <marker date="1490195727736" expanded="true" signature="4642:5172" ph="insert into TB_EMPLOYEE... " />
+                <marker date="1490195727736" expanded="true" signature="7289:7321" ph="select count... TB_EMPLOYEE" />
+                <marker date="1490195727736" expanded="true" signature="8973:9598" ph="update TB_EM... " />
+                <marker date="1490195727736" expanded="true" signature="9804:10902" ph="update TB_EM... " />
+                <marker date="1490195727736" expanded="true" signature="10996:11493" ph="update TB_EM... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ItemServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -43,10 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>itemcat</find>
-      <find>TaotaoResult</find>
-      <find>page</find>
-      <find>30</find>
       <find>contentCategoryTree</find>
       <find>TbItemExample.Criteria</find>
       <find>itemAddForm</find>
@@ -61,18 +116,22 @@
       <find>addItemPicFileUpload</find>
       <find>initItemCat</find>
       <find>l</find>
-      <find>itemeEditForm</find>
       <find>menu</find>
       <find>itemEditWindow</find>
       <find>formId</find>
       <find>init</find>
       <find>selectItemCat</find>
-      <find>update</find>
       <find>initAddItemCat</find>
       <find>doSearch</find>
       <find>example</find>
       <find>SellPoint</find>
       <find>Sell_Point</find>
+      <find>taotao</find>
+      <find>formatItemStatus</find>
+      <find>itemeEditForm</find>
+      <find>item</find>
+      <find>update</find>
+      <find>updateBy</find>
     </findStrings>
     <replaceStrings>
       <replace>coco</replace>
@@ -86,19 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/coco-manager-mapper/pom.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-service/pom.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/pom.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/index.jsp" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/spring/applicationContext-service.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/spring/springmvc.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/spring/applicationContext-trans.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/spring/applicationContext-dao.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/PageController.java" />
-        <option value="$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemCatExample.java" />
-        <option value="$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemCat.java" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/resource/db.properties" />
         <option value="$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbContent.java" />
         <option value="$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbContentCategoryMapper.java" />
@@ -116,16 +162,13 @@
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemCatController.java" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/mybatis/SqlMapConfig.xml" />
         <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/ItemCatService.java" />
-        <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemCatServiceImpl.java" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-cat.jsp" />
         <option value="$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbItemMapper.xml" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/test.jsp" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/backup.jsp" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-search-list.jsp" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/resources/resource/resource.properties" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-edit.jsp" />
-        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js" />
         <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/ItemService.java" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemController.java" />
         <option value="$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemExample.java" />
@@ -136,7 +179,23 @@
         <option value="$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionMapper.java" />
         <option value="$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbEmployee.java" />
         <option value="$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbEmployeeMapper.java" />
+        <option value="$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionCatMapper.xml" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp" />
+        <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/PositionCatService.java" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/PositionCatController.java" />
+        <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemCatServiceImpl.java" />
+        <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/PositionCatServiceImpl.java" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-add.jsp" />
         <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-list.jsp" />
+        <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/EmployeeService.java" />
+        <option value="$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbEmployeeMapper.xml" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/PageController.java" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/EmployeeController.java" />
+        <option value="$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/EmployeeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-edit.jsp" />
       </list>
     </option>
   </component>
@@ -170,6 +229,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -211,32 +271,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coco-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coco-manager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="coco-manager-web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -325,10 +359,279 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="coco-manager-mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
@@ -342,6 +645,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper" />
       <recent name="D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\webapp" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -806,12 +1110,13 @@
       <workItem from="1490028801612" duration="381000" />
       <workItem from="1490073455477" duration="14593000" />
       <workItem from="1490104493871" duration="7547000" />
-      <workItem from="1490148764384" duration="5828000" />
+      <workItem from="1490148764384" duration="34602000" />
+      <workItem from="1490195060353" duration="2531000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156592000" />
+    <option name="totallyTimeSpent" value="187897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -819,7 +1124,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35081968" sideWeight="0.2246596" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39344263" sideWeight="0.17397882" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -835,10 +1140,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35081968" sideWeight="0.7753404" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39344263" sideWeight="0.8260212" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25869894" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15431164" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -848,7 +1153,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27377048" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27377048" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -868,100 +1173,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemCat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.3.RELEASE/spring-webmvc-4.1.3.RELEASE-sources.jar!/org/springframework/web/servlet/DispatcherServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="882" column="0" lean-forward="false" selection-start-line="882" selection-start-column="0" selection-end-line="882" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.1.3.RELEASE/spring-webmvc-4.1.3.RELEASE-sources.jar!/org/springframework/web/servlet/FrameworkServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="1000" column="0" lean-forward="false" selection-start-line="1000" selection-start-column="0" selection-end-line="1000" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.1.3.RELEASE/spring-web-4.1.3.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="226" column="40" lean-forward="false" selection-start-line="226" selection-start-column="15" selection-end-line="226" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/百度云盘下载/源代码/taotao-manager/taotao-manager-mapper/src/main/java/com/taotao/mapper/TbItemCatMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://G:/春和/春和/windows10/chunhe/java/IdeaProjects/bookSystem/src/com/chunhe/Controller/IndexController.java" />
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/resources/mybatis/SqlMapConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="53" lean-forward="true" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/resources/spring/springmvc.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="7" column="23" lean-forward="false" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/ItemCatService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="13" column="40" lean-forward="true" selection-start-line="13" selection-start-column="40" selection-end-line="13" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemCatServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="110" column="51" lean-forward="false" selection-start-line="110" selection-start-column="51" selection-end-line="110" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-param-list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/file-upload.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1380">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="37" column="26" lean-forward="false" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/test.jsp" />
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/backup.jsp" />
     <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-search-list.jsp" />
     <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-cat.jsp">
       <provider selected="true" editor-type-id="text-editor">
@@ -974,14 +1185,6 @@
     <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/content-edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-60">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/content-add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -1002,36 +1205,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemCatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="57" column="30" lean-forward="false" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-780">
-          <caret line="9" column="48" lean-forward="true" selection-start-line="9" selection-start-column="48" selection-end-line="9" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-edit.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1678">
-          <caret line="237" column="42" lean-forward="false" selection-start-line="237" selection-start-column="42" selection-end-line="237" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemExample.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -1040,40 +1213,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/ItemService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="12" column="103" lean-forward="false" selection-start-line="12" selection-start-column="103" selection-end-line="12" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="103" column="34" lean-forward="false" selection-start-line="103" selection-start-column="34" selection-end-line="103" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-360">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="150" column="44" lean-forward="true" selection-start-line="150" selection-start-column="44" selection-end-line="150" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1090,7 +1233,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1098,18 +1240,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbPosition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbPosition.java" />
     <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbItemCatMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -1122,9 +1256,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1132,16 +1263,225 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionCatMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionMapper.java" />
+    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemCatExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionCatMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="246" column="57" lean-forward="false" selection-start-line="246" selection-start-column="57" selection-end-line="246" selection-end-column="57" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1490156305410" expanded="true" signature="3804:3915" ph="select from TB_POSITION_CAT" />
+            <marker date="1490156305410" expanded="true" signature="4005:4070" ph="delete from " />
+            <marker date="1490156305410" expanded="true" signature="4171:4198" ph="delete from " />
+            <marker date="1490156305410" expanded="true" signature="4376:4745" ph="insert into TB_POSITION_CAT... " />
+            <marker date="1490156305410" expanded="true" signature="6307:6343" ph="select count... TB_POSITION_CAT" />
+            <marker date="1490156305410" expanded="true" signature="7588:8024" ph="update TB_PO... " />
+            <marker date="1490156305410" expanded="true" signature="8233:8980" ph="update TB_PO... " />
+            <marker date="1490156305410" expanded="true" signature="9077:9460" ph="update TB_PO... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-param-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-120">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/content-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="42" column="108" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/PositionCatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/PositionCatService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/ItemCatService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemCatServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="698">
+          <caret line="58" column="13" lean-forward="true" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/PositionCatServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="28" column="18" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbEmployeeExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="60" column="97" lean-forward="true" selection-start-line="60" selection-start-column="8" selection-end-line="60" selection-end-column="97" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbEmployeeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbEmployee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="24" column="35" lean-forward="true" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="33" column="67" lean-forward="true" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="79" column="18" lean-forward="false" selection-start-line="79" selection-start-column="18" selection-end-line="79" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="47" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemCatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="30" column="28" lean-forward="true" selection-start-line="30" selection-start-column="28" selection-end-line="30" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/ItemService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="58" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/EmployeeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="53" lean-forward="false" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/ItemController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbItemMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="117" column="21" lean-forward="false" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="21" />
+        <state relative-caret-position="191">
+          <caret line="296" column="44" lean-forward="true" selection-start-line="296" selection-start-column="44" selection-end-line="296" selection-end-column="44" />
           <folding>
             <marker date="1489912766111" expanded="true" signature="3958:4060" ph="select from tb_item" />
             <marker date="1489912766111" expanded="true" signature="4144:4200" ph="delete from " />
@@ -1155,115 +1495,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionCatMapper.java">
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/resources/spring/springmvc.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionCatMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1490153502552" expanded="true" signature="3810:3921" ph="select from TB_POSITION_CAT" />
-            <marker date="1490153502552" expanded="true" signature="4011:4076" ph="delete from " />
-            <marker date="1490153502552" expanded="true" signature="4179:4206" ph="delete from " />
-            <marker date="1490153502552" expanded="true" signature="4386:4755" ph="insert into TB_POSITION_CAT... " />
-            <marker date="1490153502552" expanded="true" signature="6321:6357" ph="select count... TB_POSITION_CAT" />
-            <marker date="1490153502552" expanded="true" signature="7602:8038" ph="update TB_PO... " />
-            <marker date="1490153502552" expanded="true" signature="8249:8996" ph="update TB_PO... " />
-            <marker date="1490153502552" expanded="true" signature="9095:9478" ph="update TB_PO... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-303">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbPositionMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="-120">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItem.java">
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/PageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="43" column="33" lean-forward="false" selection-start-line="43" selection-start-column="33" selection-end-line="43" selection-end-column="33" />
-          <folding>
-            <element signature="e#703#704#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="99">
+          <caret line="28" column="27" lean-forward="false" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbItemCatExample.java">
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/ItemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="82" column="33" lean-forward="true" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbEmployeeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-mapper/src/main/java/com/coco/mapper/TbEmployeeMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbEmployeeExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-pojo/src/main/java/com/coco/pojo/TbEmployee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+        <state relative-caret-position="74">
+          <caret line="309" column="25" lean-forward="true" selection-start-line="309" selection-start-column="25" selection-end-line="309" selection-end-column="25" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1490195727736" expanded="true" signature="4088:4195" ph="select from TB_EMPLOYEE" />
+            <marker date="1490195727736" expanded="true" signature="4285:4346" ph="delete from " />
+            <marker date="1490195727736" expanded="true" signature="4444:4467" ph="delete from " />
+            <marker date="1490195727736" expanded="true" signature="4642:5172" ph="insert into TB_EMPLOYEE... " />
+            <marker date="1490195727736" expanded="true" signature="7289:7321" ph="select count... TB_EMPLOYEE" />
+            <marker date="1490195727736" expanded="true" signature="8973:9598" ph="update TB_EM... " />
+            <marker date="1490195727736" expanded="true" signature="9804:10902" ph="update TB_EM... " />
+            <marker date="1490195727736" expanded="true" signature="10996:11493" ph="update TB_EM... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/index.jsp">
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/java/com/coco/controller/EmployeeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="44" column="57" lean-forward="true" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/index.jsp">
+    <entry file="file://$PROJECT_DIR$/coco-manager-service/src/main/java/com/coco/service/impl/EmployeeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
+        <state relative-caret-position="119">
+          <caret line="54" column="45" lean-forward="false" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/item-edit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="81" column="90" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="81" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coco-manager-web/src/main/webapp/WEB-INF/jsp/employee-edit.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="73" column="31" lean-forward="false" selection-start-line="73" selection-start-column="31" selection-end-line="73" selection-end-column="31" />
           <folding />
         </state>
       </provider>

@@ -1,4 +1,6 @@
+com\coco\controller\EmployeeController.class
 com\coco\controller\ItemController.class
 com\coco\controller\PageController.class
 com\coco\controller\ItemCatController.class
 com\coco\controller\PictureController.class
+com\coco\controller\PositionCatController.class
