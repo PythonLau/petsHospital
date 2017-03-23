@@ -316,6 +316,7 @@
       CID = #{cid,jdbcType=DECIMAL},
       STATUS = #{status,jdbcType=DECIMAL},
       DIMISSIONREASON = #{dimissionreason,jdbcType=VARCHAR},
+      CREATED = #{created,jdbcType=TIMESTAMP},
       UPDATED = #{updated,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=DECIMAL}
   </update>

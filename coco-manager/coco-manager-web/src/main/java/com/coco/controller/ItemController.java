@@ -2,14 +2,16 @@ package com.coco.controller;
 
 import com.coco.common.pojo.Ids;
 import com.coco.common.pojo.search_params;
+import com.coco.pojo.TbItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.TaotaoResult;
-import com.coco.pojo.TbItem;
 import com.coco.service.ItemService;
+
+import java.math.BigDecimal;
 
 
 /**
@@ -47,7 +49,7 @@ public class ItemController {
 
 	@RequestMapping("/item/{itemId}")
 	@ResponseBody
-	public TbItem getItemById(@PathVariable Long itemId) {
+	public TbItem getItemById(@PathVariable BigDecimal itemId) {
 		TbItem tbItem = itemService.getItemById(itemId);
 		return tbItem;
 	}

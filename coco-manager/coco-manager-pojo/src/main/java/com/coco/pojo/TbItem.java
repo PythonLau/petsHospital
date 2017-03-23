@@ -1,17 +1,18 @@
 package com.coco.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbItem {
-    private Long id;
+    private BigDecimal id;
 
     private String title;
 
-    private String supplier ;
+    private String supplier;
 
-    private Long price;
+    private BigDecimal price;
 
-    private Integer num;
+    private Long num;
 
     private String barcode;
 
@@ -19,17 +20,17 @@ public class TbItem {
 
     private Long cid;
 
-    private Byte status;
+    private Short status;
 
     private Date created;
 
     private Date updated;
 
-    public Long getId() {
+    public BigDecimal getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(BigDecimal id) {
         this.id = id;
     }
 
@@ -46,22 +47,22 @@ public class TbItem {
     }
 
     public void setSupplier(String supplier) {
-        this.supplier = supplier;
+        this.supplier = supplier == null ? null : supplier.trim();
     }
 
-    public Long getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public Integer getNum() {
+    public Long getNum() {
         return num;
     }
 
-    public void setNum(Integer num) {
+    public void setNum(Long num) {
         this.num = num;
     }
 
@@ -89,11 +90,11 @@ public class TbItem {
         this.cid = cid;
     }
 
-    public Byte getStatus() {
+    public Short getStatus() {
         return status;
     }
 
-    public void setStatus(Byte status) {
+    public void setStatus(Short status) {
         this.status = status;
     }
 

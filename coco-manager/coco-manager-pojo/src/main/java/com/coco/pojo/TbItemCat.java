@@ -1,37 +1,38 @@
 package com.coco.pojo;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbItemCat {
-    private Long id;
+    private BigDecimal id;
 
-    private Long parentId;
+    private BigDecimal parentId;
 
     private String name;
 
-    private Integer status;
+    private Short status;
 
-    private Integer sortOrder;
+    private Short sortOrder;
 
-    private Boolean isParent;
+    private Short isParent;
 
     private Date created;
 
     private Date updated;
 
-    public Long getId() {
+    public BigDecimal getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(BigDecimal id) {
         this.id = id;
     }
 
-    public Long getParentId() {
+    public BigDecimal getParentId() {
         return parentId;
     }
 
-    public void setParentId(Long parentId) {
+    public void setParentId(BigDecimal parentId) {
         this.parentId = parentId;
     }
 
@@ -43,27 +44,27 @@ public class TbItemCat {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getStatus() {
+    public Short getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Short status) {
         this.status = status;
     }
 
-    public Integer getSortOrder() {
+    public Short getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(Integer sortOrder) {
+    public void setSortOrder(Short sortOrder) {
         this.sortOrder = sortOrder;
     }
 
-    public Boolean getIsParent() {
+    public Short getIsParent() {
         return isParent;
     }
 
-    public void setIsParent(Boolean isParent) {
+    public void setIsParent(Short isParent) {
         this.isParent = isParent;
     }
 

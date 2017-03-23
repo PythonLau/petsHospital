@@ -2,15 +2,17 @@ package com.coco.mapper;
 
 import com.coco.pojo.TbItem;
 import com.coco.pojo.TbItemExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.math.BigDecimal;
+import java.util.List;
 
 public interface TbItemMapper {
     int countByExample(TbItemExample example);
 
     int deleteByExample(TbItemExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(BigDecimal id);
 
     int insert(TbItem record);
 
@@ -18,7 +20,7 @@ public interface TbItemMapper {
 
     List<TbItem> selectByExample(TbItemExample example);
 
-    TbItem selectByPrimaryKey(Long id);
+    TbItem selectByPrimaryKey(BigDecimal id);
 
     int updateByExampleSelective(@Param("record") TbItem record, @Param("example") TbItemExample example);
 

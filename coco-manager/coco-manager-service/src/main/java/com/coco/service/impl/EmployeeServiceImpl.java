@@ -58,4 +58,35 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeMapper.updateByPrimaryKey(employee);
         return TaotaoResult.ok();
     }
+
+    @Override
+    public EUDataGridResult searchEmployeeList(String search_condition,String search_key,Integer page,Integer rows){
+        System.out.println("service"  + search_condition);
+        System.out.println("service" + search_key);
+        TbEmployeeExample example = new TbEmployeeExample();
+        TbEmployeeExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }else if(search_condition.equals("name")){
+            criteria.andNameEqualTo(search_key);
+        }else if(search_condition.equals("sex")){
+            criteria.andSexEqualTo(search_key);
+        }else if(search_condition.equals("cid")){
+            Long cid = Long.parseLong(search_key);
+            criteria.andCidEqualTo(cid);
+        }else if(search_condition.equals("status")){
+            Short status = new Short(search_key);
+            criteria.andStatusEqualTo(status);
+        }
+        PageHelper.startPage(page, rows);
+        List<TbEmployee> list = employeeMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbEmployee> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
 }

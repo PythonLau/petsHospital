@@ -2,9 +2,10 @@ package com.coco.mapper;
 
 import com.coco.pojo.TbPositionCat;
 import com.coco.pojo.TbPositionCatExample;
+import org.apache.ibatis.annotations.Param;
+
 import java.math.BigDecimal;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
 public interface TbPositionCatMapper {
     int countByExample(TbPositionCatExample example);

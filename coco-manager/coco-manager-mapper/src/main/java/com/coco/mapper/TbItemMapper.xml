@@ -2,17 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coco.mapper.TbItemMapper" >
   <resultMap id="BaseResultMap" type="com.coco.pojo.TbItem" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="supplier " property="supplier " jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="BIGINT" />
-    <result column="num" property="num" jdbcType="INTEGER" />
-    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
-    <result column="image" property="image" jdbcType="VARCHAR" />
-    <result column="cid" property="cid" jdbcType="BIGINT" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="created" property="created" jdbcType="TIMESTAMP" />
-    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="SUPPLIER" property="supplier" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="NUM" property="num" jdbcType="DECIMAL" />
+    <result column="BARCODE" property="barcode" jdbcType="VARCHAR" />
+    <result column="IMAGE" property="image" jdbcType="VARCHAR" />
+    <result column="CID" property="cid" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, title, supplier , price, num, barcode, image, cid, status, created, updated
+    ID, TITLE, SUPPLIER, PRICE, NUM, BARCODE, IMAGE, CID, STATUS, CREATED, UPDATED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbItemExample" >
     select
@@ -81,7 +81,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_item
+    from TB_ITEM
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,84 +89,84 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
     select 
     <include refid="Base_Column_List" />
-    from tb_item
-    where id = #{id,jdbcType=BIGINT}
+    from TB_ITEM
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_item
-    where id = #{id,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from TB_ITEM
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <delete id="deleteByExample" parameterType="com.coco.pojo.TbItemExample" >
-    delete from tb_item
+    delete from TB_ITEM
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbItem" >
-    insert into tb_item (id, title, supplier ,
-      price, num, barcode, 
-      image, cid, status, 
-      created, updated)
-    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{supplier ,jdbcType=VARCHAR},
-      #{price,jdbcType=BIGINT}, #{num,jdbcType=INTEGER}, #{barcode,jdbcType=VARCHAR}, 
-      #{image,jdbcType=VARCHAR}, #{cid,jdbcType=BIGINT}, #{status,jdbcType=TINYINT}, 
+    insert into TB_ITEM (ID, TITLE, SUPPLIER, 
+      PRICE, NUM, BARCODE, 
+      IMAGE, CID, STATUS, 
+      CREATED, UPDATED)
+    values (#{id,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, #{supplier,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{num,jdbcType=DECIMAL}, #{barcode,jdbcType=VARCHAR}, 
+      #{image,jdbcType=VARCHAR}, #{cid,jdbcType=DECIMAL}, #{status,jdbcType=DECIMAL}, 
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbItem" >
-    insert into tb_item
+    insert into TB_ITEM
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        id,
+        ID,
       </if>
       <if test="title != null" >
-        title,
+        TITLE,
       </if>
-      <if test="supplier  != null" >
-        supplier ,
+      <if test="supplier != null" >
+        SUPPLIER,
       </if>
       <if test="price != null" >
-        price,
+        PRICE,
       </if>
       <if test="num != null" >
-        num,
+        NUM,
       </if>
       <if test="barcode != null" >
-        barcode,
+        BARCODE,
       </if>
       <if test="image != null" >
-        image,
+        IMAGE,
       </if>
       <if test="cid != null" >
-        cid,
+        CID,
       </if>
       <if test="status != null" >
-        status,
+        STATUS,
       </if>
       <if test="created != null" >
-        created,
+        CREATED,
       </if>
       <if test="updated != null" >
-        updated,
+        UPDATED,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="supplier  != null" >
-        #{supplier ,jdbcType=VARCHAR},
+      <if test="supplier != null" >
+        #{supplier,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        #{price,jdbcType=BIGINT},
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="num != null" >
-        #{num,jdbcType=INTEGER},
+        #{num,jdbcType=DECIMAL},
       </if>
       <if test="barcode != null" >
         #{barcode,jdbcType=VARCHAR},
@@ -175,10 +175,10 @@
         #{image,jdbcType=VARCHAR},
       </if>
       <if test="cid != null" >
-        #{cid,jdbcType=BIGINT},
+        #{cid,jdbcType=DECIMAL},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=TINYINT},
+        #{status,jdbcType=DECIMAL},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -189,46 +189,46 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.coco.pojo.TbItemExample" resultType="java.lang.Integer" >
-    select count(*) from tb_item
+    select count(*) from TB_ITEM
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_item
+    update TB_ITEM
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+        ID = #{record.id,jdbcType=DECIMAL},
       </if>
       <if test="record.title != null" >
-        title = #{record.title,jdbcType=VARCHAR},
+        TITLE = #{record.title,jdbcType=VARCHAR},
       </if>
-      <if test="record.supplier  != null" >
-        supplier  = #{record.supplier ,jdbcType=VARCHAR},
+      <if test="record.supplier != null" >
+        SUPPLIER = #{record.supplier,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
-        price = #{record.price,jdbcType=BIGINT},
+        PRICE = #{record.price,jdbcType=DECIMAL},
       </if>
       <if test="record.num != null" >
-        num = #{record.num,jdbcType=INTEGER},
+        NUM = #{record.num,jdbcType=DECIMAL},
       </if>
       <if test="record.barcode != null" >
-        barcode = #{record.barcode,jdbcType=VARCHAR},
+        BARCODE = #{record.barcode,jdbcType=VARCHAR},
       </if>
       <if test="record.image != null" >
-        image = #{record.image,jdbcType=VARCHAR},
+        IMAGE = #{record.image,jdbcType=VARCHAR},
       </if>
       <if test="record.cid != null" >
-        cid = #{record.cid,jdbcType=BIGINT},
+        CID = #{record.cid,jdbcType=DECIMAL},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=TINYINT},
+        STATUS = #{record.status,jdbcType=DECIMAL},
       </if>
       <if test="record.created != null" >
-        created = #{record.created,jdbcType=TIMESTAMP},
+        CREATED = #{record.created,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updated != null" >
-        updated = #{record.updated,jdbcType=TIMESTAMP},
+        UPDATED = #{record.updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -236,69 +236,70 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_item
-    set id = #{record.id,jdbcType=BIGINT},
-      title = #{record.title,jdbcType=VARCHAR},
-      supplier  = #{record.supplier ,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=BIGINT},
-      num = #{record.num,jdbcType=INTEGER},
-      barcode = #{record.barcode,jdbcType=VARCHAR},
-      image = #{record.image,jdbcType=VARCHAR},
-      cid = #{record.cid,jdbcType=BIGINT},
-      status = #{record.status,jdbcType=TINYINT},
-      created = #{record.created,jdbcType=TIMESTAMP},
-      updated = #{record.updated,jdbcType=TIMESTAMP}
+    update TB_ITEM
+    set ID = #{record.id,jdbcType=DECIMAL},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      SUPPLIER = #{record.supplier,jdbcType=VARCHAR},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      NUM = #{record.num,jdbcType=DECIMAL},
+      BARCODE = #{record.barcode,jdbcType=VARCHAR},
+      IMAGE = #{record.image,jdbcType=VARCHAR},
+      CID = #{record.cid,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      UPDATED = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbItem" >
-    update tb_item
+    update TB_ITEM
     <set >
       <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
+        TITLE = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="supplier  != null" >
-        supplier  = #{supplier ,jdbcType=VARCHAR},
+      <if test="supplier != null" >
+        SUPPLIER = #{supplier,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
-        price = #{price,jdbcType=BIGINT},
+        PRICE = #{price,jdbcType=DECIMAL},
       </if>
       <if test="num != null" >
-        num = #{num,jdbcType=INTEGER},
+        NUM = #{num,jdbcType=DECIMAL},
       </if>
       <if test="barcode != null" >
-        barcode = #{barcode,jdbcType=VARCHAR},
+        BARCODE = #{barcode,jdbcType=VARCHAR},
       </if>
       <if test="image != null" >
-        image = #{image,jdbcType=VARCHAR},
+        IMAGE = #{image,jdbcType=VARCHAR},
       </if>
       <if test="cid != null" >
-        cid = #{cid,jdbcType=BIGINT},
+        CID = #{cid,jdbcType=DECIMAL},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
+        STATUS = #{status,jdbcType=DECIMAL},
       </if>
       <if test="created != null" >
-        created = #{created,jdbcType=TIMESTAMP},
+        CREATED = #{created,jdbcType=TIMESTAMP},
       </if>
       <if test="updated != null" >
-        updated = #{updated,jdbcType=TIMESTAMP},
+        UPDATED = #{updated,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbItem" >
-    update tb_item
-    set title = #{title,jdbcType=VARCHAR},
-      supplier  = #{supplier ,jdbcType=VARCHAR},
-      price = #{price,jdbcType=BIGINT},
-      num = #{num,jdbcType=INTEGER},
-      barcode = #{barcode,jdbcType=VARCHAR},
-      image = #{image,jdbcType=VARCHAR},
-      cid = #{cid,jdbcType=BIGINT},
-      status = #{status,jdbcType=TINYINT},
-      updated = #{updated,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
+    update TB_ITEM
+    set TITLE = #{title,jdbcType=VARCHAR},
+      SUPPLIER = #{supplier,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      NUM = #{num,jdbcType=DECIMAL},
+      BARCODE = #{barcode,jdbcType=VARCHAR},
+      IMAGE = #{image,jdbcType=VARCHAR},
+      CID = #{cid,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

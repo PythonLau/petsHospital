@@ -20,11 +20,11 @@
             <tr>
                 <td>性别:</td>
                 <td>
-                    <select id="sex_select" name="sex_select">
+                    <select id="sexEditSelect" name="sexEditSelect">
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
-                    <input type="hidden" name="sex"/>
+                    <input name="sex"/>
                 </td>
             </tr>
             <tr>
@@ -44,11 +44,11 @@
             <tr>
                 <td>员工状态:</td>
                 <td>
-                    <select id="status_select" name="status_select">
+                    <select id="statusEditSelect" name="statusEditSelect">
                         <option value="1">在职</option>
                         <option value="0">离职</option>
                     </select>
-                    <input type="hidden" name="status"/>
+                    <input name="status"/>
                 </td>
             </tr>
             <tr>
@@ -73,14 +73,14 @@
 </div>
 <script type="text/javascript">
     function submitForm(){
-        alert("准备修改物品")
         if(!$('#employeeEditForm').form('validate')){
             $.messager.alert('提示','表单还未填写完成!');
             return ;
         }
-
-        $("#employeeEditForm[name=sex]").val($("#employeeEditForm[name=sex_select]").val());
-        $("#employeeEditForm[name=status]").val($("#employeeEditForm[name=status_select]").val());
+        alert("开始执行")
+        $("#employeeEditForm [name=sex]").val($("#employeeEditForm [name=sexEditSelect]").val());
+        $("#employeeEditForm [name=status]").val($("#employeeEditForm [name=statusEditSelect]").val());
+        alert("执行了两条")
 
         $.post("/employee/update",$("#employeeEditForm").serialize(), function(data){
             if(data.status == 200){

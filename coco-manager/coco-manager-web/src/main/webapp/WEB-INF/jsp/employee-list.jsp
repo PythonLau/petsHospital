@@ -23,7 +23,7 @@
         <th data-options="field:'salary',width:50">薪水</th>
         <th data-options="field:'cid',width:38">所属部门</th>
         <th data-options="field:'status',width:38,align:'center',formatter:TAOTAO.formatEmployeeStatus">状态</th>
-        <th data-options="field:'dimissionReason',width:200">离职原因</th>
+        <th data-options="field:'dimissionreason',width:200">离职原因</th>
         <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">创建日期</th>
         <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">更新日期</th>
     </tr>
@@ -91,7 +91,7 @@
         }
         var search_params = {"search_condition":search_condition,"search_key":search_key,"rows":pageSize,'pageNumber':pageNumber};
         $.ajax({
-            url: "/item/search",
+            url: "/employee/search",
             type: "POST",
             contentType: "application/json",
             dataType: "json",

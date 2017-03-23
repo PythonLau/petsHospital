@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coco.mapper.TbItemCatMapper" >
   <resultMap id="BaseResultMap" type="com.coco.pojo.TbItemCat" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="status" property="status" jdbcType="INTEGER" />
-    <result column="sort_order" property="sortOrder" jdbcType="INTEGER" />
-    <result column="is_parent" property="isParent" jdbcType="BIT" />
-    <result column="created" property="created" jdbcType="TIMESTAMP" />
-    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="PARENT_ID" property="parentId" jdbcType="DECIMAL" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="SORT_ORDER" property="sortOrder" jdbcType="DECIMAL" />
+    <result column="IS_PARENT" property="isParent" jdbcType="DECIMAL" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, parent_id, name, status, sort_order, is_parent, created, updated
+    ID, PARENT_ID, NAME, STATUS, SORT_ORDER, IS_PARENT, CREATED, UPDATED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbItemCatExample" >
     select
@@ -78,7 +78,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_item_cat
+    from TB_ITEM_CAT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,80 +86,82 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
     select 
     <include refid="Base_Column_List" />
-    from tb_item_cat
-    where id = #{id,jdbcType=BIGINT}
+    from TB_ITEM_CAT
+    where ID = #{id,jdbcType=DECIMAL}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_item_cat
-    where id = #{id,jdbcType=BIGINT}
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from TB_ITEM_CAT
+    where ID = #{id,jdbcType=DECIMAL}
   </delete>
   <delete id="deleteByExample" parameterType="com.coco.pojo.TbItemCatExample" >
-    delete from tb_item_cat
+    delete from TB_ITEM_CAT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbItemCat" >
-    <selectKey keyProperty="id" order="BEFORE" resultType="long">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.math.BigDecimal">
       select tb_item_cat_sequence.nextval as id from dual
     </selectKey>
-    insert into tb_item_cat (id, parent_id, name, 
-      status, sort_order, is_parent)
-    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
-      #{status,jdbcType=INTEGER}, #{sortOrder,jdbcType=INTEGER}, #{isParent,jdbcType=BIT})
+    insert into TB_ITEM_CAT (ID, PARENT_ID, NAME, 
+      STATUS, SORT_ORDER, IS_PARENT, 
+      CREATED, UPDATED)
+    values (#{id,jdbcType=DECIMAL}, #{parentId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, 
+      #{status,jdbcType=DECIMAL}, #{sortOrder,jdbcType=DECIMAL}, #{isParent,jdbcType=DECIMAL}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbItemCat" >
-    <selectKey keyProperty="id" order="BEFORE" resultType="long">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.math.BigDecimal">
       select tb_item_cat_sequence.nextval as id from dual
     </selectKey>
-    insert into tb_item_cat
+    insert into TB_ITEM_CAT
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        id,
+        ID,
       </if>
       <if test="parentId != null" >
-        parent_id,
+        PARENT_ID,
       </if>
       <if test="name != null" >
-        name,
+        NAME,
       </if>
       <if test="status != null" >
-        status,
+        STATUS,
       </if>
       <if test="sortOrder != null" >
-        sort_order,
+        SORT_ORDER,
       </if>
       <if test="isParent != null" >
-        is_parent,
+        IS_PARENT,
       </if>
       <if test="created != null" >
-        created,
+        CREATED,
       </if>
       <if test="updated != null" >
-        updated,
+        UPDATED,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+        #{id,jdbcType=DECIMAL},
       </if>
       <if test="parentId != null" >
-        #{parentId,jdbcType=BIGINT},
+        #{parentId,jdbcType=DECIMAL},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        #{status,jdbcType=INTEGER},
+        #{status,jdbcType=DECIMAL},
       </if>
       <if test="sortOrder != null" >
-        #{sortOrder,jdbcType=INTEGER},
+        #{sortOrder,jdbcType=DECIMAL},
       </if>
       <if test="isParent != null" >
-        #{isParent,jdbcType=BIT},
+        #{isParent,jdbcType=DECIMAL},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -170,37 +172,37 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.coco.pojo.TbItemCatExample" resultType="java.lang.Integer" >
-    select count(*) from tb_item_cat
+    select count(*) from TB_ITEM_CAT
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_item_cat
+    update TB_ITEM_CAT
     <set >
       <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+        ID = #{record.id,jdbcType=DECIMAL},
       </if>
       <if test="record.parentId != null" >
-        parent_id = #{record.parentId,jdbcType=BIGINT},
+        PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
       </if>
       <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+        NAME = #{record.name,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null" >
-        status = #{record.status,jdbcType=INTEGER},
+        STATUS = #{record.status,jdbcType=DECIMAL},
       </if>
       <if test="record.sortOrder != null" >
-        sort_order = #{record.sortOrder,jdbcType=INTEGER},
+        SORT_ORDER = #{record.sortOrder,jdbcType=DECIMAL},
       </if>
       <if test="record.isParent != null" >
-        is_parent = #{record.isParent,jdbcType=BIT},
+        IS_PARENT = #{record.isParent,jdbcType=DECIMAL},
       </if>
       <if test="record.created != null" >
-        created = #{record.created,jdbcType=TIMESTAMP},
+        CREATED = #{record.created,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updated != null" >
-        updated = #{record.updated,jdbcType=TIMESTAMP},
+        UPDATED = #{record.updated,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -208,55 +210,55 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_item_cat
-    set id = #{record.id,jdbcType=BIGINT},
-      parent_id = #{record.parentId,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=INTEGER},
-      sort_order = #{record.sortOrder,jdbcType=INTEGER},
-      is_parent = #{record.isParent,jdbcType=BIT},
-      created = #{record.created,jdbcType=TIMESTAMP},
-      updated = #{record.updated,jdbcType=TIMESTAMP}
+    update TB_ITEM_CAT
+    set ID = #{record.id,jdbcType=DECIMAL},
+      PARENT_ID = #{record.parentId,jdbcType=DECIMAL},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      SORT_ORDER = #{record.sortOrder,jdbcType=DECIMAL},
+      IS_PARENT = #{record.isParent,jdbcType=DECIMAL},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      UPDATED = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbItemCat" >
-    update tb_item_cat
+    update TB_ITEM_CAT
     <set >
       <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=BIGINT},
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
       </if>
       <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+        NAME = #{name,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
+        STATUS = #{status,jdbcType=DECIMAL},
       </if>
       <if test="sortOrder != null" >
-        sort_order = #{sortOrder,jdbcType=INTEGER},
+        SORT_ORDER = #{sortOrder,jdbcType=DECIMAL},
       </if>
       <if test="isParent != null" >
-        is_parent = #{isParent,jdbcType=BIT},
+        IS_PARENT = #{isParent,jdbcType=DECIMAL},
       </if>
       <if test="created != null" >
-        created = #{created,jdbcType=TIMESTAMP},
+        CREATED = #{created,jdbcType=TIMESTAMP},
       </if>
       <if test="updated != null" >
-        updated = #{updated,jdbcType=TIMESTAMP},
+        UPDATED = #{updated,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where id = #{id,jdbcType=BIGINT}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbItemCat" >
-    update tb_item_cat
-    set parent_id = #{parentId,jdbcType=BIGINT},
-      name = #{name,jdbcType=VARCHAR},
-      status = #{status,jdbcType=INTEGER},
-      sort_order = #{sortOrder,jdbcType=INTEGER},
-      is_parent = #{isParent,jdbcType=BIT},
-      created = #{created,jdbcType=TIMESTAMP},
-      updated = #{updated,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
+    update TB_ITEM_CAT
+    set PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      NAME = #{name,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=DECIMAL},
+      SORT_ORDER = #{sortOrder,jdbcType=DECIMAL},
+      IS_PARENT = #{isParent,jdbcType=DECIMAL},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

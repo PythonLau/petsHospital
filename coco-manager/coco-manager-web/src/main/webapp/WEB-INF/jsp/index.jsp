@@ -33,7 +33,7 @@
 				<ul>
 					<li data-options="attributes:{'url':'employee-add'}">新增员工</li>
 					<li data-options="attributes:{'url':'employee-list'}">员工管理</li>
-					<li data-options="attributes:{'url':'item-cat'}">部门管理</li>
+					<li data-options="attributes:{'url':'employee-cat'}">部门管理</li>
 				</ul>
 			</li>
          	<li>

@@ -1,6 +1,7 @@
 package com.coco.service;
 
 import com.coco.common.pojo.EUTreeNode;
+import com.coco.common.pojo.TaotaoResult;
 
 import java.util.List;
 
@@ -9,4 +10,8 @@ import java.util.List;
  */
 public interface PositionCatService {
     List<EUTreeNode> getCatList(long parentId);
+    TaotaoResult insertPositionCat(long parentId, String name);
+    TaotaoResult updatePositionCat(long id,String name);
+    TaotaoResult deletePositionCat(long id);
+    boolean judgeDeletePositionCat(long id);
 }

@@ -103,6 +103,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbPositionCat" >
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.math.BigDecimal">
+      select tb_position_cat_sequence.nextval as id from dual
+    </selectKey>
     insert into TB_POSITION_CAT (ID, PARENT_ID, NAME, 
       STATUS, SORT_ORDER, IS_PARENT, 
       CREATED, UPDATED)
@@ -111,6 +114,9 @@
       #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbPositionCat" >
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.math.BigDecimal">
+      select tb_position_cat_sequence.nextval as id from dual
+    </selectKey>
     insert into TB_POSITION_CAT
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

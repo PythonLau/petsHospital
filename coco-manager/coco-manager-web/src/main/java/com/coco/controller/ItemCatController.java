@@ -1,5 +1,6 @@
 package com.coco.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.coco.common.pojo.TaotaoResult;
@@ -30,7 +31,7 @@ public class ItemCatController {
 	
 	@RequestMapping("/list")
 	@ResponseBody
-	private List<EUTreeNode> getCatList(@RequestParam(value="id",defaultValue="0")Long parentId) {
+	private List<EUTreeNode> getCatList(@RequestParam(value="id",defaultValue="0")BigDecimal parentId) {
 		System.out.println("controller..../list");
 		System.out.println(parentId);
 		List<EUTreeNode> list = itemCatService.getCatList(parentId);
@@ -39,7 +40,7 @@ public class ItemCatController {
 
 	@RequestMapping("/create")
 	@ResponseBody
-	public TaotaoResult addTbItemCat(Long parentId, String name) {
+	public TaotaoResult addTbItemCat(BigDecimal parentId, String name) {
 		System.out.println("controller..../create");
 		TaotaoResult result = itemCatService.insertItemCat(parentId, name);
 		return result;
@@ -47,7 +48,7 @@ public class ItemCatController {
 
 	@RequestMapping("/delete")
 	@ResponseBody
-	public TaotaoResult deleteTbItemCat(Long id) {
+	public TaotaoResult deleteTbItemCat(BigDecimal id) {
 		System.out.println("controller..../delete");
 		TaotaoResult result = itemCatService.deleteItemCat(id);
 		return result;
@@ -55,7 +56,7 @@ public class ItemCatController {
 
 	@RequestMapping("/update")
 	@ResponseBody
-	public TaotaoResult updateTbItemCat(Long id,String name) {
+	public TaotaoResult updateTbItemCat(BigDecimal id,String name) {
 		System.out.println("controller..../update");
 		TaotaoResult result = itemCatService.updateItemCat(id,name);
 		return result;

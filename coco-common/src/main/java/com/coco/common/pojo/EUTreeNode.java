@@ -1,4 +1,7 @@
 package com.coco.common.pojo;
+
+import java.math.BigDecimal;
+
 /**
  * easyUI树形控件节点格式
  * <p>Title: EUTreeNode</p>
@@ -10,15 +13,18 @@ package com.coco.common.pojo;
  */
 public class EUTreeNode {
 
-	private long id;
+	private BigDecimal id;
 	private String text;
 	private String state;
-	public long getId() {
+
+	public BigDecimal getId() {
 		return id;
 	}
-	public void setId(long id) {
+
+	public void setId(BigDecimal id) {
 		this.id = id;
 	}
+
 	public String getText() {
 		return text;
 	}
