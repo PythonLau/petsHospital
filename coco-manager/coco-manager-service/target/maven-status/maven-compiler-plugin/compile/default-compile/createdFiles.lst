@@ -1,6 +1,8 @@
 com\coco\service\EmployeeService.class
 com\coco\service\impl\PositionCatServiceImpl.class
+com\coco\service\ArticleService.class
 com\coco\service\ItemCatService.class
+com\coco\service\impl\ArticleServiceImpl.class
 com\coco\service\impl\ItemCatServiceImpl.class
 com\coco\service\impl\ItemServiceImpl.class
 com\coco\service\impl\PictureServiceImpl.class

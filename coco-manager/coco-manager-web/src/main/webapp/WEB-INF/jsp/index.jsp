@@ -1,78 +1,132 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/3/23 0023
+  Time: 下午 10:00
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>coco医院后台管理系统</title>
-<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/default/easyui.css" />
-<link rel="stylesheet" type="text/css" href="js/jquery-easyui-1.4.1/themes/icon.css" />
-<link rel="stylesheet" type="text/css" href="css/taotao.css" />
-<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="js/jquery-easyui-1.4.1/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="js/jquery-easyui-1.4.1/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="js/common.js"></script>
-<style type="text/css">
-	.content {
-		padding: 10px 10px 10px 10px;
-	}
-</style>
+    <meta charset="UTF-8">
+    <title>coco宠物医院</title>
+    <link href="/css/homepage.css" rel="stylesheet">
 </head>
-<body class="easyui-layout">
-    <div data-options="region:'west',title:'菜单',split:true" style="width:180px;">
-    	<ul id="menu" class="easyui-tree" style="margin-top: 10px;margin-left: 5px;">
-         	<li>
-         		<span>库存管理</span>
-         		<ul>
-	         		<li data-options="attributes:{'url':'item-add'}">新增物品</li>
-	         		<li data-options="attributes:{'url':'item-list'}">物品管理</li>
-					<li data-options="attributes:{'url':'item-cat'}">分类管理</li>
-	         	</ul>
-         	</li>
-			<li>
-				<span>人事管理</span>
-				<ul>
-					<li data-options="attributes:{'url':'employee-add'}">新增员工</li>
-					<li data-options="attributes:{'url':'employee-list'}">员工管理</li>
-					<li data-options="attributes:{'url':'employee-cat'}">部门管理</li>
-				</ul>
-			</li>
-         	<li>
-         		<span>网站内容管理</span>
-         		<ul>
-	         		<li data-options="attributes:{'url':'content'}">内容管理</li>
-	         	</ul>
-         	</li>
-         </ul>
+<body>
+<div id="header">
+    <div class="header_left"><a href="#"><img src="image/star.png" class="image"><span>收藏淘淘</span></a></div>
+    <div class="header_right"><span>您好！欢迎来到coco！</span>&nbsp;<span>[<a href="#">登录</a>]</span><span>[<a href="#">免费注册</a>]</span>　|　<a href="#">我的订单</a></div>
+</div>
+
+<div id="secondHeader">
+    <ul>
+        <li>
+            <div id="secondHeader_img">
+                <img src="image/logo.png"/>
+            </div>
+        </li>
+        <li>
+            <div id="search">
+                <form target="_top" action="#" name="search" class="">
+                    <div class="search-button">
+                        <button class="btn-search" type="submit" >搜索</button>
+                    </div>
+                    <div class="search-input">
+                        <input class="search-input-content" >
+                    </div>
+                </form>
+            </div>
+        </li>
+        <li>
+            <div id="coco"><a href="#"><img src="image/hello.png"/><span style="padding-bottom: 20px">我的coco</span></a></div>
+        </li>
+        <li>
+            <div id="order"><a href="#"><img src="image/order.png"/><span>我的订单</span></a></div>
+        </li>
+
+    </ul>
+
+</div>
+
+<div id="nav">
+    <div id="nav-content">
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="#">我要挂号</a></li>
+            <li><a href="#">寄养领养</a></li>
+            <li><a href="#">订购套餐</a></li>
+            <li><a href="#">咨询动态</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
     </div>
-    <div data-options="region:'center',title:''">
-    	<div id="tabs" class="easyui-tabs">
-		    <div title="首页" style="padding:20px;">
-		        	
-		    </div>
-		</div>
+</div>
+
+<!--轮播图-->
+<div id="photo">
+
+</div>
+
+<!--文章内容-->
+<div id="articleList">
+    <div class="row">
+        <div class="list col-md-6">
+            <div><h3><a href="#" target="_blank">医院动态</a></h3><span><a href="/articleMore">更多</a></span></div>
+            <ul>
+                <c:forEach var="sk" items="${list}">
+                <li>
+                    <a href="/article/${sk.id}" target="_blank" title="${sk.title}">${sk.title}</a>
+                    <span class="time">${sk.updated}</span>
+                </li>
+                </c:forEach>
+            </ul>
+        </div>
+
+        <div class="list col-md-6">
+            <h3><a href="#" target="_blank">记者在线</a></h3>
+            <ul>
+                <li>
+                    <a href="#" target="_blank" title="女生节：寻找你的小幸运">女生节：寻找你的小幸运</a>
+                    <span class="time">2017-03-12</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="南湖食堂：我将告别拥堵">南湖食堂：我将告别拥堵</a>
+                    <span class="time">2016-12-26</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="摒弃陋习　书香溢满堂">摒弃陋习　书香溢满堂</a>
+                    <span class="time">2016-11-27</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="忽如一夜寒潮来　理工二桥变“滑梯”">忽如一夜寒潮来　理工二桥变“滑梯”</a>
+                    <span class="time">2016-11-25</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="厉害了我的体测">厉害了我的体测</a>
+                    <span class="time">2016-11-24</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="如果套路　你是否愿意买单？　">如果套路　你是否愿意买单？　</a>
+                    <span class="time">2016-06-09</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="“巧”治酸奶售卖机“抽风”　">“巧”治酸奶售卖机“抽风”　</a>
+                    <span class="time">2016-04-28</span>
+                </li>
+                <li>
+                    <a href="#" target="_blank" title="下雨了　爱心伞去哪了？">下雨了　爱心伞去哪了？</a>
+                    <span class="time">2016-04-19</span>
+                </li>
+            </ul>
+
+        </div>
     </div>
-    
-<script type="text/javascript">
-$(function(){
-	$('#menu').tree({
-		onClick: function(node){
-			if($('#menu').tree("isLeaf",node.target)){
-				var tabs = $("#tabs");
-				var tab = tabs.tabs("getTab",node.text);
-				if(tab){
-					tabs.tabs("select",node.text);
-				}else{
-					tabs.tabs('add',{
-					    title:node.text,
-					    href: node.attributes.url,
-					    closable:true,
-					    bodyCls:"content"
-					});
-				}
-			}
-		}
-	});
-});
-</script>
+</div>
+
+<div id="footer">
+    <span>Copyright © 2017 hello.com All Rights Reserved</span>
+</div>
+<script type="text/javascript" src="/js/home.js" charset="utf-8"></script>
 </body>
 </html>
