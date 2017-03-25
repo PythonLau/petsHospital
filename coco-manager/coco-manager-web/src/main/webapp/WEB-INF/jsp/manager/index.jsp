@@ -36,6 +36,13 @@
 					<li data-options="attributes:{'url':'employee-cat'}">部门管理</li>
 				</ul>
 			</li>
+			<li>
+				<span>套餐管理</span>
+				<ul>
+					<li data-options="attributes:{'url':'package-add'}">新增套餐</li>
+					<li data-options="attributes:{'url':'package-list'}">套餐管理</li>
+				</ul>
+			</li>
          	<li>
          		<span>网站内容管理</span>
          		<ul>

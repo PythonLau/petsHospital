@@ -30,9 +30,7 @@
     </tr>
     </thead>
 </table>
-<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/item-edit'" style="width:80%;height:80%;padding:10px;">
-</div>
-<div id="itemAddWindow" class="easyui-window" title="新增商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/item-add'" style="width:80%;height:80%;padding:10px;">
+<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/item-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 
 <script>
@@ -53,6 +51,7 @@
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();
+            alert(ids);
             if(ids.length == 0){
                 $.messager.alert('提示','必须选择一个商品才能编辑!');
                 return ;
@@ -61,7 +60,6 @@
                 $.messager.alert('提示','只能选择一个商品!');
                 return ;
             }
-
             $("#itemEditWindow").window({
                 onLoad :function(){
                     //回显数据

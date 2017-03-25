@@ -5,7 +5,9 @@ import com.coco.common.utils.IDUtils;
 import com.coco.mapper.TbArticleMapper;
 import com.coco.pojo.TbArticle;
 import com.coco.pojo.TbArticleExample;
+import com.coco.pojo.TbItemCatExample;
 import com.coco.service.ArticleService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +23,16 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private TbArticleMapper articleMapper;
-    public List<TbArticle> getArticleTitleList(){
+    public List<TbArticle> getArticleTitleList(boolean isPaging){
         TbArticleExample example = new TbArticleExample();
-        List<TbArticle> list = articleMapper.selectByExample(example);
+        List<TbArticle> list = null;
+        if(isPaging){
+            example.setOrderByClause("id desc");
+            PageHelper.startPage(1, 8);
+            list = articleMapper.selectByExample(example);
+        }else{
+            list = articleMapper.selectByExample(example);
+        }
         return list;
     }
     @Override
@@ -46,6 +55,6 @@ public class ArticleServiceImpl implements ArticleService {
         article.setCreated(time);
         article.setUpdated(time);
         articleMapper.insert(article);
-        return TaotaoResult.ok();
+        return TaotaoResult.build(200,"新增成功");
     }
 }

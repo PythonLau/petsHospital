@@ -55,7 +55,7 @@
             <li><a href="#">我要挂号</a></li>
             <li><a href="#">寄养领养</a></li>
             <li><a href="#">订购套餐</a></li>
-            <li><a href="#">咨询动态</a></li>
+            <li><a href="#">医院介绍</a></li>
             <li><a href="#">联系我们</a></li>
         </ul>
     </div>

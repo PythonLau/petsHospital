@@ -30,7 +30,8 @@ public class PageController {
 	 */
 	@RequestMapping("/")
 	public String showIndex(Model model) {
-		List<TbArticle> list = articleService.getArticleTitleList();
+		boolean isPaging = true;
+		List<TbArticle> list = articleService.getArticleTitleList(isPaging);
 		model.addAttribute("list",list);
 		return "index";
 	}

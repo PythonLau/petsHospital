@@ -1,0 +1,58 @@
+.search-result {
+    /*height: 845px;*/
+    /*border: solid 1px red;*/
+    overflow: hidden;
+}
+
+.search-book-list li {
+    float: left;
+    width: 950px;
+    height: 260px;
+    margin: 10px 10px;
+}
+
+.search-book-list li:hover {
+    border: solid 1px #e5e5e5;
+}
+
+
+.search-book-list {
+
+}
+
+.search-book-list img {
+    float: left;
+    margin-top: 36px;
+}
+
+.now-price {
+    font-weight: bold;
+    color: red;
+}
+
+.pre-price {
+    color: #969696;
+    text-decoration: line-through;
+}
+
+.discount {
+    color: #969696;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

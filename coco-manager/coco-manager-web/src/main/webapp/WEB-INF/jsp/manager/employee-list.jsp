@@ -29,7 +29,7 @@
     </tr>
     </thead>
 </table>
-<div id="employeeEditWindow" class="easyui-window" title="修改员工信息" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/employee-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="employeeEditWindow" class="easyui-window" title="修改员工信息" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/employee-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 
 <script>

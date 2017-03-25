@@ -56,8 +56,8 @@
             <li><a href="/">首页</a></li>
             <li><a href="#">我要挂号</a></li>
             <li><a href="#">寄养领养</a></li>
-            <li><a href="#">订购套餐</a></li>
-            <li><a href="#">咨询动态</a></li>
+            <li><a href="/package/1">订购套餐</a></li>
+            <li><a href="#">医院介绍</a></li>
             <li><a href="#">联系我们</a></li>
         </ul>
     </div>
@@ -72,7 +72,7 @@
 <div id="articleList">
     <div class="row">
         <div class="list col-md-6">
-            <div><h3><a href="#" target="_blank">医院动态</a></h3><span><a href="/articleMore">更多</a></span></div>
+            <h3><a href="/articleMore">医院动态(点击查看更多)</a></h3>
             <ul>
                 <c:forEach var="sk" items="${list}">
                 <li>

@@ -1,0 +1,168 @@
+.header {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.header, #title, .nav-bar {
+    height: 60px;
+    line-height: 60px;
+}
+
+.header .main {
+    position: relative;
+    /*padding: 0 0;*/
+}
+
+.header a {
+    color: white;
+    display: block;
+}
+
+.header #title {
+    width: 150px;
+    float: left;
+    margin: 0 0;
+}
+
+.header .nav-bar {
+    margin: 0 auto;
+    float: left;
+    width: 400px;
+}
+
+.header .nav-bar > li {
+    display: block;
+    float: left;
+    width: auto;
+    /*border: solid 1px red;*/
+}
+
+.header .nav-bar > li > a {
+    font-size: 20px;
+    /* 不要在li 标签设置padding，这样会造成.cols-wrap 有偏差 */
+    padding: 0px 30px 0px 29px;
+
+}
+
+.header .nav-bar-purchase {
+    position: relative;
+}
+
+#purchaseCount {
+    position: absolute;
+    left: 80%;
+    top: 60%;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+
+.header .col:not(:last-of-type) {
+    border-right: 1px solid white;
+}
+
+
+/* 设置下，当鼠标经过nav_bar，give a hint */
+.header .nav-bar > li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.header .nav-bar-active {
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+}
+
+
+/* 当鼠标经过分类 的li标签，显示 */
+.header .nav-bar-sort:hover .cols-wrap {
+    display: block;
+}
+
+/*search*/
+.header .search-wrapper {
+    float: left;
+    width: 400px;
+    height: 40px;
+    background-color: transparent;
+    margin: 10px 0px;
+    position: relative;
+}
+
+.header .search-wrapper input {
+    width: 395px;
+    float: left;
+    border: none;
+    height: 40px;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding-right: 35px;
+    padding-left: 4px;
+    font-weight: 400;
+}
+
+.header .search-wrapper i {
+    float: right;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 360px;
+    top: 10px;
+}
+
+.header .user {
+    width: 250px;
+    height: 60px;
+    float: left;
+    position: relative;
+}
+
+.header .user a {
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 5px;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    color: #fff;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
+
+
+
+.header .user .username:hover {
+    text-decoration: underline;
+    color: red;
+}
+
+
+.header .btn {
+    /*height: 40px;*/
+    /*line-height: 40px;*/
+    margin: 10px 0px;
+    width: 100px;
+    float: left;
+}
+
+.header .btn {
+    margin-left: 20px;
+    margin-right: 4px;
+}
+
+
+
+

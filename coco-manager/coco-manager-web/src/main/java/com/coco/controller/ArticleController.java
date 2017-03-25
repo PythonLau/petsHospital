@@ -38,7 +38,8 @@ public class ArticleController {
     }
     @RequestMapping(value="/articleMore")
     public String showIndex(Model model) {
-        List<TbArticle> list = articleService.getArticleTitleList();
+        boolean isPaging = false;
+        List<TbArticle> list = articleService.getArticleTitleList(isPaging);
         model.addAttribute("list",list);
         return "articleMore";
     }

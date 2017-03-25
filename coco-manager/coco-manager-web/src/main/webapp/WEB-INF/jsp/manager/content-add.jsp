@@ -42,11 +42,8 @@
 				contentAddEditor.sync();
 				
 				$.post("/manager/article/save",$("#contentAddForm").serialize(), function(data){
-				    alert("开始post")
 					if(data.status == 200){
 						$.messager.alert('提示','新增内容成功!');
-    					$("#contentList").datagrid("reload");
-    					TT.closeCurrentWindow();
 					}
 				});
 			},
