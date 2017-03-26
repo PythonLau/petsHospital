@@ -66,6 +66,16 @@ var TT = TAOTAO = {
         }
     },
 
+    formatPackageStatus : function formatStatus(val,row){
+        if (val == 1){
+            return '上架';
+        } else if(val == 0){
+            return '<span style="color:red;">下架</span>';
+        } else {
+            return '未知';
+        }
+    },
+
     init : function(data){
         //新增物品界面初始化图片上传组件
         this.initAddPicUpload(data)

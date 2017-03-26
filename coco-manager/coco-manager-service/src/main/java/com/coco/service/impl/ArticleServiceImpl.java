@@ -5,7 +5,6 @@ import com.coco.common.utils.IDUtils;
 import com.coco.mapper.TbArticleMapper;
 import com.coco.pojo.TbArticle;
 import com.coco.pojo.TbArticleExample;
-import com.coco.pojo.TbItemCatExample;
 import com.coco.service.ArticleService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

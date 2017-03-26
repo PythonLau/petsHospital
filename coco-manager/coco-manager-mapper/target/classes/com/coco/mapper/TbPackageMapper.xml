@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coco.mapper.TbPackageMapper" >
   <resultMap id="BaseResultMap" type="com.coco.pojo.TbPackage" >
-    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="NAME" property="name" jdbcType="VARCHAR" />
     <result column="PRICE" property="price" jdbcType="DECIMAL" />
     <result column="NORMALDISCOUNT" property="normaldiscount" jdbcType="DECIMAL" />
@@ -89,6 +89,16 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from TB_PACKAGE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from TB_PACKAGE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
   <delete id="deleteByExample" parameterType="com.coco.pojo.TbPackageExample" >
     delete from TB_PACKAGE
     <if test="_parameter != null" >
@@ -231,5 +241,51 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbPackage" >
+    update TB_PACKAGE
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="normaldiscount != null" >
+        NORMALDISCOUNT = #{normaldiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="memberdiscount != null" >
+        MEMBERDISCOUNT = #{memberdiscount,jdbcType=DECIMAL},
+      </if>
+      <if test="introduction != null" >
+        INTRODUCTION = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="image != null" >
+        IMAGE = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        CREATED = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        UPDATED = #{updated,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbPackage" >
+    update TB_PACKAGE
+    set NAME = #{name,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
+      NORMALDISCOUNT = #{normaldiscount,jdbcType=DECIMAL},
+      MEMBERDISCOUNT = #{memberdiscount,jdbcType=DECIMAL},
+      INTRODUCTION = #{introduction,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=DECIMAL},
+      IMAGE = #{image,jdbcType=VARCHAR},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

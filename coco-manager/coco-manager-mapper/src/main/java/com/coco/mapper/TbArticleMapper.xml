@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coco.mapper.TbArticleMapper" >
   <resultMap id="BaseResultMap" type="com.coco.pojo.TbArticle" >
-    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="TITLE" property="title" jdbcType="VARCHAR" />
     <result column="TYPENAME" property="typename" jdbcType="VARCHAR" />
     <result column="SOURCE" property="source" jdbcType="VARCHAR" />
@@ -106,6 +106,18 @@
       order by ${orderByClause}
     </if>
   </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_ARTICLE
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from TB_ARTICLE
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
   <delete id="deleteByExample" parameterType="com.coco.pojo.TbArticleExample" >
     delete from TB_ARTICLE
     <if test="_parameter != null" >
@@ -228,5 +240,48 @@
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbArticle" >
+    update TB_ARTICLE
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typename != null" >
+        TYPENAME = #{typename,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="created != null" >
+        CREATED = #{created,jdbcType=VARCHAR},
+      </if>
+      <if test="updated != null" >
+        UPDATED = #{updated,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.coco.pojo.TbArticle" >
+    update TB_ARTICLE
+    set TITLE = #{title,jdbcType=VARCHAR},
+      TYPENAME = #{typename,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      CREATED = #{created,jdbcType=VARCHAR},
+      UPDATED = #{updated,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=CLOB}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbArticle" >
+    update TB_ARTICLE
+    set TITLE = #{title,jdbcType=VARCHAR},
+      TYPENAME = #{typename,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      CREATED = #{created,jdbcType=VARCHAR},
+      UPDATED = #{updated,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
   </update>
 </mapper>

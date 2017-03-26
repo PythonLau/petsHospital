@@ -1,5 +1,6 @@
 package com.coco.controller;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbPackage;
@@ -7,10 +8,7 @@ import com.coco.service.PackageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -38,5 +36,20 @@ public class PackageController {
         request.setAttribute("packagePage", packagePage);
         model.addAttribute("list",packagePage.getList());
         return "package";
+    }
+    @RequestMapping("/package/list")
+    @ResponseBody
+    public EUDataGridResult getAllPackageList(Integer page, Integer rows){
+        System.out.println(page);
+        System.out.println(rows);
+        System.out.println("packagelist...controller");
+        EUDataGridResult result = packageService.getAllTbPackageList(page,rows);
+        return result;
+    }
+    @RequestMapping(value="/package/update",method=RequestMethod.POST)
+    @ResponseBody
+    public TaotaoResult updatePackage(TbPackage tbPackage) throws Exception{
+        TaotaoResult result = packageService.updatePackage(tbPackage);
+        return result;
     }
 }

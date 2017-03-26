@@ -26,4 +26,11 @@
 		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
 		<property name="maxUploadSize" value="5242880"></property>
 	</bean>
+	<mvc:interceptors>
+	<mvc:interceptor>
+		<mvc:mapping path="/manager/*"/> <!-- 管理员登录拦截 -->
+		<mvc:exclude-mapping path="/manager/login"/>
+		<bean class="com.coco.interceptor.managerInterceptor"></bean>
+	</mvc:interceptor>
+    </mvc:interceptors>
 </beans>

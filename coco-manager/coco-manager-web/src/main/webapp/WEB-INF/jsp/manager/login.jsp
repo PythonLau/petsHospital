@@ -1,40 +1,65 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2017/3/26 0026
+  Time: 下午 5:02
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>管理员登录</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>登录</title>
+	<link rel="stylesheet" href="/css/layui.css" media="all" />
+	<link rel="stylesheet" href="/css/login.css" />
 </head>
-<body style="background-color: #F3F3F3">
-    <div class="easyui-dialog" title="管理员登录" data-options="closable:false,draggable:false" style="width:400px;height:300px;padding:10px;">
-       	<div style="margin-left: 50px;margin-top: 50px;">
-       		<div style="margin-bottom:20px;">
-	            <div>
-	            	用户名: <input name="username" class="easyui-textbox" data-options="required:true" style="width:200px;height:32px" value="admin"/>
-	            </div>
-	        </div>
-	        <div style="margin-bottom:20px">
-	            <div>
-	            	密&nbsp;&nbsp;码: <input name="password" class="easyui-textbox" type="password" style="width:200px;height:32px" data-options="" value="admin"/>
-	            </div>
-	        </div>
-	        <div>
-	            <a id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:100px;height:32px;margin-left: 50px">登录</a>
-	        </div>
-       	</div>
-    </div>
-    
-    <script type="text/javascript">
-    	$("#login").click(function(){
-    		var username = $("[name=username]").val();
-    		var password = $("[name=password]").val();
-    		
-    		if(username!="admin" || password!="admin"){
-    			$.messager.alert('错误',"用户名密码不正确！");
-    			return ;
-    		}
-    		window.location.href="/rest/page/index";
-    	});
-    </script>
+
+<body class="beg-login-bg">
+<div class="beg-login-box">
+	<header>
+		<h1>coco宠物医院管理员后台登录</h1>
+	</header>
+	<div class="beg-login-main">
+		<form action="/managerLogin/loginConfirm" id="managerLoginForm" class="layui-form" method="post"><input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />
+			<div class="layui-form-item">
+				<label class="beg-login-icon">
+					<i class="layui-icon">&#xe612;</i>
+				</label>
+				<input type="text" name="username" lay-verify="useruame" autocomplete="off" placeholder="这里输入登录名" class="layui-input">
+			</div>
+			<div class="layui-form-item">
+				<label class="beg-login-icon">
+					<i class="layui-icon">&#xe642;</i>
+				</label>
+				<input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码" class="layui-input">
+			</div>
+			<div class="layui-form-item">
+				<div class="beg-pull-right">
+					<span font-size="3px" color="red">
+						<%
+						Object name = request.getAttribute("wrong");
+						if(name != null){
+							out.println(name.toString());
+						}
+					    %>
+					</span>
+					<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">
+						<i class="layui-icon">&#xe650;</i> 登录
+					</button>
+				</div>
+				<div class="beg-clear"></div>
+			</div>
+		</form>
+	</div>
+	<footer>
+		<p>coco宠物医院</p>
+	</footer>
+</div>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script>
+
+</script>
 </body>
 </html>
