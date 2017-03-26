@@ -37,7 +37,7 @@
 			</div>
 			<div class="layui-form-item">
 				<div class="beg-pull-right">
-					<span font-size="3px" color="red">
+					<span font-size="3px" color="";>
 						<%
 						Object name = request.getAttribute("wrong");
 						if(name != null){

@@ -20,12 +20,6 @@ import javax.servlet.http.HttpSession;
 public class ManagerController {
     @Autowired
     private ManagerService managerService;
-    private HttpServletResponse response;
-    @RequestMapping("/manager/loginSuccess")
-    @ResponseBody
-    public TaotaoResult managerLoginSuccess(String username,String password){
-        return null;
-    }
     @RequestMapping(value="/managerLogin/loginConfirm",method= RequestMethod.POST)
     @ResponseBody
     public void managerLoginConfirm(String username, String password, HttpSession session,

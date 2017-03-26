@@ -1,0 +1,29 @@
+#error-box .error{
+    font-size: 13px;
+    border-radius: 5px;
+    /*Red 200*/
+    border: solid 1px #ef9a9a;
+    /*Red 900*/
+    color: #b71c1c;
+    /*Red 50*/
+    background-color: #ffebee;
+    /*vertical-align: middle;*/
+    padding: 1.2em 1.5em;
+}
+
+#error-box a {
+    color: #b71c1c;
+}
+
+#error-box .close {
+    cursor: pointer;
+    float: right;
+    text-align: center;
+    border: none;
+}
+
+#error-box .close:hover {
+    /*Pink 900*/
+    color: #880E4F;
+}
+

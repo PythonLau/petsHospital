@@ -1,7 +1,9 @@
 com\coco\controller\EmployeeController.class
 com\coco\controller\ItemController.class
 com\coco\controller\PageController.class
+com\coco\controller\UserController.class
 com\coco\interceptor\managerInterceptor.class
+com\coco\interceptor\userInterceptor.class
 com\coco\controller\ArticleController.class
 com\coco\controller\ItemCatController.class
 com\coco\controller\ManagerController.class

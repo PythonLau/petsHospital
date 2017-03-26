@@ -1,5 +1,6 @@
 com\coco\mapper\TbEmployeeMapper.class
 com\coco\mapper\TbPackageMapper.class
+com\coco\mapper\TbUserMapper.class
 com\coco\mapper\TbItemCatMapper.class
 com\coco\mapper\TbArticleMapper.class
 com\coco\mapper\TbManagerMapper.class

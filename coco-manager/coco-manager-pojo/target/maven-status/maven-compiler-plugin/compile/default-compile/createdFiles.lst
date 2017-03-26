@@ -3,6 +3,7 @@ com\coco\pojo\TbItemExample$GeneratedCriteria.class
 com\coco\pojo\TbItem.class
 com\coco\pojo\TbArticleExample$Criteria.class
 com\coco\pojo\TbItemExample$Criterion.class
+com\coco\pojo\TbUserExample$Criterion.class
 com\coco\pojo\TbItemCat.class
 com\coco\pojo\TbPackageExample.class
 com\coco\pojo\TbPositionCat.class
@@ -10,8 +11,10 @@ com\coco\pojo\TbPackageExample$Criterion.class
 com\coco\pojo\TbArticleExample$GeneratedCriteria.class
 com\coco\pojo\TbManager.class
 com\coco\pojo\TbItemCatExample.class
+com\coco\pojo\TbUser.class
 com\coco\pojo\TbEmployeeExample.class
 com\coco\pojo\TbPositionCatExample$Criteria.class
+com\coco\pojo\TbUserExample$GeneratedCriteria.class
 com\coco\pojo\TbPositionCatExample$Criterion.class
 com\coco\pojo\TbArticle.class
 com\coco\pojo\TbEmployeeExample$GeneratedCriteria.class
@@ -19,6 +22,7 @@ com\coco\pojo\TbItemCatExample$GeneratedCriteria.class
 com\coco\pojo\TbPackage.class
 com\coco\pojo\TbPackageExample$Criteria.class
 com\coco\pojo\TbManagerExample$Criteria.class
+com\coco\pojo\TbUserExample$Criteria.class
 com\coco\pojo\TbPositionCatExample.class
 com\coco\pojo\TbEmployeeExample$Criterion.class
 com\coco\pojo\TbPositionCatExample$GeneratedCriteria.class
@@ -29,6 +33,7 @@ com\coco\pojo\TbArticleExample$Criterion.class
 com\coco\pojo\TbItemExample.class
 com\coco\pojo\TbArticleExample.class
 com\coco\pojo\TbItemCatExample$Criterion.class
+com\coco\pojo\TbUserExample.class
 com\coco\pojo\TbManagerExample$GeneratedCriteria.class
 com\coco\pojo\TbManagerExample.class
 com\coco\pojo\TbPackageExample$GeneratedCriteria.class
