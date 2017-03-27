@@ -40,7 +40,7 @@
             </c:if>
         </span>　
         <c:if test="${sessionScope.nickName != null}">
-            <a href="#">我的订单</a>
+            <a href="#">个人信息</a>
         </c:if>
     </div>
 </div>
@@ -70,7 +70,7 @@
                     <a href="#">
                         <img src="/image/hello.png"/>
                         <span style="padding-bottom: 20px">
-                        个人信息
+                        我的订单
                     </span>
 
                     </a>
@@ -78,7 +78,7 @@
             </li>
             <li>
                 <div id="order">
-                    <a href="/user/myPets">
+                    <a href="/user/petsList">
                         <img src="/image/order.png"/>
                         <span>
                         我的宠物

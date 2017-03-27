@@ -1,8 +1,10 @@
 com\coco\service\impl\PackageServiceImpl.class
 com\coco\service\impl\PositionCatServiceImpl.class
 com\coco\service\impl\UserServiceImpl.class
+com\coco\service\impl\PetServiceImpl.class
 com\coco\service\ManagerService.class
 com\coco\service\PackageService.class
+com\coco\service\PetService.class
 com\coco\service\impl\ItemServiceImpl.class
 com\coco\service\impl\PictureServiceImpl.class
 com\coco\service\impl\EmployeeServiceImpl.class

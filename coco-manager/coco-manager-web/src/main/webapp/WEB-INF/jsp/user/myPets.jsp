@@ -85,7 +85,7 @@
             </c:if>
         </span>　
         <c:if test="${sessionScope.nickName != null}">
-            <a href="#">我的订单</a>
+            <a href="#">个人信息</a>
         </c:if>
     </div>
 </div>
@@ -115,7 +115,7 @@
                     <a href="#">
                         <img src="/image/hello.png"/>
                         <span style="padding-bottom: 20px">
-                        个人信息
+                        我的订单
                     </span>
 
                     </a>
@@ -160,38 +160,17 @@
                     <th>宠物年龄</th>
                     <th>宠物性别</th>
                     <th>宠物照片</th>
-                    <th><button class="layui-btn layui-btn-normal">新增</button></th>
+                    <th><a href="/user/addPets"><button class="layui-btn layui-btn-normal">新增</button></a></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${sessionScope.ShoppingCart.items}" var="item">
+                    <c:forEach items="${list}" var="pets">
                         <tr>
-                            <c:choose>
-                                <c:when test="${item.checked}">
-                                    <!-- checkbox -->
-                                    <td><input type="checkbox" checked id="${item.book.id}"></td>
-                                </c:when>
-                                <c:otherwise>
-                                    <!-- checkbox -->
-                                    <td><input type="checkbox" id="${item.book.id}"></td>
-                                </c:otherwise>
-                            </c:choose>
-                            <!-- book.name -->
-                            <td><a href="/book-detail?id=${item.book.id}">${item.book.name}</a></td>
-                            <!-- price -->
-                            <td>¥<span class="price">${item.realPrice}</span></td>
-
-                            <!-- book.id value quantity-->
-                            <td>
-                                <input type="text" size="1" class="quantity" name="${item.book.id}" value="${item.quantity}"/></td>
-                            <!-- item money -->
-                            <td>
-                                <p>¥
-                                    <span class="money">${item.itemMoney}</span>
-                                </p>
-                            </td>
-                            <!-- delete -->
-                            <td><a href="/book-removeItem?id=${item.book.id}" class="delete">删除</a></td>
+                            <td>${pets.name}</td>
+                            <td>${pets.typename}</td>
+                            <td>${pets.age}</td>
+                            <td>${pets.sex}</td>
+                            <td><img src="${pets.image}" height="50" width="50"></td>
                         </tr>
                     </c:forEach>
                     </tbody>
