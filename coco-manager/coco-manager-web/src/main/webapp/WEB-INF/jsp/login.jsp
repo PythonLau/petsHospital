@@ -31,11 +31,14 @@
 	<form id="userLoginForm" action="/userLogin/loginConfirm" method="post">
 		<div class="login">
 			<div class="card">
-				<div id="error-box">
-					<div class="error none">
-
-					</div>
-				</div>
+				<span style="color:green">
+						<%
+							Object registerSuccessMessage = request.getAttribute("registerSuccess");
+							if(registerSuccessMessage != null){
+								out.println(registerSuccessMessage.toString());
+							}
+						%>
+				</span>
 				<div class="input-field">
 					<label for="username">用户名</label>
 					<input id="username" name="username" type="text"/>
@@ -46,13 +49,13 @@
 				<div class="foot">
 					<span style="color:red">
 						<%
-							Object name = request.getAttribute("wrong");
-							if(name != null){
-								out.println(name.toString());
+							Object wrongMessage = request.getAttribute("wrong");
+							if(wrongMessage != null){
+								out.println(wrongMessage.toString());
 							}
 						%>
 					</span>
-					<a href="/signup.jsp" style="float:right;">没有帐户？</a>
+					<a href="/register" style="float:right;">没有帐户？</a>
 				</div>
 			</div>
 		</div>
@@ -60,10 +63,3 @@
 </div>
 </body>
 </html>
-
-<script>
-    $(document).ready(function(){
-        var wrong = '<%=request.getAttribute("wrong")%>';
-        alert(wrong)
-    })
-</script>

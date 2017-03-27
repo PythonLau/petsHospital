@@ -236,76 +236,6 @@ public class TbUserExample {
             return (Criteria) this;
         }
 
-        public Criteria andTelphoneIsNull() {
-            addCriterion("TELPHONE is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneIsNotNull() {
-            addCriterion("TELPHONE is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneEqualTo(String value) {
-            addCriterion("TELPHONE =", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneNotEqualTo(String value) {
-            addCriterion("TELPHONE <>", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneGreaterThan(String value) {
-            addCriterion("TELPHONE >", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneGreaterThanOrEqualTo(String value) {
-            addCriterion("TELPHONE >=", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneLessThan(String value) {
-            addCriterion("TELPHONE <", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneLessThanOrEqualTo(String value) {
-            addCriterion("TELPHONE <=", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneLike(String value) {
-            addCriterion("TELPHONE like", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneNotLike(String value) {
-            addCriterion("TELPHONE not like", value, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneIn(List<String> values) {
-            addCriterion("TELPHONE in", values, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneNotIn(List<String> values) {
-            addCriterion("TELPHONE not in", values, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneBetween(String value1, String value2) {
-            addCriterion("TELPHONE between", value1, value2, "telphone");
-            return (Criteria) this;
-        }
-
-        public Criteria andTelphoneNotBetween(String value1, String value2) {
-            addCriterion("TELPHONE not between", value1, value2, "telphone");
-            return (Criteria) this;
-        }
-
         public Criteria andPasswordIsNull() {
             addCriterion("PASSWORD is null");
             return (Criteria) this;
@@ -373,6 +303,146 @@ public class TbUserExample {
 
         public Criteria andPasswordNotBetween(String value1, String value2) {
             addCriterion("PASSWORD not between", value1, value2, "password");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameIsNull() {
+            addCriterion("NICKNAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameIsNotNull() {
+            addCriterion("NICKNAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameEqualTo(String value) {
+            addCriterion("NICKNAME =", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameNotEqualTo(String value) {
+            addCriterion("NICKNAME <>", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameGreaterThan(String value) {
+            addCriterion("NICKNAME >", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameGreaterThanOrEqualTo(String value) {
+            addCriterion("NICKNAME >=", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameLessThan(String value) {
+            addCriterion("NICKNAME <", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameLessThanOrEqualTo(String value) {
+            addCriterion("NICKNAME <=", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameLike(String value) {
+            addCriterion("NICKNAME like", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameNotLike(String value) {
+            addCriterion("NICKNAME not like", value, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameIn(List<String> values) {
+            addCriterion("NICKNAME in", values, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameNotIn(List<String> values) {
+            addCriterion("NICKNAME not in", values, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameBetween(String value1, String value2) {
+            addCriterion("NICKNAME between", value1, value2, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andNicknameNotBetween(String value1, String value2) {
+            addCriterion("NICKNAME not between", value1, value2, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneIsNull() {
+            addCriterion("TELPHONE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneIsNotNull() {
+            addCriterion("TELPHONE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneEqualTo(String value) {
+            addCriterion("TELPHONE =", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneNotEqualTo(String value) {
+            addCriterion("TELPHONE <>", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneGreaterThan(String value) {
+            addCriterion("TELPHONE >", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneGreaterThanOrEqualTo(String value) {
+            addCriterion("TELPHONE >=", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneLessThan(String value) {
+            addCriterion("TELPHONE <", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneLessThanOrEqualTo(String value) {
+            addCriterion("TELPHONE <=", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneLike(String value) {
+            addCriterion("TELPHONE like", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneNotLike(String value) {
+            addCriterion("TELPHONE not like", value, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneIn(List<String> values) {
+            addCriterion("TELPHONE in", values, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneNotIn(List<String> values) {
+            addCriterion("TELPHONE not in", values, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneBetween(String value1, String value2) {
+            addCriterion("TELPHONE between", value1, value2, "telphone");
+            return (Criteria) this;
+        }
+
+        public Criteria andTelphoneNotBetween(String value1, String value2) {
+            addCriterion("TELPHONE not between", value1, value2, "telphone");
             return (Criteria) this;
         }
 

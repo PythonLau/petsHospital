@@ -8,9 +8,11 @@ public class TbUser {
 
     private String loginname;
 
-    private String telphone;
-
     private String password;
+
+    private String nickname;
+
+    private String telphone;
 
     private Short status;
 
@@ -34,20 +36,28 @@ public class TbUser {
         this.loginname = loginname == null ? null : loginname.trim();
     }
 
-    public String getTelphone() {
-        return telphone;
-    }
-
-    public void setTelphone(String telphone) {
-        this.telphone = telphone == null ? null : telphone.trim();
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone == null ? null : telphone.trim();
     }
 
     public Short getStatus() {

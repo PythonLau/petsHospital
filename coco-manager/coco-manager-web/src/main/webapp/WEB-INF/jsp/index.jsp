@@ -16,15 +16,40 @@
 </head>
 <body>
 <div id="header">
-    <div class="header_left"><a href="#"><img src="image/star.png" class="image"><span>收藏淘淘</span></a></div>
-    <div class="header_right"><span>您好！欢迎来到coco！</span>&nbsp;<span>[<a href="#">登录</a>]</span><span>[<a href="#">免费注册</a>]</span>　|　<a href="#">我的订单</a></div>
+    <div class="header_left"><a href="#"><img src="image/star.png" class="image"><span>coco宠物医院</span></a></div>
+    <div class="header_right">
+        <span>
+            您好！
+            <%
+                Object name = session.getAttribute("nickName");
+                if(name != null){
+                    out.println(name.toString());
+                }else{
+                    out.println("欢迎来到coco！");
+                }
+            %>
+        </span>&nbsp;
+        <span>
+            <c:if test="${sessionScope.nickName == null}">
+                [<a href="/login">登录</a>]
+            </c:if>
+        </span>
+        <span>
+            <c:if test="${sessionScope.nickName == null}">
+                [<a href="#">免费注册</a>]
+            </c:if>
+        </span>　
+        <c:if test="${sessionScope.nickName != null}">
+            <a href="#">我的订单</a>
+        </c:if>
+    </div>
 </div>
 
 <div id="secondHeader">
     <ul>
         <li>
             <div id="secondHeader_img">
-                <img src="image/logo.png"/>
+                <img src="/image/logo.png"/>
             </div>
         </li>
         <li>
@@ -39,13 +64,29 @@
                 </form>
             </div>
         </li>
-        <li>
-            <div id="coco"><a href="#"><img src="image/hello.png"/><span style="padding-bottom: 20px">我的coco</span></a></div>
-        </li>
-        <li>
-            <div id="order"><a href="#"><img src="image/order.png"/><span>我的订单</span></a></div>
-        </li>
+        <c:if test="${sessionScope.nickName != null}">
+            <li>
+                <div id="coco">
+                    <a href="#">
+                        <img src="/image/hello.png"/>
+                        <span style="padding-bottom: 20px">
+                        我的coco
+                    </span>
 
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div id="order">
+                    <a href="#">
+                        <img src="/image/order.png"/>
+                        <span>
+                        我的订单
+                    </span>
+                    </a>
+                </div>
+            </li>
+        </c:if>
     </ul>
 
 </div>
@@ -127,6 +168,5 @@
 <div id="footer">
     <span>Copyright © 2017 hello.com All Rights Reserved</span>
 </div>
-<script type="text/javascript" src="/js/home.js" charset="utf-8"></script>
 </body>
 </html>

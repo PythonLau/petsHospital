@@ -1,0 +1,33 @@
+.signup {
+    width: 350px;
+    margin: auto auto;
+}
+
+.error-tip {
+    position: absolute;
+    line-height: 25px;
+    height: 25px;
+    padding: 2px;
+    font-size: 12px;
+    color: #ffffff;
+    text-align: center;
+    background: #BF1515;
+    border: 1px solid #911;
+    border-radius: 3px;
+    text-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 1px;
+    box-shadow: rgba(0, 0, 0, 0.0980392) 1px 1px 2px 0;
+}
+
+
+
+.error-tip:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 7px solid;
+    border-color: transparent transparent #BF1515 transparent;
+    top: -14px;
+    left: 10px;
+}
+

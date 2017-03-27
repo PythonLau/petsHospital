@@ -1,5 +1,6 @@
 package com.coco.service;
 
+import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbUser;
 
 /**
@@ -7,4 +8,8 @@ import com.coco.pojo.TbUser;
  */
 public interface UserService {
     TbUser selectLoginUser(String username, String password);
+    boolean checkRegisterName(String userName);
+    boolean checkRegisterNickName(String registerNickName);
+    TaotaoResult userRegister(String registerUserName, String registerPassWord,
+                              String nickName, String telePhone);
 }

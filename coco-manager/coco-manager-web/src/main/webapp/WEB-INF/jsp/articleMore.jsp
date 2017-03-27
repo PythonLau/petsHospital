@@ -124,6 +124,6 @@
     }
     change(1);
 </script>
-<script type="text/javascript" src="/js/home.js" charset="utf-8"></script>
+
 </body>
 </html>
