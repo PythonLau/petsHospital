@@ -158,13 +158,13 @@
 
 #nav{
     height: 50px;
-    width: 990px;
+    width: 1024px;
     margin: 0 auto;
     background-color: blue;
 }
 
 #nav-content{
-    margin-left: 170px;
+    margin-left: 190px;
 }
 
 #nav li{

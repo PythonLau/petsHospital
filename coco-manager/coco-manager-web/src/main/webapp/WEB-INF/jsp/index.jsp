@@ -70,7 +70,7 @@
                     <a href="#">
                         <img src="/image/hello.png"/>
                         <span style="padding-bottom: 20px">
-                        我的coco
+                        个人信息
                     </span>
 
                     </a>
@@ -78,10 +78,10 @@
             </li>
             <li>
                 <div id="order">
-                    <a href="#">
+                    <a href="/user/myPets">
                         <img src="/image/order.png"/>
                         <span>
-                        我的订单
+                        我的宠物
                     </span>
                     </a>
                 </div>
