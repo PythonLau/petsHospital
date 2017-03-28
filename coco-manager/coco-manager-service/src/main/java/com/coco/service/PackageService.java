@@ -14,4 +14,5 @@ public interface PackageService {
     Page<TbPackage> getTbPackageList(Integer pageNumber);
     EUDataGridResult getAllTbPackageList(int page,int rows);
     TaotaoResult updatePackage(TbPackage tbPackage) throws Exception;
+
 }

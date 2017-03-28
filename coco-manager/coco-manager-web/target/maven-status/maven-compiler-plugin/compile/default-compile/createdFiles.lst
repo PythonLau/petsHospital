@@ -12,3 +12,4 @@ com\coco\controller\FosterController.class
 com\coco\controller\PictureController.class
 com\coco\controller\PositionCatController.class
 com\coco\controller\PackageController.class
+com\coco\controller\OrderController.class
