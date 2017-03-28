@@ -30,7 +30,6 @@ public class PackageController {
     }
     @RequestMapping("/package/{pageNumber}")
     public String getPackageList(@PathVariable String pageNumber,Model model){
-        List<TbPackage> list = null;
         Integer page_Number = new Integer(pageNumber);
         Page<TbPackage> packagePage = packageService.getTbPackageList(page_Number);
         request.setAttribute("packagePage", packagePage);

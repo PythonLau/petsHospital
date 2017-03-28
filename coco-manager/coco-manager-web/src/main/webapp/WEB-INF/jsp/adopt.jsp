@@ -66,7 +66,7 @@
         <ul>
             <li><a href="/">首页</a></li>
             <li><a href="#">我要挂号</a></li>
-            <li><a href="/adopt/1">领养宠物</a></li>
+            <li><a href="#">寄养领养</a></li>
             <li><a href="/package/1">订购套餐</a></li>
             <li><a href="#">医院介绍</a></li>
             <li><a href="#">联系我们</a></li>
@@ -78,26 +78,20 @@
     <div class="main">
         <div class="container">
             <div class="row">
-                <c:forEach items="${list}" var="bookPackage">
+                <c:forEach items="${list}" var="adoptPet">
                     <div class="col-md-3">
                         <a href="#">
-                            <img src=${bookPackage.image} width="200" height="200"/>
+                            <img src=${adoptPet.image} width="200" height="200"/>
                         </a>
 
                         <div>
-                            <p class="name" name="title">${bookPackage.name}</p>
-                            <p class="price">
-                            <span class="now-price">
-                            ¥<fmt:formatNumber value="${bookPackage.price * bookPackage.normaldiscount  / 10.00}" pattern="##.##" minFractionDigits="2"></fmt:formatNumber>
-                            </span>
-                                <c:if test="${bookPackage.normaldiscount != 10.0}">
-                                定价：<span class="pre-price">¥${bookPackage.price}</span><span class="discount">(${bookPackage.normaldiscount}折)</span></p>
-                            </c:if>
-                            <p class="detail">${bookPackage.introduction}</p>
+                            <p class="name" name="title">${adoptPet.name}</p>
+                            <p class="detail">地址:${adoptPet.address}</p>
+                            <p class="detail">联系电话:${adoptPet.telePhone}</p>
                             <p class="button">
                                 <a class="btn cyan" style="margin-right: 20px"
-                                   href="/user/bookPackage/${bookPackage.id}">
-                                    订购此套餐
+                                   href="/user/bookPackage/${adoptPet.petId}">
+                                    申请领养
                                 </a>
                             </p>
                         </div>

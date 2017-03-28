@@ -55,7 +55,7 @@
                     <span id="warnPetAge"></span>
 
                     <label>宠物性别</label>
-                    <input id="petSex" name="petSex" type="text" placeholder="请输入男或者女"/>
+                    <input id="petSex" name="petSex" type="text" placeholder="请输入公或者母"/>
                     <span id="warnPetSex"></span>
 
                     <label>只能上传一张宠物的照片</label>

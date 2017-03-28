@@ -2,7 +2,10 @@ package com.coco.service.impl;
 
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
+import com.coco.mapper.TbFosterMapper;
 import com.coco.mapper.TbPetsMapper;
+import com.coco.pojo.TbFoster;
+import com.coco.pojo.TbFosterExample;
 import com.coco.pojo.TbPets;
 import com.coco.pojo.TbPetsExample;
 import com.coco.service.PetService;
@@ -20,6 +23,8 @@ import java.util.List;
 public class PetServiceImpl implements PetService {
     @Autowired
     private TbPetsMapper petsMapper;
+    @Autowired
+    private TbFosterMapper fosterMapper;
     @Override
     public TaotaoResult addPet(BigDecimal owner, String petName, String typeName,
                                Short petAge, String petSex, String image){
@@ -57,8 +62,20 @@ public class PetServiceImpl implements PetService {
     public TaotaoResult deletePet(BigDecimal petId){
         TbPetsExample example = new TbPetsExample();
         TbPetsExample.Criteria criteria = example.createCriteria();
+        TbFosterExample example1 = new TbFosterExample();
+        TbFosterExample.Criteria criteria1 = example1.createCriteria();
+        criteria1.andPetidEqualTo(petId);
+        Short statusTrue = 1;
+        criteria1.andStatusEqualTo(statusTrue);
         criteria.andIdEqualTo(petId);
         petsMapper.deleteByExample(example);
+        List<TbFoster> fosters = fosterMapper.selectByExample(example1);
+        if(fosters.size() != 0){
+            TbFoster foster = fosters.get(0);
+            Short status = 0;
+            foster.setStatus(status);
+            fosterMapper.updateByPrimaryKey(foster);
+        }
         return TaotaoResult.ok();
     }
     @Override

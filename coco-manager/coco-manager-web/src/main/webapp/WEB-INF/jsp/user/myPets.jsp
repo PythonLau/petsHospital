@@ -154,7 +154,7 @@
                     <th>宠物年龄</th>
                     <th>宠物性别</th>
                     <th>宠物照片</th>
-                    <th><a href="/user/addPets"><button class="layui-btn layui-btn-normal">新增</button></a></th>
+                    <th><a href="/user/addPets"><button class="layui-btn layui-btn-small">新增</button></a></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -173,8 +173,8 @@
                                     <button class="layui-btn layui-btn-mini layui-btn-normal">修改</button>
                                 </a>
                                 <c:if test="${pets.status == 2}">
-                                    <a href="/user/foster/${pets.id}">
-                                        <button class="layui-btn layui-btn-mini layui-btn-normal">取消寄养</button>
+                                    <a href="javascript:if(confirm('确实要取消寄养吗?'))location='/user/upFoster/${pets.id}'">
+                                        <button class="layui-btn layui-btn-mini">取消寄养</button>
                                     </a>
                                 </c:if>
                                 <c:if test="${pets.status == 1}">

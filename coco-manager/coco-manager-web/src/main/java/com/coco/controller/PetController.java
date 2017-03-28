@@ -2,6 +2,7 @@ package com.coco.controller;
 
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbPets;
+import com.coco.service.FosterService;
 import com.coco.service.PetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,6 +45,7 @@ public class PetController {
         Object userId = session.getAttribute("user");
         BigDecimal user_Id = (BigDecimal)userId;
         List<TbPets> list = petService.getPetList(user_Id);
+        System.out.println("petList");
         model.addAttribute("list",list);
         return "/user/myPets";
     }
@@ -53,6 +55,7 @@ public class PetController {
         BigDecimal pet_Id = new BigDecimal(petId);
         TaotaoResult result = petService.deletePet(pet_Id);
         if(result.getStatus() == 200){
+            System.out.println("deletePet");
             request.getRequestDispatcher("/user/petsList").forward(request,response);
         }
     }

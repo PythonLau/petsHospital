@@ -43,8 +43,8 @@ function checkAction(){
         flag =  false;
     }
     var addPetSex=$('#petSex').val();
-    if(addPetSex != "男" && addPetSex != "女"){
-        document.getElementById("warnPetSex").innerHTML='<font color="red">请输入男或者女</font>';
+    if(addPetSex != "公" && addPetSex != "母"){
+        document.getElementById("warnPetSex").innerHTML='<font color="red">请输入公或者母</font>';
         flag = false;
     }
     if(flag){

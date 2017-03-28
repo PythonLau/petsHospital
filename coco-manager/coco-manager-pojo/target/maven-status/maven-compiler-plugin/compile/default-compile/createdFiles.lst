@@ -24,6 +24,7 @@ com\coco\pojo\TbItemExample$Criteria.class
 com\coco\pojo\TbItemCatExample$Criteria.class
 com\coco\pojo\TbItemExample$GeneratedCriteria.class
 com\coco\pojo\TbItem.class
+com\coco\pojo\adoptPet.class
 com\coco\pojo\TbArticleExample$Criteria.class
 com\coco\pojo\TbFoster.class
 com\coco\pojo\TbItemExample$Criterion.class
