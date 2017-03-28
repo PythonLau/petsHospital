@@ -23,37 +23,30 @@
         .cart {
             padding-top: 100px;
         }
-
         .cart .delete {
             font-size: 13px;
             font-weight: bold;
         }
-
         .cart-table-bookname {
             text-overflow: ellipsis;
         }
-
         .cart #totalMoney {
             font-size: 15px;
             text-align: center;
             font-weight: bold;
             padding-bottom: 20px;
         }
-
         .cart #totalMoney span {
             color: #ff0000;
             font-size: 20px;
         }
-
         .cart .operation {
             padding-top: 50px;
             float: right;
         }
-
         .cart .operation .btn {
             width: 150px;
         }
-
     </style>
 
     <script src="js/jquery-2.1.3.min.js"></script>
@@ -61,7 +54,7 @@
 <body>
 
 <div id="header">
-    <div class="header_left"><a href="#"><img src="image/star.png" class="image"><span>coco宠物医院</span></a></div>
+    <div class="header_left"><a href="#"><img src="/image/star.png" class="image"><span>coco宠物医院</span></a></div>
     <div class="header_right">
         <span>
             您好！
@@ -155,6 +148,7 @@
             <div class="content">
                 <table class="cart-table highlight centered">
                     <thead>
+                    <tr>
                     <th>宠物名字</th>
                     <th>宠物类型</th>
                     <th>宠物年龄</th>
@@ -171,6 +165,24 @@
                             <td>${pets.age}</td>
                             <td>${pets.sex}</td>
                             <td><img src="${pets.image}" height="50" width="50"></td>
+                            <td>
+                                <a href="javascript:if(confirm('确实要删除该宠物吗?'))location='/user/deletePet/${pets.id}'">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">删除</button>
+                                </a>
+                                <a href="/user/getPet/${pets.id}">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">修改</button>
+                                </a>
+                                <c:if test="${pets.status == 2}">
+                                    <a href="/user/foster/${pets.id}">
+                                        <button class="layui-btn layui-btn-mini layui-btn-normal">取消寄养</button>
+                                    </a>
+                                </c:if>
+                                <c:if test="${pets.status == 1}">
+                                    <a href="/user/foster/${pets.id}">
+                                        <button class="layui-btn layui-btn-mini layui-btn-normal">寄养</button>
+                                    </a>
+                                </c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -193,45 +205,33 @@
             return false;
         });
     });
-
     // ajax 修改单个商品数量
-
     // 1. 获取页面中所有的text，并为其添加onchange 响应函数
     $(":text").change(function () {
         // 2. 请求地址为：book-
         var url = "book-updateItemQuantity";
-
         // 3. 请求参数为：method：updateItemQuantity，id:name 属性值，quantity:val，signupDate:new Date()
         var idVal = $.trim(this.name);
         var quantityVal = $.trim(this.value);
         var args = {"id": idVal, "quantity": quantityVal};
         var that = $(this);
         console.log(args);
-
         $.post(url, args, function (data) {
             var bookNumber = data.bookNumber;
             var totalMoney = format(data.totalMoney);
             var quantity = data.quantity;
             var itemMoney = data.itemMoney;
-
             console.log('itemMoney:' + itemMoney);
-
             // 服务器值
             $('#totalMoney span').text("¥" + totalMoney);
             that.text(quantity);
             that.parent().parent().find('.money').text(format(itemMoney));
         }, "JSON");
-
     });
-
     function format(num) {
         num = num.toFixed(3);
         return num.substring(0, num.lastIndexOf('.') + 3);
     }
-
-
-
-
 </script>
 
 

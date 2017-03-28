@@ -13,4 +13,7 @@ public interface PetService {
     TaotaoResult addPet(BigDecimal owner, String petName, String typeName,
                         Short petAge, String petSex, String image);
     List<TbPets> getPetList(BigDecimal userId);
+    TaotaoResult deletePet(BigDecimal petId);
+    TbPets getPet(BigDecimal petId);
+    TaotaoResult editPet(BigDecimal petId,String petName, String typeName, BigDecimal owner, Short petAge, String petSex, String image);
 }

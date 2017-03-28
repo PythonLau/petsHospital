@@ -20,6 +20,7 @@ import java.util.List;
 public class PetServiceImpl implements PetService {
     @Autowired
     private TbPetsMapper petsMapper;
+    @Override
     public TaotaoResult addPet(BigDecimal owner, String petName, String typeName,
                                Short petAge, String petSex, String image){
         try{
@@ -44,11 +45,49 @@ public class PetServiceImpl implements PetService {
             return TaotaoResult.build(500,s);
         }
     }
+    @Override
     public List<TbPets> getPetList(BigDecimal userId){
         TbPetsExample example = new TbPetsExample();
         TbPetsExample.Criteria criteria = example.createCriteria();
         criteria.andOwnerEqualTo(userId);
         List<TbPets> list = petsMapper.selectByExample(example);
         return list;
+    }
+    @Override
+    public TaotaoResult deletePet(BigDecimal petId){
+        TbPetsExample example = new TbPetsExample();
+        TbPetsExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(petId);
+        petsMapper.deleteByExample(example);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public TbPets getPet(BigDecimal petId){
+        TbPetsExample example = new TbPetsExample();
+        TbPetsExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(petId);
+        List<TbPets> tbPets = petsMapper.selectByExample(example);
+        if(tbPets.size() != 0){
+            return tbPets.get(0);
+        }else{
+            return null;
+        }
+    }
+    @Override
+    public TaotaoResult editPet(BigDecimal petId, String petName, String typeName,
+                                BigDecimal owner, Short petAge, String petSex, String image){
+        TbPets tbPet = new TbPets();
+        tbPet.setId(petId);
+        tbPet.setName(petName);
+        tbPet.setTypename(typeName);
+        tbPet.setOwner(owner);
+        tbPet.setAge(petAge);
+        tbPet.setSex(petSex);
+        Short status = 1;
+        tbPet.setStatus(status);
+        tbPet.setImage(image);
+        tbPet.setUpdated(new Date());
+        petsMapper.updateByPrimaryKey(tbPet);
+        return TaotaoResult.ok();
     }
 }
