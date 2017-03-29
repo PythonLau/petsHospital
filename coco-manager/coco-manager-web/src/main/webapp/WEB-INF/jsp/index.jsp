@@ -67,7 +67,7 @@
         <c:if test="${sessionScope.nickName != null}">
             <li>
                 <div id="coco">
-                    <a href="#">
+                    <a href="/user/orderList/1">
                         <img src="/image/hello.png"/>
                         <span style="padding-bottom: 20px">
                         我的订单

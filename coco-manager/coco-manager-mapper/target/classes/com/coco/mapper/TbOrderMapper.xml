@@ -5,6 +5,7 @@
     <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="USERID" property="userid" jdbcType="DECIMAL" />
     <result column="PACKAGE_ID" property="packageId" jdbcType="DECIMAL" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
     <result column="SCORE" property="score" jdbcType="DECIMAL" />
     <result column="WORDS" property="words" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, USERID, PACKAGE_ID, SCORE, WORDS, STATUS, CREATED, UPDATED
+    ID, USERID, PACKAGE_ID, PRICE, SCORE, WORDS, STATUS, CREATED, UPDATED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbOrderExample" >
     select
@@ -104,11 +105,13 @@
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbOrder" >
     insert into TB_ORDER (ID, USERID, PACKAGE_ID, 
-      SCORE, WORDS, STATUS, 
-      CREATED, UPDATED)
+      PRICE, SCORE, WORDS, 
+      STATUS, CREATED, UPDATED
+      )
     values (#{id,jdbcType=DECIMAL}, #{userid,jdbcType=DECIMAL}, #{packageId,jdbcType=DECIMAL}, 
-      #{score,jdbcType=DECIMAL}, #{words,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, 
-      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+      #{price,jdbcType=DECIMAL}, #{score,jdbcType=DECIMAL}, #{words,jdbcType=VARCHAR}, 
+      #{status,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbOrder" >
     insert into TB_ORDER
@@ -121,6 +124,9 @@
       </if>
       <if test="packageId != null" >
         PACKAGE_ID,
+      </if>
+      <if test="price != null" >
+        PRICE,
       </if>
       <if test="score != null" >
         SCORE,
@@ -147,6 +153,9 @@
       </if>
       <if test="packageId != null" >
         #{packageId,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="score != null" >
         #{score,jdbcType=DECIMAL},
@@ -183,6 +192,9 @@
       <if test="record.packageId != null" >
         PACKAGE_ID = #{record.packageId,jdbcType=DECIMAL},
       </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
       <if test="record.score != null" >
         SCORE = #{record.score,jdbcType=DECIMAL},
       </if>
@@ -208,6 +220,7 @@
     set ID = #{record.id,jdbcType=DECIMAL},
       USERID = #{record.userid,jdbcType=DECIMAL},
       PACKAGE_ID = #{record.packageId,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
       SCORE = #{record.score,jdbcType=DECIMAL},
       WORDS = #{record.words,jdbcType=VARCHAR},
       STATUS = #{record.status,jdbcType=DECIMAL},
@@ -225,6 +238,9 @@
       </if>
       <if test="packageId != null" >
         PACKAGE_ID = #{packageId,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
       </if>
       <if test="score != null" >
         SCORE = #{score,jdbcType=DECIMAL},
@@ -248,6 +264,7 @@
     update TB_ORDER
     set USERID = #{userid,jdbcType=DECIMAL},
       PACKAGE_ID = #{packageId,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
       SCORE = #{score,jdbcType=DECIMAL},
       WORDS = #{words,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=DECIMAL},

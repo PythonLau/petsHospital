@@ -5,6 +5,8 @@ import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbPackage;
 
+import java.math.BigDecimal;
+
 
 /**
  * Created by Administrator on 2017/3/24 0024.
@@ -14,5 +16,5 @@ public interface PackageService {
     Page<TbPackage> getTbPackageList(Integer pageNumber);
     EUDataGridResult getAllTbPackageList(int page,int rows);
     TaotaoResult updatePackage(TbPackage tbPackage) throws Exception;
-
+    String getPackageName(BigDecimal id);
 }

@@ -10,6 +10,8 @@ public class TbOrder {
 
     private BigDecimal packageId;
 
+    private BigDecimal price;
+
     private Short score;
 
     private String words;
@@ -42,6 +44,14 @@ public class TbOrder {
 
     public void setPackageId(BigDecimal packageId) {
         this.packageId = packageId;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Short getScore() {

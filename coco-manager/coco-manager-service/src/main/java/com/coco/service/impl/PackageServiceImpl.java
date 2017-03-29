@@ -68,4 +68,10 @@ public class PackageServiceImpl implements PackageService {
         packageMapper.updateByPrimaryKey(tbPackage);
         return TaotaoResult.ok();
     }
+    @Override
+    public String getPackageName(BigDecimal id){
+        TbPackage tbPackage = packageMapper.selectByPrimaryKey(id);
+        String name = tbPackage.getName();
+        return name;
+    }
 }

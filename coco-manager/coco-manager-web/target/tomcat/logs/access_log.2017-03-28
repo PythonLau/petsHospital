@@ -1,9 +1,0 @@
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:43:41 +0800] "GET / HTTP/1.1" 200 4271 http-bio-8080-exec-1 3256
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:43:43 +0800] "GET /login HTTP/1.1" 200 1466 http-bio-8080-exec-2 194
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:43:43 +0800] "GET /iconfont/material-icons.css HTTP/1.1" 404 1005 http-bio-8080-exec-3 18
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:43:43 +0800] "GET /js/login.js HTTP/1.1" 404 973 http-bio-8080-exec-4 9
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:43:43 +0800] "GET /js/login.js HTTP/1.1" 404 973 http-bio-8080-exec-6 5
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:44:01 +0800] "POST /userLogin/loginConfirm HTTP/1.1" 302 - http-bio-8080-exec-7 77
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:44:01 +0800] "GET /index HTTP/1.1" 200 4858 http-bio-8080-exec-8 5
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:44:29 +0800] "GET /package/1 HTTP/1.1" 200 14306 http-bio-8080-exec-9 372
-0:0:0:0:0:0:0:1 - - [28/Mar/2017:23:44:32 +0800] "GET /user/bookPackage/149044509499575 HTTP/1.1" 200 69 http-bio-8080-exec-10 25

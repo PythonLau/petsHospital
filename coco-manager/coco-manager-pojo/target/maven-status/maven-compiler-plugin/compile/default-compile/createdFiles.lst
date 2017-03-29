@@ -19,6 +19,7 @@ com\coco\pojo\TbEmployeeExample$Criterion.class
 com\coco\pojo\TbPositionCatExample$GeneratedCriteria.class
 com\coco\pojo\TbManagerExample$Criterion.class
 com\coco\pojo\TbEmployee.class
+com\coco\pojo\myOrder.class
 com\coco\pojo\TbArticleExample$Criterion.class
 com\coco\pojo\TbFosterExample.class
 com\coco\pojo\TbItemCatExample$Criterion.class

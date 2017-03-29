@@ -76,4 +76,13 @@ public class UserServiceImpl implements UserService {
             return TaotaoResult.build(500,s);
         }
     }
+    public boolean isVIP(BigDecimal userId){
+        TbUser user = userMapper.selectByPrimaryKey(userId);
+        Short vipStatus = 2;
+        if(user.getStatus() == vipStatus){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
