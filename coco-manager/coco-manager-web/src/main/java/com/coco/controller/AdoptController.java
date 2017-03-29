@@ -2,6 +2,7 @@ package com.coco.controller;
 
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
+import com.coco.pojo.AdoptMessage;
 import com.coco.pojo.TbPets;
 import com.coco.pojo.myAdopt;
 import com.coco.service.AdoptService;
@@ -61,5 +62,16 @@ public class AdoptController {
         if(result.getStatus() == 200){
             request.getRequestDispatcher("/user/adoptList/1").forward(request,response);
         }
+    }
+    @RequestMapping("/user/getAdoptMessage/{pageNumber}")
+    public String getAdoptMessage(@PathVariable String pageNumber,Model model,HttpSession session,
+                                  HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String petId = request.getParameter("petId");
+        BigDecimal pet_Id = new BigDecimal(petId);
+        Integer page_Number = new Integer(pageNumber);
+        Page<AdoptMessage> adoptMessage = adoptService.getAdoptMessage(page_Number,pet_Id);
+        request.setAttribute("packagePage", adoptMessage);
+        model.addAttribute("list",adoptMessage.getList());
+        return "/user/adoptMessage";
     }
 }

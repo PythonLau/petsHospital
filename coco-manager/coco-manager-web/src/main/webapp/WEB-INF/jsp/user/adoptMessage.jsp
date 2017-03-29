@@ -149,40 +149,22 @@
                 <table class="cart-table highlight centered">
                     <thead>
                     <tr>
-                    <th>宠物名字</th>
-                    <th>宠物类型</th>
-                    <th>宠物年龄</th>
-                    <th>宠物性别</th>
-                    <th>宠物照片</th>
-                    <th><a href="/user/addPets"><button class="layui-btn layui-btn-small">新增</button></a></th>
+                        <th>待领养宠物</th>
+                        <th>领养人电话</th>
+                        <th>领养人地址</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${list}" var="pets">
+                    <c:forEach items="${list}" var="adopt">
                         <tr>
-                            <td>${pets.name}</td>
-                            <td>${pets.typename}</td>
-                            <td>${pets.age}</td>
-                            <td>${pets.sex}</td>
-                            <td><img src="${pets.image}" height="50" width="50"></td>
+                            <td>${adoptMessage.name}</td>
+                            <td>${adoptMessage.telePhone}</td>
+                            <td>${adoptMessage.address}</td>
                             <td>
-                                <a href="javascript:if(confirm('确实要删除该宠物吗?'))location='/user/deletePet/${pets.id}'">
-                                    <button class="layui-btn layui-btn-mini layui-btn-normal">删除</button>
-                                </a>
-                                <a href="/user/getPet/${pets.id}">
-                                    <button class="layui-btn layui-btn-mini layui-btn-normal">修改</button>
-                                </a>
-                                <c:if test="${pets.status == 2}">
-                                    <a href="javascript:if(confirm('确实要取消寄养吗?'))location='/user/upFoster/${pets.id}'">
-                                        <button class="layui-btn layui-btn-mini">取消寄养</button>
-                                    </a>
-                                    <a href="/user/getAdoptMessage/1?petId=${pets.id}">
-                                        <button class="layui-btn layui-btn-mini">查看领养信息</button>
-                                    </a>
-                                </c:if>
-                                <c:if test="${pets.status == 1}">
-                                    <a href="/user/foster/${pets.id}">
-                                        <button class="layui-btn layui-btn-mini layui-btn-normal">寄养</button>
+                                <c:if test="${adoptMessage.name != null}">
+                                    <a href="javascript:if(confirm('确实要同意领养吗?'))location='/user/agreeAdopt/${adoptMessage.adoptId}'">
+                                        <button class="layui-btn layui-btn-mini layui-btn-normal">同意领养</button>
                                     </a>
                                 </c:if>
                             </td>
@@ -191,6 +173,30 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div style="float: right; height: 100px; line-height: 100px; display: inline-block; padding: 30px 15px;">
+            共 ${requestScope.packagePage.totalPageNumber } 页
+            &nbsp;&nbsp;
+            当前第 ${requestScope.packagePage.currentPageNo } 页
+            &nbsp;&nbsp;
+
+            <c:if test="${requestScope.packagePage.hasPrev }">
+                <a href="/user/orderList/1">首页</a>
+                &nbsp;&nbsp;
+                <a href="/package/${requestScope.packagePage.prevPage }">上一页</a>
+            </c:if>
+
+            &nbsp;&nbsp;
+
+            <c:if test="${requestScope.packagePage.hasNext }">
+                <a href="/user/orderList/${requestScope.packagePage.nextPage }">下一页</a>
+                &nbsp;&nbsp;
+                <a href="/user/orderList/${requestScope.packagePage.totalPageNumber }">末页</a>
+            </c:if>
+
+            &nbsp;&nbsp;
+
+            转到 <input type="text" id="pageNo" style="width: 33px; height: 23px"/> 页
         </div>
     </div>
 </div>

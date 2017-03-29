@@ -36,6 +36,7 @@ com\coco\pojo\adoptPet.class
 com\coco\pojo\TbArticleExample$Criteria.class
 com\coco\pojo\TbFoster.class
 com\coco\pojo\TbItemExample$Criterion.class
+com\coco\pojo\AdoptMessage.class
 com\coco\pojo\TbAdoptExample.class
 com\coco\pojo\TbArticleExample$GeneratedCriteria.class
 com\coco\pojo\TbItemCatExample.class

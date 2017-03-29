@@ -88,4 +88,30 @@ public class AdoptServiceImpl implements AdoptService {
         adoptMapper.updateByPrimaryKey(adopt);
         return TaotaoResult.ok();
     }
+    @Override
+    public Page<AdoptMessage> getAdoptMessage(Integer pageNumber,BigDecimal petId){
+        Page<AdoptMessage> page = new Page<>(pageNumber);
+        TbAdoptExample example = new TbAdoptExample();
+        TbAdoptExample.Criteria criteria = example.createCriteria();
+        criteria.andAdoptpetidEqualTo(petId);
+        Short one = 1;
+        criteria.andStatusEqualTo(one);
+        Integer count = adoptMapper.countByExample(example);
+        example.setOrderByClause("id desc");
+        PageHelper.startPage(pageNumber, page.getPageSize());
+        List<AdoptMessage> list = new ArrayList<>();
+        List<TbAdopt> adoptList = adoptMapper.selectByExample(example);
+        for(TbAdopt adopt : adoptList){
+            AdoptMessage adoptMessage = new AdoptMessage();
+            adoptMessage.setAdoptId(adopt.getId());
+            adoptMessage.setTelePhone(adopt.getTelephone());
+            adoptMessage.setAddress(adopt.getAddress());
+            TbPets Pet = petsMapper.selectByPrimaryKey(adopt.getAdoptpetid());
+            adoptMessage.setName(Pet.getName());
+            list.add(adoptMessage);
+        }
+        page.setTotalPageItems(count);
+        page.setList(list);
+        return page;
+    }
 }
