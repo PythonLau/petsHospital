@@ -42,6 +42,9 @@
         <c:if test="${sessionScope.nickName != null}">
             <a href="#">个人信息</a>
         </c:if>
+        <c:if test="${sessionScope.nickName != null}">
+            <a href="/user/petsList">我的宠物</a>
+        </c:if>
     </div>
 </div>
 
@@ -78,10 +81,10 @@
             </li>
             <li>
                 <div id="order">
-                    <a href="/user/petsList">
+                    <a href="/user/adoptList/1">
                         <img src="/image/order.png"/>
                         <span>
-                        我的宠物
+                        领养动态
                     </span>
                     </a>
                 </div>

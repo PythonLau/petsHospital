@@ -90,7 +90,7 @@
                             <p class="detail">联系电话:${adoptPet.telePhone}</p>
                             <p class="button">
                                 <a class="btn cyan" style="margin-right: 20px"
-                                   href="/user/bookPackage/${adoptPet.petId}">
+                                   href="/user/adoptApply/${adoptPet.petId}">
                                     申请领养
                                 </a>
                             </p>

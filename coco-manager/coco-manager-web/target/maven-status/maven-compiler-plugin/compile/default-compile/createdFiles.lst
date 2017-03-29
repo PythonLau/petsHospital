@@ -3,6 +3,7 @@ com\coco\controller\ItemController.class
 com\coco\controller\PageController.class
 com\coco\controller\PetController.class
 com\coco\controller\UserController.class
+com\coco\controller\AdoptController.class
 com\coco\interceptor\managerInterceptor.class
 com\coco\interceptor\userInterceptor.class
 com\coco\controller\ArticleController.class
