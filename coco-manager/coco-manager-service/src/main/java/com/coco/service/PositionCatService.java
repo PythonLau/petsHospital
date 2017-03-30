@@ -3,6 +3,7 @@ package com.coco.service;
 import com.coco.common.pojo.EUTreeNode;
 import com.coco.common.pojo.TaotaoResult;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -14,4 +15,6 @@ public interface PositionCatService {
     TaotaoResult updatePositionCat(long id,String name);
     TaotaoResult deletePositionCat(long id);
     boolean judgeDeletePositionCat(long id);
+    TaotaoResult updateTbPositionCatStatus(BigDecimal id);
+    List<EUTreeNode> getMedicalCatList(long parentId);
 }

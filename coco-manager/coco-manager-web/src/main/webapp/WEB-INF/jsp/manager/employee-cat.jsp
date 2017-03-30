@@ -6,6 +6,7 @@
 <div id="positionCatMenu" class="easyui-menu" style="width:120px;" data-options="onClick:menuHandler">
     <div data-options="iconCls:'icon-add',name:'add'">添加</div>
     <div data-options="iconCls:'icon-remove',name:'rename'">重命名</div>
+    <div data-options="iconCls:'icon-remove',name:'alter'">设为可挂号</div>
     <div class="menu-sep"></div>
     <div data-options="iconCls:'icon-remove',name:'delete'">删除</div>
 </div>
@@ -65,6 +66,18 @@
                     $.post("/position/cat/delete/",{id:node.id},function(data){
                         if(data.status == 200){
                             tree.tree("remove",node.target);
+                            $.messager.alert('提示',data.msg);
+                        }else if(data.status == 500){
+                            $.messager.alert('提示',data.msg);
+                        }
+                    });
+                }
+            });
+        }else if(position.name === "alter"){
+            $.messager.confirm('确认','确定要设置 '+node.text+' 为可挂号吗？',function(r){
+                if(r){
+                    $.post("/position/cat/alterStatus/",{id:node.id},function(data){
+                        if(data.status == 200){
                             $.messager.alert('提示',data.msg);
                         }else if(data.status == 500){
                             $.messager.alert('提示',data.msg);

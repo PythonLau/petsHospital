@@ -86,6 +86,9 @@ public class FosterServiceImpl implements FosterService {
         List<adoptPet> list = new ArrayList<>();
         List<TbFoster> fosterList = fosterMapper.selectByExample(example);
         for(TbFoster foster : fosterList){
+            Short zero = 0;
+            foster.setStatus(zero);
+            fosterMapper.updateByPrimaryKey(foster);
             adoptPet Pet = new adoptPet();
             Pet.setFosterId(foster.getId());
             Pet.setPetId(foster.getPetid());

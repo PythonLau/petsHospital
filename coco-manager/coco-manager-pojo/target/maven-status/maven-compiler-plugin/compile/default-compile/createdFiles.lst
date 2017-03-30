@@ -15,6 +15,7 @@ com\coco\pojo\TbPetsExample.class
 com\coco\pojo\TbPositionCatExample$Criterion.class
 com\coco\pojo\TbItemCatExample$GeneratedCriteria.class
 com\coco\pojo\TbPetsExample$Criterion.class
+com\coco\pojo\CaseHistory.class
 com\coco\pojo\TbAdoptExample$Criterion.class
 com\coco\pojo\TbAdoptExample$Criteria.class
 com\coco\pojo\TbPackageExample$Criteria.class
@@ -24,6 +25,7 @@ com\coco\pojo\TbManagerExample$Criterion.class
 com\coco\pojo\TbEmployee.class
 com\coco\pojo\myOrder.class
 com\coco\pojo\TbArticleExample$Criterion.class
+com\coco\pojo\TbMedicalExample.class
 com\coco\pojo\TbFosterExample.class
 com\coco\pojo\TbItemCatExample$Criterion.class
 com\coco\pojo\TbManagerExample.class
@@ -31,16 +33,20 @@ com\coco\pojo\TbItemExample$Criteria.class
 com\coco\pojo\TbItemCatExample$Criteria.class
 com\coco\pojo\TbItemExample$GeneratedCriteria.class
 com\coco\pojo\TbAdoptExample$GeneratedCriteria.class
+com\coco\pojo\TbMedicalExample$Criterion.class
 com\coco\pojo\TbItem.class
 com\coco\pojo\adoptPet.class
 com\coco\pojo\TbArticleExample$Criteria.class
 com\coco\pojo\TbFoster.class
 com\coco\pojo\TbItemExample$Criterion.class
+com\coco\pojo\TbMedicalExample$GeneratedCriteria.class
+com\coco\pojo\TbMedical.class
 com\coco\pojo\AdoptMessage.class
 com\coco\pojo\TbAdoptExample.class
 com\coco\pojo\TbArticleExample$GeneratedCriteria.class
 com\coco\pojo\TbItemCatExample.class
 com\coco\pojo\TbUser.class
+com\coco\pojo\TbMedicalExample$Criteria.class
 com\coco\pojo\TbFosterExample$Criterion.class
 com\coco\pojo\TbEmployeeExample.class
 com\coco\pojo\TbPositionCatExample$Criteria.class

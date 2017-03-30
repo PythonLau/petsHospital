@@ -1,12 +1,13 @@
+com\coco\mapper\TbMedicalMapper.class
 com\coco\mapper\TbEmployeeMapper.class
-com\coco\mapper\TbPackageMapper.class
-com\coco\mapper\TbPetsMapper.class
-com\coco\mapper\TbUserMapper.class
-com\coco\mapper\TbOrderMapper.class
 com\coco\mapper\TbItemCatMapper.class
 com\coco\mapper\TbAdoptMapper.class
 com\coco\mapper\TbFosterMapper.class
 com\coco\mapper\TbArticleMapper.class
 com\coco\mapper\TbManagerMapper.class
+com\coco\mapper\TbPackageMapper.class
+com\coco\mapper\TbPetsMapper.class
+com\coco\mapper\TbUserMapper.class
+com\coco\mapper\TbOrderMapper.class
 com\coco\mapper\TbItemMapper.class
 com\coco\mapper\TbPositionCatMapper.class

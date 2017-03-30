@@ -74,4 +74,13 @@ public class AdoptController {
         model.addAttribute("list",adoptMessage.getList());
         return "/user/adoptMessage";
     }
+    @RequestMapping("/user/agreeAdopt/{adoptId}")
+    public void agreeAdopt(@PathVariable String adoptId,HttpSession session,
+                           HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BigDecimal adopt_Id = new BigDecimal(adoptId);
+        TaotaoResult result = adoptService.agreeAdopt(adopt_Id);
+        if(result.getStatus() == 200){
+            request.getRequestDispatcher("/user/petsList").forward(request,response);
+        }
+    }
 }

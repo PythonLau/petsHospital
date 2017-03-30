@@ -16,4 +16,5 @@ public interface AdoptService {
     Page<myAdopt> getMyAdoptList(Integer pageNumber, BigDecimal userId);
     TaotaoResult cancelAdopt(BigDecimal id);
     Page<AdoptMessage> getAdoptMessage(Integer pageNumber,BigDecimal petId);
+    TaotaoResult agreeAdopt(BigDecimal adoptId);
 }

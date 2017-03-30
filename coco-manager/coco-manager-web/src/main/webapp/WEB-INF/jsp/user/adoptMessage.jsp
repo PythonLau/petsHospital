@@ -156,7 +156,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${list}" var="adopt">
+                    <c:forEach items="${list}" var="adoptMessage">
                         <tr>
                             <td>${adoptMessage.name}</td>
                             <td>${adoptMessage.telePhone}</td>

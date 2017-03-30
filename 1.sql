@@ -275,10 +275,24 @@ truncate table tb_order
 --------------------------------------------------------------------------------------------------------------------------
 
 
+create table tb_adopt(
+id number(20) NOT NULL,    --领养id
+fosterUserId number(20) NOT NULL,    --寄养用户id
+adoptUserId number(20) NOT NULL,    --领养用户id
+adoptPetId number(20) NOT NULL,    --领养宠物id
+telePhone varchar(50) NOT NULL,  --领养人手机号码
+address varchar(200) NOT NULL,  --领养地址
+status number(4) NOT NULL, --套餐状态，1申请中，0领养失败或者取消领养，2领养成功
+created date default sysdate, -- '创建时间'
+updated date default sysdate, -- '更新时间'
+PRIMARY KEY (id)
+)
 
+commit
 
+select * from tb_adopt
 
-
+truncate table tb_adopt
 
 
 

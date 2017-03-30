@@ -81,6 +81,8 @@ var TT = TAOTAO = {
         this.initAddEmployeePicUpload(data);
         //编辑员工界面初始化类目选择组件
         this.initEditEmployeeCat(data);
+        //挂号界面初始化类目上传组件
+        this.initMedicalEmployeeCat(data);
     },
 
     // 编辑物品界面初始化图片上传组件
@@ -261,7 +263,6 @@ var TT = TAOTAO = {
 
     // 新增物品界面初始化选择类目组件
     initAddItemCat : function(data){
-        //alert("初始化新增物品类目控件")
         $(".addItemSelectItemCat").each(function(i,e){
             var _ele = $(e);
             if(data && data.cid){
@@ -285,6 +286,57 @@ var TT = TAOTAO = {
                             var _win = this;
                             $("ul",_win).tree({
                                 url:'/item/cat/list',
+                                animate:true,
+                                onClick : function(node){
+                                    if($(this).tree("isLeaf",node.target)){
+                                        // 填写到addItemCid中
+                                        //alert("新增物品的cid是:")
+                                        //alert(node.id)
+                                        //alert("准备把新增物品分类写入到表单中")
+                                        _ele.parent().find("[name=cid]").val(node.id);
+                                        _ele.next().text(node.text).attr("cid",node.id);
+                                        $(_win).window('close');
+                                        if(data && data.fun){
+                                            data.fun.call(this,node);
+                                        }
+                                    }
+                                }
+                            });
+                        },
+                        onClose : function(){
+                            $(this).window("destroy");
+                        }
+                    }).window('open');
+            });
+        });
+    },
+
+    // 新增员工界面初始化选择类目组件
+    initMedicalEmployeeCat : function(data){
+        //alert("初始化新增物品类目控件")
+        $(".registerMedicalSelectPositionCat").each(function(i,e){
+            var _ele = $(e);
+            if(data && data.cid){
+                //alert("新增物品有cid")
+                _ele.after("<span style='margin-left:10px;'>"+data.cid+"</span>");
+            }else{
+                //alert("新增物品没有cid")
+                _ele.after("<span style='margin-left:10px;'></span>");
+            }
+            _ele.unbind('click').click(function(){
+                //alert("点击了新增物品类目按钮")
+                $("<div>").css({padding:"5px"}).html("<ul>")
+                    .window({
+                        width:'500',
+                        height:"450",
+                        modal:true,
+                        closed:true,
+                        iconCls:'icon-save',
+                        title:'选择类目',
+                        onOpen : function(){
+                            var _win = this;
+                            $("ul",_win).tree({
+                                url:'/position/cat/medicalList',
                                 animate:true,
                                 onClick : function(node){
                                     if($(this).tree("isLeaf",node.target)){

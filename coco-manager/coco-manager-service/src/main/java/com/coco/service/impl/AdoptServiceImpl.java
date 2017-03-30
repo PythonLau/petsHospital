@@ -97,6 +97,7 @@ public class AdoptServiceImpl implements AdoptService {
         Short one = 1;
         criteria.andStatusEqualTo(one);
         Integer count = adoptMapper.countByExample(example);
+        System.out.println("count:" + count);
         example.setOrderByClause("id desc");
         PageHelper.startPage(pageNumber, page.getPageSize());
         List<AdoptMessage> list = new ArrayList<>();
@@ -113,5 +114,25 @@ public class AdoptServiceImpl implements AdoptService {
         page.setTotalPageItems(count);
         page.setList(list);
         return page;
+    }
+    @Override
+    public TaotaoResult agreeAdopt(BigDecimal adoptId){
+        TbAdopt adopt = adoptMapper.selectByPrimaryKey(adoptId);
+        Short two = 2;
+        adopt.setStatus(two);
+        adoptMapper.updateByPrimaryKey(adopt);
+        TbFosterExample example = new TbFosterExample();
+        TbFosterExample.Criteria criteria = example.createCriteria();
+        Short one = 1;
+        criteria.andStatusEqualTo(one);
+        List<TbFoster> fosters = fosterMapper.selectByExample(example);
+        for(TbFoster foster : fosters){
+            fosterMapper.updateByPrimaryKey(foster);
+        }
+        TbPets Pet = petsMapper.selectByPrimaryKey(adopt.getAdoptpetid());
+        Pet.setStatus(one);
+        Pet.setOwner(adopt.getAdoptuserid());
+        petsMapper.updateByPrimaryKey(Pet);
+        return TaotaoResult.ok();
     }
 }

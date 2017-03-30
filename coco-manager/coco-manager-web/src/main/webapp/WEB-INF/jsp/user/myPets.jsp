@@ -172,6 +172,12 @@
                                 <a href="/user/getPet/${pets.id}">
                                     <button class="layui-btn layui-btn-mini layui-btn-normal">修改</button>
                                 </a>
+                                <a href="/user/registerMedical/${pets.id}">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">挂号</button>
+                                </a>
+                                <a href="/user/showMedical/1?petId=${pets.id}">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">病历</button>
+                                </a>
                                 <c:if test="${pets.status == 2}">
                                     <a href="javascript:if(confirm('确实要取消寄养吗?'))location='/user/upFoster/${pets.id}'">
                                         <button class="layui-btn layui-btn-mini">取消寄养</button>

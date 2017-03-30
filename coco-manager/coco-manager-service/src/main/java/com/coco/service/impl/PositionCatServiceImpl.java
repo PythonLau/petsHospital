@@ -149,4 +149,44 @@ public class PositionCatServiceImpl implements PositionCatService{
             return TaotaoResult.build(500,"该部门下面还存在子部门或在职员工，不能删除");
         }
     }
+    @Override
+    public TaotaoResult updateTbPositionCatStatus(BigDecimal id){
+        TbPositionCat positionCat = positionCatMapper.selectByPrimaryKey(id);
+        Short status = 2;
+        positionCat.setStatus(status);
+        positionCatMapper.updateByPrimaryKey(positionCat);
+        return TaotaoResult.build(200,"设置部门可挂号成功");
+    }
+    @Override
+    public List<EUTreeNode> getMedicalCatList(long parentId){
+        System.out.println(parentId);
+        TbPositionCatExample example = new TbPositionCatExample();
+        TbPositionCatExample.Criteria criteria = example.createCriteria();
+        BigDecimal parent_Id = new BigDecimal(parentId);
+        criteria.andParentIdEqualTo(parent_Id);
+        Short two = 2;
+        criteria.andStatusEqualTo(two);
+        //根据条件查询
+        List<TbPositionCat> list = positionCatMapper.selectByExample(example);
+        System.out.println("size...");
+        System.out.println(list.size());
+        List<EUTreeNode> resultList = new ArrayList<>();
+        //把列表转换成treeNodelist
+        for (TbPositionCat tbPositionCat : list) {
+            EUTreeNode node = new EUTreeNode();
+            node.setId(tbPositionCat.getId());
+            System.out.println("22222222222");
+            node.setText(tbPositionCat.getName());
+            Short status = tbPositionCat.getIsParent();
+            Short judgeOne = 1;
+            if(status.equals(judgeOne)){
+                node.setState("closed");
+            }else{
+                node.setState("open");
+            }
+            resultList.add(node);
+        }
+        //返回结果
+        return resultList;
+    }
 }

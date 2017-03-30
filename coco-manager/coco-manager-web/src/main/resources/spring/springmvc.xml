@@ -28,12 +28,12 @@
 	</bean>
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/manager/*"/> <!-- 管理员登录拦截 -->
+			<mvc:mapping path="/manager/**"/> <!-- 管理员登录拦截 -->
 			<mvc:exclude-mapping path="/manager/login"/>
 			<bean class="com.coco.interceptor.managerInterceptor"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/user/*"/> <!-- 管理员登录拦截 -->
+			<mvc:mapping path="/user/**"/> <!-- 管理员登录拦截 -->
 			<bean class="com.coco.interceptor.userInterceptor"></bean>
 		</mvc:interceptor>
     </mvc:interceptors>
