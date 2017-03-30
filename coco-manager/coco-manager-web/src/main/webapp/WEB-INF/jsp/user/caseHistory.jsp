@@ -149,17 +149,18 @@
                 <table class="cart-table highlight centered">
                     <thead>
                     <tr>
-                        <th>宠物名称</th>
+                        <th>id</th>
                         <th>主治医生</th>
                         <th>时间</th>
                         <th>处方</th>
+                        <th>价格</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${list}" var="caseHistory">
                         <tr>
-                            <td>${caseHistory.name}</td>
+                            <td>${caseHistory.id}</td>
                             <td>${caseHistory.doctorName}</td>
                             <td>
                                 ${caseHistory.medicalTime}
@@ -168,6 +169,7 @@
                                 </c:if>
                             </td>
                             <td>${caseHistory.recipe}</td>
+                            <td>${caseHistory.price}</td>
                             <td>
                                 <c:if test="${caseHistory.status == 1}">
                                     <a href="javascript:if(confirm('确实要取消挂号吗?'))location='/user/cancelMedical/${caseHistory.id}'">

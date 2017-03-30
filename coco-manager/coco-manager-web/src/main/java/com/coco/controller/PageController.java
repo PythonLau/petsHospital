@@ -47,6 +47,11 @@ public class PageController {
 		return "/manager/" + page;
 	}
 
+	@RequestMapping("/doctor/{page}")
+	public String showDoctorPage(@PathVariable String page) {
+		return "/doctor/" + page;
+	}
+
 	@RequestMapping("/{page}")
 	public String showManagerpage(@PathVariable String page) {
 		return page;

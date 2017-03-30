@@ -1,5 +1,6 @@
 package com.coco.service.impl;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
@@ -9,7 +10,7 @@ import com.coco.mapper.TbPetsMapper;
 import com.coco.pojo.*;
 import com.coco.service.MedicalService;
 import com.github.pagehelper.PageHelper;
-import org.apache.ibatis.annotations.One;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,12 +61,15 @@ public class MedicalServiceImpl implements MedicalService {
             CaseHistory caseHistory = new CaseHistory();
             caseHistory.setId(medical.getId());
             caseHistory.setStatus(medical.getStatus());
-            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
             String registerTime = null;
             if(medical.getUpdated() != null){
                 registerTime = sdf.format(medical.getUpdated());
             }else{
                 registerTime = sdf.format(medical.getRegistertime());
+            }
+            if(medical.getPrice() != null){
+                caseHistory.setPrice(medical.getPrice());
             }
             caseHistory.setMedicalTime(registerTime);
             caseHistory.setRecipe(medical.getRecipe());
@@ -94,5 +98,38 @@ public class MedicalServiceImpl implements MedicalService {
         TbMedical medical = medicalMapper.selectByPrimaryKey(caseHistoryId);
         BigDecimal petId = medical.getPetid();
         return petId;
+    }
+    @Override
+    public EUDataGridResult getTreatList(int page, int rows,BigDecimal userId){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        TbEmployee employee = employeeMapper.selectByPrimaryKey(userId);
+        Long positionCatId = employee.getCid();
+        criteria.andOfficeidEqualTo(positionCatId);
+        Short one = 1;
+        criteria.andStatusEqualTo(one);
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public TaotaoResult createPrescribe(TbMedical medical,BigDecimal doctorId){
+        String recipe = medical.getRecipe();
+        BigDecimal medicalId = medical.getId();
+        TbMedical tbMedical = medicalMapper.selectByPrimaryKey(medicalId);
+        tbMedical.setRecipe(recipe);
+        tbMedical.setDoctorid(doctorId);
+        Short two = 2;
+        tbMedical.setStatus(two);
+        tbMedical.setUpdated(new Date());
+        medicalMapper.updateByPrimaryKey(tbMedical);
+        return TaotaoResult.ok();
     }
 }

@@ -8,6 +8,7 @@
     <result column="REGISTERTIME" property="registertime" jdbcType="TIMESTAMP" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
     <result column="RECIPE" property="recipe" jdbcType="VARCHAR" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
     <result column="DOCTORID" property="doctorid" jdbcType="DECIMAL" />
     <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
     <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
@@ -71,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, PETID, OFFICEID, REGISTERTIME, STATUS, RECIPE, DOCTORID, CREATED, UPDATED
+    ID, PETID, OFFICEID, REGISTERTIME, STATUS, RECIPE, PRICE, DOCTORID, CREATED, UPDATED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbMedicalExample" >
     select
@@ -106,12 +107,12 @@
   <insert id="insert" parameterType="com.coco.pojo.TbMedical" >
     insert into TB_MEDICAL (ID, PETID, OFFICEID, 
       REGISTERTIME, STATUS, RECIPE, 
-      DOCTORID, CREATED, UPDATED
-      )
+      PRICE, DOCTORID, CREATED, 
+      UPDATED)
     values (#{id,jdbcType=DECIMAL}, #{petid,jdbcType=DECIMAL}, #{officeid,jdbcType=DECIMAL}, 
       #{registertime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, #{recipe,jdbcType=VARCHAR}, 
-      #{doctorid,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
-      )
+      #{price,jdbcType=DECIMAL}, #{doctorid,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbMedical" >
     insert into TB_MEDICAL
@@ -133,6 +134,9 @@
       </if>
       <if test="recipe != null" >
         RECIPE,
+      </if>
+      <if test="price != null" >
+        PRICE,
       </if>
       <if test="doctorid != null" >
         DOCTORID,
@@ -162,6 +166,9 @@
       </if>
       <if test="recipe != null" >
         #{recipe,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="doctorid != null" >
         #{doctorid,jdbcType=DECIMAL},
@@ -201,6 +208,9 @@
       <if test="record.recipe != null" >
         RECIPE = #{record.recipe,jdbcType=VARCHAR},
       </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
       <if test="record.doctorid != null" >
         DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
       </if>
@@ -223,6 +233,7 @@
       REGISTERTIME = #{record.registertime,jdbcType=TIMESTAMP},
       STATUS = #{record.status,jdbcType=DECIMAL},
       RECIPE = #{record.recipe,jdbcType=VARCHAR},
+      PRICE = #{record.price,jdbcType=DECIMAL},
       DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
       CREATED = #{record.created,jdbcType=TIMESTAMP},
       UPDATED = #{record.updated,jdbcType=TIMESTAMP}
@@ -248,6 +259,9 @@
       <if test="recipe != null" >
         RECIPE = #{recipe,jdbcType=VARCHAR},
       </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
       <if test="doctorid != null" >
         DOCTORID = #{doctorid,jdbcType=DECIMAL},
       </if>
@@ -267,6 +281,7 @@
       REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
       STATUS = #{status,jdbcType=DECIMAL},
       RECIPE = #{recipe,jdbcType=VARCHAR},
+      PRICE = #{price,jdbcType=DECIMAL},
       DOCTORID = #{doctorid,jdbcType=DECIMAL},
       CREATED = #{created,jdbcType=TIMESTAMP},
       UPDATED = #{updated,jdbcType=TIMESTAMP}

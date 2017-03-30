@@ -65,7 +65,7 @@ CREATE TABLE tb_position_cat (
   id number(20) NOT NULL, -- '职位或者部门ID'
   parent_id number(20) DEFAULT NULL, -- 'parent_id=0时，代表的是一级的部门'
   name varchar(50) DEFAULT NULL, -- '职位或者部门名称'
-  status number(1) DEFAULT 1, -- '状态。可选值:1(正常),0(删除)'
+  status number(1) DEFAULT 1, -- '状态。可选值:1(正常),2(可挂号)'
   sort_order number(4) DEFAULT NULL, -- '排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数'
   is_parent number(1) DEFAULT 1, -- '该类目是否为父类目，1为true，0为false'
   created date DEFAULT sysdate, -- '创建时间'
@@ -296,9 +296,23 @@ truncate table tb_adopt
 
 
 
+-----------------------------------------------------------------------------------------------------------------------
 
+create table tb_medical(
+id number(20) NOT NULL,    --病历id
+petId number(20) NOT NULL, --宠物id
+officeId number(10) NOT NULL, --科室id
+registerTime date NOT NULL, --预约时间
+status number(4) NOT NULL, --挂号状态 1挂号中 2已经处理 0取消挂号或者不接受治疗，3正常结束
+recipe varchar(500) DEFAULT NULL, --处方
+price number(20,2) DEFAULT NULL,   --套餐价格
+doctorId number(20) DEFAULT NULL, --主治医生
+created date default sysdate, -- '挂号时间'
+updated date default NULL, -- '开处方时间'
+PRIMARY KEY (id)
+)
 
-
+drop table tb_medical
 
 
 

@@ -11,6 +11,7 @@ public class CaseHistory {
     String doctorName;
     String recipe;
     String medicalTime;
+    BigDecimal price;
     Short status;
 
     public BigDecimal getId() {
@@ -51,6 +52,14 @@ public class CaseHistory {
 
     public void setMedicalTime(String medicalTime) {
         this.medicalTime = medicalTime;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public Short getStatus() {

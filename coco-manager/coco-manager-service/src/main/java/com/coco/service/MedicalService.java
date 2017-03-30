@@ -1,9 +1,10 @@
 package com.coco.service;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.CaseHistory;
-import com.coco.pojo.TbPets;
+import com.coco.pojo.TbMedical;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,4 +17,6 @@ public interface MedicalService {
     Page<CaseHistory> getCaseHistory(Integer pageNumber, BigDecimal petId);
     TaotaoResult cancelMedical(BigDecimal caseHistoryId);
     BigDecimal getPetId(BigDecimal caseHistoryId);
+    EUDataGridResult getTreatList(int page, int rows,BigDecimal userId);
+    TaotaoResult createPrescribe(TbMedical medical,BigDecimal doctorId);
 }

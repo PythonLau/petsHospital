@@ -16,6 +16,8 @@ public class TbMedical {
 
     private String recipe;
 
+    private BigDecimal price;
+
     private BigDecimal doctorid;
 
     private Date created;
@@ -68,6 +70,14 @@ public class TbMedical {
 
     public void setRecipe(String recipe) {
         this.recipe = recipe == null ? null : recipe.trim();
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public BigDecimal getDoctorid() {

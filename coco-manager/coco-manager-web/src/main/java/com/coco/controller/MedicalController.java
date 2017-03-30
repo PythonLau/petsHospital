@@ -1,8 +1,10 @@
 package com.coco.controller;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.CaseHistory;
+import com.coco.pojo.TbMedical;
 import com.coco.pojo.TbPets;
 import com.coco.service.MedicalService;
 import com.coco.service.PetService;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -63,5 +66,23 @@ public class MedicalController {
         if(result.getStatus() == 200){
             request.getRequestDispatcher("/user/showMedical/1?petId=" + petId).forward(request,response);
         }
+    }
+    @RequestMapping("/doctor/treat/list")
+    @ResponseBody
+    public EUDataGridResult getEmployeeList(Integer page, Integer rows,HttpSession session,
+                                            HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("treatList...controller");
+        Object userId = session.getAttribute("doctor");
+        BigDecimal user_Id = (BigDecimal)userId;
+        EUDataGridResult result = medicalService.getTreatList(page,rows,user_Id);
+        return result;
+    }
+    @RequestMapping("/doctor/medical/save")
+    @ResponseBody
+    public TaotaoResult createPrescribe(TbMedical medical,HttpSession session) throws Exception{
+        Object userId = session.getAttribute("doctor");
+        BigDecimal user_Id = (BigDecimal)userId;
+        TaotaoResult result = medicalService.createPrescribe(medical,user_Id);
+        return result;
     }
 }
