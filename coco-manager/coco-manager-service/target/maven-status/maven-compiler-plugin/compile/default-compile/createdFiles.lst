@@ -2,6 +2,7 @@ com\coco\service\impl\PositionCatServiceImpl.class
 com\coco\service\MedicalService.class
 com\coco\service\ManagerService.class
 com\coco\service\PackageService.class
+com\coco\service\AuthorityService.class
 com\coco\service\PetService.class
 com\coco\service\impl\ItemServiceImpl.class
 com\coco\service\impl\PictureServiceImpl.class
@@ -10,9 +11,11 @@ com\coco\service\UserService.class
 com\coco\service\EmployeeService.class
 com\coco\service\AdoptService.class
 com\coco\service\ItemCatService.class
+com\coco\service\LoginService.class
 com\coco\service\FosterService.class
 com\coco\service\impl\PackageServiceImpl.class
 com\coco\service\impl\FosterServiceImpl.class
+com\coco\service\impl\ModuleServiceImpl.class
 com\coco\service\impl\UserServiceImpl.class
 com\coco\service\impl\PetServiceImpl.class
 com\coco\service\impl\AdoptServiceImpl.class
@@ -20,6 +23,8 @@ com\coco\service\impl\MedicalServiceImpl.class
 com\coco\service\OrderService.class
 com\coco\service\impl\DoctorServiceImpl.class
 com\coco\service\ItemService.class
+com\coco\service\ModuleService.class
+com\coco\service\impl\LoginServiceImpl.class
 com\coco\service\ArticleService.class
 com\coco\service\impl\ArticleServiceImpl.class
 com\coco\service\impl\ItemCatServiceImpl.class

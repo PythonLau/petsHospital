@@ -1,3 +1,4 @@
+D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbLogin.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbManagerExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbPackageExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbPositionCatExample.java
@@ -6,10 +7,12 @@ D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\Tb
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbAdoptExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbManager.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbOrderExample.java
+D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbAuthorityExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\CaseHistory.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbDoctorExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbPets.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbPositionCat.java
+D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbModule.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbUserExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbOrder.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbArticleExample.java
@@ -18,11 +21,13 @@ D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\Tb
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\adoptPet.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\myAdopt.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbItemExample.java
+D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbLoginExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbUser.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbMedical.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbPackage.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbEmployeeExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbAdopt.java
+D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbAuthority.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbFosterExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbDoctor.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbArticle.java
@@ -30,4 +35,5 @@ D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\Tb
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbPetsExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbItemCatExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\AdoptMessage.java
+D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbModuleExample.java
 D:\Java\myJavaCode\coco-manager\coco-manager-pojo\src\main\java\com\coco\pojo\TbMedicalExample.java

@@ -1,4 +1,5 @@
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ManagerService.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\LoginServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\PackageService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\ItemCatServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\UserService.java
@@ -9,14 +10,18 @@ D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\serv
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\EmployeeServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ArticleService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\AdoptService.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ModuleService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\PictureServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\PetService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\FosterServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\MedicalServiceImpl.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\ModuleServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\PositionCatService.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\AuthorityService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\PictureService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\EmployeeService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\PetServiceImpl.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\LoginService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\PackageServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\FosterService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ItemCatService.java

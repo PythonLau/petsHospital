@@ -1,12 +1,13 @@
 com\coco\common\utils\ExceptionUtil.class
 com\coco\common\utils\CookieUtils.class
-com\coco\common\pojo\EUDataGridResult.class
 com\coco\common\utils\JsonUtils.class
 com\coco\common\pojo\EUTreeNode.class
 com\coco\common\pojo\search_params.class
-com\coco\common\utils\HttpClientUtil.class
 com\coco\common\pojo\Page.class
 com\coco\common\pojo\TaotaoResult.class
 com\coco\common\utils\FtpUtil.class
-com\coco\common\utils\IDUtils.class
 com\coco\common\pojo\Ids.class
+com\coco\common\pojo\EUDataGridResult.class
+com\coco\common\pojo\EUTreeNodeWithAttributes.class
+com\coco\common\utils\HttpClientUtil.class
+com\coco\common\utils\IDUtils.class

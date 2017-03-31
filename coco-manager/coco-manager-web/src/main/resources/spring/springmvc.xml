@@ -41,6 +41,11 @@
 			<mvc:exclude-mapping path="/doctor/login"/>
 			<bean class="com.coco.interceptor.doctorInterceptor"></bean>
 		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/report/**"/> <!-- 医生登录拦截 -->
+			<mvc:exclude-mapping path="/report/login"/>
+			<bean class="com.coco.interceptor.reportInterceptor"></bean>
+		</mvc:interceptor>
     </mvc:interceptors>
 	<mvc:default-servlet-handler/>
 </beans>

@@ -34,7 +34,7 @@
 <script type="text/javascript">
     $(function(){
         $("#menu").tree({
-            url : '/test/list',
+            url : '/report/list',
             animate: true,
             method : "GET",
             onContextMenu: function(e,node){
