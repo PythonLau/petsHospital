@@ -1,6 +1,7 @@
 com\coco\controller\EmployeeController.class
 com\coco\controller\PageController.class
 com\coco\controller\PetController.class
+com\coco\controller\TestController.class
 com\coco\interceptor\doctorInterceptor.class
 com\coco\controller\ItemCatController.class
 com\coco\controller\FosterController.class

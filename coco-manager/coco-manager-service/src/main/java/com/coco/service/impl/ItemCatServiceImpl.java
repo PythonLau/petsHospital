@@ -11,6 +11,7 @@ import com.coco.pojo.TbItem;
 import com.coco.pojo.TbItemCat;
 import com.coco.pojo.TbItemCatExample;
 import com.coco.pojo.TbItemExample;
+import jdk.nashorn.internal.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +59,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 			resultList.add(node);
 		}
 		//返回结果
+		System.out.println("1111");
 		return resultList;
 	}
 	@Override

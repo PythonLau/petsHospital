@@ -312,22 +312,65 @@ updated date default NULL, -- '开处方时间'
 PRIMARY KEY (id)
 )
 
+select * from tb_medical
+
 drop table tb_medical
 
+---------------------------------------------------------------------------------------------------
+
+create table tb_doctor(
+id number(20) NOT NULL,  ---医生工号，关联员工表的id
+username varchar(20) NOT NULL,    --医生登陆名
+password varchar(50) NOT NULL,   ---医生密码
+created date default sysdate, -- '创建时间'
+updated date default sysdate, -- '更新时间'
+PRIMARY KEY (id)
+)
+
+insert into tb_doctor(id,username,password) values(149088330544902,'doctor','828fd9255753432d51df95eb62d61722')
 
 
 
+select * from tb_doctor
+
+commit
+
+select * from tb_employee where id = 149088330544902
 
 
+-------------------------------------------------------------------------------------
 
+--报表系统
 
+create table tb_login
+(
+  id number(20) not null,   --用户ID关联员工表
+  username varchar(20) not null,   --用户名，登录名
+  password varchar(50) not null,  --登录密码
+  created date default sysdate, -- '创建时间'
+  updated date default sysdate, -- '更新时间'
+  PRIMARY KEY (id)
+)
 
+create table tb_module
+(
+  id number(20) not null,   --报表ID
+  parent_id number(20) DEFAULT NULL, --报表父节点
+  name VARCHAR(200),  --报表名称
+  url VARCHAR(800), --报表url
+  status number(1) DEFAULT 1, -- '状态。可选值:1(正常),2(待检验)'
+  sort_order number(4) DEFAULT NULL, -- '排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数'
+  is_parent number(1) DEFAULT 1, -- '该类目是否为父类目，1为true，0为false'
+  created date DEFAULT sysdate, -- '创建时间'
+  updated date DEFAULT sysdate, -- '创建时间'
+  PRIMARY KEY (id)
+)
 
+commit
 
+create table tb_authority(
 
-
-
-
+)
 
 
 

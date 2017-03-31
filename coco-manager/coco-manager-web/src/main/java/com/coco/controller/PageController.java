@@ -61,4 +61,9 @@ public class PageController {
 	public String showUserpage(@PathVariable String page){
 		return "/user/" + page;
 	}
+
+	@RequestMapping("/report/{page}")
+	public String showReportPage(@PathVariable String page){
+		return "/report/" + page;
+	}
 }

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.coco.common.pojo.TaotaoResult;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +36,9 @@ public class ItemCatController {
 		System.out.println("controller..../list");
 		System.out.println(parentId);
 		List<EUTreeNode> list = itemCatService.getCatList(parentId);
+		System.out.println("controller ----list");
+		System.out.println(list.get(0).getClass().toString());
+
 		return list;
 	}
 
