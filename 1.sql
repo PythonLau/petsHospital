@@ -347,10 +347,15 @@ create table tb_login
   id number(20) not null,   --用户ID关联员工表
   username varchar(20) not null,   --用户名，登录名
   password varchar(50) not null,  --登录密码
+  status number(4) not null,  --状态1普通员工 2管理员
   created date default sysdate, -- '创建时间'
   updated date default sysdate, -- '更新时间'
   PRIMARY KEY (id)
 )
+
+insert into tb_login(id,username,password,status) values(1,'admin','828fd9255753432d51df95eb62d61722',2);
+insert into tb_login(id,username,password,status) values(2,'user','828fd9255753432d51df95eb62d61722',1);
+
 
 create table tb_module
 (
@@ -366,12 +371,38 @@ create table tb_module
   PRIMARY KEY (id)
 )
 
+
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (1, 0, '办公室报表','/index', 1, 1, 1);
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (2, 1, '财务部报表','/login',1, 1, 0);
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (3, 1, '审计部报表','/index', 1, 2, 0);
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (4, 1, '监察部报表','/login',1, 3, 0);
+
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (5, 0, '医疗中心报表','/index', 1, 1, 1);
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (6, 5, '护理处报表','/login', 1, 1, 0);
+INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (7, 5, '消毒处报表','/login', 1, 2, 0);
+
+select * from tb_module
+
 commit
 
 create table tb_authority(
-
+id number(20) not null,   --权限ID
+userId number(20) not null,   --用户ID,关联tb_login表
+module_id number(20) not null, --报表id,关联tb_module
+created date DEFAULT sysdate, -- '创建时间'
+updated date DEFAULT sysdate, -- '创建时间'
+PRIMARY KEY (id)
 )
 
+insert into tb_authority(id,userId,module_id) values(1,2,1);
+insert into tb_authority(id,userId,module_id) values(2,2,2);
+insert into tb_authority(id,userId,module_id) values(3,2,3);
+insert into tb_authority(id,userId,module_id) values(4,2,5);
+insert into tb_authority(id,userId,module_id) values(5,2,7)
+
+select * from tb_authority
+
+truncate table tb_authority
 
 
 

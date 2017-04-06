@@ -62,5 +62,9 @@
             <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+        </dependency>
     </dependencies>
 </project>
