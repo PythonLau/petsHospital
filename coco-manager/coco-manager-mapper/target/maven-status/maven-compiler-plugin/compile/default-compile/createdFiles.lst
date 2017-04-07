@@ -6,6 +6,7 @@ com\coco\mapper\TbAdoptMapper.class
 com\coco\mapper\TbFosterMapper.class
 com\coco\mapper\TbArticleMapper.class
 com\coco\mapper\TbManagerMapper.class
+com\coco\mapper\TbSliderMapper.class
 com\coco\mapper\TbModuleMapper.class
 com\coco\mapper\TbAuthorityMapper.class
 com\coco\mapper\TbPackageMapper.class

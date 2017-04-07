@@ -1,7 +1,9 @@
 package com.coco.controller;
 
 import com.coco.pojo.TbArticle;
+import com.coco.pojo.TbSlider;
 import com.coco.service.ArticleService;
+import com.coco.service.SliderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,8 @@ public class PageController {
 
 	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private SliderService sliderService;
 
 	/**
 	 * 打开首页
@@ -32,6 +36,8 @@ public class PageController {
 	public String showIndex(Model model) {
 		boolean isPaging = true;
 		List<TbArticle> list = articleService.getArticleTitleList(isPaging);
+		List<TbSlider> sliders = sliderService.getSliderList();
+		model.addAttribute("sliders",sliders);
 		model.addAttribute("list",list);
 		return "index";
 	}

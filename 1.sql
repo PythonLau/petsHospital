@@ -179,6 +179,27 @@ created varchar(20) NOT NULL, -- '创建时间'
 updated varchar(20) NOT NULL, -- '更新时间'
 PRIMARY KEY (id)
 )
+
+create table tb_slider(
+id number(20) NOT NULL,  --轮播图片id
+href varchar(500) DEFAULT NULL,  --图片点击链接
+alt varchar(50) DEFAULT NULL, --图片alt
+title varchar(50) DEFAULT NULL, --图片title
+src varchar(100) NOT NULL, --图片地址
+sort_order number(2) NOT NULL, --页面排列序号
+created date default sysdate, -- '创建时间'
+updated date default sysdate, -- '更新时间'
+primary key(id)
+)
+
+insert into tb_slider(id,href,alt,title,src,sort_order) values(1,'https://www.baidu.com','宠物医院轮播图测试1','宠物医院轮播图测试1','/image/1.jpg',1);
+insert into tb_slider(id,href,alt,title,src,sort_order) values(2,'http://www.zhbit.com','宠物医院轮播图测试2','宠物医院轮播图测试2','/image/2.jpg',2);
+insert into tb_slider(id,href,alt,title,src,sort_order) values(3,'http://www.zhbit.com','宠物医院轮播图测试3','宠物医院轮播图测试3','/image/3.jpg',3);
+insert into tb_slider(id,href,alt,title,src,sort_order) values(4,'https://www.baidu.com','宠物医院轮播图测试4','宠物医院轮播图测试4','/image/4.jpg',4);
+insert into tb_slider(id,href,alt,title,src,sort_order) values(5,'https://www.baidu.com','宠物医院轮播图测试5','宠物医院轮播图测试5','/image/background.jpg',5);
+
+
+
 ------------暂时没用--------------------------------------------------------------------------------------------------------
 
 select * from tb_article order by id desc
