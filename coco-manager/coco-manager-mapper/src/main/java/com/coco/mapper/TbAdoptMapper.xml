@@ -6,6 +6,7 @@
     <result column="FOSTERUSERID" property="fosteruserid" jdbcType="DECIMAL" />
     <result column="ADOPTUSERID" property="adoptuserid" jdbcType="DECIMAL" />
     <result column="ADOPTPETID" property="adoptpetid" jdbcType="DECIMAL" />
+    <result column="CONTACTS" property="contacts" jdbcType="VARCHAR" />
     <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
     <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
@@ -71,7 +72,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, FOSTERUSERID, ADOPTUSERID, ADOPTPETID, TELEPHONE, ADDRESS, STATUS, CREATED, UPDATED
+    ID, FOSTERUSERID, ADOPTUSERID, ADOPTPETID, CONTACTS, TELEPHONE, ADDRESS, STATUS, 
+    CREATED, UPDATED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbAdoptExample" >
     select
@@ -105,13 +107,13 @@
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbAdopt" >
     insert into TB_ADOPT (ID, FOSTERUSERID, ADOPTUSERID, 
-      ADOPTPETID, TELEPHONE, ADDRESS, 
-      STATUS, CREATED, UPDATED
-      )
+      ADOPTPETID, CONTACTS, TELEPHONE, 
+      ADDRESS, STATUS, CREATED, 
+      UPDATED)
     values (#{id,jdbcType=DECIMAL}, #{fosteruserid,jdbcType=DECIMAL}, #{adoptuserid,jdbcType=DECIMAL}, 
-      #{adoptpetid,jdbcType=DECIMAL}, #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{status,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}
-      )
+      #{adoptpetid,jdbcType=DECIMAL}, #{contacts,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, 
+      #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbAdopt" >
     insert into TB_ADOPT
@@ -127,6 +129,9 @@
       </if>
       <if test="adoptpetid != null" >
         ADOPTPETID,
+      </if>
+      <if test="contacts != null" >
+        CONTACTS,
       </if>
       <if test="telephone != null" >
         TELEPHONE,
@@ -156,6 +161,9 @@
       </if>
       <if test="adoptpetid != null" >
         #{adoptpetid,jdbcType=DECIMAL},
+      </if>
+      <if test="contacts != null" >
+        #{contacts,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         #{telephone,jdbcType=VARCHAR},
@@ -195,6 +203,9 @@
       <if test="record.adoptpetid != null" >
         ADOPTPETID = #{record.adoptpetid,jdbcType=DECIMAL},
       </if>
+      <if test="record.contacts != null" >
+        CONTACTS = #{record.contacts,jdbcType=VARCHAR},
+      </if>
       <if test="record.telephone != null" >
         TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
       </if>
@@ -221,6 +232,7 @@
       FOSTERUSERID = #{record.fosteruserid,jdbcType=DECIMAL},
       ADOPTUSERID = #{record.adoptuserid,jdbcType=DECIMAL},
       ADOPTPETID = #{record.adoptpetid,jdbcType=DECIMAL},
+      CONTACTS = #{record.contacts,jdbcType=VARCHAR},
       TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
       ADDRESS = #{record.address,jdbcType=VARCHAR},
       STATUS = #{record.status,jdbcType=DECIMAL},
@@ -241,6 +253,9 @@
       </if>
       <if test="adoptpetid != null" >
         ADOPTPETID = #{adoptpetid,jdbcType=DECIMAL},
+      </if>
+      <if test="contacts != null" >
+        CONTACTS = #{contacts,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         TELEPHONE = #{telephone,jdbcType=VARCHAR},
@@ -265,6 +280,7 @@
     set FOSTERUSERID = #{fosteruserid,jdbcType=DECIMAL},
       ADOPTUSERID = #{adoptuserid,jdbcType=DECIMAL},
       ADOPTPETID = #{adoptpetid,jdbcType=DECIMAL},
+      CONTACTS = #{contacts,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=VARCHAR},
       ADDRESS = #{address,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=DECIMAL},

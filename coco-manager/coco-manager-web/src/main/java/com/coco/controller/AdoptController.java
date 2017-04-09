@@ -30,18 +30,42 @@ public class AdoptController {
     @RequestMapping("/user/adoptApply/{petId}")
     public String getFosterPet(@PathVariable String petId, Model model, HttpSession session,
                                HttpServletRequest request, HttpServletResponse response) throws Exception{
+        Object userId = session.getAttribute("user");
+        BigDecimal user_Id = (BigDecimal)userId;
         BigDecimal pet_Id = new BigDecimal(petId);
-        TbPets tbPet = petService.getPet(pet_Id);
-        model.addAttribute("pet",tbPet);
-        return "/user/adoptApply";
+        //判断能不能发起领养申请
+        //判断这个宠物是不是自己的
+        boolean petBelongToUserFlag = petService.judgePetBelongToUser(user_Id,pet_Id);
+        //判断用户有没有申请领养过该宠物
+        boolean hadAdoptThePet = adoptService.judgeHadAdoptThePet(user_Id,pet_Id);
+        if(petBelongToUserFlag == false && hadAdoptThePet == false){
+            TbPets tbPet = petService.getPet(pet_Id);
+            model.addAttribute("pet",tbPet);
+            return "/user/adoptApply";
+        }else if(petBelongToUserFlag){
+            //不能领养自己寄养的宠物
+            System.out.println("不能领养自己寄养的宠物");
+            request.setAttribute("wrong","不能领养自己寄养的宠物");
+            request.getRequestDispatcher("/adopt/1").forward(request,response);
+        }else if(hadAdoptThePet){
+            //已经申请领养了，不能再次申请
+            System.out.println("已经申请领养了，不能再次申请");
+            request.setAttribute("wrong","已经申请领养了，不能再次申请");
+            request.getRequestDispatcher("/adopt/1").forward(request,response);
+        }
+        return null;
     }
     @RequestMapping("/user/adopt")
-    public void adopt(String id, String address, String telePhone, HttpSession session,
+    public void adopt(String id, String address, String contacts, String telePhone, HttpSession session,
                        HttpServletRequest request, HttpServletResponse response) throws Exception{
+        boolean flag = false;
         Object userId = session.getAttribute("user");
         BigDecimal user_Id = (BigDecimal)userId;
         BigDecimal petId = new BigDecimal(id);
-        adoptService.addAdopt(petId,user_Id,address,telePhone);
+        TaotaoResult result = adoptService.addAdopt(petId,user_Id,contacts,address,telePhone);
+        if(result.getStatus() == 200){
+            request.getRequestDispatcher("/user/adoptList/1").forward(request,response);
+        }
     }
     @RequestMapping(value="/user/adoptList/{pageNumber}")
     public String getOrderList(@PathVariable String pageNumber,Model model, HttpSession session,
@@ -72,6 +96,10 @@ public class AdoptController {
         Page<AdoptMessage> adoptMessage = adoptService.getAdoptMessage(page_Number,pet_Id);
         request.setAttribute("packagePage", adoptMessage);
         model.addAttribute("list",adoptMessage.getList());
+        if(adoptMessage.getList().size() != 0){
+            String petName = adoptMessage.getList().get(0).getName();
+            request.setAttribute("petName",petName);
+        }
         return "/user/adoptMessage";
     }
     @RequestMapping("/user/agreeAdopt/{adoptId}")

@@ -143,6 +143,7 @@
 </div>
 
 <div class="search-result top-distance">
+    <h5 align="center" style="font-size: 23px; color: #01AAED"><strong>我的领养动态</strong></h5>
     <div class="main">
         <div class="container">
             <div class="content">
@@ -150,6 +151,7 @@
                     <thead>
                     <tr>
                         <th>宠物名称</th>
+                        <th>寄养人</th>
                         <th>寄养人电话</th>
                         <th>寄养人地址</th>
                         <th>宠物照片</th>
@@ -160,6 +162,7 @@
                     <c:forEach items="${list}" var="adopt">
                         <tr>
                             <td>${adopt.name}</td>
+                            <td>${adopt.contacts}</td>
                             <td>${adopt.telePhone}</td>
                             <td>${adopt.address}</td>
                             <td><img src="${adopt.image}" height="50" width="50"></td>

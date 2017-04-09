@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.coco.pojo.TbFoster" >
     <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="PETID" property="petid" jdbcType="DECIMAL" />
+    <result column="CONTACTS" property="contacts" jdbcType="VARCHAR" />
     <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
     <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, PETID, TELEPHONE, ADDRESS, STATUS, CREATED, UPDATED
+    ID, PETID, CONTACTS, TELEPHONE, ADDRESS, STATUS, CREATED, UPDATED
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbFosterExample" >
     select
@@ -102,12 +103,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbFoster" >
-    insert into TB_FOSTER (ID, PETID, TELEPHONE, 
-      ADDRESS, STATUS, CREATED, 
-      UPDATED)
-    values (#{id,jdbcType=DECIMAL}, #{petid,jdbcType=DECIMAL}, #{telephone,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP})
+    insert into TB_FOSTER (ID, PETID, CONTACTS, 
+      TELEPHONE, ADDRESS, STATUS, 
+      CREATED, UPDATED)
+    values (#{id,jdbcType=DECIMAL}, #{petid,jdbcType=DECIMAL}, #{contacts,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, 
+      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbFoster" >
     insert into TB_FOSTER
@@ -117,6 +118,9 @@
       </if>
       <if test="petid != null" >
         PETID,
+      </if>
+      <if test="contacts != null" >
+        CONTACTS,
       </if>
       <if test="telephone != null" >
         TELEPHONE,
@@ -140,6 +144,9 @@
       </if>
       <if test="petid != null" >
         #{petid,jdbcType=DECIMAL},
+      </if>
+      <if test="contacts != null" >
+        #{contacts,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         #{telephone,jdbcType=VARCHAR},
@@ -173,6 +180,9 @@
       <if test="record.petid != null" >
         PETID = #{record.petid,jdbcType=DECIMAL},
       </if>
+      <if test="record.contacts != null" >
+        CONTACTS = #{record.contacts,jdbcType=VARCHAR},
+      </if>
       <if test="record.telephone != null" >
         TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
       </if>
@@ -197,6 +207,7 @@
     update TB_FOSTER
     set ID = #{record.id,jdbcType=DECIMAL},
       PETID = #{record.petid,jdbcType=DECIMAL},
+      CONTACTS = #{record.contacts,jdbcType=VARCHAR},
       TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
       ADDRESS = #{record.address,jdbcType=VARCHAR},
       STATUS = #{record.status,jdbcType=DECIMAL},
@@ -211,6 +222,9 @@
     <set >
       <if test="petid != null" >
         PETID = #{petid,jdbcType=DECIMAL},
+      </if>
+      <if test="contacts != null" >
+        CONTACTS = #{contacts,jdbcType=VARCHAR},
       </if>
       <if test="telephone != null" >
         TELEPHONE = #{telephone,jdbcType=VARCHAR},
@@ -233,6 +247,7 @@
   <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbFoster" >
     update TB_FOSTER
     set PETID = #{petid,jdbcType=DECIMAL},
+      CONTACTS = #{contacts,jdbcType=VARCHAR},
       TELEPHONE = #{telephone,jdbcType=VARCHAR},
       ADDRESS = #{address,jdbcType=VARCHAR},
       STATUS = #{status,jdbcType=DECIMAL},

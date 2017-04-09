@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Created by Administrator on 2017/3/28 0028.
  */
 public interface FosterService {
-    TaotaoResult addFoster(String id, String address, String telePhone);
+    TaotaoResult addFoster(String id, String contacts, String address, String telePhone);
     TaotaoResult upFoster(BigDecimal id);
     Page<adoptPet> getAdoptList(Integer pageNumber);
 }

@@ -1,5 +1,6 @@
 package com.coco.service.impl;
 
+import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
 import com.coco.mapper.TbFosterMapper;
@@ -9,6 +10,7 @@ import com.coco.pojo.TbFosterExample;
 import com.coco.pojo.TbPets;
 import com.coco.pojo.TbPetsExample;
 import com.coco.service.PetService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,12 +53,18 @@ public class PetServiceImpl implements PetService {
         }
     }
     @Override
-    public List<TbPets> getPetList(BigDecimal userId){
+    public Page<TbPets> getPetList(Integer pageNumber,BigDecimal userId){
+        Page<TbPets> page = new Page<>(pageNumber);
         TbPetsExample example = new TbPetsExample();
         TbPetsExample.Criteria criteria = example.createCriteria();
         criteria.andOwnerEqualTo(userId);
+        Integer count = petsMapper.countByExample(example);
+        example.setOrderByClause("id desc");
+        PageHelper.startPage(pageNumber, page.getPageSize());
         List<TbPets> list = petsMapper.selectByExample(example);
-        return list;
+        page.setTotalPageItems(count);
+        page.setList(list);
+        return page;
     }
     @Override
     public TaotaoResult deletePet(BigDecimal petId){
@@ -106,5 +114,18 @@ public class PetServiceImpl implements PetService {
         tbPet.setUpdated(new Date());
         petsMapper.updateByPrimaryKey(tbPet);
         return TaotaoResult.ok();
+    }
+    @Override
+    public boolean judgePetBelongToUser(BigDecimal userId,BigDecimal petId){
+        TbPetsExample example = new TbPetsExample();
+        TbPetsExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(petId);
+        criteria.andOwnerEqualTo(userId);
+        List<TbPets> tbPets = petsMapper.selectByExample(example);
+        if(tbPets.size() == 0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }

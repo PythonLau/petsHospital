@@ -260,9 +260,10 @@ select * from tb_manager
 create table tb_foster(
 id number(20) NOT NULL,    --寄养id
 petId number(20) NOT NULL,    --宠物ID
+contacts varchar(50) NOT NULL, --寄养联系人
 telePhone varchar(50) NOT NULL,  --手机号码
 address varchar(200) NOT NULL,  --寄养地址
-status number(4) NOT NULL, --套餐状态，1寄养中，0被领养或者取消寄养
+status number(4) NOT NULL, --套餐状态，1寄养中，0宠物被删除或者取消寄养等无效情况，2被领养
 created date default sysdate, -- '创建时间'
 updated date default sysdate, -- '更新时间'
 PRIMARY KEY (id)
@@ -271,6 +272,9 @@ PRIMARY KEY (id)
 select * from tb_foster
 select * from tb_pets
 truncate table tb_foster
+
+
+drop table tb_foster
 
 ------------------------------------------------------------------------------------------------------------------
 
@@ -301,9 +305,10 @@ id number(20) NOT NULL,    --领养id
 fosterUserId number(20) NOT NULL,    --寄养用户id
 adoptUserId number(20) NOT NULL,    --领养用户id
 adoptPetId number(20) NOT NULL,    --领养宠物id
+contacts varchar(50) NOT NULL, --领养联系人
 telePhone varchar(50) NOT NULL,  --领养人手机号码
 address varchar(200) NOT NULL,  --领养地址
-status number(4) NOT NULL, --套餐状态，1申请中，0领养失败或者取消领养，2领养成功
+status number(4) NOT NULL, --套餐状态，1申请中，0领养失败或者取消领养或者寄养者删除宠物等无效情况，2领养成功
 created date default sysdate, -- '创建时间'
 updated date default sysdate, -- '更新时间'
 PRIMARY KEY (id)
@@ -315,6 +320,8 @@ select * from tb_adopt
 
 truncate table tb_adopt
 
+drop table tb_adopt
+
 
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -324,7 +331,7 @@ id number(20) NOT NULL,    --病历id
 petId number(20) NOT NULL, --宠物id
 officeId number(10) NOT NULL, --科室id
 registerTime date NOT NULL, --预约时间
-status number(4) NOT NULL, --挂号状态 1挂号中 2已经处理 0取消挂号或者不接受治疗，3正常结束
+status number(4) NOT NULL, --挂号状态 1挂号中 2医生已经处理 0取消挂号或者不接受治疗或者用户删除宠物等无效情况，3正常结束
 recipe varchar(500) DEFAULT NULL, --处方
 price number(20,2) DEFAULT NULL,   --套餐价格
 doctorId number(20) DEFAULT NULL, --主治医生

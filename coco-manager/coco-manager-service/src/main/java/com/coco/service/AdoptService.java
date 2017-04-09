@@ -12,9 +12,10 @@ import java.util.List;
  * Created by Administrator on 2017/3/29 0029.
  */
 public interface AdoptService {
-    TaotaoResult addAdopt(BigDecimal petId, BigDecimal userId,String address, String telePhone);
+    TaotaoResult addAdopt(BigDecimal petId, BigDecimal userId,String contacts,String address, String telePhone);
     Page<myAdopt> getMyAdoptList(Integer pageNumber, BigDecimal userId);
     TaotaoResult cancelAdopt(BigDecimal id);
     Page<AdoptMessage> getAdoptMessage(Integer pageNumber,BigDecimal petId);
     TaotaoResult agreeAdopt(BigDecimal adoptId);
+    boolean judgeHadAdoptThePet(BigDecimal userId,BigDecimal petId);
 }

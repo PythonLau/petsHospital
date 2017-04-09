@@ -555,8 +555,9 @@ td, th {
 }
 
 table.highlight > tbody > tr {
-    transition: background-color .25s ease
+    transition: background-color .25s ease;
 }
+
 
 table.highlight > tbody > tr:hover {
     background-color: #f2f2f2

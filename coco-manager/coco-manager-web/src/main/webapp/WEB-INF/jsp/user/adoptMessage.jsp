@@ -143,13 +143,14 @@
 </div>
 
 <div class="search-result top-distance">
+    <h5 align="center" style="font-size: 23px; color: #01AAED"><strong>${requestScope.petName}的领养申请</strong></h5>
     <div class="main">
         <div class="container">
             <div class="content">
                 <table class="cart-table highlight centered">
                     <thead>
                     <tr>
-                        <th>待领养宠物</th>
+                        <th>联系人</th>
                         <th>领养人电话</th>
                         <th>领养人地址</th>
                         <th>操作</th>
@@ -158,7 +159,7 @@
                     <tbody>
                     <c:forEach items="${list}" var="adoptMessage">
                         <tr>
-                            <td>${adoptMessage.name}</td>
+                            <td>${adoptMessage.contacts}</td>
                             <td>${adoptMessage.telePhone}</td>
                             <td>${adoptMessage.address}</td>
                             <td>

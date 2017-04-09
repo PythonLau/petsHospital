@@ -86,6 +86,7 @@
 
                         <div>
                             <p class="name" name="title">${adoptPet.name}</p>
+                            <p class="detail">联系人:${adoptPet.contacts}</p>
                             <p class="detail">地址:${adoptPet.address}</p>
                             <p class="detail">联系电话:${adoptPet.telePhone}</p>
                             <p class="button">
@@ -162,6 +163,12 @@
             window.location.href = href;
         });
     });
+</script>
+<script>
+    var wrong = '<%=request.getAttribute("wrong")%>';
+    if(wrong != 'null'){
+        alert(wrong);
+    }
 </script>
 </body>
 </html>

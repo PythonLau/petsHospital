@@ -9,6 +9,7 @@ public class adoptPet {
     BigDecimal fosterId;
     BigDecimal petId;
     String name;
+    String contacts;
     String address;
     String telePhone;
     String image;
@@ -35,6 +36,14 @@ public class adoptPet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
     }
 
     public String getAddress() {

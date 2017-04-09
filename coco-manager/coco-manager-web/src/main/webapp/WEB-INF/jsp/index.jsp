@@ -215,7 +215,7 @@
             <a href="#">个人信息</a>
         </c:if>
         <c:if test="${sessionScope.nickName != null}">
-            <a href="/user/petsList">我的宠物</a>
+            <a href="/user/petsList/1">我的宠物</a>
         </c:if>
     </div>
 </div>
@@ -265,17 +265,18 @@
     </ul>
 
 </div>
-
-<div id="nav">
-    <div id="nav-content">
-        <ul>
-            <li><a href="/">首页</a></li>
-            <li><a href="#">我要挂号</a></li>
-            <li><a href="/adopt/1">寄养领养</a></li>
-            <li><a href="/package/1">订购套餐</a></li>
-            <li><a href="#">医院介绍</a></li>
-            <li><a href="#">联系我们</a></li>
-        </ul>
+<div style="width: 100%;background-color: blue">
+    <div id="nav">
+        <div id="nav-content">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="#">我要挂号</a></li>
+                <li><a href="/adopt/1">寄养领养</a></li>
+                <li><a href="/package/1">订购套餐</a></li>
+                <li><a href="#">医院介绍</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 

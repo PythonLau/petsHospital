@@ -41,7 +41,7 @@ public class UserController {
             session.setAttribute("user",userId);
             session.setAttribute("nickName",nickName);
             session.setAttribute("userStatus",userStatus);
-            response.sendRedirect("/index");
+            response.sendRedirect("/");
         }
     }
     @RequestMapping(value = "/register/checkRegisterName",method=RequestMethod.POST)

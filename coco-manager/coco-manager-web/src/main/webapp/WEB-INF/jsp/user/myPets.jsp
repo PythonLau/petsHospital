@@ -18,7 +18,9 @@
     <link rel="stylesheet" href="/css/material-icons.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/layui.css">
+    <link rel="stylesheet" href="/css/search.css"/>
     <link href="/css/homepage.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <style>
         .cart {
             padding-top: 100px;
@@ -128,43 +130,46 @@
     </ul>
 
 </div>
-
-<div id="nav">
-    <div id="nav-content">
-        <ul>
-            <li><a href="/">首页</a></li>
-            <li><a href="#">我要挂号</a></li>
-            <li><a href="#">寄养领养</a></li>
-            <li><a href="/package/1">订购套餐</a></li>
-            <li><a href="#">医院介绍</a></li>
-            <li><a href="#">联系我们</a></li>
-        </ul>
+<div style="width: 100%;background-color: blue">
+    <div id="nav">
+        <div id="nav-content">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="#">我要挂号</a></li>
+                <li><a href="#">寄养领养</a></li>
+                <li><a href="/package/1">订购套餐</a></li>
+                <li><a href="#">医院介绍</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 
+
 <div class="search-result top-distance">
+    <h5 align="center" style="font-size: 23px; color: #01AAED"><strong>我的宠物</strong></h5>
     <div class="main">
         <div class="container">
             <div class="content">
                 <table class="cart-table highlight centered">
                     <thead>
                     <tr>
-                    <th>宠物名字</th>
-                    <th>宠物类型</th>
-                    <th>宠物年龄</th>
-                    <th>宠物性别</th>
-                    <th>宠物照片</th>
-                    <th><a href="/user/addPets"><button class="layui-btn layui-btn-small">新增</button></a></th>
+                        <th>宠物照片</th>
+                        <th>宠物名字</th>
+                        <th>宠物类型</th>
+                        <th>宠物年龄</th>
+                        <th>宠物性别</th>
+                        <th><a href="/user/addPets"><button class="layui-btn layui-btn-small">新增宠物</button></a></th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${list}" var="pets">
-                        <tr>
+                        <tr style="height: 138px">
+                            <td><img src="${pets.image}" height="88" width="88"></td>
                             <td>${pets.name}</td>
                             <td>${pets.typename}</td>
                             <td>${pets.age}</td>
                             <td>${pets.sex}</td>
-                            <td><img src="${pets.image}" height="50" width="50"></td>
                             <td>
                                 <a href="javascript:if(confirm('确实要删除该宠物吗?'))location='/user/deletePet/${pets.id}'">
                                     <button class="layui-btn layui-btn-mini layui-btn-normal">删除</button>
@@ -197,6 +202,30 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        <div style="float: right; height: 100px; line-height: 100px; display: inline-block; padding: 30px 15px;">
+            共 ${requestScope.packagePage.totalPageNumber } 页
+            &nbsp;&nbsp;
+            当前第 ${requestScope.packagePage.currentPageNo } 页
+            &nbsp;&nbsp;
+
+            <c:if test="${requestScope.packagePage.hasPrev }">
+                <a href="/user/orderList/1">首页</a>
+                &nbsp;&nbsp;
+                <a href="/package/${requestScope.packagePage.prevPage }">上一页</a>
+            </c:if>
+
+            &nbsp;&nbsp;
+
+            <c:if test="${requestScope.packagePage.hasNext }">
+                <a href="/user/orderList/${requestScope.packagePage.nextPage }">下一页</a>
+                &nbsp;&nbsp;
+                <a href="/user/orderList/${requestScope.packagePage.totalPageNumber }">末页</a>
+            </c:if>
+
+            &nbsp;&nbsp;
+
+            转到 <input type="text" id="pageNo" style="width: 33px; height: 23px"/> 页
         </div>
     </div>
 </div>

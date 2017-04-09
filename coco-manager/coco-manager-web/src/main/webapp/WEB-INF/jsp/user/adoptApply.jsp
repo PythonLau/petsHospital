@@ -46,6 +46,9 @@
                     <label>宠物名字</label>
                     <input id="name" name="name" type="text" readonly="true" value="${pet.name}"/>
 
+                    <label>联系人</label>
+                    <input id="contacts" name="contacts" type="text"/>
+
                     <label>领养地址</label>
                     <input id="address" name="address" type="text"/>
 

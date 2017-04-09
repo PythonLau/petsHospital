@@ -24,11 +24,11 @@ public class FosterController {
     @Autowired
     private FosterService fosterService;
     @RequestMapping("/user/foster")
-    public void foster(String id, String address, String telePhone, HttpSession session,
+    public void foster(String id, String contacts, String address, String telePhone, HttpSession session,
                        HttpServletRequest request, HttpServletResponse response) throws Exception{
-        TaotaoResult result = fosterService.addFoster(id,address,telePhone);
+        TaotaoResult result = fosterService.addFoster(id,contacts,address,telePhone);
         if(result.getStatus() == 200){
-            request.getRequestDispatcher("/user/petsList").forward(request,response);
+            request.getRequestDispatcher("/user/petsList/1").forward(request,response);
         }
     }
     @RequestMapping("/user/upFoster/{id}")
@@ -37,7 +37,7 @@ public class FosterController {
         BigDecimal petId = new BigDecimal(id);
         TaotaoResult result = fosterService.upFoster(petId);
         if(result.getStatus() == 200){
-            request.getRequestDispatcher("/user/petsList").forward(request,response);
+            request.getRequestDispatcher("/user/petsList/1").forward(request,response);
         }
     }
     @RequestMapping("/adopt/{pageNumber}")

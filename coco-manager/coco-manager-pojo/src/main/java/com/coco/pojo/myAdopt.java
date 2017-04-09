@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 public class myAdopt {
     BigDecimal id;
     String name;
+    String contacts;
     String telePhone;
     String address;
     Short status;
@@ -27,6 +28,14 @@ public class myAdopt {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
     }
 
     public Short getStatus() {

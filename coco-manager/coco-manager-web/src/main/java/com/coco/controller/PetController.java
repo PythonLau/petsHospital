@@ -1,5 +1,6 @@
 package com.coco.controller;
 
+import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbPets;
 import com.coco.service.FosterService;
@@ -39,14 +40,16 @@ public class PetController {
             request.getRequestDispatcher("/user/addPets").forward(request,response);
         }
     }
-    @RequestMapping("/user/petsList")
-    public String getPetList(Model model, HttpSession session,
+    @RequestMapping("/user/petsList/{pageNumber}")
+    public String getPetList(@PathVariable String pageNumber,Model model, HttpSession session,
                            HttpServletRequest request, HttpServletResponse response){
+        Integer page_number = new Integer(pageNumber);
         Object userId = session.getAttribute("user");
         BigDecimal user_Id = (BigDecimal)userId;
-        List<TbPets> list = petService.getPetList(user_Id);
+        Page<TbPets> pets = petService.getPetList(page_number,user_Id);
+        request.setAttribute("packagePage",pets);
         System.out.println("petList");
-        model.addAttribute("list",list);
+        model.addAttribute("list",pets.getList());
         return "/user/myPets";
     }
     @RequestMapping("/user/deletePet/{petId}")

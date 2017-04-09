@@ -28,7 +28,7 @@ public class AdoptServiceImpl implements AdoptService {
     private TbPetsMapper petsMapper;
     @Autowired
     private TbFosterMapper fosterMapper;
-    public TaotaoResult addAdopt(BigDecimal petId, BigDecimal userId, String address, String telePhone){
+    public TaotaoResult addAdopt(BigDecimal petId, BigDecimal userId, String contacts,String address, String telePhone){
         TbAdopt adopt = new TbAdopt();
         TbPets tbPets = petsMapper.selectByPrimaryKey(petId);
         BigDecimal fosterUserId = tbPets.getOwner();
@@ -36,6 +36,7 @@ public class AdoptServiceImpl implements AdoptService {
         BigDecimal adopt_Id = new BigDecimal(adoptId);
         adopt.setId(adopt_Id);
         adopt.setFosteruserid(fosterUserId);
+        adopt.setContacts(contacts);
         adopt.setAdoptuserid(userId);
         adopt.setAddress(address);
         adopt.setTelephone(telePhone);
@@ -64,6 +65,7 @@ public class AdoptServiceImpl implements AdoptService {
             adoptView.setStatus(adopt.getStatus());
             TbPets pet = petsMapper.selectByPrimaryKey(adopt.getAdoptpetid());
             adoptView.setName(pet.getName());
+            adoptView.setContacts(adopt.getContacts());
             adoptView.setImage(pet.getImage());
             TbFosterExample example1 = new TbFosterExample();
             TbFosterExample.Criteria criteria1 = example1.createCriteria();
@@ -105,6 +107,7 @@ public class AdoptServiceImpl implements AdoptService {
         for(TbAdopt adopt : adoptList){
             AdoptMessage adoptMessage = new AdoptMessage();
             adoptMessage.setAdoptId(adopt.getId());
+            adoptMessage.setContacts(adopt.getContacts());
             adoptMessage.setTelePhone(adopt.getTelephone());
             adoptMessage.setAddress(adopt.getAddress());
             TbPets Pet = petsMapper.selectByPrimaryKey(adopt.getAdoptpetid());
@@ -134,5 +137,20 @@ public class AdoptServiceImpl implements AdoptService {
         Pet.setOwner(adopt.getAdoptuserid());
         petsMapper.updateByPrimaryKey(Pet);
         return TaotaoResult.ok();
+    }
+    @Override
+    public boolean judgeHadAdoptThePet(BigDecimal userId,BigDecimal petId){
+        TbAdoptExample example = new TbAdoptExample();
+        TbAdoptExample.Criteria criteria = example.createCriteria();
+        criteria.andAdoptuseridEqualTo(userId);
+        criteria.andAdoptpetidEqualTo(petId);
+        Short one = 1;
+        criteria.andStatusEqualTo(one);
+        List<TbAdopt> adopt = adoptMapper.selectByExample(example);
+        if(adopt.size() == 0){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
