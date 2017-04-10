@@ -18,5 +18,7 @@ public interface MedicalService {
     TaotaoResult cancelMedical(BigDecimal caseHistoryId);
     BigDecimal getPetId(BigDecimal caseHistoryId);
     EUDataGridResult getTreatList(int page, int rows,BigDecimal userId);
-    TaotaoResult createPrescribe(TbMedical medical,BigDecimal doctorId);
+    TaotaoResult createPrescribe(TbMedical medical, BigDecimal doctorId);
+    EUDataGridResult getMedicalOrderList(Integer page, Integer rows);
+    TaotaoResult updatePrescribeByManager(BigDecimal medicalId,Short status,BigDecimal price);
 }

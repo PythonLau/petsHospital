@@ -29,6 +29,7 @@ com\coco\pojo\TbPackageExample$Criteria.class
 com\coco\pojo\TbModuleExample$Criteria.class
 com\coco\pojo\TbEmployeeExample$Criterion.class
 com\coco\pojo\TbPositionCatExample$GeneratedCriteria.class
+com\coco\pojo\treat.class
 com\coco\pojo\TbDoctorExample$Criteria.class
 com\coco\pojo\TbDoctorExample.class
 com\coco\pojo\TbSliderExample$Criterion.class

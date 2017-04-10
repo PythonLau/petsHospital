@@ -66,6 +66,18 @@ var TT = TAOTAO = {
         }
     },
 
+    formatmedialStatus : function formatmedialStatus(val,row) {
+        if(val == 0){
+            return '无效挂号';
+        }else if(val == 1){
+            return '挂号中';
+        }else if(val == 2){
+            return '医生已处理';
+        }else if(val == 3){
+            return '正常结束';
+        }
+    },
+
     init : function(data){
         //新增物品界面初始化图片上传组件
         this.initAddPicUpload(data)

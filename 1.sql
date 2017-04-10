@@ -155,7 +155,7 @@ typename varchar(20) NOT NULL,   --宠物类型
 owner number(20) NOT NULL,   --主人id
 age number(3) NOT NULL, --宠物年龄
 sex varchar(4) NOT NULL, --宠物性别
-status number(4) NOT NULL, --宠物状态，1正常,2寄养
+status number(4) NOT NULL, --宠物状态，1正常,2寄养,0删除
 image varchar(500) DEFAULT NULL, -- '宠物照片'
 created date default sysdate, -- '创建时间'
 updated date default sysdate, -- '更新时间'
@@ -332,8 +332,8 @@ petId number(20) NOT NULL, --宠物id
 officeId number(10) NOT NULL, --科室id
 registerTime date NOT NULL, --预约时间
 status number(4) NOT NULL, --挂号状态 1挂号中 2医生已经处理 0取消挂号或者不接受治疗或者用户删除宠物等无效情况，3正常结束
-recipe varchar(500) DEFAULT NULL, --处方
-price number(20,2) DEFAULT NULL,   --套餐价格
+recipe clob DEFAULT NULL, --处方
+price number(20,2) DEFAULT NULL,   --本次治疗费用
 doctorId number(20) DEFAULT NULL, --主治医生
 created date default sysdate, -- '挂号时间'
 updated date default NULL, -- '开处方时间'
@@ -341,6 +341,11 @@ PRIMARY KEY (id)
 )
 
 select * from tb_medical
+
+truncate table tb_medical
+
+
+select recipe from tb_medical
 
 drop table tb_medical
 

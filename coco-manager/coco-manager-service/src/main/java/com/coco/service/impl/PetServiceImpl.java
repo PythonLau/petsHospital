@@ -57,6 +57,8 @@ public class PetServiceImpl implements PetService {
         Page<TbPets> page = new Page<>(pageNumber);
         TbPetsExample example = new TbPetsExample();
         TbPetsExample.Criteria criteria = example.createCriteria();
+        Short zero = 0;
+        criteria.andStatusNotEqualTo(zero);
         criteria.andOwnerEqualTo(userId);
         Integer count = petsMapper.countByExample(example);
         example.setOrderByClause("id desc");

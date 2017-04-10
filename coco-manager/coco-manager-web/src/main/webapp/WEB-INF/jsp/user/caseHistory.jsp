@@ -143,6 +143,7 @@
 </div>
 
 <div class="search-result top-distance">
+    <h5 align="center" style="font-size: 23px; color: #01AAED"><strong>${requestScope.petName}的挂号和病历</strong></h5>
     <div class="main">
         <div class="container">
             <div class="content">
@@ -152,14 +153,14 @@
                         <th>id</th>
                         <th>主治医生</th>
                         <th>时间</th>
-                        <th>处方</th>
+                        <th style="width: 33%">处方</th>
                         <th>价格</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${list}" var="caseHistory">
-                        <tr>
+                        <tr style="height: 333px">
                             <td>${caseHistory.id}</td>
                             <td>${caseHistory.doctorName}</td>
                             <td>
@@ -180,6 +181,9 @@
                                     <button class="layui-btn layui-btn-primary layui-btn-mini">已取消</button>
                                 </c:if>
                                 <c:if test="${caseHistory.status == 2}">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">医生已处理</button>
+                                </c:if>
+                                <c:if test="${caseHistory.status == 3}">
                                     <button class="layui-btn layui-btn-primary layui-btn-mini">已结束</button>
                                 </c:if>
                             </td>

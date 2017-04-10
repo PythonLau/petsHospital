@@ -7,11 +7,13 @@
     <result column="OFFICEID" property="officeid" jdbcType="DECIMAL" />
     <result column="REGISTERTIME" property="registertime" jdbcType="TIMESTAMP" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
-    <result column="RECIPE" property="recipe" jdbcType="VARCHAR" />
     <result column="PRICE" property="price" jdbcType="DECIMAL" />
     <result column="DOCTORID" property="doctorid" jdbcType="DECIMAL" />
     <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
     <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.coco.pojo.TbMedical" extends="BaseResultMap" >
+    <result column="RECIPE" property="recipe" jdbcType="CLOB" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -72,8 +74,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, PETID, OFFICEID, REGISTERTIME, STATUS, RECIPE, PRICE, DOCTORID, CREATED, UPDATED
+    ID, PETID, OFFICEID, REGISTERTIME, STATUS, PRICE, DOCTORID, CREATED, UPDATED
   </sql>
+  <sql id="Blob_Column_List" >
+    RECIPE
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.coco.pojo.TbMedicalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_MEDICAL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbMedicalExample" >
     select
     <if test="distinct" >
@@ -88,9 +109,11 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.math.BigDecimal" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from TB_MEDICAL
     where ID = #{id,jdbcType=DECIMAL}
   </select>
@@ -106,13 +129,13 @@
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbMedical" >
     insert into TB_MEDICAL (ID, PETID, OFFICEID, 
-      REGISTERTIME, STATUS, RECIPE, 
-      PRICE, DOCTORID, CREATED, 
-      UPDATED)
+      REGISTERTIME, STATUS, PRICE, 
+      DOCTORID, CREATED, UPDATED, 
+      RECIPE)
     values (#{id,jdbcType=DECIMAL}, #{petid,jdbcType=DECIMAL}, #{officeid,jdbcType=DECIMAL}, 
-      #{registertime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, #{recipe,jdbcType=VARCHAR}, 
-      #{price,jdbcType=DECIMAL}, #{doctorid,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, 
-      #{updated,jdbcType=TIMESTAMP})
+      #{registertime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
+      #{doctorid,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{recipe,jdbcType=CLOB})
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbMedical" >
     insert into TB_MEDICAL
@@ -132,9 +155,6 @@
       <if test="status != null" >
         STATUS,
       </if>
-      <if test="recipe != null" >
-        RECIPE,
-      </if>
       <if test="price != null" >
         PRICE,
       </if>
@@ -146,6 +166,9 @@
       </if>
       <if test="updated != null" >
         UPDATED,
+      </if>
+      <if test="recipe != null" >
+        RECIPE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -164,9 +187,6 @@
       <if test="status != null" >
         #{status,jdbcType=DECIMAL},
       </if>
-      <if test="recipe != null" >
-        #{recipe,jdbcType=VARCHAR},
-      </if>
       <if test="price != null" >
         #{price,jdbcType=DECIMAL},
       </if>
@@ -178,6 +198,9 @@
       </if>
       <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recipe != null" >
+        #{recipe,jdbcType=CLOB},
       </if>
     </trim>
   </insert>
@@ -205,9 +228,6 @@
       <if test="record.status != null" >
         STATUS = #{record.status,jdbcType=DECIMAL},
       </if>
-      <if test="record.recipe != null" >
-        RECIPE = #{record.recipe,jdbcType=VARCHAR},
-      </if>
       <if test="record.price != null" >
         PRICE = #{record.price,jdbcType=DECIMAL},
       </if>
@@ -220,7 +240,26 @@
       <if test="record.updated != null" >
         UPDATED = #{record.updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.recipe != null" >
+        RECIPE = #{record.recipe,jdbcType=CLOB},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update TB_MEDICAL
+    set ID = #{record.id,jdbcType=DECIMAL},
+      PETID = #{record.petid,jdbcType=DECIMAL},
+      OFFICEID = #{record.officeid,jdbcType=DECIMAL},
+      REGISTERTIME = #{record.registertime,jdbcType=TIMESTAMP},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      UPDATED = #{record.updated,jdbcType=TIMESTAMP},
+      RECIPE = #{record.recipe,jdbcType=CLOB}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -232,7 +271,6 @@
       OFFICEID = #{record.officeid,jdbcType=DECIMAL},
       REGISTERTIME = #{record.registertime,jdbcType=TIMESTAMP},
       STATUS = #{record.status,jdbcType=DECIMAL},
-      RECIPE = #{record.recipe,jdbcType=VARCHAR},
       PRICE = #{record.price,jdbcType=DECIMAL},
       DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
       CREATED = #{record.created,jdbcType=TIMESTAMP},
@@ -256,9 +294,6 @@
       <if test="status != null" >
         STATUS = #{status,jdbcType=DECIMAL},
       </if>
-      <if test="recipe != null" >
-        RECIPE = #{recipe,jdbcType=VARCHAR},
-      </if>
       <if test="price != null" >
         PRICE = #{price,jdbcType=DECIMAL},
       </if>
@@ -271,7 +306,23 @@
       <if test="updated != null" >
         UPDATED = #{updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="recipe != null" >
+        RECIPE = #{recipe,jdbcType=CLOB},
+      </if>
     </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.coco.pojo.TbMedical" >
+    update TB_MEDICAL
+    set PETID = #{petid,jdbcType=DECIMAL},
+      OFFICEID = #{officeid,jdbcType=DECIMAL},
+      REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      DOCTORID = #{doctorid,jdbcType=DECIMAL},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP},
+      RECIPE = #{recipe,jdbcType=CLOB}
     where ID = #{id,jdbcType=DECIMAL}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbMedical" >
@@ -280,7 +331,6 @@
       OFFICEID = #{officeid,jdbcType=DECIMAL},
       REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
       STATUS = #{status,jdbcType=DECIMAL},
-      RECIPE = #{recipe,jdbcType=VARCHAR},
       PRICE = #{price,jdbcType=DECIMAL},
       DOCTORID = #{doctorid,jdbcType=DECIMAL},
       CREATED = #{created,jdbcType=TIMESTAMP},

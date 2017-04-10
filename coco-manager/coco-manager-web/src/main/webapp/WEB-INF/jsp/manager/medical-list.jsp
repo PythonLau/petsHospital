@@ -1,36 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="search" style="padding:3px">
     <select id="search_condition">
-        <option value="id">员工ID</option>
-        <option value="name">员工姓名</option>
-        <option value="sex">性别</option>
-        <option value="cid">所属部门</option>
+        <option value="id">病历ID</option>
+        <option value="medicalTime">治疗时间</option>
+        <option value="positionName">部门名称</option>
         <option value="status">状态</option>
     </select>
     <input id="search_key" style="line-height:26px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
 </div>
-<table class="easyui-datagrid" id="registerList" title="员工列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/doctor/treat/list',method:'get',pageSize:10,toolbar:toolbar">
+<table class="easyui-datagrid" id="medicalList" title="病历列表"
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/manager/medical/list',method:'get',pageSize:10,toolbar:toolbar">
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'id',width:200">病历id</th>
-        <th data-options="field:'petName',width:200">宠物名字</th>
-        <th data-options="field:'registerTime',width:200">预约时间</th>
-        <th data-options="field:'nickName',width:200">主人昵称</th>
-        <th data-options="field:'telePhone',width:200">主人电话</th>
+        <th data-options="field:'id',width:138">病历id</th>
+        <th data-options="field:'recipe',width:666">处方</th>
+        <th data-options="field:'name',width:133">宠物名字</th>
+        <th data-options="field:'status',width:88,formatter:TAOTAO.formatmedialStatus">状态</th>
+        <th data-options="field:'price',width:133">治疗费用</th>
+        <th data-options="field:'medicalTime',width:133">治疗时间</th>
+        <th data-options="field:'doctorName',width:133">医生名字</th>
+
     </tr>
     </thead>
 </table>
-<div id="prescribeWindow" class="easyui-window" title="修改员工信息" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/prescribe-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="prescribeWindow" class="easyui-window" title="处理该病历信息" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/medical-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 
 <script>
 
     function getSelectionsIds(){
-        var registerList = $("#registerList");
-        var sels = registerList.datagrid("getSelections");
+        var medicalList = $("#medicalList");
+        var sels = medicalList.datagrid("getSelections");
         var ids = [];
         for(var i in sels){
             ids.push(sels[i].id);
@@ -40,24 +42,24 @@
     }
 
     var toolbar = [{
-        text:'开处方',
+        text:'处理该病历',
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();
             if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个挂号单号才能开处方!');
+                $.messager.alert('提示','必须选择一个病历才能处理!');
                 return ;
             }
             if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个挂号单号!');
+                $.messager.alert('提示','只能选择一个病历!');
                 return ;
             }
 
             $("#prescribeWindow").window({
                 onLoad :function(){
                     //回显数据
-                    var data = $("#registerList").datagrid("getSelections")[0];
-                    $("#prescribeForm").form("load",data);
+                    var data = $("#medicalList").datagrid("getSelections")[0];
+                    $("#MedicalEditForm").form("load",data);
 
                     TAOTAO.init({
                         "pics" : data.image,
@@ -91,7 +93,7 @@
             success: function(data) {
                 alert("重新加载数据");
                 //获取分页控件
-                $("#registerList").datagrid('getPager').pagination({
+                $("#medicalList").datagrid('getPager').pagination({
                     //重新load分页控件
                     //自带属性
                     //原来右边这个是1
@@ -107,7 +109,7 @@
                         doSearch(pageNumber, pageSize);
                     }
                 })
-                $('#registerList').datagrid('loadData',data);
+                $('#medicalList').datagrid('loadData',data);
 
                 alert("加载完毕");
             }

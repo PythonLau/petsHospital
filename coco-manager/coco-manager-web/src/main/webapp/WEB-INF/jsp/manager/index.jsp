@@ -43,6 +43,13 @@
 					<li data-options="attributes:{'url':'package-list'}">套餐管理</li>
 				</ul>
 			</li>
+			<li>
+				<span>订单管理</span>
+				<ul>
+					<li data-options="attributes:{'url':'medical-list'}">挂号管理</li>
+					<li data-options="attributes:{'url':'order-list'}">订单管理</li>
+				</ul>
+			</li>
          	<li>
          		<span>网站内容管理</span>
          		<ul>

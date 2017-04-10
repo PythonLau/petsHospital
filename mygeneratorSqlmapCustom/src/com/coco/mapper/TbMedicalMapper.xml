@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.coco.mapper.TbFosterMapper" >
-  <resultMap id="BaseResultMap" type="com.coco.pojo.TbFoster" >
+<mapper namespace="com.coco.mapper.TbMedicalMapper" >
+  <resultMap id="BaseResultMap" type="com.coco.pojo.TbMedical" >
     <id column="ID" property="id" jdbcType="DECIMAL" />
     <result column="PETID" property="petid" jdbcType="DECIMAL" />
-    <result column="CONTACTS" property="contacts" jdbcType="VARCHAR" />
-    <result column="TELEPHONE" property="telephone" jdbcType="VARCHAR" />
-    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="OFFICEID" property="officeid" jdbcType="DECIMAL" />
+    <result column="REGISTERTIME" property="registertime" jdbcType="TIMESTAMP" />
     <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="DOCTORID" property="doctorid" jdbcType="DECIMAL" />
     <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
     <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.coco.pojo.TbMedical" extends="BaseResultMap" >
+    <result column="RECIPE" property="recipe" jdbcType="CLOB" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,15 +74,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    ID, PETID, CONTACTS, TELEPHONE, ADDRESS, STATUS, CREATED, UPDATED
+    ID, PETID, OFFICEID, REGISTERTIME, STATUS, PRICE, DOCTORID, CREATED, UPDATED
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbFosterExample" >
+  <sql id="Blob_Column_List" >
+    RECIPE
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.coco.pojo.TbMedicalExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from TB_FOSTER
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_MEDICAL
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,32 +95,50 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbMedicalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_MEDICAL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.math.BigDecimal" >
     select 
     <include refid="Base_Column_List" />
-    from TB_FOSTER
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_MEDICAL
     where ID = #{id,jdbcType=DECIMAL}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
-    delete from TB_FOSTER
+    delete from TB_MEDICAL
     where ID = #{id,jdbcType=DECIMAL}
   </delete>
-  <delete id="deleteByExample" parameterType="com.coco.pojo.TbFosterExample" >
-    delete from TB_FOSTER
+  <delete id="deleteByExample" parameterType="com.coco.pojo.TbMedicalExample" >
+    delete from TB_MEDICAL
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.coco.pojo.TbFoster" >
-    insert into TB_FOSTER (ID, PETID, CONTACTS, 
-      TELEPHONE, ADDRESS, STATUS, 
-      CREATED, UPDATED)
-    values (#{id,jdbcType=DECIMAL}, #{petid,jdbcType=DECIMAL}, #{contacts,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, 
-      #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.coco.pojo.TbMedical" >
+    insert into TB_MEDICAL (ID, PETID, OFFICEID, 
+      REGISTERTIME, STATUS, PRICE, 
+      DOCTORID, CREATED, UPDATED, 
+      RECIPE)
+    values (#{id,jdbcType=DECIMAL}, #{petid,jdbcType=DECIMAL}, #{officeid,jdbcType=DECIMAL}, 
+      #{registertime,jdbcType=TIMESTAMP}, #{status,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
+      #{doctorid,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{recipe,jdbcType=CLOB})
   </insert>
-  <insert id="insertSelective" parameterType="com.coco.pojo.TbFoster" >
-    insert into TB_FOSTER
+  <insert id="insertSelective" parameterType="com.coco.pojo.TbMedical" >
+    insert into TB_MEDICAL
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
@@ -119,23 +146,29 @@
       <if test="petid != null" >
         PETID,
       </if>
-      <if test="contacts != null" >
-        CONTACTS,
+      <if test="officeid != null" >
+        OFFICEID,
       </if>
-      <if test="telephone != null" >
-        TELEPHONE,
-      </if>
-      <if test="address != null" >
-        ADDRESS,
+      <if test="registertime != null" >
+        REGISTERTIME,
       </if>
       <if test="status != null" >
         STATUS,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="doctorid != null" >
+        DOCTORID,
       </if>
       <if test="created != null" >
         CREATED,
       </if>
       <if test="updated != null" >
         UPDATED,
+      </if>
+      <if test="recipe != null" >
+        RECIPE,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -145,17 +178,20 @@
       <if test="petid != null" >
         #{petid,jdbcType=DECIMAL},
       </if>
-      <if test="contacts != null" >
-        #{contacts,jdbcType=VARCHAR},
+      <if test="officeid != null" >
+        #{officeid,jdbcType=DECIMAL},
       </if>
-      <if test="telephone != null" >
-        #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+      <if test="registertime != null" >
+        #{registertime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
         #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="doctorid != null" >
+        #{doctorid,jdbcType=DECIMAL},
       </if>
       <if test="created != null" >
         #{created,jdbcType=TIMESTAMP},
@@ -163,16 +199,19 @@
       <if test="updated != null" >
         #{updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="recipe != null" >
+        #{recipe,jdbcType=CLOB},
+      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.coco.pojo.TbFosterExample" resultType="java.lang.Integer" >
-    select count(*) from TB_FOSTER
+  <select id="countByExample" parameterType="com.coco.pojo.TbMedicalExample" resultType="java.lang.Integer" >
+    select count(*) from TB_MEDICAL
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update TB_FOSTER
+    update TB_MEDICAL
     <set >
       <if test="record.id != null" >
         ID = #{record.id,jdbcType=DECIMAL},
@@ -180,17 +219,20 @@
       <if test="record.petid != null" >
         PETID = #{record.petid,jdbcType=DECIMAL},
       </if>
-      <if test="record.contacts != null" >
-        CONTACTS = #{record.contacts,jdbcType=VARCHAR},
+      <if test="record.officeid != null" >
+        OFFICEID = #{record.officeid,jdbcType=DECIMAL},
       </if>
-      <if test="record.telephone != null" >
-        TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="record.address != null" >
-        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      <if test="record.registertime != null" >
+        REGISTERTIME = #{record.registertime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.status != null" >
         STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.doctorid != null" >
+        DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
       </if>
       <if test="record.created != null" >
         CREATED = #{record.created,jdbcType=TIMESTAMP},
@@ -198,42 +240,65 @@
       <if test="record.updated != null" >
         UPDATED = #{record.updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.recipe != null" >
+        RECIPE = #{record.recipe,jdbcType=CLOB},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
-    update TB_FOSTER
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update TB_MEDICAL
     set ID = #{record.id,jdbcType=DECIMAL},
       PETID = #{record.petid,jdbcType=DECIMAL},
-      CONTACTS = #{record.contacts,jdbcType=VARCHAR},
-      TELEPHONE = #{record.telephone,jdbcType=VARCHAR},
-      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      OFFICEID = #{record.officeid,jdbcType=DECIMAL},
+      REGISTERTIME = #{record.registertime,jdbcType=TIMESTAMP},
       STATUS = #{record.status,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      UPDATED = #{record.updated,jdbcType=TIMESTAMP},
+      RECIPE = #{record.recipe,jdbcType=CLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_MEDICAL
+    set ID = #{record.id,jdbcType=DECIMAL},
+      PETID = #{record.petid,jdbcType=DECIMAL},
+      OFFICEID = #{record.officeid,jdbcType=DECIMAL},
+      REGISTERTIME = #{record.registertime,jdbcType=TIMESTAMP},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      DOCTORID = #{record.doctorid,jdbcType=DECIMAL},
       CREATED = #{record.created,jdbcType=TIMESTAMP},
       UPDATED = #{record.updated,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbFoster" >
-    update TB_FOSTER
+  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbMedical" >
+    update TB_MEDICAL
     <set >
       <if test="petid != null" >
         PETID = #{petid,jdbcType=DECIMAL},
       </if>
-      <if test="contacts != null" >
-        CONTACTS = #{contacts,jdbcType=VARCHAR},
+      <if test="officeid != null" >
+        OFFICEID = #{officeid,jdbcType=DECIMAL},
       </if>
-      <if test="telephone != null" >
-        TELEPHONE = #{telephone,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        ADDRESS = #{address,jdbcType=VARCHAR},
+      <if test="registertime != null" >
+        REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
       </if>
       <if test="status != null" >
         STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="doctorid != null" >
+        DOCTORID = #{doctorid,jdbcType=DECIMAL},
       </if>
       <if test="created != null" >
         CREATED = #{created,jdbcType=TIMESTAMP},
@@ -241,16 +306,33 @@
       <if test="updated != null" >
         UPDATED = #{updated,jdbcType=TIMESTAMP},
       </if>
+      <if test="recipe != null" >
+        RECIPE = #{recipe,jdbcType=CLOB},
+      </if>
     </set>
     where ID = #{id,jdbcType=DECIMAL}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbFoster" >
-    update TB_FOSTER
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.coco.pojo.TbMedical" >
+    update TB_MEDICAL
     set PETID = #{petid,jdbcType=DECIMAL},
-      CONTACTS = #{contacts,jdbcType=VARCHAR},
-      TELEPHONE = #{telephone,jdbcType=VARCHAR},
-      ADDRESS = #{address,jdbcType=VARCHAR},
+      OFFICEID = #{officeid,jdbcType=DECIMAL},
+      REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
       STATUS = #{status,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      DOCTORID = #{doctorid,jdbcType=DECIMAL},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP},
+      RECIPE = #{recipe,jdbcType=CLOB}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbMedical" >
+    update TB_MEDICAL
+    set PETID = #{petid,jdbcType=DECIMAL},
+      OFFICEID = #{officeid,jdbcType=DECIMAL},
+      REGISTERTIME = #{registertime,jdbcType=TIMESTAMP},
+      STATUS = #{status,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      DOCTORID = #{doctorid,jdbcType=DECIMAL},
       CREATED = #{created,jdbcType=TIMESTAMP},
       UPDATED = #{updated,jdbcType=TIMESTAMP}
     where ID = #{id,jdbcType=DECIMAL}

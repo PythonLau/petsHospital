@@ -39,12 +39,17 @@ public class MedicalController {
         return "/user/registerMedical";
     }
     @RequestMapping("/user/registerMedical")
-    public void registerMedical(String id,String cid,String name,String registerTime) throws Exception{
+    public void registerMedical(String id,String cid,String name,String registerTime,
+                                HttpSession session, HttpServletRequest request,
+                                HttpServletResponse response) throws Exception{
         BigDecimal petId = new BigDecimal(id);
         Long positionCat = Long.parseLong(cid);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
         java.util.Date registerDate=sdf.parse(registerTime);
-        medicalService.registerMedical(petId,positionCat,name,registerDate);
+        TaotaoResult result = medicalService.registerMedical(petId,positionCat,name,registerDate);
+        if(result.getStatus() == 200){
+            request.getRequestDispatcher("/user/showMedical/1?petId=" + petId).forward(request,response);
+        }
     }
     @RequestMapping("/user/showMedical/{pageNumber}")
     public String getAdoptMessage(@PathVariable String pageNumber,Model model,HttpSession session,
@@ -55,6 +60,10 @@ public class MedicalController {
         Page<CaseHistory> caseHistory = medicalService.getCaseHistory(page_Number,pet_Id);
         request.setAttribute("packagePage", caseHistory);
         model.addAttribute("list",caseHistory.getList());
+        if(caseHistory.getList().size() != 0){
+            String petName = caseHistory.getList().get(0).getName();
+            request.setAttribute("petName",petName);
+        }
         return "/user/caseHistory";
     }
     @RequestMapping("/user/cancelMedical/{caseHistoryId}")
@@ -79,10 +88,27 @@ public class MedicalController {
     }
     @RequestMapping("/doctor/medical/save")
     @ResponseBody
-    public TaotaoResult createPrescribe(TbMedical medical,HttpSession session) throws Exception{
+    public TaotaoResult createPrescribe(TbMedical medical, HttpSession session) throws Exception{
         Object userId = session.getAttribute("doctor");
         BigDecimal user_Id = (BigDecimal)userId;
         TaotaoResult result = medicalService.createPrescribe(medical,user_Id);
+        return result;
+    }
+    @RequestMapping("/manager/medical/list")
+    @ResponseBody
+    public EUDataGridResult getMedicalOrderList(Integer page, Integer rows){
+        EUDataGridResult result = medicalService.getMedicalOrderList(page, rows);
+        return result;
+    }
+    @RequestMapping("/manager/medical/update")
+    @ResponseBody
+    public TaotaoResult updatePrescribeByManager(CaseHistory caseHistory, HttpSession session) throws Exception{
+        BigDecimal medicalId = caseHistory.getId();
+        Short status = caseHistory.getStatus();
+        BigDecimal price = caseHistory.getPrice();
+        System.out.println(status);
+        System.out.println(price);
+        TaotaoResult result = medicalService.updatePrescribeByManager(medicalId,status,price);
         return result;
     }
 }
