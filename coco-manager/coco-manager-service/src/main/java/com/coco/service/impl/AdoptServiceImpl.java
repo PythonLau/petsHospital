@@ -120,22 +120,35 @@ public class AdoptServiceImpl implements AdoptService {
     }
     @Override
     public TaotaoResult agreeAdopt(BigDecimal adoptId){
-        TbAdopt adopt = adoptMapper.selectByPrimaryKey(adoptId);
+        Short zero = 0;
+        Short one = 1;
         Short two = 2;
+        TbAdopt adopt = adoptMapper.selectByPrimaryKey(adoptId);
         adopt.setStatus(two);
         adoptMapper.updateByPrimaryKey(adopt);
-        TbFosterExample example = new TbFosterExample();
-        TbFosterExample.Criteria criteria = example.createCriteria();
-        Short one = 1;
+        BigDecimal petId = adopt.getAdoptpetid();
+        TbAdoptExample example = new TbAdoptExample();
+        TbAdoptExample.Criteria criteria = example.createCriteria();
+        criteria.andAdoptpetidEqualTo(petId);
         criteria.andStatusEqualTo(one);
-        List<TbFoster> fosters = fosterMapper.selectByExample(example);
-        for(TbFoster foster : fosters){
+        List<TbAdopt> adoptList = adoptMapper.selectByExample(example);
+        for(TbAdopt adopt1 : adoptList){
+            adopt1.setStatus(zero);
+            adoptMapper.updateByPrimaryKey(adopt1);
+        }
+        TbFosterExample example1 = new TbFosterExample();
+        TbFosterExample.Criteria criteria1 = example1.createCriteria();
+        criteria1.andPetidEqualTo(petId);
+        criteria1.andStatusEqualTo(one);
+        List<TbFoster> fosterList = fosterMapper.selectByExample(example1);
+        for(TbFoster foster : fosterList){
+            foster.setStatus(two);
             fosterMapper.updateByPrimaryKey(foster);
         }
-        TbPets Pet = petsMapper.selectByPrimaryKey(adopt.getAdoptpetid());
-        Pet.setStatus(one);
-        Pet.setOwner(adopt.getAdoptuserid());
-        petsMapper.updateByPrimaryKey(Pet);
+        TbPets pet = petsMapper.selectByPrimaryKey(petId);
+        pet.setStatus(one);
+        pet.setOwner(adopt.getAdoptuserid());
+        petsMapper.updateByPrimaryKey(pet);
         return TaotaoResult.ok();
     }
     @Override

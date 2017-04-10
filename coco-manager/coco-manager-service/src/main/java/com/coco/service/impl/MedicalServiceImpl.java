@@ -224,10 +224,36 @@ public class MedicalServiceImpl implements MedicalService {
         PageHelper.startPage(page, rows);
         List<TbMedical> list = medicalMapper.selectByExampleWithBLOBs(example);
         //创建一个返回值对象
+        List<CaseHistory> caseList = new ArrayList<>();
         EUDataGridResult result = new EUDataGridResult();
-        result.setRows(list);
+        for(TbMedical medical : list){
+            CaseHistory caseHistory = new CaseHistory();
+            caseHistory.setId(medical.getId());
+            if(medical.getUpdated() != null){
+                System.out.println("search with key only");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String medicalTime = format.format(medical.getUpdated());
+                caseHistory.setMedicalTime(medicalTime);
+            }
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            caseHistory.setName(pet.getName());
+            if(medical.getDoctorid() != null){
+                TbEmployee doctor = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
+                caseHistory.setDoctorName(doctor.getName());
+            }
+            caseHistory.setStatus(medical.getStatus());
+            if(medical.getPrice() != null){
+                caseHistory.setPrice(medical.getPrice());
+            }
+            if(medical.getRecipe() != null){
+                caseHistory.setRecipe(medical.getRecipe());
+            }
+            //这是用户id
+            caseList.add(caseHistory);
+        }
+        result.setRows(caseList);
         //取记录总条数
-        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        PageInfo<CaseHistory> pageInfo = new PageInfo<>(caseList);
         result.setTotal(pageInfo.getTotal());
         return result;
     }
@@ -239,10 +265,36 @@ public class MedicalServiceImpl implements MedicalService {
         PageHelper.startPage(page, rows);
         List<TbMedical> list = medicalMapper.selectByExampleWithBLOBs(example);
         //创建一个返回值对象
+        List<CaseHistory> caseList = new ArrayList<>();
         EUDataGridResult result = new EUDataGridResult();
-        result.setRows(list);
+        for(TbMedical medical : list){
+            CaseHistory caseHistory = new CaseHistory();
+            caseHistory.setId(medical.getId());
+            if(medical.getUpdated() != null){
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String medicalTime = format.format(medical.getUpdated());
+                caseHistory.setMedicalTime(medicalTime);
+            }
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            caseHistory.setName(pet.getName());
+            if(medical.getDoctorid() != null){
+                TbEmployee doctor = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
+                caseHistory.setDoctorName(doctor.getName());
+            }
+            caseHistory.setStatus(medical.getStatus());
+            if(medical.getPrice() != null){
+                caseHistory.setPrice(medical.getPrice());
+            }
+            if(medical.getRecipe() != null){
+                caseHistory.setRecipe(medical.getRecipe());
+            }
+            System.out.println("search with time only");
+            //这是用户id
+            caseList.add(caseHistory);
+        }
+        result.setRows(caseList);
         //取记录总条数
-        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        PageInfo<CaseHistory> pageInfo = new PageInfo<>(caseList);
         result.setTotal(pageInfo.getTotal());
         return result;
     }
@@ -272,10 +324,36 @@ public class MedicalServiceImpl implements MedicalService {
         PageHelper.startPage(page, rows);
         List<TbMedical> list = medicalMapper.selectByExampleWithBLOBs(example);
         //创建一个返回值对象
+        List<CaseHistory> caseList = new ArrayList<>();
         EUDataGridResult result = new EUDataGridResult();
-        result.setRows(list);
+        for(TbMedical medical : list){
+            CaseHistory caseHistory = new CaseHistory();
+            caseHistory.setId(medical.getId());
+            if(medical.getUpdated() != null){
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String medicalTime = format.format(medical.getUpdated());
+                caseHistory.setMedicalTime(medicalTime);
+            }
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            caseHistory.setName(pet.getName());
+            if(medical.getDoctorid() != null){
+                TbEmployee doctor = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
+                caseHistory.setDoctorName(doctor.getName());
+            }
+            caseHistory.setStatus(medical.getStatus());
+            if(medical.getPrice() != null){
+                caseHistory.setPrice(medical.getPrice());
+            }
+            if(medical.getRecipe() != null){
+                caseHistory.setRecipe(medical.getRecipe());
+            }
+            //这是用户id
+            System.out.println("search with key and time");
+            caseList.add(caseHistory);
+        }
+        result.setRows(caseList);
         //取记录总条数
-        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        PageInfo<CaseHistory> pageInfo = new PageInfo<>(caseList);
         result.setTotal(pageInfo.getTotal());
         return result;
     }

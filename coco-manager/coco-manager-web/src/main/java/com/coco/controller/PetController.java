@@ -59,7 +59,7 @@ public class PetController {
         TaotaoResult result = petService.deletePet(pet_Id);
         if(result.getStatus() == 200){
             System.out.println("deletePet");
-            request.getRequestDispatcher("/user/petsList").forward(request,response);
+            request.getRequestDispatcher("/user/petsList/1").forward(request,response);
         }
     }
     @RequestMapping("/user/getPet/{petId}")

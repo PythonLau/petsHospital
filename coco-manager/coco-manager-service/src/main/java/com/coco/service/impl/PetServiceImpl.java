@@ -3,12 +3,11 @@ package com.coco.service.impl;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
+import com.coco.mapper.TbAdoptMapper;
 import com.coco.mapper.TbFosterMapper;
+import com.coco.mapper.TbMedicalMapper;
 import com.coco.mapper.TbPetsMapper;
-import com.coco.pojo.TbFoster;
-import com.coco.pojo.TbFosterExample;
-import com.coco.pojo.TbPets;
-import com.coco.pojo.TbPetsExample;
+import com.coco.pojo.*;
 import com.coco.service.PetService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,10 @@ public class PetServiceImpl implements PetService {
     private TbPetsMapper petsMapper;
     @Autowired
     private TbFosterMapper fosterMapper;
+    @Autowired
+    private TbAdoptMapper adoptMapper;
+    @Autowired
+    private TbMedicalMapper medicalMapper;
     @Override
     public TaotaoResult addPet(BigDecimal owner, String petName, String typeName,
                                Short petAge, String petSex, String image){
@@ -70,21 +73,44 @@ public class PetServiceImpl implements PetService {
     }
     @Override
     public TaotaoResult deletePet(BigDecimal petId){
-        TbPetsExample example = new TbPetsExample();
-        TbPetsExample.Criteria criteria = example.createCriteria();
-        TbFosterExample example1 = new TbFosterExample();
-        TbFosterExample.Criteria criteria1 = example1.createCriteria();
-        criteria1.andPetidEqualTo(petId);
-        Short statusTrue = 1;
-        criteria1.andStatusEqualTo(statusTrue);
-        criteria.andIdEqualTo(petId);
-        petsMapper.deleteByExample(example);
-        List<TbFoster> fosters = fosterMapper.selectByExample(example1);
-        if(fosters.size() != 0){
-            TbFoster foster = fosters.get(0);
-            Short status = 0;
-            foster.setStatus(status);
+        Short zero = 0;
+        Short one = 1;
+        Short two = 2;
+        Short three = 3;
+        TbFosterExample example = new TbFosterExample();
+        TbFosterExample.Criteria criteria = example.createCriteria();
+        TbAdoptExample example1 = new TbAdoptExample();
+        TbAdoptExample.Criteria criteria1 = example1.createCriteria();
+        TbMedicalExample example2 = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria2 = example2.createCriteria();
+        TbPetsExample example3 = new TbPetsExample();
+        TbPetsExample.Criteria criteria3 = example3.createCriteria();
+        criteria.andPetidEqualTo(petId);
+        criteria.andStatusEqualTo(one);
+        List<TbFoster> fosterList = fosterMapper.selectByExample(example);
+        for(TbFoster foster : fosterList){
+            foster.setStatus(zero);
             fosterMapper.updateByPrimaryKey(foster);
+        }
+        criteria1.andAdoptpetidEqualTo(petId);
+        criteria1.andStatusEqualTo(one);
+        List<TbAdopt> adoptList = adoptMapper.selectByExample(example1);
+        for(TbAdopt adopt : adoptList){
+            adopt.setStatus(zero);
+            adoptMapper.updateByPrimaryKey(adopt);
+        }
+        criteria2.andPetidEqualTo(petId);
+        criteria2.andStatusNotEqualTo(three);
+        List<TbMedical> medicalList = medicalMapper.selectByExample(example2);
+        for(TbMedical medical : medicalList){
+            medical.setStatus(zero);
+            medicalMapper.updateByPrimaryKey(medical);
+        }
+        criteria3.andIdEqualTo(petId);
+        List<TbPets> petsList = petsMapper.selectByExample(example3);
+        for(TbPets pet : petsList){
+            pet.setStatus(zero);
+            petsMapper.updateByPrimaryKey(pet);
         }
         return TaotaoResult.ok();
     }
