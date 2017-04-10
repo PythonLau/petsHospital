@@ -4,10 +4,7 @@ import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
-import com.coco.mapper.TbEmployeeMapper;
-import com.coco.mapper.TbMedicalMapper;
-import com.coco.mapper.TbPetsMapper;
-import com.coco.mapper.TbUserMapper;
+import com.coco.mapper.*;
 import com.coco.pojo.*;
 import com.coco.service.MedicalService;
 import com.github.pagehelper.PageHelper;
@@ -34,6 +31,8 @@ public class MedicalServiceImpl implements MedicalService {
     private TbEmployeeMapper employeeMapper;
     @Autowired
     private TbUserMapper userMapper;
+    @Autowired
+    private TbPositionCatMapper positionCatMapper;
     public TaotaoResult registerMedical(BigDecimal id, Long cid, String name, Date registerDate){
         TbMedical medical = new TbMedical();
         Long medicalId = IDUtils.genItemId();
@@ -164,16 +163,24 @@ public class MedicalServiceImpl implements MedicalService {
         for(TbMedical medical : list){
             CaseHistory caseHistory = new CaseHistory();
             caseHistory.setId(medical.getId());
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            String registerTime = format.format(medical.getUpdated());
-            caseHistory.setMedicalTime(registerTime);
+            if(medical.getUpdated() != null){
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String medicalTime = format.format(medical.getUpdated());
+                caseHistory.setMedicalTime(medicalTime);
+            }
             TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
             caseHistory.setName(pet.getName());
-            TbEmployee doctor = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
-            caseHistory.setDoctorName(doctor.getName());
+            if(medical.getDoctorid() != null){
+                TbEmployee doctor = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
+                caseHistory.setDoctorName(doctor.getName());
+            }
             caseHistory.setStatus(medical.getStatus());
-            caseHistory.setPrice(medical.getPrice());
-            caseHistory.setRecipe(medical.getRecipe());
+            if(medical.getPrice() != null){
+                caseHistory.setPrice(medical.getPrice());
+            }
+            if(medical.getRecipe() != null){
+                caseHistory.setRecipe(medical.getRecipe());
+            }
             //这是用户id
             caseList.add(caseHistory);
         }
@@ -190,5 +197,86 @@ public class MedicalServiceImpl implements MedicalService {
         medical.setPrice(price);
         medicalMapper.updateByPrimaryKey(medical);
         return TaotaoResult.ok();
+    }
+    @Override
+    public EUDataGridResult searchWithKeyOnly(String search_condition,String search_key, Integer page,Integer rows){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }else if(search_condition.equals("positionName")){
+            //查询部门id
+            TbPositionCatExample example1 = new TbPositionCatExample();
+            TbPositionCatExample.Criteria criteria1 = example1.createCriteria();
+            criteria1.andNameEqualTo(search_key);
+            List<TbPositionCat> positionCat = positionCatMapper.selectByExample(example1);
+            if(positionCat.size() != 0){
+                BigDecimal positionCatId = positionCat.get(0).getId();
+                criteria.andOfficeidEqualTo(positionCatId.longValue());
+            }else{
+                System.out.println("没有这个部门");
+            }
+        }else if(search_condition.equals("status")){
+            Short status = new Short(search_key);
+            criteria.andStatusEqualTo(status);
+        }
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExampleWithBLOBs(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithMedicalTimeOnly(Date beginDate,Date endDate,Integer page,Integer rows){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        criteria.andUpdatedBetween(beginDate,endDate);
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExampleWithBLOBs(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithKeyAndMedicalTime(String search_condition,String search_key,
+                                                        Date beginDate,Date endDate,Integer page,Integer rows){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }else if(search_condition.equals("positionName")){
+            //查询部门id
+            TbPositionCatExample example1 = new TbPositionCatExample();
+            TbPositionCatExample.Criteria criteria1 = example1.createCriteria();
+            criteria1.andNameEqualTo(search_key);
+            List<TbPositionCat> positionCat = positionCatMapper.selectByExample(example1);
+            if(positionCat.size() != 0){
+                BigDecimal positionCatId = positionCat.get(0).getId();
+                criteria.andOfficeidEqualTo(positionCatId.longValue());
+            }
+        }else if(search_condition.equals("status")){
+            Short status = new Short(search_key);
+            criteria.andStatusEqualTo(status);
+        }
+        criteria.andUpdatedBetween(beginDate,endDate);
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExampleWithBLOBs(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbMedical> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
     }
 }

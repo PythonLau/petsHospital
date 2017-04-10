@@ -21,4 +21,8 @@ public interface MedicalService {
     TaotaoResult createPrescribe(TbMedical medical, BigDecimal doctorId);
     EUDataGridResult getMedicalOrderList(Integer page, Integer rows);
     TaotaoResult updatePrescribeByManager(BigDecimal medicalId,Short status,BigDecimal price);
+    EUDataGridResult searchWithKeyOnly(String search_condition,String search_key, Integer page,Integer rows);
+    EUDataGridResult searchWithMedicalTimeOnly(Date beginDate,Date endDate,Integer page,Integer rows);
+    EUDataGridResult searchWithKeyAndMedicalTime(String search_condition,String search_key,
+                                                 Date beginDate,Date endDate,Integer page,Integer rows);
 }

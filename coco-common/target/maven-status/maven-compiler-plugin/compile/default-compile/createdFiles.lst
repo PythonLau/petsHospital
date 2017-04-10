@@ -1,5 +1,6 @@
 com\coco\common\utils\ExceptionUtil.class
 com\coco\common\utils\CookieUtils.class
+com\coco\common\pojo\searchParamsWithTime.class
 com\coco\common\utils\JsonUtils.class
 com\coco\common\pojo\EUTreeNode.class
 com\coco\common\pojo\search_params.class
