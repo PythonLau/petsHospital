@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="search" style="padding:3px">
     <select id="search_condition">
-        <option value="id">员工ID</option>
-        <option value="name">员工姓名</option>
-        <option value="sex">性别</option>
-        <option value="cid">所属部门</option>
-        <option value="status">状态</option>
+        <option value="id">病历ID</option>
     </select>
     <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    开始时间<input type="date" id="beginDate" name="beginDate">
+    结束时间<input type="date" id="endDate" name="endDate">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
 </div>
 <table class="easyui-datagrid" id="registerList" title="员工列表"
@@ -74,15 +72,17 @@
     function doSearch(pageNumber, pageSize){
         var search_condition =document.getElementById("search_condition").value;
         var search_key =document.getElementById("search_key").value;
+        var beginDate = document.getElementById("beginDate").value;
+        var endDate = document.getElementById("endDate").value;
         //获取分页大小
         var rows = $(".pagination-page-list").val()
         //页面分页大小与参数是否一样
         if(rows != pageSize){
             pageSize = rows ;
         }
-        var search_params = {"search_condition":search_condition,"search_key":search_key,"rows":pageSize,'pageNumber':pageNumber};
+        var search_params = {"search_condition":search_condition,"search_key":search_key,"beginDate":beginDate,"endDate":endDate,"rows":pageSize,'pageNumber':pageNumber};
         $.ajax({
-            url: "/employee/search",
+            url: "/doctor/medical/search",
             type: "POST",
             contentType: "application/json",
             dataType: "json",

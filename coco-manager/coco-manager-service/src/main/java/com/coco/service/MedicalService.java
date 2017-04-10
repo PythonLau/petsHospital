@@ -25,4 +25,8 @@ public interface MedicalService {
     EUDataGridResult searchWithMedicalTimeOnly(Date beginDate,Date endDate,Integer page,Integer rows);
     EUDataGridResult searchWithKeyAndMedicalTime(String search_condition,String search_key,
                                                  Date beginDate,Date endDate,Integer page,Integer rows);
+    EUDataGridResult searchWithKeyOnlyByDoctor(String search_condition,String search_key, Integer page,Integer rows);
+    EUDataGridResult searchWithMedicalTimeOnlyByDoctor(Date beginDate,Date endDate,Integer page,Integer rows);
+    EUDataGridResult searchWithKeyAndMedicalTimeByDoctor(String search_condition,String search_key,
+                                                 Date beginDate,Date endDate,Integer page,Integer rows);
 }

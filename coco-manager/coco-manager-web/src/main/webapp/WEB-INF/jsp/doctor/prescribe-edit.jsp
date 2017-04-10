@@ -28,7 +28,6 @@
         contentAddEditor = TT.createEditor("#prescribeForm [name=recipe]");
         TT.initOnePicUpload();
     });
-
     var contentAddPage  = {
         submitForm : function (){
             if(!$('#prescribeForm').form('validate')){

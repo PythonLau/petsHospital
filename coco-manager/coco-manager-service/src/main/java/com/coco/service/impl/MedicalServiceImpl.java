@@ -357,4 +357,111 @@ public class MedicalServiceImpl implements MedicalService {
         result.setTotal(pageInfo.getTotal());
         return result;
     }
+    @Override
+    public EUDataGridResult searchWithKeyOnlyByDoctor(String search_condition,String search_key, Integer page,Integer rows){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExample(example);
+        //创建一个返回值对象
+        List<treat> treatList = new ArrayList<>();
+        EUDataGridResult result = new EUDataGridResult();
+        for(TbMedical medical : list){
+            treat tr = new treat();
+            tr.setId(medical.getId());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String registerTime = format.format(medical.getRegistertime());
+            tr.setRegisterTime(registerTime);
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            tr.setPetName(pet.getName());
+            //这是用户id
+            System.out.println("1111111111");
+            BigDecimal user_Id = pet.getOwner();
+            TbUser user = userMapper.selectByPrimaryKey(user_Id);
+            tr.setNickName(user.getNickname());
+            tr.setTelePhone(user.getTelphone());
+            treatList.add(tr);
+            System.out.println("预约时间:" + tr.getRegisterTime());
+        }
+        result.setRows(treatList);
+        //取记录总条数
+        PageInfo<treat> pageInfo = new PageInfo<>(treatList);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithMedicalTimeOnlyByDoctor(Date beginDate,Date endDate,Integer page,Integer rows){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        criteria.andRegistertimeBetween(beginDate,endDate);
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExample(example);
+        //创建一个返回值对象
+        List<treat> treatList = new ArrayList<>();
+        EUDataGridResult result = new EUDataGridResult();
+        for(TbMedical medical : list){
+            treat tr = new treat();
+            tr.setId(medical.getId());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String registerTime = format.format(medical.getRegistertime());
+            tr.setRegisterTime(registerTime);
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            tr.setPetName(pet.getName());
+            //这是用户id
+            System.out.println("11111111");
+            BigDecimal user_Id = pet.getOwner();
+            TbUser user = userMapper.selectByPrimaryKey(user_Id);
+            tr.setNickName(user.getNickname());
+            tr.setTelePhone(user.getTelphone());
+            treatList.add(tr);
+            System.out.println("预约时间:" + tr.getRegisterTime());
+        }
+        result.setRows(treatList);
+        //取记录总条数
+        PageInfo<treat> pageInfo = new PageInfo<>(treatList);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithKeyAndMedicalTimeByDoctor(String search_condition,String search_key,
+                                                                Date beginDate,Date endDate,Integer page,Integer rows){
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }
+        criteria.andRegistertimeBetween(beginDate,endDate);
+        PageHelper.startPage(page, rows);
+        List<TbMedical> list = medicalMapper.selectByExample(example);
+        //创建一个返回值对象
+        List<treat> treatList = new ArrayList<>();
+        EUDataGridResult result = new EUDataGridResult();
+        for(TbMedical medical : list){
+            treat tr = new treat();
+            tr.setId(medical.getId());
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            String registerTime = format.format(medical.getRegistertime());
+            tr.setRegisterTime(registerTime);
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            tr.setPetName(pet.getName());
+            //这是用户id
+            System.out.println("2222222222");
+            BigDecimal user_Id = pet.getOwner();
+            TbUser user = userMapper.selectByPrimaryKey(user_Id);
+            tr.setNickName(user.getNickname());
+            tr.setTelePhone(user.getTelphone());
+            treatList.add(tr);
+            System.out.println("预约时间:" + tr.getRegisterTime());
+        }
+        result.setRows(treatList);
+        //取记录总条数
+        PageInfo<treat> pageInfo = new PageInfo<>(treatList);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
 }

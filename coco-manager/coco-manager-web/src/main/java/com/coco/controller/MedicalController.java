@@ -83,7 +83,7 @@ public class MedicalController {
     }
     @RequestMapping("/doctor/treat/list")
     @ResponseBody
-    public EUDataGridResult getEmployeeList(Integer page, Integer rows,HttpSession session,
+    public EUDataGridResult getTreatList(Integer page, Integer rows,HttpSession session,
                                             HttpServletRequest request, HttpServletResponse response) {
         System.out.println("treatList...controller");
         Object userId = session.getAttribute("doctor");
@@ -118,20 +118,11 @@ public class MedicalController {
     }
     @RequestMapping("/manager/medical/search")
     @ResponseBody
-    private EUDataGridResult searchMedical(@RequestBody searchParamsWithTime search_params) throws Exception {
+    private EUDataGridResult searchMedicalByManager(@RequestBody searchParamsWithTime search_params) throws Exception {
         String search_condition = search_params.getSearch_condition();
         String search_key = search_params.getSearch_key();
         Date beginDate = search_params.getBeginDate();
         Date endDate = search_params.getEndDate();
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(beginDate);
-        calendar.add(Calendar.HOUR,-8);
-        beginDate = calendar.getTime();
-        calendar.setTime(endDate);
-        calendar.add(Calendar.HOUR,-8);
-        endDate = calendar.getTime();
-        System.out.println(beginDate);
-        System.out.println(endDate);
         Integer page = Integer.valueOf(search_params.getPageNumber());
         Integer rows = Integer.valueOf(search_params.getRows());
         System.out.println("page=" + page);
@@ -147,6 +138,13 @@ public class MedicalController {
                 EUDataGridResult result = medicalService.searchWithKeyOnly(search_condition,search_key,page,rows);
                 return result;
             }else{
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(beginDate);
+                calendar.add(Calendar.HOUR,-8);
+                beginDate = calendar.getTime();
+                calendar.setTime(endDate);
+                calendar.add(Calendar.HOUR,-8);
+                endDate = calendar.getTime();
                 //查询考虑关键词和时间并存的方法
                 System.out.println("关键词:" + search_key);
                 System.out.println("开始时间:" + beginDate);
@@ -156,9 +154,61 @@ public class MedicalController {
             }
         }else{
             //查询只有时间的方法
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(beginDate);
+            calendar.add(Calendar.HOUR,-8);
+            beginDate = calendar.getTime();
+            calendar.setTime(endDate);
+            calendar.add(Calendar.HOUR,-8);
+            endDate = calendar.getTime();
             System.out.println("开始时间:" + beginDate);
             System.out.println("结束时间:" + endDate);
             EUDataGridResult result = medicalService.searchWithMedicalTimeOnly(beginDate,endDate,page,rows);
+            return result;
+        }
+    }
+    @RequestMapping("/doctor/medical/search")
+    @ResponseBody
+    public EUDataGridResult searchMedicalByDoctor(@RequestBody searchParamsWithTime search_params) throws Exception{
+        String search_condition = search_params.getSearch_condition();
+        String search_key = search_params.getSearch_key();
+        Date beginDate = search_params.getBeginDate();
+        Date endDate = search_params.getEndDate();
+        Integer page = Integer.valueOf(search_params.getPageNumber());
+        Integer rows = Integer.valueOf(search_params.getRows());
+        if(search_key.length() == 0 && (beginDate == null || endDate == null)){
+            //两个条件都没有，不用查
+            return null;
+        }else if(search_key.length() != 0){
+            if((beginDate == null || endDate == null)){
+                //直接查只有关键词的方法
+                System.out.println("关键词:" + search_key);
+                EUDataGridResult result = medicalService.searchWithKeyOnlyByDoctor(search_condition,search_key,page,rows);
+                return result;
+            }else{
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(beginDate);
+                calendar.add(Calendar.HOUR,-8);
+                beginDate = calendar.getTime();
+                calendar.setTime(endDate);
+                calendar.add(Calendar.HOUR,-8);
+                endDate = calendar.getTime();
+                //查询考虑关键词和时间并存的方法
+                EUDataGridResult result = medicalService.searchWithKeyAndMedicalTimeByDoctor(search_condition,search_key,beginDate,endDate,page,rows);
+                return result;
+            }
+        }else{
+            Calendar calendar = new GregorianCalendar();
+            calendar.setTime(beginDate);
+            calendar.add(Calendar.HOUR,-8);
+            beginDate = calendar.getTime();
+            calendar.setTime(endDate);
+            calendar.add(Calendar.HOUR,-8);
+            endDate = calendar.getTime();
+            //查询只有时间的方法
+            System.out.println("开始时间:" + beginDate);
+            System.out.println("结束时间:" + endDate);
+            EUDataGridResult result = medicalService.searchWithMedicalTimeOnlyByDoctor(beginDate,endDate,page,rows);
             return result;
         }
     }
