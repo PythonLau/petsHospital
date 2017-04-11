@@ -35,10 +35,6 @@ var TT = TAOTAO = {
         return now.format("yyyy-MM-dd hh:mm:ss");
     },
 
-    // 格式化价格
-    formatPrice : function(val,row){
-        return (val/1000).toFixed(2);
-    },
     // 格式化商品的状态
     formatItemStatus : function formatStatus(val,row){
         if (val == 1){
@@ -81,6 +77,24 @@ var TT = TAOTAO = {
             return '会员(2)';
         }
     },
+
+    formatorderStatus : function formatorderStatus(val,row){
+        if(val == 0){
+            return '已取消(0)';
+        }else if(val == 1){
+            return '待服务(1)';
+        }else if(val == 2){
+            return '服务结束(2)';
+        }else if(val == 3){
+            return '用户已评价(3)';
+        }
+    },
+
+    // 格式化价格
+    formatPrice : function(val,row){
+        return (val/1000).toFixed(2);
+    },
+
     // 格式化连接
     formatUrl : function(val,row){
         if(val){

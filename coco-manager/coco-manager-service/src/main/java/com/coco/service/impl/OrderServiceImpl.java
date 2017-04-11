@@ -1,5 +1,6 @@
 package com.coco.service.impl;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
@@ -11,6 +12,7 @@ import com.coco.pojo.TbPackage;
 import com.coco.pojo.myOrder;
 import com.coco.service.OrderService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -110,6 +112,90 @@ public class OrderServiceImpl implements OrderService {
         Short three = 3;
         order.setStatus(three);
         orderMapper.updateByPrimaryKey(order);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public EUDataGridResult getOrderList(Integer page, Integer rows){
+        //查询商品列表
+        TbOrderExample example = new TbOrderExample();
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<TbOrder> list = orderMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbOrder> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithKeyOnly(String search_condition,String search_key, Integer page,Integer rows){
+        TbOrderExample example = new TbOrderExample();
+        TbOrderExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }else if(search_condition.equals("status")){
+            Short status = new Short(search_key);
+            criteria.andStatusEqualTo(status);
+        }
+        PageHelper.startPage(page, rows);
+        List<TbOrder> list = orderMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbOrder> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithTimeOnly(Date beginDate, Date endDate, Integer page, Integer rows){
+        TbOrderExample example = new TbOrderExample();
+        TbOrderExample.Criteria criteria = example.createCriteria();
+        criteria.andCreatedBetween(beginDate,endDate);
+        PageHelper.startPage(page, rows);
+        List<TbOrder> list = orderMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbOrder> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public EUDataGridResult searchWithKeyAndTime(String search_condition,String search_key,
+                                                        Date beginDate,Date endDate,Integer page,Integer rows){
+        TbOrderExample example = new TbOrderExample();
+        TbOrderExample.Criteria criteria = example.createCriteria();
+        if(search_condition.equals("id")){
+            BigDecimal id = new BigDecimal(search_key);
+            criteria.andIdEqualTo(id);
+        }else if(search_condition.equals("status")){
+            System.out.println("1111111");
+            Short status = new Short(search_key);
+            criteria.andStatusEqualTo(status);
+        }
+        criteria.andCreatedBetween(beginDate,endDate);
+        PageHelper.startPage(page, rows);
+        List<TbOrder> list = orderMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbOrder> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public TaotaoResult updateOrder(TbOrder order){
+        BigDecimal id = order.getId();
+        TbOrder updateOrder = orderMapper.selectByPrimaryKey(id);
+        updateOrder.setPrice(order.getPrice());
+        updateOrder.setStatus(order.getStatus());
+        orderMapper.updateByPrimaryKey(updateOrder);
         return TaotaoResult.ok();
     }
 }
