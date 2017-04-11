@@ -90,10 +90,17 @@
                             <p class="name" name="title">${bookPackage.name}</p>
                             <p class="price">
                             <span class="now-price">
-                            ¥<fmt:formatNumber value="${bookPackage.price * bookPackage.normaldiscount  / 10.00}" pattern="##.##" minFractionDigits="2"></fmt:formatNumber>
+                            价格:¥<fmt:formatNumber value="${bookPackage.price * bookPackage.normaldiscount  / 10.00}" pattern="##.##" minFractionDigits="2"></fmt:formatNumber>
                             </span>
-                                <c:if test="${bookPackage.normaldiscount != 10.0}">
-                                定价：<span class="pre-price">¥${bookPackage.price}</span><span class="discount">(${bookPackage.normaldiscount}折)</span></p>
+                            <c:if test="${bookPackage.normaldiscount != 10.0}">
+                            定价：<span class="pre-price">¥${bookPackage.price}</span><span class="discount">(${bookPackage.normaldiscount}折)</span></p>
+                            </c:if>
+                            <span class="now-price">
+                            会员价格:¥<fmt:formatNumber value="${bookPackage.price * bookPackage.memberdiscount  / 10.00}" pattern="##.##" minFractionDigits="2"></fmt:formatNumber>
+                            </span>
+                            <c:if test="${bookPackage.normaldiscount != 10.0}">
+                                <br>
+                                定价：<span class="pre-price">¥${bookPackage.price}</span><span class="discount">(${bookPackage.memberdiscount}折)</span></p>
                             </c:if>
                             <p class="detail">${bookPackage.introduction}</p>
                             <p class="button">

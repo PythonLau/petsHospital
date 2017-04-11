@@ -37,6 +37,14 @@
 				</ul>
 			</li>
 			<li>
+				<span>账户管理</span>
+				<ul>
+					<li data-options="attributes:{'url':'account-list'}">普通账户</li>
+					<li data-options="attributes:{'url':'doctorAccount-list'}">医生账户</li>
+					<li data-options="attributes:{'url':'reportAccount-list'}">报表账户</li>
+				</ul>
+			</li>
+			<li>
 				<span>套餐管理</span>
 				<ul>
 					<li data-options="attributes:{'url':'package-add'}">新增套餐</li>

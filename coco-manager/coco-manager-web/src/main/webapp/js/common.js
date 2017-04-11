@@ -34,13 +34,7 @@ var TT = TAOTAO = {
         var now = new Date(val);
         return now.format("yyyy-MM-dd hh:mm:ss");
     },
-    // 格式化连接
-    formatUrl : function(val,row){
-        if(val){
-            return "<a href='"+val+"' target='_blank'>查看</a>";
-        }
-        return "";
-    },
+
     // 格式化价格
     formatPrice : function(val,row){
         return (val/1000).toFixed(2);
@@ -48,9 +42,9 @@ var TT = TAOTAO = {
     // 格式化商品的状态
     formatItemStatus : function formatStatus(val,row){
         if (val == 1){
-            return '正常';
+            return '正常(1)';
         } else if(val == 2){
-            return '<span style="color:red;">下架</span>';
+            return '<span style="color:red;">下架(0)</span>';
         } else {
             return '未知';
         }
@@ -58,9 +52,9 @@ var TT = TAOTAO = {
 
     formatEmployeeStatus : function formatStatus(val,row){
         if (val == 1){
-            return '在职';
+            return '在职(1)';
         } else if(val == 0){
-            return '<span style="color:red;">离职</span>';
+            return '<span style="color:red;">离职(0)</span>';
         } else {
             return '未知';
         }
@@ -68,14 +62,31 @@ var TT = TAOTAO = {
 
     formatmedialStatus : function formatmedialStatus(val,row) {
         if(val == 0){
-            return '无效挂号';
+            return '无效挂号(0)';
         }else if(val == 1){
-            return '挂号中';
+            return '挂号中(1)';
         }else if(val == 2){
-            return '医生已处理';
+            return '医生已处理(2)';
         }else if(val == 3){
-            return '正常结束';
+            return '正常结束(3)';
         }
+    },
+
+    formatAccountStatus : function formatAccountStatus(val,row) {
+        if(val == 0){
+            return '已注销(0)';
+        }else if(val == 1){
+            return '普通用户(1)';
+        }else if(val == 2){
+            return '会员(2)';
+        }
+    },
+    // 格式化连接
+    formatUrl : function(val,row){
+        if(val){
+            return "<a href='"+val+"' target='_blank'>查看</a>";
+        }
+        return "";
     },
 
     init : function(data){

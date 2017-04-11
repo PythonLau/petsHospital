@@ -1,11 +1,14 @@
 package com.coco.controller;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.TaotaoResult;
+import com.coco.common.pojo.search_params;
 import com.coco.pojo.TbUser;
 import com.coco.service.UserService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -71,5 +74,27 @@ public class UserController {
             request.setAttribute("registerFail","注册失败，请重新填写注册信息");
             request.getRequestDispatcher("/register").forward(request,response);
         }
+    }
+    @RequestMapping("/manager/account/list")
+    @ResponseBody
+    public EUDataGridResult getAccountList(Integer page, Integer rows) {
+        EUDataGridResult result = userService.getAccountList(page, rows);
+        return result;
+    }
+    @RequestMapping("/manager/account/update")
+    @ResponseBody
+    public TaotaoResult updateAccountByManager(TbUser user) throws Exception{
+        TaotaoResult result = userService.updateAccountByManager(user);
+        return result;
+    }
+    @RequestMapping("/manager/account/search")
+    @ResponseBody
+    public EUDataGridResult searchItem(@RequestBody search_params search_params) throws Exception{
+        String search_condition = search_params.getSearch_condition();
+        String search_key = search_params.getSearch_key();
+        Integer page = Integer.valueOf(search_params.getPageNumber());
+        Integer rows = Integer.valueOf(search_params.getRows());
+        EUDataGridResult result = userService.searchAccountList(search_condition,search_key,page,rows);
+        return result;
     }
 }
