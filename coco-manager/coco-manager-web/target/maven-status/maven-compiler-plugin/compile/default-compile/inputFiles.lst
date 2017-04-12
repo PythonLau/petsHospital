@@ -10,6 +10,7 @@ D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controll
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\ArticleController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\ManagerController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\PositionCatController.java
+D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\aop\UserControllerLog.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\interceptor\userInterceptor.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\PageController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\interceptor\managerInterceptor.java

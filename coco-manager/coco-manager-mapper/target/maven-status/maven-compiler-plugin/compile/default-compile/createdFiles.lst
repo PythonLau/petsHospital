@@ -11,6 +11,7 @@ com\coco\mapper\TbModuleMapper.class
 com\coco\mapper\TbAuthorityMapper.class
 com\coco\mapper\TbPackageMapper.class
 com\coco\mapper\TbPetsMapper.class
+com\coco\mapper\TbFlowMapper.class
 com\coco\mapper\TbUserMapper.class
 com\coco\mapper\TbOrderMapper.class
 com\coco\mapper\TbDoctorMapper.class

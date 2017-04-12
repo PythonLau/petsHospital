@@ -30,4 +30,11 @@ public class ModuleController {
         System.out.println(list);
         return list;
     }
+    @RequestMapping("/manager/module/list")
+    @ResponseBody
+    public List<EUTreeNodeWithAttributes> getModuleListByManager(@RequestParam(value="id",defaultValue="0")BigDecimal parentId,
+                                                        HttpSession session){
+        List<EUTreeNodeWithAttributes> list = moduleService.getModuleListByManager(parentId);
+        return list;
+    }
 }

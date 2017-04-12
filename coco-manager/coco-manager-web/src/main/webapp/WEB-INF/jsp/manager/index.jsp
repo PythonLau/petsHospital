@@ -68,8 +68,10 @@
 			<li>
 				<span>报表中心</span>
 				<ul>
-					<li data-options="attributes:{'url':'content-add'}">报表管理</li>
-					<li data-options="attributes:{'url':'content'}">权限管理</li>
+					<li data-options="attributes:{'url':'module-add'}">新增报表</li>
+					<li data-options="attributes:{'url':'module-list'}">报表管理</li>
+					<li data-options="attributes:{'url':'authority-add'}">新增权限</li>
+					<li data-options="attributes:{'url':'authority-list'}">权限管理</li>
 				</ul>
 			</li>
          </ul>

@@ -136,7 +136,7 @@ loginname varchar(50) NOT NULL,   --登录名，手机或者电子邮箱
 password varchar(50) NOT NULL,    --密码
 nickname varchar(50) NOT NULL,   --用户昵称
 telphone varchar(50) NOT NULL,  --手机号码
-status number(4) NOT NULL,  --用户状态，会员，普通，注销
+status number(4) NOT NULL,  --用户状态，2会员，1普通，0注销
 created date default sysdate, -- '创建时间'
 updated date default sysdate, -- '更新时间'
 PRIMARY KEY (id)
@@ -436,6 +436,29 @@ insert into tb_authority(id,userId,module_id) values(5,2,7)
 select * from tb_authority
 
 truncate table tb_authority
+
+create table tb_flow(
+id number(20) not null,   --流量id
+sessionId varchar(50) default null,  --用户识别id
+handler number(20) default null,  --操作者
+url varchar(500) not null, --请求url
+browser varchar(500) default null, --浏览器
+refer varchar(500) default null, --前页面，就是从那里过来的
+ip varchar(80) not null, --客户端ip
+created date DEFAULT sysdate,  --创建日期
+PRIMARY KEY (id)
+)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -14,4 +14,5 @@ public interface ModuleService {
     List<EUTreeNodeWithAttributes> getManagerModuleList(BigDecimal parentId);
     List<EUTreeNodeWithAttributes> getUserModuleList(BigDecimal userId,BigDecimal parentId);
     List<TbAuthority> getAuthority(BigDecimal userId);
+    List<EUTreeNodeWithAttributes> getModuleListByManager(BigDecimal parentId);
 }

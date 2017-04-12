@@ -1,5 +1,6 @@
 package com.coco.service.impl;
 
+import com.coco.common.pojo.EUTreeNode;
 import com.coco.common.pojo.EUTreeNodeWithAttributes;
 import com.coco.mapper.TbAuthorityMapper;
 import com.coco.mapper.TbLoginMapper;
@@ -112,5 +113,29 @@ public class ModuleServiceImpl implements ModuleService {
         criteria1.andUseridEqualTo(userId);
         List<TbAuthority> authorityList = authorityMapper.selectByExample(example1);
         return authorityList;
+    }
+    @Override
+    public List<EUTreeNodeWithAttributes> getModuleListByManager(BigDecimal parentId){
+        TbModuleExample example = new TbModuleExample();
+        TbModuleExample.Criteria criteria = example.createCriteria();
+        criteria.andParentIdEqualTo(parentId);
+        List<TbModule> list = moduleMapper.selectByExample(example);
+        List<EUTreeNodeWithAttributes> resultList = new ArrayList<>();
+        for (TbModule module : list) {
+            EUTreeNodeWithAttributes node = new EUTreeNodeWithAttributes();
+            node.setId(module.getId());
+            System.out.println("2222222222");
+            node.setText(module.getName());
+            Short status = module.getIsParent();
+            Short judgeOne = 1;
+            if(status.equals(judgeOne)){
+                node.setState("closed");
+            }else{
+                node.setState("open");
+            }
+            resultList.add(node);
+        }
+        //返回结果
+        return resultList;
     }
 }

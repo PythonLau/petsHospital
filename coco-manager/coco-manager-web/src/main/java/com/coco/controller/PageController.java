@@ -33,7 +33,7 @@ public class PageController {
 	 * 打开首页
 	 */
 	@RequestMapping("/")
-	public String showIndex(Model model) {
+	public String showIndexController(Model model) {
 		boolean isPaging = true;
 		List<TbArticle> list = articleService.getArticleTitleList(isPaging);
 		List<TbSlider> sliders = sliderService.getSliderList();
@@ -41,6 +41,7 @@ public class PageController {
 		model.addAttribute("list",list);
 		return "index";
 	}
+
 	/**
 	 * 展示其他页面
 	 * <p>Title: showpage</p>

@@ -9,6 +9,7 @@ com\coco\controller\PictureController.class
 com\coco\controller\DoctorController.class
 com\coco\controller\PositionCatController.class
 com\coco\controller\ModuleController.class
+com\coco\aop\UserControllerLog.class
 com\coco\controller\ItemController.class
 com\coco\controller\UserController.class
 com\coco\controller\AdoptController.class
