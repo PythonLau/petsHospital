@@ -25,7 +25,7 @@ public class PositionCatController {
 
     @RequestMapping("/list")
     @ResponseBody
-    private List<EUTreeNode> getCatList(@RequestParam(value="id",defaultValue="0")Long parentId) {
+    public List<EUTreeNode> getCatList(@RequestParam(value="id",defaultValue="0")Long parentId) {
         System.out.println("controller..../list");
         System.out.println(parentId);
         List<EUTreeNode> list = positionCatService.getCatList(parentId);

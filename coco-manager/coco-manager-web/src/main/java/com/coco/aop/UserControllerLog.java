@@ -60,6 +60,7 @@ public class UserControllerLog {
         BigDecimal flow_Id = new BigDecimal(flowId);
         flow.setId(flow_Id);
         flow.setCreated(new Date());
+        System.out.println("准备插入流量表");
         flowMapper.insert(flow);
     }
 }

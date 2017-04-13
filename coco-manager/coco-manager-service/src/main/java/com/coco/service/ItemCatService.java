@@ -7,7 +7,6 @@ import com.coco.common.pojo.EUTreeNode;
 import com.coco.common.pojo.TaotaoResult;
 
 public interface ItemCatService {
-
 	List<EUTreeNode> getCatList(BigDecimal parentId);
 	TaotaoResult insertItemCat(BigDecimal parentId, String name);
 	TaotaoResult deleteItemCat(BigDecimal id);

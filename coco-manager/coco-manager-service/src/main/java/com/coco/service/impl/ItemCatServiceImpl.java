@@ -43,6 +43,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		criteria.andParentIdEqualTo(parentId);
 		//根据条件查询
 		List<TbItemCat> list = itemCatMapper.selectByExample(example);
+		System.out.println("分类大小:" + list.size());
 		List<EUTreeNode> resultList = new ArrayList<>();
 		//把列表转换成treeNodelist
 		for (TbItemCat tbItemCat : list) {

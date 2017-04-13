@@ -437,6 +437,8 @@ select * from tb_authority
 
 truncate table tb_authority
 
+---------------------------------------------------------------------------------------------------------------------------
+
 create table tb_flow(
 id number(20) not null,   --流量id
 sessionId varchar(50) default null,  --用户识别id
@@ -448,6 +450,178 @@ ip varchar(80) not null, --客户端ip
 created date DEFAULT sysdate,  --创建日期
 PRIMARY KEY (id)
 )
+
+select count(1) as pv
+,count(distinct sessionId) as uv 
+from tb_flow 
+where url not like '%/manager%' 
+and url not like '%/doctor%' 
+and url not like '%/report%'
+and to_char(sysdate,'YYYY-MM-DD') = '2017-04-13'
+
+select to_char(sysdate,'YYYY-MM-DD') from dual;
+
+select * from tb_flow where url not like '%/manager%' and url not like '%/doctor%'
+
+ select * from test where test like 'sdd/_%' escape '/';
+
+select * from tb_flow
+
+truncate table tb_flow
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+
+create table tb_flow_achievement_Report(
+pv number(20) not null,   --pv
+uv number(10) not null,   --uv
+statusOneMedical number(5) not null,  --待处理挂号数量
+statusTwoMedical number(5) not null,  --医生已处理挂号数量
+statusThreeMedical number(5) not null,  --成功结束挂号数量
+statusZeroMedical number(5) not null,  --已取消挂号数量
+statusOnePackage number(5) not null,  --订购套餐数量
+statusTwoPackage number(5) not null,  --已服务套餐数量
+statusZeroPackage number(5) not null,  --已取消套餐数量
+RevenueOfMedical number(12,2) not null,  --通过治疗的营收
+RevenueOfPackage number(12,2) not null, --通过套餐服务的营收
+serverDate varchar(18) not null  --日期
+)
+
+select * from tb_flow_achievement_Report
+
+
+-----------------------------------------------------------------------------------------
+create table tb_middleFlow(
+pv number(20) not null,   --pv
+uv number(10) not null,   --uv
+serverDate varchar(18) not null  --日期
+)
+
+select * from tb_middleFlow
+
+-------------------------------------------------------------------------------------------
+create table tb_middleMedical(
+statusOneMedical number(5) not null,  --待处理挂号数量
+statusTwoMedical number(5) not null,  --医生已处理挂号数量
+statusThreeMedical number(5) not null,  --成功结束挂号数量
+statusZeroMedical number(5) not null,  --已取消挂号数量
+RevenueOfMedical number(12,2) not null,  --通过治疗的营收
+serverDate varchar(18) not null  --日期
+)
+select * from tb_middleMedical
+
+
+---------------------------------------------------------------------------------------------
+create table tb_middleOrder(
+statusOnePackage number(5) not null,  --订购套餐数量
+statusTwoPackage number(5) not null,  --已服务套餐数量
+statusZeroPackage number(5) not null,  --已取消套餐数量
+RevenueOfPackage number(12,2) not null, --通过套餐服务的营收
+serverDate varchar(18) not null   --日期
+)
+
+select * from tb_middleOrder
+
+
+
+
+
+----------------------------------------------------------------------------------------------
+
+commit 
+
+begin 
+  proc('2017-04-13');
+end;
+
+select * from tb_flow_achievement_Report
+
+insert into tb_flow_achievement_Report
+(
+pv 
+,uv 
+,statusOneMedical 
+,statusTwoMedical 
+,statusThreeMedical 
+,statusZeroMedical 
+,statusOnePackage 
+,statusTwoPackage 
+,statusZeroPackage 
+,RevenueOfMedical 
+,RevenueOfPackage 
+,serverDate 
+)
+select 
+sum(pv)
+,sum(uv)
+,sum(statusOneMedical) 
+,sum(statusTwoMedical)
+,sum(statusThreeMedical)
+,sum(statusZeroMedical)
+,sum(statusOnePackage)
+,sum(statusTwoPackage)
+,sum(statusZeroPackage)
+,sum(RevenueOfMedical)
+,sum(RevenueOfPackage)
+,serverDate
+from
+(
+select
+pv as pv
+,uv as uv
+,0 as statusOneMedical
+,0 as statusTwoMedical
+,0 as statusThreeMedical
+,0 as statusZeroMedical
+,0 as statusOnePackage
+,0 as statusTwoPackage
+,0 as statusZeroPackage
+,0.00 as RevenueOfMedical
+,0.00 as RevenueOfPackage
+,serverDate as serverDate
+from 
+tb_middleFlow
+where serverDate = '2017-04-13'
+union all
+select 
+0 as pv
+,0 as uv
+,statusOneMedical as statusOneMedical
+,statusTwoMedical as statusTwoMedical
+,statusThreeMedical as statusThreeMedical
+,statusZeroMedical as statusZeroMedical
+,0 as statusOnePackage
+,0 as statusTwoPackage
+,0 as statusZeroPackage
+,RevenueOfMedical as RevenueOfMedical
+,0.00 as RevenueOfPackage
+,serverDate as serverDate
+from 
+tb_middleMedical 
+where serverDate = '2017-04-13'
+union all
+select 
+0 as pv
+,0 as uv
+,0 as statusOneMedical
+,0 as statusTwoMedical
+,0 as statusThreeMedical
+,0 as statusZeroMedical
+,statusOnePackage 
+,statusTwoPackage 
+,statusZeroPackage 
+,0.00 as RevenueOfMedical
+,RevenueOfPackage 
+,serverDate 
+from 
+tb_middleOrder
+where serverDate = '2017-04-13'
+)
+group by serverDate
+
+
+
 
 
 
