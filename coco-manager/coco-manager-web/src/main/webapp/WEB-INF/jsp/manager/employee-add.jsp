@@ -56,12 +56,6 @@
                     <input type="hidden" name="image"/>
                 </td>
             </tr>
-            <tr>
-                <td>离职原因:</td>
-                <td>
-                    <textarea style="width:388px;height:138px;" name="dimissionreason"></textarea>
-                </td>
-            </tr>
         </table>
     </form>
     <div style="padding:5px">

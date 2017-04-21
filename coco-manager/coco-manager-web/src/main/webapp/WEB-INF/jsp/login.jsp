@@ -27,7 +27,7 @@
 <body>
 
 <div class="container">
-	<h1 class="text-center">coco用户登录</h1>
+	<h5 class="text-center" align="center" style="font-size: 33px; color: #01AAED"><strong>coco用户登录</strong></h5>
 	<form id="userLoginForm" action="/userLogin/loginConfirm" method="post">
 		<div class="login">
 			<div class="card">

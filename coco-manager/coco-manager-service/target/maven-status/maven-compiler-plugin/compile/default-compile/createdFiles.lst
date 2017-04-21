@@ -1,5 +1,6 @@
 com\coco\service\impl\PositionCatServiceImpl.class
 com\coco\service\MedicalService.class
+com\coco\service\ReportService.class
 com\coco\service\ManagerService.class
 com\coco\service\PackageService.class
 com\coco\service\AuthorityService.class
@@ -26,6 +27,7 @@ com\coco\service\impl\DoctorServiceImpl.class
 com\coco\service\ItemService.class
 com\coco\service\ModuleService.class
 com\coco\service\impl\LoginServiceImpl.class
+com\coco\service\impl\ReportServiceImpl.class
 com\coco\service\ArticleService.class
 com\coco\service\impl\ArticleServiceImpl.class
 com\coco\service\impl\ItemCatServiceImpl.class

@@ -135,7 +135,7 @@
         <div id="nav-content">
             <ul>
                 <li><a href="/">首页</a></li>
-                <li><a href="#">我要挂号</a></li>
+                <li><a href="#">明星医生</a></li>
                 <li><a href="#">寄养领养</a></li>
                 <li><a href="/package/1">订购套餐</a></li>
                 <li><a href="#">医院介绍</a></li>

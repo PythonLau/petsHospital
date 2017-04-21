@@ -12,6 +12,7 @@ D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\serv
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ArticleService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\AdoptService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ModuleService.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ReportService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\PictureServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\PetService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\FosterServiceImpl.java
@@ -28,6 +29,7 @@ D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\serv
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\FosterService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ItemCatService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\PositionCatServiceImpl.java
+D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\ReportServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\impl\UserServiceImpl.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\ItemService.java
 D:\Java\myJavaCode\coco-manager\coco-manager-service\src\main\java\com\coco\service\MedicalService.java

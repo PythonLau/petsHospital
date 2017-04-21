@@ -5,7 +5,7 @@
         <option value="name">套餐名称</option>
         <option value="status">状态</option>
     </select>
-    <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    <input id="search_key" style="line-height:18px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
 </div>
 <table class="easyui-datagrid" id="packageList" title="套餐列表"
@@ -13,14 +13,14 @@
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'id',width:200">套餐ID</th>
-        <th data-options="field:'name',width:88">套餐名称</th>
-        <th data-options="field:'price',width:50">套餐价格</th>
+        <th data-options="field:'id',width:133">套餐ID</th>
+        <th data-options="field:'name',width:123">套餐名称</th>
+        <th data-options="field:'price',width:58">套餐价格</th>
         <th data-options="field:'normaldiscount',width:50">正常折扣</th>
         <th data-options="field:'memberdiscount',width:50">会员折扣</th>
-        <th data-options="field:'introduction',width:200">套餐简介</th>
+        <th data-options="field:'image',width:68,formatter:TAOTAO.formatImage">图片</th>
+        <th data-options="field:'introduction',width:333">套餐简介</th>
         <th data-options="field:'status',width:38,align:'center',formatter:TAOTAO.formatPackageStatus">状态</th>
-        <th data-options="field:'image',width:200">套餐图片</th>
         <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">创建日期</th>
         <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">更新日期</th>
     </tr>

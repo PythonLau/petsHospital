@@ -22,6 +22,4 @@ public class EUDataGridResult {
 	public void setRows(List<?> rows) {
 		this.rows = rows;
 	}
-	
-	
 }

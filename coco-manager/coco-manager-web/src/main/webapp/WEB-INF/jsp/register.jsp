@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">coco新用户注册</h1>
+    <h5 class="text-center" align="center" style="font-size: 33px; color: #01AAED"><strong>coco新用户注册</strong></h5>
     <form id="userRegisterForm" method="post">
         <div class="signup">
             <div class="card">

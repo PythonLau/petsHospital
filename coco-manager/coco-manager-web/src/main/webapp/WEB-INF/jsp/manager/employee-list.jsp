@@ -7,7 +7,7 @@
         <option value="cid">所属部门</option>
         <option value="status">状态</option>
     </select>
-    <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    <input id="search_key" style="line-height:18px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
 </div>
 <table class="easyui-datagrid" id="employeeList" title="员工列表"
@@ -15,14 +15,15 @@
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'id',width:200">员工ID</th>
+        <th data-options="field:'id',width:133">员工ID</th>
         <th data-options="field:'name',width:88">姓名</th>
         <th data-options="field:'sex',width:30">性别</th>
-        <th data-options="field:'idcard',width:88">身份证</th>
+        <th data-options="field:'idcard',width:150">身份证</th>
+        <th data-options="field:'image',width:68,formatter:TAOTAO.formatImage">图片</th>
         <th data-options="field:'telephone',width:88">电话</th>
         <th data-options="field:'salary',width:50">薪水</th>
         <th data-options="field:'cid',width:38">所属部门</th>
-        <th data-options="field:'status',width:38,align:'center',formatter:TAOTAO.formatEmployeeStatus">状态</th>
+        <th data-options="field:'status',width:55,align:'center',formatter:TAOTAO.formatEmployeeStatus">状态</th>
         <th data-options="field:'dimissionreason',width:200">离职原因</th>
         <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">创建日期</th>
         <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">更新日期</th>

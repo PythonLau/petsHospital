@@ -28,7 +28,6 @@ public class IDUtils {
 		
 		return str;
 	}
-	
 	/**
 	 * 商品id生成
 	 */

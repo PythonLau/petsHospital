@@ -90,6 +90,10 @@ var TT = TAOTAO = {
         }
     },
 
+    formatImage : function formatImage(val,row){
+      return '<img src="' + val + '" height="55" width="68"/>'
+    },
+
     // 格式化价格
     formatPrice : function(val,row){
         return (val/1000).toFixed(2);

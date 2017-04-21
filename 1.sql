@@ -236,7 +236,9 @@ PRIMARY KEY (id)
 
 commit
 
-select * from tb_package
+
+
+
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -294,6 +296,7 @@ PRIMARY KEY (id)
 
 select * from tb_order
 
+
 truncate table tb_order
 
 
@@ -350,11 +353,11 @@ select recipe from tb_medical
 drop table tb_medical
 
 ---------------------------------------------------------------------------------------------------
-
-create table tb_doctor(
+--记得加status字段
+create table tb_doctor(      
 id number(20) NOT NULL,  ---医生工号，关联员工表的id
 username varchar(20) NOT NULL,    --医生登陆名
-password varchar(50) NOT NULL,   ---医生密码
+password varchar(50) NOT NULL,   ---医生密码   
 created date default sysdate, -- '创建时间'
 updated date default sysdate, -- '更新时间'
 PRIMARY KEY (id)
@@ -488,7 +491,7 @@ RevenueOfPackage number(12,2) not null, --通过套餐服务的营收
 serverDate varchar(18) not null  --日期
 )
 
-select * from tb_flow_achievement_Report
+select * from tb_flow_achievement_Report order by serverDate
 
 
 -----------------------------------------------------------------------------------------
@@ -497,6 +500,8 @@ pv number(20) not null,   --pv
 uv number(10) not null,   --uv
 serverDate varchar(18) not null  --日期
 )
+
+select * from tb_middleFlow order by serverDate
 
 select * from tb_middleFlow
 
@@ -536,89 +541,6 @@ begin
 end;
 
 select * from tb_flow_achievement_Report
-
-insert into tb_flow_achievement_Report
-(
-pv 
-,uv 
-,statusOneMedical 
-,statusTwoMedical 
-,statusThreeMedical 
-,statusZeroMedical 
-,statusOnePackage 
-,statusTwoPackage 
-,statusZeroPackage 
-,RevenueOfMedical 
-,RevenueOfPackage 
-,serverDate 
-)
-select 
-sum(pv)
-,sum(uv)
-,sum(statusOneMedical) 
-,sum(statusTwoMedical)
-,sum(statusThreeMedical)
-,sum(statusZeroMedical)
-,sum(statusOnePackage)
-,sum(statusTwoPackage)
-,sum(statusZeroPackage)
-,sum(RevenueOfMedical)
-,sum(RevenueOfPackage)
-,serverDate
-from
-(
-select
-pv as pv
-,uv as uv
-,0 as statusOneMedical
-,0 as statusTwoMedical
-,0 as statusThreeMedical
-,0 as statusZeroMedical
-,0 as statusOnePackage
-,0 as statusTwoPackage
-,0 as statusZeroPackage
-,0.00 as RevenueOfMedical
-,0.00 as RevenueOfPackage
-,serverDate as serverDate
-from 
-tb_middleFlow
-where serverDate = '2017-04-13'
-union all
-select 
-0 as pv
-,0 as uv
-,statusOneMedical as statusOneMedical
-,statusTwoMedical as statusTwoMedical
-,statusThreeMedical as statusThreeMedical
-,statusZeroMedical as statusZeroMedical
-,0 as statusOnePackage
-,0 as statusTwoPackage
-,0 as statusZeroPackage
-,RevenueOfMedical as RevenueOfMedical
-,0.00 as RevenueOfPackage
-,serverDate as serverDate
-from 
-tb_middleMedical 
-where serverDate = '2017-04-13'
-union all
-select 
-0 as pv
-,0 as uv
-,0 as statusOneMedical
-,0 as statusTwoMedical
-,0 as statusThreeMedical
-,0 as statusZeroMedical
-,statusOnePackage 
-,statusTwoPackage 
-,statusZeroPackage 
-,0.00 as RevenueOfMedical
-,RevenueOfPackage 
-,serverDate 
-from 
-tb_middleOrder
-where serverDate = '2017-04-13'
-)
-group by serverDate
 
 
 

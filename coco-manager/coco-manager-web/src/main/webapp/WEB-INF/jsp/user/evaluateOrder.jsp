@@ -30,7 +30,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">评价服务</h1>
+    <h5 align="center" style="font-size: 33px; color: #01AAED"><strong>评价服务</strong></h5>
     <form id="addPetForm" method="post">
         <div class="signup">
             <div class="card">

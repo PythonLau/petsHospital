@@ -32,7 +32,7 @@ public class ItemController {
 	
 	@RequestMapping(value="/item/save", method=RequestMethod.POST)
 	@ResponseBody
-	private TaotaoResult createItem(TbItem item) throws Exception {
+	public TaotaoResult createItem(TbItem item) throws Exception {
 		TaotaoResult result = itemService.createItem(item);
 		return result;
 	}
@@ -78,7 +78,7 @@ public class ItemController {
 
 	@RequestMapping(value="/item/update", method=RequestMethod.POST)
 	@ResponseBody
-	private TaotaoResult updateItem(TbItem item) throws Exception {
+	public TaotaoResult updateItem(TbItem item) throws Exception {
 		TaotaoResult result = itemService.updateItem(item);
 		return result;
 	}

@@ -1,5 +1,6 @@
 com\coco\mapper\TbMedicalMapper.class
 com\coco\mapper\TbEmployeeMapper.class
+com\coco\mapper\TbFlowAchievementReportMapper.class
 com\coco\mapper\TbLoginMapper.class
 com\coco\mapper\TbItemCatMapper.class
 com\coco\mapper\TbAdoptMapper.class

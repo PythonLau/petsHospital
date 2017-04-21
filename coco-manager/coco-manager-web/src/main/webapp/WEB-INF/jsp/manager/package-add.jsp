@@ -25,7 +25,7 @@
             <tr>
                 <td>套餐图片:</td>
                 <td>
-                    <a href="javascript:void(0)" class="easyui-linkbutton addEmployeePicFileUpload">上传照片</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton addEmployeePicFileUpload">上传图片</a>
                     <input type="hidden" name="image"/>
                 </td>
             </tr>

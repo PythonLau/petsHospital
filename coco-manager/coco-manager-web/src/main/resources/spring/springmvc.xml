@@ -44,7 +44,7 @@
 			<bean class="com.coco.interceptor.doctorInterceptor"></bean>
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/report/**"/> <!-- 医生登录拦截 -->
+			<mvc:mapping path="/report/**"/> <!-- 报表用户登录拦截 -->
 			<mvc:exclude-mapping path="/report/login"/>
 			<bean class="com.coco.interceptor.reportInterceptor"></bean>
 		</mvc:interceptor>

@@ -22,7 +22,7 @@ public class EmployeeController {
 
     @RequestMapping(value="/employee/save", method= RequestMethod.POST)
     @ResponseBody
-    private TaotaoResult createEmployee(TbEmployee employee) throws Exception {
+    public TaotaoResult createEmployee(TbEmployee employee) throws Exception {
         System.out.println(employee.getCid());
         System.out.println(employee.getName());
         System.out.println(employee.getSex());
@@ -43,7 +43,7 @@ public class EmployeeController {
 
     @RequestMapping(value="/employee/update", method=RequestMethod.POST)
     @ResponseBody
-    private TaotaoResult updateEmployee(TbEmployee employee) throws Exception {
+    public TaotaoResult updateEmployee(TbEmployee employee) throws Exception {
         System.out.println("employee update controller");
         TaotaoResult result = employeeService.updateEmployee(employee);
         return result;
@@ -51,7 +51,7 @@ public class EmployeeController {
 
     @RequestMapping(value="/employee/search", method=RequestMethod.POST)
     @ResponseBody
-    private EUDataGridResult searchEmployee(@RequestBody search_params search_params) throws Exception {
+    public EUDataGridResult searchEmployee(@RequestBody search_params search_params) throws Exception {
         System.out.println("employee search controller");
         String search_condition = search_params.getSearch_condition();
         String search_key = search_params.getSearch_key();

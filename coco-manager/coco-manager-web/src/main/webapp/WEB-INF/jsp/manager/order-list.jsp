@@ -4,7 +4,7 @@
         <option value="id">订单ID</option>
         <option value="status">状态</option>
     </select>
-    <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    <input id="search_key" style="line-height:18px;border:1px solid #ccc">
     开始时间<input type="date" id="beginDate" name="beginDate">
     结束时间<input type="date" id="endDate" name="endDate">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
@@ -14,13 +14,13 @@
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'id',width:138">订单id</th>
-        <th data-options="field:'userid',width:138">用户id</th>
+        <th data-options="field:'id',width:133">订单id</th>
+        <th data-options="field:'userid',width:133">用户id</th>
         <th data-options="field:'packageId',width:133">套餐id</th>
         <th data-options="field:'status',width:88,formatter:TAOTAO.formatorderStatus">状态</th>
-        <th data-options="field:'price',width:133">套餐费用</th>
-        <th data-options="field:'score',width:133">评分</th>
-        <th data-options="field:'words',width:133">留言</th>
+        <th data-options="field:'price',width:88">套餐费用</th>
+        <th data-options="field:'score',width:66">评分</th>
+        <th data-options="field:'words',width:168">留言</th>
         <th data-options="field:'created',width:133,formatter:TAOTAO.formatDateTime">创建时间</th>
         <th data-options="field:'updated',width:133,formatter:TAOTAO.formatDateTime">更新时间</th>
     </tr>

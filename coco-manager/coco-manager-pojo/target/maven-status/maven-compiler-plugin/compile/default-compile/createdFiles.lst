@@ -1,4 +1,5 @@
 com\coco\pojo\TbOrderExample$Criteria.class
+com\coco\pojo\TbFlowAchievementReportExample.class
 com\coco\pojo\TbPets.class
 com\coco\pojo\TbFosterExample$Criteria.class
 com\coco\pojo\TbOrderExample.class
@@ -6,6 +7,7 @@ com\coco\pojo\TbPackageExample.class
 com\coco\pojo\TbPositionCat.class
 com\coco\pojo\TbPackageExample$Criterion.class
 com\coco\pojo\TbManager.class
+com\coco\pojo\TbFlowAchievementReportExample$Criterion.class
 com\coco\pojo\TbSliderExample.class
 com\coco\pojo\TbUserExample$GeneratedCriteria.class
 com\coco\pojo\TbAuthorityExample.class
@@ -37,9 +39,11 @@ com\coco\pojo\TbPositionCatExample$Criteria.class
 com\coco\pojo\TbFlow.class
 com\coco\pojo\TbArticle.class
 com\coco\pojo\TbEmployeeExample$GeneratedCriteria.class
+com\coco\pojo\TbFlowAchievementReport.class
 com\coco\pojo\TbPositionCatExample.class
 com\coco\pojo\TbDoctorExample$Criterion.class
 com\coco\pojo\myAdopt.class
+com\coco\pojo\TbFlowAchievementReportExample$GeneratedCriteria.class
 com\coco\pojo\TbModuleExample$GeneratedCriteria.class
 com\coco\pojo\TbItemExample.class
 com\coco\pojo\TbOrderExample$GeneratedCriteria.class
@@ -98,4 +102,5 @@ com\coco\pojo\TbFlowExample$Criteria.class
 com\coco\pojo\TbAuthorityExample$Criterion.class
 com\coco\pojo\TbManagerExample$GeneratedCriteria.class
 com\coco\pojo\TbAuthority.class
+com\coco\pojo\TbFlowAchievementReportExample$Criteria.class
 com\coco\pojo\TbPetsExample$Criteria.class

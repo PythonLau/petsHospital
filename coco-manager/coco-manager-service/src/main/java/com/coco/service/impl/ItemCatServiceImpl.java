@@ -37,11 +37,9 @@ public class ItemCatServiceImpl implements ItemCatService {
 	private Short isFalse = 0;
 	@Override
 	public List<EUTreeNode> getCatList(BigDecimal parentId) {
-		//创建查询条件
 		TbItemCatExample example = new TbItemCatExample();
 		TbItemCatExample.Criteria criteria = example.createCriteria();
 		criteria.andParentIdEqualTo(parentId);
-		//根据条件查询
 		List<TbItemCat> list = itemCatMapper.selectByExample(example);
 		System.out.println("分类大小:" + list.size());
 		List<EUTreeNode> resultList = new ArrayList<>();
@@ -60,7 +58,6 @@ public class ItemCatServiceImpl implements ItemCatService {
 			resultList.add(node);
 		}
 		//返回结果
-		System.out.println("1111");
 		return resultList;
 	}
 	@Override
@@ -83,7 +80,6 @@ public class ItemCatServiceImpl implements ItemCatService {
 			//更新父节点
 			itemCatMapper.updateByPrimaryKey(parentCat);
 		}
-		//返回结果
 		return TaotaoResult.ok(tbItemCat);
 	}
 

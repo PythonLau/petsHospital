@@ -8,7 +8,7 @@
         <option value="barcode">条形码</option>
         <option value="status">状态</option>
     </select>
-    <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    <input id="search_key" style="line-height:18px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
 </div>
 <table class="easyui-datagrid" id="itemList" title="商品列表"
@@ -23,14 +23,14 @@
         <th data-options="field:'price',width:70,align:'right',formatter:TAOTAO.formatPrice">价格</th>
         <th data-options="field:'num',width:70,align:'right'">库存数量</th>
         <th data-options="field:'barcode',width:100">条形码</th>
-        <th data-options="field:'image',width:100">图片</th>
+        <th data-options="field:'image',width:100,formatter:TAOTAO.formatImage">图片</th>
         <th data-options="field:'status',width:60,align:'center',formatter:TAOTAO.formatItemStatus">状态</th>
         <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">创建日期</th>
         <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">更新日期</th>
     </tr>
     </thead>
 </table>
-<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/item-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="itemEditWindow" class="easyui-window" title="编辑物品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/item-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 
 <script>
@@ -53,11 +53,11 @@
             var ids = getSelectionsIds();
             alert(ids);
             if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个商品才能编辑!');
+                $.messager.alert('提示','必须选择一个物品才能编辑!');
                 return ;
             }
             if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个商品!');
+                $.messager.alert('提示','只能选择一个物品!');
                 return ;
             }
             $("#itemEditWindow").window({
