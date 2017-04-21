@@ -35,6 +35,10 @@
         if (ShowLabel) {
             var row = "";
             for (var index in arrData[0]) {
+                alert(index);
+                if(index == 'statusonemedical'){
+                    index = '待处理挂号';
+                }
                 row += index + ',';
             }
             row = row.slice(0, -1);
@@ -52,13 +56,9 @@
             alert("表格数据为空");
             return;
         }
-        var fileName = "MyReport_";
-        fileName += ReportTitle.replace(/ /g, "_");
-        alert(fileName);
-        var uri = 'data:text/csv;charset=utf-8,' + escape(CSV);
-        alert(uri);
+        var fileName = ReportTitle.replace(/ /g, "_");
+        var uri = "data:text/csv;charset=utf-8,\ufeff" + encodeURIComponent(CSV);
         var link = document.createElement("a");
-        alert(link);
         link.href = uri;
         link.style = "visibility:hidden";
         link.download = fileName + ".csv";
@@ -68,11 +68,12 @@
     }
     $("#btnExport").click(function() {
         var data = JSON.stringify($('#medicalList').datagrid('getData').rows);
+        alert(data);
         if (data == ''){
             alert('表格值为空');
             return;
         }
-        JSONToCSVConvertor(data, "Download", true);
+        JSONToCSVConvertor(data, "流量与业绩报表", true);
     });
 </script>
 <script>
@@ -104,8 +105,9 @@
         }
         //新增一行显示统计信息
         $('#medicalList').datagrid('appendRow',
-            { serverdate: '<strong>统计：</strong>',
-                pv: PVTotal, uv: UVTotal,
+            {
+                pv: PVTotal,
+                uv: UVTotal,
                 statusonemedical : statusonemedicalTotal,
                 statustwomedical : statustwomedicalTotal,
                 statusthreemedical : statusthreemedicalTotal,

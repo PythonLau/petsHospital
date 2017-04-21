@@ -407,6 +407,9 @@ create table tb_module
   PRIMARY KEY (id)
 )
 
+select * from tb_module
+
+
 
 INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (1, 0, '办公室报表','/index', 1, 1, 1);
 INSERT INTO tb_module(id,parent_id,name,url,status,sort_order,is_parent) VALUES (2, 1, '财务部报表','/login',1, 1, 0);
@@ -531,7 +534,6 @@ select * from tb_middleOrder
 
 
 
-
 ----------------------------------------------------------------------------------------------
 
 commit 
@@ -540,9 +542,14 @@ begin
   proc('2017-04-13');
 end;
 
-select * from tb_flow_achievement_Report
+select * from tb_flow_achievement_Report where serverDate between '2017-04-13' and '2017-04-20'
 
+insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-12')
+insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-14')
+insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-11')
+insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-20')
 
+commit
 
 
 
