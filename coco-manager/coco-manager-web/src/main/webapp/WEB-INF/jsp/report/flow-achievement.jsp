@@ -6,7 +6,7 @@
     <a href="#" class="easyui-linkbutton" style="width:12%" id="btnExport">导出</a>
 </div>
 <table class="easyui-datagrid" id="medicalList" title="病历列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/report/flowAndAchievement',method:'get',pageSize:10,toolbar:toolbar,onLoadSuccess:compute">
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/report/flowAndAchievement',method:'get',pageSize:10,onLoadSuccess:compute">
     <thead>
     <tr>
         <th data-options="field:'serverdate',width:100">日期</th>
@@ -119,55 +119,8 @@
                 revenueofpackage : revenueofpackageTotal});
     }
 </script>
-
-<script>
-
-    function getSelectionsIds(){
-        var medicalList = $("#medicalList");
-        var sels = medicalList.datagrid("getSelections");
-        var ids = [];
-        for(var i in sels){
-            ids.push(sels[i].id);
-        }
-        ids = ids.join(",");
-        return ids;
-    }
-
-    var toolbar = [{
-        text:'处理该病历',
-        iconCls:'icon-edit',
-        handler:function(){
-            var ids = getSelectionsIds();
-            if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个病历才能处理!');
-                return ;
-            }
-            if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个病历!');
-                return ;
-            }
-
-            $("#prescribeWindow").window({
-                onLoad :function(){
-                    //回显数据
-                    var data = $("#medicalList").datagrid("getSelections")[0];
-                    $("#MedicalEditForm").form("load",data);
-
-                    TAOTAO.init({
-                        "pics" : data.image,
-                        "cid" : data.cid,
-                    });
-                }
-            }).window("open");
-
-
-        }
-    }];
-</script>
 <script>
     function doSearch(pageNumber, pageSize){
-        var search_condition =document.getElementById("search_condition").value;
-        var search_key =document.getElementById("search_key").value;
         var beginDate = document.getElementById("beginDate").value;
         var endDate = document.getElementById("endDate").value;
         //获取分页大小
@@ -176,9 +129,9 @@
         if(rows != pageSize){
             pageSize = rows ;
         }
-        var searchParamsWithTime = {"search_condition":search_condition,"search_key":search_key,"beginDate":beginDate,"endDate":endDate,"rows":pageSize,'pageNumber':pageNumber};
+        var searchParamsWithTime = {"beginDate":beginDate,"endDate":endDate,"rows":pageSize,'pageNumber':pageNumber};
         $.ajax({
-            url: "/manager/medical/search",
+            url: "/report/search",
             type: "POST",
             contentType: "application/json",
             dataType: "json",

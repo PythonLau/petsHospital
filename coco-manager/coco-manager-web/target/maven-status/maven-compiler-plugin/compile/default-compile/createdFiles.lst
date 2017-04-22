@@ -3,6 +3,7 @@ com\coco\controller\PageController.class
 com\coco\controller\PetController.class
 com\coco\interceptor\doctorInterceptor.class
 com\coco\interceptor\reportInterceptor.class
+com\coco\controller\AuthorityController.class
 com\coco\controller\ItemCatController.class
 com\coco\controller\FosterController.class
 com\coco\controller\PictureController.class

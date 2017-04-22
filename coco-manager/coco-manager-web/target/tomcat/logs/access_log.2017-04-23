@@ -1,0 +1,12 @@
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:24 +0800] "GET /manager/index HTTP/1.1" 302 - http-bio-8080-exec-1 83
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:26 +0800] "GET /manager/login HTTP/1.1" 200 1853 http-bio-8080-exec-2 2446
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:28 +0800] "GET /font/iconfont.woff?v=1.0.9 HTTP/1.1" 404 987 http-bio-8080-exec-4 12
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:28 +0800] "GET /Images/login-bg-1.jpg HTTP/1.1" 404 993 http-bio-8080-exec-3 46
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:28 +0800] "GET /font/iconfont.ttf?v=1.0.9 HTTP/1.1" 404 985 http-bio-8080-exec-6 16
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:36 +0800] "POST /managerLogin/loginConfirm HTTP/1.1" 302 - http-bio-8080-exec-7 223
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:36 +0800] "GET /manager/index HTTP/1.1" 200 3891 http-bio-8080-exec-8 175
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:36 +0800] "GET /js/common.js HTTP/1.1" 304 - http-bio-8080-exec-9 9
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:44 +0800] "GET /manager/authority-list?_=1492880917730 HTTP/1.1" 200 4661 http-bio-8080-exec-10 497
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:47 +0800] "GET /manager/authority/list?page=1&rows=10 HTTP/1.1" 200 643 http-bio-8080-exec-1 206
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:08:56 +0800] "POST /manager/authority/search HTTP/1.1" 200 32 http-bio-8080-exec-2 1341
+0:0:0:0:0:0:0:1 - - [23/Apr/2017:01:09:41 +0800] "POST /manager/authority/search HTTP/1.1" 200 643 http-bio-8080-exec-2 310

@@ -19,6 +19,7 @@ com\coco\service\impl\PackageServiceImpl.class
 com\coco\service\impl\FosterServiceImpl.class
 com\coco\service\impl\ModuleServiceImpl.class
 com\coco\service\impl\UserServiceImpl.class
+com\coco\service\impl\AuthorityServiceImpl.class
 com\coco\service\impl\PetServiceImpl.class
 com\coco\service\impl\AdoptServiceImpl.class
 com\coco\service\impl\MedicalServiceImpl.class

@@ -82,6 +82,7 @@ com\coco\pojo\adoptPet.class
 com\coco\pojo\TbArticleExample$Criteria.class
 com\coco\pojo\TbMedical.class
 com\coco\pojo\TbLoginExample.class
+com\coco\pojo\authorityView.class
 com\coco\pojo\TbAdoptExample.class
 com\coco\pojo\TbArticleExample$GeneratedCriteria.class
 com\coco\pojo\TbMedicalExample$Criteria.class

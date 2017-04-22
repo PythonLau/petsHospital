@@ -3,6 +3,8 @@ package com.coco.pojo;
 import java.math.BigDecimal;
 
 public class TbFlowAchievementReport {
+    private String serverdate;
+
     private BigDecimal pv;
 
     private Long uv;
@@ -25,7 +27,13 @@ public class TbFlowAchievementReport {
 
     private BigDecimal revenueofpackage;
 
-    private String serverdate;
+    public String getServerdate() {
+        return serverdate;
+    }
+
+    public void setServerdate(String serverdate) {
+        this.serverdate = serverdate == null ? null : serverdate.trim();
+    }
 
     public BigDecimal getPv() {
         return pv;
@@ -113,13 +121,5 @@ public class TbFlowAchievementReport {
 
     public void setRevenueofpackage(BigDecimal revenueofpackage) {
         this.revenueofpackage = revenueofpackage;
-    }
-
-    public String getServerdate() {
-        return serverdate;
-    }
-
-    public void setServerdate(String serverdate) {
-        this.serverdate = serverdate == null ? null : serverdate.trim();
     }
 }

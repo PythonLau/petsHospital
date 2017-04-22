@@ -105,6 +105,76 @@ public class TbFlowAchievementReportExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
+        public Criteria andServerdateIsNull() {
+            addCriterion("SERVERDATE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateIsNotNull() {
+            addCriterion("SERVERDATE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateEqualTo(String value) {
+            addCriterion("SERVERDATE =", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateNotEqualTo(String value) {
+            addCriterion("SERVERDATE <>", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateGreaterThan(String value) {
+            addCriterion("SERVERDATE >", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateGreaterThanOrEqualTo(String value) {
+            addCriterion("SERVERDATE >=", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateLessThan(String value) {
+            addCriterion("SERVERDATE <", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateLessThanOrEqualTo(String value) {
+            addCriterion("SERVERDATE <=", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateLike(String value) {
+            addCriterion("SERVERDATE like", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateNotLike(String value) {
+            addCriterion("SERVERDATE not like", value, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateIn(List<String> values) {
+            addCriterion("SERVERDATE in", values, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateNotIn(List<String> values) {
+            addCriterion("SERVERDATE not in", values, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateBetween(String value1, String value2) {
+            addCriterion("SERVERDATE between", value1, value2, "serverdate");
+            return (Criteria) this;
+        }
+
+        public Criteria andServerdateNotBetween(String value1, String value2) {
+            addCriterion("SERVERDATE not between", value1, value2, "serverdate");
+            return (Criteria) this;
+        }
+
         public Criteria andPvIsNull() {
             addCriterion("PV is null");
             return (Criteria) this;
@@ -762,76 +832,6 @@ public class TbFlowAchievementReportExample {
 
         public Criteria andRevenueofpackageNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("REVENUEOFPACKAGE not between", value1, value2, "revenueofpackage");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateIsNull() {
-            addCriterion("SERVERDATE is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateIsNotNull() {
-            addCriterion("SERVERDATE is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateEqualTo(String value) {
-            addCriterion("SERVERDATE =", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateNotEqualTo(String value) {
-            addCriterion("SERVERDATE <>", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateGreaterThan(String value) {
-            addCriterion("SERVERDATE >", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateGreaterThanOrEqualTo(String value) {
-            addCriterion("SERVERDATE >=", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateLessThan(String value) {
-            addCriterion("SERVERDATE <", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateLessThanOrEqualTo(String value) {
-            addCriterion("SERVERDATE <=", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateLike(String value) {
-            addCriterion("SERVERDATE like", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateNotLike(String value) {
-            addCriterion("SERVERDATE not like", value, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateIn(List<String> values) {
-            addCriterion("SERVERDATE in", values, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateNotIn(List<String> values) {
-            addCriterion("SERVERDATE not in", values, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateBetween(String value1, String value2) {
-            addCriterion("SERVERDATE between", value1, value2, "serverdate");
-            return (Criteria) this;
-        }
-
-        public Criteria andServerdateNotBetween(String value1, String value2) {
-            addCriterion("SERVERDATE not between", value1, value2, "serverdate");
             return (Criteria) this;
         }
     }

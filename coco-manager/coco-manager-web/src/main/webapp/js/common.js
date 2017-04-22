@@ -90,6 +90,22 @@ var TT = TAOTAO = {
         }
     },
 
+    formatModuleStatus : function formatModuleStatus(val,row){
+        if(val == 0){
+            return '不可用(0)';
+        }else if(val == 1){
+            return '可用(1)';
+        }
+    },
+
+    formatIisParentStatus : function formatIisParentStatus(val,row){
+        if(val == 0){
+            return '否(0)';
+        }else if(val == 1){
+            return '是(1)';
+        }
+    },
+
     formatImage : function formatImage(val,row){
       return '<img src="' + val + '" height="55" width="68"/>'
     },
@@ -124,6 +140,8 @@ var TT = TAOTAO = {
         this.initEditEmployeeCat(data);
         //挂号界面初始化类目上传组件
         this.initMedicalEmployeeCat(data);
+        //初始化新增权限界面报表选择按钮
+        this.InitAddAuthoritySelectModule(data);
     },
 
     // 编辑物品界面初始化图片上传组件
@@ -244,6 +262,53 @@ var TT = TAOTAO = {
                         }
                     });
                 });
+            });
+        });
+    },
+
+
+    // 编辑物品界面初始化选择类目组件
+    InitAddAuthoritySelectModule : function(data){
+        //alert("初始化编辑物品类目控件")
+        $(".addAuthoritySelectModule").each(function(i,e){
+            var _ele = $(e);
+            if(data && data.moduleId){
+                _ele.after("<span style='margin-left:10px;'>"+data.moduleId+"</span>");
+            }else{
+                _ele.after("<span style='margin-left:10px;'></span>");
+            }
+            _ele.unbind('click').click(function(){
+                //alert("点击了编辑物品类目按钮")
+                $("<div>").css({padding:"5px"}).html("<ul>")
+                    .window({
+                        width:'500',
+                        height:"450",
+                        modal:true,
+                        closed:true,
+                        iconCls:'icon-save',
+                        title:'选择类目',
+                        onOpen : function(){
+                            var _win = this;
+                            $("ul",_win).tree({
+                                url:'/manager/module/list',
+                                animate:true,
+                                onClick : function(node){
+                                    if($(this).tree("isLeaf",node.target)){
+                                        alert(node.id)
+                                        _ele.parent().find("[name=moduleId]").val(node.id);
+                                        _ele.next().text(node.text).attr("moduleId",node.id);
+                                        $(_win).window('close');
+                                        if(data && data.fun){
+                                            data.fun.call(this,node);
+                                        }
+                                    }
+                                }
+                            });
+                        },
+                        onClose : function(){
+                            $(this).window("destroy");
+                        }
+                    }).window('open');
             });
         });
     },

@@ -77,10 +77,10 @@
             $.messager.alert('提示','表单还未填写完成!');
             return ;
         }
-        alert("开始执行")
+        alert("开始执行");
         $("#employeeEditForm [name=sex]").val($("#employeeEditForm [name=sexEditSelect]").val());
         $("#employeeEditForm [name=status]").val($("#employeeEditForm [name=statusEditSelect]").val());
-        alert("执行了两条")
+        alert("执行了两条");
 
         $.post("/employee/update",$("#employeeEditForm").serialize(), function(data){
             if(data.status == 200){

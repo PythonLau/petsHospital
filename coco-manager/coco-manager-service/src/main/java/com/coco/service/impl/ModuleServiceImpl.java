@@ -1,12 +1,16 @@
 package com.coco.service.impl;
 
-import com.coco.common.pojo.EUTreeNode;
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.EUTreeNodeWithAttributes;
+import com.coco.common.pojo.TaotaoResult;
+import com.coco.common.utils.IDUtils;
 import com.coco.mapper.TbAuthorityMapper;
 import com.coco.mapper.TbLoginMapper;
 import com.coco.mapper.TbModuleMapper;
 import com.coco.pojo.*;
 import com.coco.service.ModuleService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +31,8 @@ public class ModuleServiceImpl implements ModuleService {
     private TbLoginMapper loginMapper;
     @Autowired
     private TbAuthorityMapper authorityMapper;
+    private Short isTrue = 1;
+    private Short isFalse = 0;
     @Override
     public List<EUTreeNodeWithAttributes> getModuleList(BigDecimal parentId,BigDecimal userId){
         //创建查询条件
@@ -137,5 +143,77 @@ public class ModuleServiceImpl implements ModuleService {
         }
         //返回结果
         return resultList;
+    }
+    @Override
+    public TaotaoResult createModule(BigDecimal parentId, String name){
+        TbModule module = new TbModule();
+        Long moduleId = IDUtils.genItemId();
+        BigDecimal module_Id = new BigDecimal(moduleId);
+        module.setId(module_Id);
+        module.setParentId(parentId);
+        module.setName(name);
+        module.setIsParent(isFalse);
+        module.setStatus(isTrue);
+        module.setSortOrder(isTrue);
+        moduleMapper.insert(module);
+        TbModule parentModule = moduleMapper.selectByPrimaryKey(parentId);
+        if(parentModule.getIsParent() == isFalse) {
+            parentModule.setIsParent(isTrue);
+            //更新父节点
+            moduleMapper.updateByPrimaryKey(parentModule);
+        }
+        return TaotaoResult.ok(module);
+    }
+    @Override
+    public TaotaoResult updateModule(BigDecimal id,String name){
+        TbModule module = moduleMapper.selectByPrimaryKey(id);
+        module.setName(name);
+        moduleMapper.updateByPrimaryKey(module);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public TaotaoResult deleteModule(BigDecimal id){
+        moduleMapper.deleteByPrimaryKey(id);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public EUDataGridResult getModuleEditList(Integer page,Integer rows){
+        TbModuleExample example = new TbModuleExample();
+        //分页处理
+        PageHelper.startPage(page, rows);
+        List<TbModule> list = moduleMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbModule> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
+    }
+    @Override
+    public TaotaoResult updateModuleDetail(TbModule module){
+        TbModule updateModule = moduleMapper.selectByPrimaryKey(module.getId());
+        updateModule.setName(module.getName());
+        updateModule.setSortOrder(module.getSortOrder());
+        updateModule.setUrl(module.getUrl());
+        System.out.println("status : " + module.getStatus());
+        updateModule.setStatus(module.getStatus());
+        moduleMapper.updateByPrimaryKey(updateModule);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public EUDataGridResult searchModule(String name,Integer page,Integer rows){
+        TbModuleExample example = new TbModuleExample();
+        TbModuleExample.Criteria criteria = example.createCriteria();
+        criteria.andNameLike(name);
+        PageHelper.startPage(page, rows);
+        List<TbModule> list = moduleMapper.selectByExample(example);
+        //创建一个返回值对象
+        EUDataGridResult result = new EUDataGridResult();
+        result.setRows(list);
+        //取记录总条数
+        PageInfo<TbModule> pageInfo = new PageInfo<>(list);
+        result.setTotal(pageInfo.getTotal());
+        return result;
     }
 }

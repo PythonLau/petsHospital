@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.coco.mapper.TbFlowAchievementReportMapper" >
   <resultMap id="BaseResultMap" type="com.coco.pojo.TbFlowAchievementReport" >
+    <result column="SERVERDATE" property="serverdate" jdbcType="VARCHAR" />
     <result column="PV" property="pv" jdbcType="DECIMAL" />
     <result column="UV" property="uv" jdbcType="DECIMAL" />
     <result column="STATUSONEMEDICAL" property="statusonemedical" jdbcType="DECIMAL" />
@@ -13,7 +14,6 @@
     <result column="STATUSZEROPACKAGE" property="statuszeropackage" jdbcType="DECIMAL" />
     <result column="REVENUEOFMEDICAL" property="revenueofmedical" jdbcType="DECIMAL" />
     <result column="REVENUEOFPACKAGE" property="revenueofpackage" jdbcType="DECIMAL" />
-    <result column="SERVERDATE" property="serverdate" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,9 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    PV, UV, STATUSONEMEDICAL, STATUSTWOMEDICAL, STATUSTHREEMEDICAL, STATUSZEROMEDICAL, 
-    STATUSONEPACKAGE, STATUSTWOPACKAGE, STATUSZEROPACKAGE, REVENUEOFMEDICAL, REVENUEOFPACKAGE, 
-    SERVERDATE
+    SERVERDATE, PV, UV, STATUSONEMEDICAL, STATUSTWOMEDICAL, STATUSTHREEMEDICAL, STATUSZEROMEDICAL, 
+    STATUSONEPACKAGE, STATUSTWOPACKAGE, STATUSZEROPACKAGE, REVENUEOFMEDICAL, REVENUEOFPACKAGE
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbFlowAchievementReportExample" >
     select
@@ -99,20 +98,23 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.coco.pojo.TbFlowAchievementReport" >
-    insert into TB_FLOW_ACHIEVEMENT_REPORT (PV, UV, STATUSONEMEDICAL, 
-      STATUSTWOMEDICAL, STATUSTHREEMEDICAL, STATUSZEROMEDICAL, 
-      STATUSONEPACKAGE, STATUSTWOPACKAGE, STATUSZEROPACKAGE, 
-      REVENUEOFMEDICAL, REVENUEOFPACKAGE, SERVERDATE
+    insert into TB_FLOW_ACHIEVEMENT_REPORT (SERVERDATE, PV, UV, 
+      STATUSONEMEDICAL, STATUSTWOMEDICAL, STATUSTHREEMEDICAL, 
+      STATUSZEROMEDICAL, STATUSONEPACKAGE, STATUSTWOPACKAGE, 
+      STATUSZEROPACKAGE, REVENUEOFMEDICAL, REVENUEOFPACKAGE
       )
-    values (#{pv,jdbcType=DECIMAL}, #{uv,jdbcType=DECIMAL}, #{statusonemedical,jdbcType=DECIMAL}, 
-      #{statustwomedical,jdbcType=DECIMAL}, #{statusthreemedical,jdbcType=DECIMAL}, #{statuszeromedical,jdbcType=DECIMAL}, 
-      #{statusonepackage,jdbcType=DECIMAL}, #{statustwopackage,jdbcType=DECIMAL}, #{statuszeropackage,jdbcType=DECIMAL}, 
-      #{revenueofmedical,jdbcType=DECIMAL}, #{revenueofpackage,jdbcType=DECIMAL}, #{serverdate,jdbcType=VARCHAR}
+    values (#{serverdate,jdbcType=VARCHAR}, #{pv,jdbcType=DECIMAL}, #{uv,jdbcType=DECIMAL}, 
+      #{statusonemedical,jdbcType=DECIMAL}, #{statustwomedical,jdbcType=DECIMAL}, #{statusthreemedical,jdbcType=DECIMAL}, 
+      #{statuszeromedical,jdbcType=DECIMAL}, #{statusonepackage,jdbcType=DECIMAL}, #{statustwopackage,jdbcType=DECIMAL}, 
+      #{statuszeropackage,jdbcType=DECIMAL}, #{revenueofmedical,jdbcType=DECIMAL}, #{revenueofpackage,jdbcType=DECIMAL}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.coco.pojo.TbFlowAchievementReport" >
     insert into TB_FLOW_ACHIEVEMENT_REPORT
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serverdate != null" >
+        SERVERDATE,
+      </if>
       <if test="pv != null" >
         PV,
       </if>
@@ -146,11 +148,11 @@
       <if test="revenueofpackage != null" >
         REVENUEOFPACKAGE,
       </if>
-      <if test="serverdate != null" >
-        SERVERDATE,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serverdate != null" >
+        #{serverdate,jdbcType=VARCHAR},
+      </if>
       <if test="pv != null" >
         #{pv,jdbcType=DECIMAL},
       </if>
@@ -184,9 +186,6 @@
       <if test="revenueofpackage != null" >
         #{revenueofpackage,jdbcType=DECIMAL},
       </if>
-      <if test="serverdate != null" >
-        #{serverdate,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.coco.pojo.TbFlowAchievementReportExample" resultType="java.lang.Integer" >
@@ -198,6 +197,9 @@
   <update id="updateByExampleSelective" parameterType="map" >
     update TB_FLOW_ACHIEVEMENT_REPORT
     <set >
+      <if test="record.serverdate != null" >
+        SERVERDATE = #{record.serverdate,jdbcType=VARCHAR},
+      </if>
       <if test="record.pv != null" >
         PV = #{record.pv,jdbcType=DECIMAL},
       </if>
@@ -231,9 +233,6 @@
       <if test="record.revenueofpackage != null" >
         REVENUEOFPACKAGE = #{record.revenueofpackage,jdbcType=DECIMAL},
       </if>
-      <if test="record.serverdate != null" >
-        SERVERDATE = #{record.serverdate,jdbcType=VARCHAR},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -241,7 +240,8 @@
   </update>
   <update id="updateByExample" parameterType="map" >
     update TB_FLOW_ACHIEVEMENT_REPORT
-    set PV = #{record.pv,jdbcType=DECIMAL},
+    set SERVERDATE = #{record.serverdate,jdbcType=VARCHAR},
+      PV = #{record.pv,jdbcType=DECIMAL},
       UV = #{record.uv,jdbcType=DECIMAL},
       STATUSONEMEDICAL = #{record.statusonemedical,jdbcType=DECIMAL},
       STATUSTWOMEDICAL = #{record.statustwomedical,jdbcType=DECIMAL},
@@ -251,8 +251,7 @@
       STATUSTWOPACKAGE = #{record.statustwopackage,jdbcType=DECIMAL},
       STATUSZEROPACKAGE = #{record.statuszeropackage,jdbcType=DECIMAL},
       REVENUEOFMEDICAL = #{record.revenueofmedical,jdbcType=DECIMAL},
-      REVENUEOFPACKAGE = #{record.revenueofpackage,jdbcType=DECIMAL},
-      SERVERDATE = #{record.serverdate,jdbcType=VARCHAR}
+      REVENUEOFPACKAGE = #{record.revenueofpackage,jdbcType=DECIMAL}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
