@@ -2,13 +2,16 @@ D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controll
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\ItemController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\PetController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\ModuleController.java
+D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\MedicalDetailController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\UserController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\FosterController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\ReportController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\PositionCatController.java
+D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\SickRoomController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\interceptor\userInterceptor.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\interceptor\doctorInterceptor.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\OrderController.java
+D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\OperatingRoomController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\AdoptController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\LoginController.java
 D:\Java\myJavaCode\coco-manager\coco-manager-web\src\main\java\com\coco\controller\DoctorController.java

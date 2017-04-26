@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.coco.mapper.TbMedicalDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.coco.pojo.TbMedicalDetail" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="MEDICALID" property="medicalid" jdbcType="DECIMAL" />
+    <result column="SICKNAME" property="sickname" jdbcType="VARCHAR" />
+    <result column="ROOM" property="room" jdbcType="DECIMAL" />
+    <result column="NEEDDAYS" property="needdays" jdbcType="DECIMAL" />
+    <result column="PRICE" property="price" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="DECIMAL" />
+    <result column="CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="UPDATED" property="updated" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.coco.pojo.TbMedicalDetail" extends="BaseResultMap" >
+    <result column="RECIPE" property="recipe" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, MEDICALID, SICKNAME, ROOM, NEEDDAYS, PRICE, STATUS, CREATED, UPDATED
+  </sql>
+  <sql id="Blob_Column_List" >
+    RECIPE
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.coco.pojo.TbMedicalDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_MEDICAL_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.coco.pojo.TbMedicalDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TB_MEDICAL_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TB_MEDICAL_DETAIL
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from TB_MEDICAL_DETAIL
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.coco.pojo.TbMedicalDetailExample" >
+    delete from TB_MEDICAL_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.coco.pojo.TbMedicalDetail" >
+    insert into TB_MEDICAL_DETAIL (ID, MEDICALID, SICKNAME, 
+      ROOM, NEEDDAYS, PRICE, 
+      STATUS, CREATED, UPDATED, 
+      RECIPE)
+    values (#{id,jdbcType=DECIMAL}, #{medicalid,jdbcType=DECIMAL}, #{sickname,jdbcType=VARCHAR}, 
+      #{room,jdbcType=DECIMAL}, #{needdays,jdbcType=DECIMAL}, #{price,jdbcType=DECIMAL}, 
+      #{status,jdbcType=DECIMAL}, #{created,jdbcType=TIMESTAMP}, #{updated,jdbcType=TIMESTAMP}, 
+      #{recipe,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.coco.pojo.TbMedicalDetail" >
+    insert into TB_MEDICAL_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="medicalid != null" >
+        MEDICALID,
+      </if>
+      <if test="sickname != null" >
+        SICKNAME,
+      </if>
+      <if test="room != null" >
+        ROOM,
+      </if>
+      <if test="needdays != null" >
+        NEEDDAYS,
+      </if>
+      <if test="price != null" >
+        PRICE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="created != null" >
+        CREATED,
+      </if>
+      <if test="updated != null" >
+        UPDATED,
+      </if>
+      <if test="recipe != null" >
+        RECIPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="medicalid != null" >
+        #{medicalid,jdbcType=DECIMAL},
+      </if>
+      <if test="sickname != null" >
+        #{sickname,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        #{room,jdbcType=DECIMAL},
+      </if>
+      <if test="needdays != null" >
+        #{needdays,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recipe != null" >
+        #{recipe,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.coco.pojo.TbMedicalDetailExample" resultType="java.lang.Integer" >
+    select count(*) from TB_MEDICAL_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TB_MEDICAL_DETAIL
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.medicalid != null" >
+        MEDICALID = #{record.medicalid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sickname != null" >
+        SICKNAME = #{record.sickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.room != null" >
+        ROOM = #{record.room,jdbcType=DECIMAL},
+      </if>
+      <if test="record.needdays != null" >
+        NEEDDAYS = #{record.needdays,jdbcType=DECIMAL},
+      </if>
+      <if test="record.price != null" >
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=DECIMAL},
+      </if>
+      <if test="record.created != null" >
+        CREATED = #{record.created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updated != null" >
+        UPDATED = #{record.updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recipe != null" >
+        RECIPE = #{record.recipe,jdbcType=CLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update TB_MEDICAL_DETAIL
+    set ID = #{record.id,jdbcType=DECIMAL},
+      MEDICALID = #{record.medicalid,jdbcType=DECIMAL},
+      SICKNAME = #{record.sickname,jdbcType=VARCHAR},
+      ROOM = #{record.room,jdbcType=DECIMAL},
+      NEEDDAYS = #{record.needdays,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      UPDATED = #{record.updated,jdbcType=TIMESTAMP},
+      RECIPE = #{record.recipe,jdbcType=CLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TB_MEDICAL_DETAIL
+    set ID = #{record.id,jdbcType=DECIMAL},
+      MEDICALID = #{record.medicalid,jdbcType=DECIMAL},
+      SICKNAME = #{record.sickname,jdbcType=VARCHAR},
+      ROOM = #{record.room,jdbcType=DECIMAL},
+      NEEDDAYS = #{record.needdays,jdbcType=DECIMAL},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=DECIMAL},
+      CREATED = #{record.created,jdbcType=TIMESTAMP},
+      UPDATED = #{record.updated,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.coco.pojo.TbMedicalDetail" >
+    update TB_MEDICAL_DETAIL
+    <set >
+      <if test="medicalid != null" >
+        MEDICALID = #{medicalid,jdbcType=DECIMAL},
+      </if>
+      <if test="sickname != null" >
+        SICKNAME = #{sickname,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        ROOM = #{room,jdbcType=DECIMAL},
+      </if>
+      <if test="needdays != null" >
+        NEEDDAYS = #{needdays,jdbcType=DECIMAL},
+      </if>
+      <if test="price != null" >
+        PRICE = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="created != null" >
+        CREATED = #{created,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updated != null" >
+        UPDATED = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recipe != null" >
+        RECIPE = #{recipe,jdbcType=CLOB},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.coco.pojo.TbMedicalDetail" >
+    update TB_MEDICAL_DETAIL
+    set MEDICALID = #{medicalid,jdbcType=DECIMAL},
+      SICKNAME = #{sickname,jdbcType=VARCHAR},
+      ROOM = #{room,jdbcType=DECIMAL},
+      NEEDDAYS = #{needdays,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP},
+      RECIPE = #{recipe,jdbcType=CLOB}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.coco.pojo.TbMedicalDetail" >
+    update TB_MEDICAL_DETAIL
+    set MEDICALID = #{medicalid,jdbcType=DECIMAL},
+      SICKNAME = #{sickname,jdbcType=VARCHAR},
+      ROOM = #{room,jdbcType=DECIMAL},
+      NEEDDAYS = #{needdays,jdbcType=DECIMAL},
+      PRICE = #{price,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=DECIMAL},
+      CREATED = #{created,jdbcType=TIMESTAMP},
+      UPDATED = #{updated,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

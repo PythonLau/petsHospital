@@ -15,15 +15,14 @@
         <th data-options="field:'ck',checkbox:true"></th>
         <th data-options="field:'id',width:200">病历id</th>
         <th data-options="field:'petName',width:200">宠物名字</th>
-        <th data-options="field:'registerTime',width:200">预约时间</th>
+        <th data-options="field:'registerTime',width:200,formatter:TAOTAO.formatDateTime1">预约时间</th>
         <th data-options="field:'nickName',width:200">主人昵称</th>
         <th data-options="field:'telePhone',width:200">主人电话</th>
     </tr>
     </thead>
 </table>
-<div id="prescribeWindow" class="easyui-window" title="修改员工信息" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/prescribe-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="prescribeAcceptWindow" class="easyui-window" title="处理该病历" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/prescribe-accept'" style="width:80%;height:80%;padding:10px;">
 </div>
-
 <script>
 
     function getSelectionsIds(){
@@ -38,6 +37,35 @@
     }
 
     var toolbar = [{
+        text:'处理病历',
+        iconCls:'icon-edit',
+        handler:function(){
+            var ids = getSelectionsIds();
+            if(ids.length == 0){
+                $.messager.alert('提示','必须选择一个挂号单号才能开处方!');
+                return ;
+            }
+            if(ids.indexOf(',') > 0){
+                $.messager.alert('提示','只能选择一个挂号单号!');
+                return ;
+            }
+
+            $("#prescribeAcceptWindow").window({
+                onLoad :function(){
+                    //回显数据
+                    var data = $("#registerList").datagrid("getSelections")[0];
+                    $("#employeeEditForm").form("load",data);
+
+                    TAOTAO.init({
+                        "pics" : data.image,
+                        "cid" : data.cid,
+                    });
+                }
+            }).window("open");
+
+
+        }
+    },{
         text:'开处方',
         iconCls:'icon-edit',
         handler:function(){

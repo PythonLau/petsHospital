@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -89,5 +90,14 @@ public class AuthorityServiceImpl implements AuthorityService{
         PageInfo<authorityView> pageInfo = new PageInfo<>(authorityList);
         result.setTotal(pageInfo.getTotal());
         return result;
+    }
+    @Override
+    public TaotaoResult deleteAuthority(String ids) throws Exception{
+        List<String> result = Arrays.asList(ids.split(","));
+        for(String id : result){
+            BigDecimal deleteId = new BigDecimal(id);
+            authorityMapper.deleteByPrimaryKey(deleteId);
+        }
+        return TaotaoResult.build(200,"删除物品成功");
     }
 }

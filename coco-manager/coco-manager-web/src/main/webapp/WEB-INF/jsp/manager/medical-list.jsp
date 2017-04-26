@@ -15,13 +15,17 @@
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
-        <th data-options="field:'id',width:138">病历id</th>
-        <th data-options="field:'recipe',width:666">处方</th>
-        <th data-options="field:'name',width:133">宠物名字</th>
-        <th data-options="field:'status',width:88,formatter:TAOTAO.formatmedialStatus">状态</th>
-        <th data-options="field:'price',width:133">治疗费用</th>
-        <th data-options="field:'medicalTime',width:133">治疗时间</th>
-        <th data-options="field:'doctorName',width:133">医生名字</th>
+        <th data-options="field:'id',width:133">病历id</th>
+        <th data-options="field:'petName',width:130">宠物名字</th>
+        <th data-options="field:'sickname',width:180">病因</th>
+        <th data-options="field:'status',width:73,formatter:TAOTAO.formatMedicalStatus">状态</th>
+        <th data-options="field:'bedRoom',width:66">床位</th>
+        <th data-options="field:'price',width:66">价格</th>
+        <th data-options="field:'nickName',width:130">主人昵称</th>
+        <th data-options="field:'telePhone',width:130">主人电话</th>
+        <th data-options="field:'startMedicalTime',width:130,align:'center',formatter:TAOTAO.formatDateTime1">开始治疗时间</th>
+        <th data-options="field:'endMedicalTime',width:130,align:'center',formatter:TAOTAO.formatDateTime1">最后治疗时间</th>
+        <th data-options="field:'word',width:200">用户评价</th>
 
     </tr>
     </thead>
@@ -43,7 +47,7 @@
     }
 
     var toolbar = [{
-        text:'处理该病历',
+        text:'查看',
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();
@@ -55,21 +59,7 @@
                 $.messager.alert('提示','只能选择一个病历!');
                 return ;
             }
-
-            $("#prescribeWindow").window({
-                onLoad :function(){
-                    //回显数据
-                    var data = $("#medicalList").datagrid("getSelections")[0];
-                    $("#MedicalEditForm").form("load",data);
-
-                    TAOTAO.init({
-                        "pics" : data.image,
-                        "cid" : data.cid,
-                    });
-                }
-            }).window("open");
-
-
+            window.open('/manager/medical/' + ids);
         }
     }];
 </script>

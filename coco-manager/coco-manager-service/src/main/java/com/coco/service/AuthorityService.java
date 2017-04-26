@@ -13,4 +13,5 @@ public interface AuthorityService {
     TaotaoResult createAuthority(TbAuthority authority);
     EUDataGridResult getAuthorityList(Integer page,Integer rows);
     EUDataGridResult searchAuthority(BigDecimal id, Integer page, Integer rows);
+    TaotaoResult deleteAuthority(String ids) throws Exception;
 }

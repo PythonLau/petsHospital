@@ -24,6 +24,7 @@
          		<span>就诊管理</span>
          		<ul>
 	         		<li data-options="attributes:{'url':'treat-list'}">待就诊列表</li>
+					<li data-options="attributes:{'url':'prescribe-list'}">我的就诊列表</li>
 	         	</ul>
          	</li>
          </ul>

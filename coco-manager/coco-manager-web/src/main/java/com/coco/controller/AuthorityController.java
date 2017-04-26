@@ -1,6 +1,7 @@
 package com.coco.controller;
 
 import com.coco.common.pojo.EUDataGridResult;
+import com.coco.common.pojo.Ids;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.pojo.search_params;
 import com.coco.pojo.TbAuthority;
@@ -40,6 +41,13 @@ public class AuthorityController {
         Integer page = new Integer(search_params.getPageNumber());
         Integer rows = new Integer(search_params.getRows());
         EUDataGridResult result = authorityService.searchAuthority(user_Id,page,rows);
+        return result;
+    }
+    @RequestMapping("/manager/authority/delete")
+    @ResponseBody
+    public TaotaoResult deleteAuthority(@RequestBody Ids ids) throws Exception{
+        String deleteIds = ids.getIds();
+        TaotaoResult result = authorityService.deleteAuthority(deleteIds);
         return result;
     }
 }

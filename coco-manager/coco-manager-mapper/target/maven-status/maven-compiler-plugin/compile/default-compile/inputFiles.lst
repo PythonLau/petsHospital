@@ -1,5 +1,6 @@
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbOrderMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbItemCatMapper.java
+D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbMedicalDetailMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbModuleMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbUserMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbAuthorityMapper.java
@@ -17,4 +18,6 @@ D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mappe
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbFosterMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbPetsMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbPackageMapper.java
+D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbSickRoomMapper.java
 D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbFlowMapper.java
+D:\Java\myJavaCode\coco-manager\coco-manager-mapper\src\main\java\com\coco\mapper\TbOperatingRoomMapper.java

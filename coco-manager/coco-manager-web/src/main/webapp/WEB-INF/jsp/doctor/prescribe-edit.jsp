@@ -10,6 +10,31 @@
                 <td><input class="easyui-textbox" type="text" name="id" readonly="true" data-options="required:true" style="width: 280px;"></input></td>
             </tr>
             <tr>
+                <td>床位选择:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton prescribeEditSelectRoom">选择职位</a>
+                    <input type="hidden" name="room" style="width: 280px;"></input>
+                </td>
+            </tr>
+            <tr>
+                <td>处方名称:</td>
+                <td><input class="easyui-textbox" type="text" name="sickname" data-options="required:true" style="width: 280px;"></input></td>
+            </tr>
+            <tr>
+                <td>还需治疗天数:</td>
+                <td><input class="easyui-textbox" type="text" name="needdays" data-options="required:true" style="width: 280px;"></input></td>
+            </tr>
+            <tr>
+                <td>治疗方式:</td>
+                <td>
+                    <select id="statusEditSelect" name="statusEditSelect">
+                        <option value="1">普通治疗</option>
+                        <option value="2">手术治疗</option>
+                    </select>
+                    <input name="status" type="hidden"/>
+                </td>
+            </tr>
+            <tr>
                 <td>处方:</td>
                 <td>
                     <textarea style="width:888px;height:666px;visibility:hidden;" name="recipe"></textarea>
@@ -35,8 +60,11 @@
                 return ;
             }
             contentAddEditor.sync();
+            alert("开始执行");
+            $("#prescribeForm [name=status]").val($("#prescribeForm [name=statusEditSelect]").val());
+            alert("执行了两条");
 
-            $.post("/doctor/medical/save",$("#prescribeForm").serialize(), function(data){
+            $.post("/doctor/medicalDetail/save",$("#prescribeForm").serialize(), function(data){
                 if(data.status == 200){
                     $.messager.alert('提示','开处方成功!');
                 }

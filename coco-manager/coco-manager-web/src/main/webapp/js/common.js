@@ -35,6 +35,11 @@ var TT = TAOTAO = {
         return now.format("yyyy-MM-dd hh:mm:ss");
     },
 
+    formatDateTime1 : function(val,row){
+        var now = new Date(val);
+        return now.format("yyyy-MM-dd");
+    },
+
     // 格式化商品的状态
     formatItemStatus : function formatStatus(val,row){
         if (val == 1){
@@ -56,15 +61,30 @@ var TT = TAOTAO = {
         }
     },
 
-    formatmedialStatus : function formatmedialStatus(val,row) {
+    formatMedicalStatus : function formatmedialStatus(val,row) {
         if(val == 0){
-            return '无效挂号(0)';
+            return '不接受治疗(0)';
         }else if(val == 1){
             return '挂号中(1)';
         }else if(val == 2){
-            return '医生已处理(2)';
+            return '普通治疗(2)';
         }else if(val == 3){
-            return '正常结束(3)';
+            return '住院治疗(3)';
+        }else if(val == 4){
+            return '已结束(4)';
+        }
+    },
+    formatMedicalDetailStatus : function formatMedicalDetailStatus(val,row){
+        if(val == 0){
+            return '已取消(0)';
+        }else if(val == 1){
+            return '普通治疗(1)';
+        }else if(val == 2){
+            return '手术治疗(2)';
+        }else if(val == 3){
+            return '已缴费(3)';
+        }else if(val == 4){
+            return '已结束(4)';
         }
     },
 
@@ -142,6 +162,10 @@ var TT = TAOTAO = {
         this.initMedicalEmployeeCat(data);
         //初始化新增权限界面报表选择按钮
         this.InitAddAuthoritySelectModule(data);
+        //医生接收挂号页面初始化选择床位
+        this.InitPrescribeAcceptSelectBed(data);
+        //选择手术室
+        this.InitprescribeEditSelectRoom(data);
     },
 
     // 编辑物品界面初始化图片上传组件
@@ -297,6 +321,95 @@ var TT = TAOTAO = {
                                         alert(node.id)
                                         _ele.parent().find("[name=moduleId]").val(node.id);
                                         _ele.next().text(node.text).attr("moduleId",node.id);
+                                        $(_win).window('close');
+                                        if(data && data.fun){
+                                            data.fun.call(this,node);
+                                        }
+                                    }
+                                }
+                            });
+                        },
+                        onClose : function(){
+                            $(this).window("destroy");
+                        }
+                    }).window('open');
+            });
+        });
+    },
+
+    InitPrescribeAcceptSelectBed : function(data){
+        alert("初始化床位选择控件")
+        $(".prescribeAcceptSelectBed").each(function(i,e){
+            var _ele = $(e);
+            if(data && data.bedroom){
+                _ele.after("<span style='margin-left:10px;'>"+data.bedroom+"</span>");
+            }else{
+                _ele.after("<span style='margin-left:10px;'></span>");
+            }
+            _ele.unbind('click').click(function(){
+                //alert("点击了编辑物品类目按钮")
+                $("<div>").css({padding:"5px"}).html("<ul>")
+                    .window({
+                        width:'500',
+                        height:"450",
+                        modal:true,
+                        closed:true,
+                        iconCls:'icon-save',
+                        title:'选择类目',
+                        onOpen : function(){
+                            var _win = this;
+                            $("ul",_win).tree({
+                                url:'/doctor/bedRoom/list',
+                                animate:true,
+                                onClick : function(node){
+                                    if($(this).tree("isLeaf",node.target)){
+                                        alert(node.id)
+                                        _ele.parent().find("[name=bedroom]").val(node.id);
+                                        _ele.next().text(node.text).attr("bedroom",node.id);
+                                        $(_win).window('close');
+                                        if(data && data.fun){
+                                            data.fun.call(this,node);
+                                        }
+                                    }
+                                }
+                            });
+                        },
+                        onClose : function(){
+                            $(this).window("destroy");
+                        }
+                    }).window('open');
+            });
+        });
+    },
+
+    InitprescribeEditSelectRoom : function(data){
+        $(".prescribeEditSelectRoom").each(function(i,e){
+            var _ele = $(e);
+            if(data && data.room){
+                _ele.after("<span style='margin-left:10px;'>"+data.room+"</span>");
+            }else{
+                _ele.after("<span style='margin-left:10px;'></span>");
+            }
+            _ele.unbind('click').click(function(){
+                //alert("点击了编辑物品类目按钮")
+                $("<div>").css({padding:"5px"}).html("<ul>")
+                    .window({
+                        width:'500',
+                        height:"450",
+                        modal:true,
+                        closed:true,
+                        iconCls:'icon-save',
+                        title:'选择类目',
+                        onOpen : function(){
+                            var _win = this;
+                            $("ul",_win).tree({
+                                url:'/doctor/operatingRoom/list',
+                                animate:true,
+                                onClick : function(node){
+                                    if($(this).tree("isLeaf",node.target)){
+                                        alert(node.id)
+                                        _ele.parent().find("[name=room]").val(node.id);
+                                        _ele.next().text(node.text).attr("room",node.id);
                                         $(_win).window('close');
                                         if(data && data.fun){
                                             data.fun.call(this,node);

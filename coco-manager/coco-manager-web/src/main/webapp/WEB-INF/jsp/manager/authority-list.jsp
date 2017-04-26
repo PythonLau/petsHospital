@@ -36,36 +36,32 @@
     }
 
     var toolbar = [{
-        text:'编辑',
-        iconCls:'icon-edit',
+        text:'删除',
+        iconCls:'icon-cancel',
         handler:function(){
             var ids = getSelectionsIds();
             if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个员工才能编辑!');
+                $.messager.alert('提示','未选中商品!');
                 return ;
             }
-            if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个员工!');
-                return ;
-            }
-
-            $("#packageEditWindow").window({
-                onLoad :function(){
-                    //回显数据
-                    var data = $("#packageList").datagrid("getSelections")[0];
-                    $("#packageEditForm").form("load",data);
-
-                    TAOTAO.init({
-                        "pics" : data.image,
-                        "cid" : data.cid,
-//                        fun:function(node){
-//                            TAOTAO.changeItemParam(node, "employeeEditForm");
-//                        }
+            $.messager.confirm('确认','确定删除ID为 '+ids+' 的商品吗？',function(r){
+                if (r){
+                    var params = {"ids":ids};
+                    $.ajax({
+                        url: "/manager/authority/delete",
+                        type: "POST",
+                        contentType: "application/json",
+                        dataType: "json",
+                        data: JSON.stringify(params),
+                        async: true,
+                        success: function(data) {
+                            $.messager.alert('提示','删除商品成功!',undefined,function(){
+                                $("#packageList").datagrid("reload");
+                            });
+                        }
                     });
                 }
-            }).window("open");
-
-
+            });
         }
     }];
 </script>

@@ -1,5 +1,6 @@
 package com.coco.controller;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.pojo.TbDoctor;
 import com.coco.service.DoctorService;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -33,5 +34,11 @@ public class DoctorController {
             session.setAttribute("doctor",doctor.getId());
             response.sendRedirect("/doctor/index");
         }
+    }
+    @RequestMapping("/manager/doctorAccount/list")
+    @ResponseBody
+    public EUDataGridResult getDoctorAccountList(Integer page,Integer rows){
+        EUDataGridResult result = doctorService.getDoctorAccountList(page, rows);
+        return result;
     }
 }

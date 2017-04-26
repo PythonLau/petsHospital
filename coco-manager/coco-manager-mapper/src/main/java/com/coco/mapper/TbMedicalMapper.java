@@ -18,21 +18,15 @@ public interface TbMedicalMapper {
 
     int insertSelective(TbMedical record);
 
-    List<TbMedical> selectByExampleWithBLOBs(TbMedicalExample example);
-
     List<TbMedical> selectByExample(TbMedicalExample example);
 
     TbMedical selectByPrimaryKey(BigDecimal id);
 
     int updateByExampleSelective(@Param("record") TbMedical record, @Param("example") TbMedicalExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") TbMedical record, @Param("example") TbMedicalExample example);
-
     int updateByExample(@Param("record") TbMedical record, @Param("example") TbMedicalExample example);
 
     int updateByPrimaryKeySelective(TbMedical record);
-
-    int updateByPrimaryKeyWithBLOBs(TbMedical record);
 
     int updateByPrimaryKey(TbMedical record);
 }

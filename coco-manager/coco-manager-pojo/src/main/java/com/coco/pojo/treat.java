@@ -7,11 +7,83 @@ import java.util.Date;
  * Created by Administrator on 2017/4/9 0009.
  */
 public class treat {
-    BigDecimal id;
-    String petName;
-    String registerTime;
-    String telePhone;
-    String nickName;
+    private BigDecimal id;
+    private String petName;
+    private Date registerTime;
+    private String telePhone;
+    private String nickName;
+    private String sickname;
+    private String bedRoom;
+    private BigDecimal price;
+    private String word;
+    private Short status;
+    private Date startMedicalTime;
+    private Date endMedicalTime;
+
+
+    public Date getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(Date registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public String getSickname() {
+        return sickname;
+    }
+
+    public void setSickname(String sickname) {
+        this.sickname = sickname;
+    }
+
+    public String getBedRoom() {
+        return bedRoom;
+    }
+
+    public void setBedRoom(String bedRoom) {
+        this.bedRoom = bedRoom;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
+    public Date getStartMedicalTime() {
+        return startMedicalTime;
+    }
+
+    public void setStartMedicalTime(Date startMedicalTime) {
+        this.startMedicalTime = startMedicalTime;
+    }
+
+    public Date getEndMedicalTime() {
+        return endMedicalTime;
+    }
+
+    public void setEndMedicalTime(Date endMedicalTime) {
+        this.endMedicalTime = endMedicalTime;
+    }
 
     public BigDecimal getId() {
         return id;
@@ -27,14 +99,6 @@ public class treat {
 
     public void setPetName(String petName) {
         this.petName = petName;
-    }
-
-    public String getRegisterTime() {
-        return registerTime;
-    }
-
-    public void setRegisterTime(String registerTime) {
-        this.registerTime = registerTime;
     }
 
     public String getTelePhone() {

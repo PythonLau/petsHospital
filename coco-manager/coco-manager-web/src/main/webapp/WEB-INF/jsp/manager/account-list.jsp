@@ -8,9 +8,10 @@
     </select>
     <input id="search_key" style="line-height:26px;border:1px solid #ccc">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
+    <a href="/manager/test">物品管理</a>
 </div>
 <table class="easyui-datagrid" id="accountList" title="病历列表"
-       data-options="singleSelect:false,collapsible:true,pagination:true,url:'/manager/account/list',method:'get',pageSize:10,toolbar:toolbar">
+       data-options="singleSelect:false,collapsible:true,pagination:true,url:'${requestScope.url}',method:'get',pageSize:10,toolbar:toolbar">
     <thead>
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
@@ -21,7 +22,6 @@
         <th data-options="field:'status',width:88,formatter:TAOTAO.formatAccountStatus">状态</th>
         <th data-options="field:'created',width:130,align:'center',formatter:TAOTAO.formatDateTime">创建日期</th>
         <th data-options="field:'updated',width:130,align:'center',formatter:TAOTAO.formatDateTime">更新日期</th>
-
     </tr>
     </thead>
 </table>
@@ -68,6 +68,23 @@
                 }
             }).window("open");
 
+
+        }
+    },{
+        text:'测试',
+        iconCls:'icon-edit',
+        handler:function(){
+            var ids = getSelectionsIds();
+            if(ids.length == 0){
+                $.messager.alert('提示','必须选择一个病历才能处理!');
+                return ;
+            }
+            if(ids.indexOf(',') > 0){
+                $.messager.alert('提示','只能选择一个病历!');
+                return ;
+            }
+            alert(ids);
+            window.location.href = '/test/' + ids;
 
         }
     }];

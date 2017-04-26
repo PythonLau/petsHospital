@@ -1,6 +1,7 @@
 package com.coco.service;
 
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.pojo.TbDoctor;
 
 /**
@@ -8,4 +9,5 @@ import com.coco.pojo.TbDoctor;
  */
 public interface DoctorService {
     TbDoctor getDoctor(String username, String password);
+    EUDataGridResult getDoctorAccountList(Integer page, Integer rows);
 }

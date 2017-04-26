@@ -116,6 +116,8 @@ CREATE TABLE tb_employee (
   PRIMARY KEY (id)
 )
 
+select * from tb_position_cat
+
 drop table tb_employee
 
 commit
@@ -324,9 +326,91 @@ select * from tb_adopt
 truncate table tb_adopt
 
 drop table tb_adopt
+-----------------------------------------------------------------------------------------------------------------------
+
+create table tb_sick_room(
+id number(20) NOT NULL,    --床位或者病房ID
+parent_id number(20) DEFAULT NULL, -- '父类目ID=0时，代表的是一级的类目'
+name varchar(50) DEFAULT NULL, -- '床位或者病房名称'
+status number(1) DEFAULT 1, -- '状态。可选值:0(占用),1(空)'
+sort_order number(4) DEFAULT NULL, -- '排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数'
+is_parent number(1) DEFAULT 1, -- '该类目是否为父类目，1为true，0为false'
+created date DEFAULT sysdate, -- '创建时间'
+updated date DEFAULT sysdate, -- '创建时间'
+PRIMARY KEY (id)
+)
+
+
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (1, 0, '整形部', 1, 1, 1);
+
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (2, 1, 'A-301', 1, 1, 1);
+
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (3, 2, 'A-301-1', 1, 2, 0);
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (4, 2, 'A-301-2', 1, 3, 0);
 
 
 
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (5, 0, '整容部', 1, 1, 1);
+
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (6, 5, 'A-302', 1, 1, 1);
+
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (7, 6, 'A-302-1', 1, 1, 0);
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (8, 6, 'A-302-2', 1, 2, 0);
+
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (9, 5, 'A-303', 1, 2, 1);
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (10, 9, 'A303-1', 1, 1, 0);
+INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (11, 9, 'A303-2', 1, 2, 0);
+
+create table tb_operating_room(
+id number(20) NOT NULL,    --手术室ID
+parent_id number(20) DEFAULT NULL, -- '父类目ID=0时，代表的是一级的类目'
+name varchar(50) DEFAULT NULL, -- '手术室名称'
+status number(1) DEFAULT 1, -- '状态。可选值:0(占用),1(空)'
+sort_order number(4) DEFAULT NULL, -- '排列序号，表示同级类目的展现次序，如数值相等则按名称次序排列。取值范围:大于零的整数'
+is_parent number(1) DEFAULT 1, -- '该类目是否为父类目，1为true，0为false'
+created date DEFAULT sysdate, -- '创建时间'
+updated date DEFAULT sysdate, -- '创建时间'
+PRIMARY KEY (id)
+)
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (1, 0, '整形部', 1, 1, 1);
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (2, 1, 'B-301', 1, 1, 1);
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (3, 2, 'B-301-1', 1, 2, 0);
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (4, 2, 'B-301-2', 1, 3, 0);
+
+
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (5, 0, '整容部', 1, 1, 1);
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (6, 5, 'B-302', 1, 1, 1);
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (7, 6, 'B-302-1', 1, 1, 0);
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (8, 6, 'B-302-2', 1, 2, 0);
+
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (9, 5, 'B-303', 1, 2, 1);
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (10, 9, 'B303-1', 1, 1, 0);
+INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (11, 9, 'B303-2', 1, 2, 0);
+
+
+
+create table tb_medical_detail(
+id number(20) NOT NULL,       --医生治疗记录ID
+medicalId number(20) NOT NULL,  --病历ID
+sickName varchar(100) DEFAULT NULL,  --病名
+recipe clob DEFAULT NULL, --处方
+room number(20) DEFAULT NULL,  --手术室
+needDays number(5) DEFAULT NULL,  --还需治疗天数
+price number(20,2) DEFAULT NULL,   --本次治疗费用
+status number(1) NOT NULL,   --是否接收治疗 1普通 2手术 3接收（交费）4已结束 0不接受
+created date default sysdate, -- '记录时间'
+updated date default sysdate, -- '更改记录时间'
+PRIMARY KEY (id)
+)
+select * from tb_medical_detail
+
+commit
 -----------------------------------------------------------------------------------------------------------------------
 
 create table tb_medical(
@@ -334,18 +418,28 @@ id number(20) NOT NULL,    --病历id
 petId number(20) NOT NULL, --宠物id
 officeId number(10) NOT NULL, --科室id
 registerTime date NOT NULL, --预约时间
-status number(4) NOT NULL, --挂号状态 1挂号中 2医生已经处理 0取消挂号或者不接受治疗或者用户删除宠物等无效情况，3正常结束
-recipe clob DEFAULT NULL, --处方
-price number(20,2) DEFAULT NULL,   --本次治疗费用
+status number(4) NOT NULL, --挂号状态 0取消挂号或者不接受治疗或者用户删除宠物等无效情况,1挂号中,2普通治疗,3住院,4已结束
 doctorId number(20) DEFAULT NULL, --主治医生
-created date default sysdate, -- '挂号时间'
-updated date default NULL, -- '开处方时间'
+sickName varchar(100) DEFAULT NULL,  --病名
+bedRoom number(20) DEFAULT NULL,  --所在床位
+price number(20,2) DEFAULT NULL,   --本次治疗费用
+words varchar(1000) DEFAULT NULL, --用户评价
+created date default sysdate, -- '开始治疗时间'
+updated date default NULL, -- '结束治疗时间'
 PRIMARY KEY (id)
 )
+
+commit
+
+
 
 select * from tb_medical
 
 truncate table tb_medical
+
+update tb_medical
+set status = 3
+
 
 
 select recipe from tb_medical
@@ -408,6 +502,8 @@ create table tb_module
 )
 
 select * from tb_module
+
+
 
 
 
@@ -480,6 +576,7 @@ truncate table tb_flow
 
 
 create table tb_flow_achievement_Report(
+serverDate varchar(18) not null,  --日期
 pv number(20) not null,   --pv
 uv number(10) not null,   --uv
 statusOneMedical number(5) not null,  --待处理挂号数量
@@ -490,9 +587,9 @@ statusOnePackage number(5) not null,  --订购套餐数量
 statusTwoPackage number(5) not null,  --已服务套餐数量
 statusZeroPackage number(5) not null,  --已取消套餐数量
 RevenueOfMedical number(12,2) not null,  --通过治疗的营收
-RevenueOfPackage number(12,2) not null, --通过套餐服务的营收
-serverDate varchar(18) not null  --日期
+RevenueOfPackage number(12,2) not null --通过套餐服务的营收
 )
+
 
 select * from tb_flow_achievement_Report order by serverDate
 
@@ -542,13 +639,16 @@ begin
   proc('2017-04-13');
 end;
 
-select * from tb_flow_achievement_Report where serverDate between '2017-04-13' and '2017-04-20'
+select * from tb_flow_achievement_Report where serverDate between '2017-04-11' and '2017-04-19'
 
-insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-12')
-insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-14')
-insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-11')
-insert into tb_flow_achievement_Report values(888,88,88,66,63,3,66,33,10,88888,66666,'2017-04-20')
 
+insert into tb_flow_achievement_Report values('2017-04-12',888,88,88,66,63,3,66,33,10,88888,66666);
+insert into tb_flow_achievement_Report values('2017-04-14',666,88,88,66,63,3,66,33,10,88888,66666);
+insert into tb_flow_achievement_Report values('2017-04-11',555,88,88,66,63,3,66,33,10,88888,66666);
+insert into tb_flow_achievement_Report values('2017-04-20',999,88,88,66,63,3,66,33,10,88888,66666);
+insert into tb_flow_achievement_Report values('2017-04-13',888,88,88,66,63,3,66,33,10,88888,66666);
+insert into tb_flow_achievement_Report values('2017-03-22',888,88,88,66,63,3,66,33,10,88888,66666);
+insert into tb_flow_achievement_Report values('2017-04-21',888,88,88,66,63,3,66,33,10,88888,66666);
 commit
 
 
