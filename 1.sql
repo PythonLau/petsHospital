@@ -410,6 +410,7 @@ PRIMARY KEY (id)
 )
 select * from tb_medical_detail
 
+truncate table tb_medical_detail
 commit
 -----------------------------------------------------------------------------------------------------------------------
 
@@ -418,7 +419,7 @@ id number(20) NOT NULL,    --病历id
 petId number(20) NOT NULL, --宠物id
 officeId number(10) NOT NULL, --科室id
 registerTime date NOT NULL, --预约时间
-status number(4) NOT NULL, --挂号状态 0取消挂号或者不接受治疗或者用户删除宠物等无效情况,1挂号中,2普通治疗,3住院,4已结束
+status number(4) NOT NULL, --挂号状态 0取消挂号或者不接受治疗或者用户删除宠物等无效情况,1挂号中,2普通治疗,3住院,4已结束,5评价
 doctorId number(20) DEFAULT NULL, --主治医生
 sickName varchar(100) DEFAULT NULL,  --病名
 bedRoom number(20) DEFAULT NULL,  --所在床位

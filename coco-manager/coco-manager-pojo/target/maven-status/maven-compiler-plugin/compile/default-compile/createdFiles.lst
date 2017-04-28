@@ -98,6 +98,7 @@ com\coco\pojo\authorityView.class
 com\coco\pojo\TbAdoptExample.class
 com\coco\pojo\TbArticleExample$GeneratedCriteria.class
 com\coco\pojo\TbMedicalExample$Criteria.class
+com\coco\pojo\medicalRecord.class
 com\coco\pojo\TbSickRoomExample.class
 com\coco\pojo\TbOperatingRoomExample$Criterion.class
 com\coco\pojo\TbSlider.class

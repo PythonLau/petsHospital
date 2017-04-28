@@ -1,11 +1,14 @@
 package com.coco.controller;
 
 import com.coco.common.pojo.EUDataGridResult;
+import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbMedicalDetail;
+import com.coco.pojo.medicalRecord;
 import com.coco.service.MedicalDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -52,5 +55,16 @@ public class MedicalDetailController {
     public TaotaoResult updateMedicalDetail(TbMedicalDetail medicalDetail){
         TaotaoResult result = medicalDetailService.updateMedicalDetailByManager(medicalDetail);
         return result;
+    }
+    @RequestMapping("/user/medicalDetail/{pageNumber}")
+    public String getMedicalDetailByUser(@PathVariable String pageNumber, Model model, HttpSession session,
+                                       HttpServletRequest request, HttpServletResponse response){
+        String medicalId = request.getParameter("medicalId");
+        BigDecimal medical_Id = new BigDecimal(medicalId);
+        Integer page_Number = new Integer(pageNumber);
+        Page<medicalRecord> medicalRecord = medicalDetailService.getMedicalRecord(page_Number,medical_Id);
+        request.setAttribute("packagePage", medicalRecord);
+        model.addAttribute("list",medicalRecord.getList());
+        return "/user/medicalRecord";
     }
 }

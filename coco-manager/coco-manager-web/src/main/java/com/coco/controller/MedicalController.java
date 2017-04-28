@@ -1,7 +1,9 @@
 package com.coco.controller;
 
 import com.coco.common.pojo.EUDataGridResult;
+import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
+import com.coco.pojo.CaseHistory;
 import com.coco.pojo.TbMedical;
 import com.coco.pojo.TbPets;
 import com.coco.service.MedicalService;
@@ -49,31 +51,31 @@ public class MedicalController {
             request.getRequestDispatcher("/user/showMedical/1?petId=" + petId).forward(request,response);
         }
     }
-//    @RequestMapping("/user/showMedical/{pageNumber}")
-//    public String getAdoptMessage(@PathVariable String pageNumber,Model model,HttpSession session,
-//                                  HttpServletRequest request, HttpServletResponse response) throws Exception{
-//        String petId = request.getParameter("petId");
-//        BigDecimal pet_Id = new BigDecimal(petId);
-//        Integer page_Number = new Integer(pageNumber);
-//        Page<CaseHistory> caseHistory = medicalService.getCaseHistory(page_Number,pet_Id);
-//        request.setAttribute("packagePage", caseHistory);
-//        model.addAttribute("list",caseHistory.getList());
-//        if(caseHistory.getList().size() != 0){
-//            String petName = caseHistory.getList().get(0).getName();
-//            request.setAttribute("petName",petName);
-//        }
-//        return "/user/caseHistory";
-//    }
-//    @RequestMapping("/user/cancelMedical/{caseHistoryId}")
-//    public void cancelMedical(@PathVariable String caseHistoryId, HttpSession session,
-//                              HttpServletRequest request, HttpServletResponse response) throws Exception{
-//        BigDecimal caseHistory_Id = new BigDecimal(caseHistoryId);
-//        BigDecimal petId = medicalService.getPetId(caseHistory_Id);
-//        TaotaoResult result = medicalService.cancelMedical(caseHistory_Id);
-//        if(result.getStatus() == 200){
-//            request.getRequestDispatcher("/user/showMedical/1?petId=" + petId).forward(request,response);
-//        }
-//    }
+    @RequestMapping("/user/showMedical/{pageNumber}")
+    public String getCaseHistory(@PathVariable String pageNumber,Model model,HttpSession session,
+                                  HttpServletRequest request, HttpServletResponse response) throws Exception{
+        String petId = request.getParameter("petId");
+        BigDecimal pet_Id = new BigDecimal(petId);
+        Integer page_Number = new Integer(pageNumber);
+        Page<CaseHistory> caseHistory = medicalService.getCaseHistory(page_Number,pet_Id);
+        request.setAttribute("packagePage", caseHistory);
+        model.addAttribute("list",caseHistory.getList());
+        if(caseHistory.getList().size() != 0){
+            String petName = caseHistory.getList().get(0).getPetName();
+            request.setAttribute("petName",petName);
+        }
+        return "/user/caseHistory";
+    }
+    @RequestMapping("/user/cancelMedical/{caseHistoryId}")
+    public void cancelMedical(@PathVariable String caseHistoryId, HttpSession session,
+                              HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BigDecimal caseHistory_Id = new BigDecimal(caseHistoryId);
+        BigDecimal petId = medicalService.getPetId(caseHistory_Id);
+        TaotaoResult result = medicalService.cancelMedical(caseHistory_Id);
+        if(result.getStatus() == 200){
+            request.getRequestDispatcher("/user/showMedical/1?petId=" + petId).forward(request,response);
+        }
+    }
     @RequestMapping("/doctor/treat/list")
     @ResponseBody
     public EUDataGridResult getTreatList(Integer page, Integer rows,HttpSession session,

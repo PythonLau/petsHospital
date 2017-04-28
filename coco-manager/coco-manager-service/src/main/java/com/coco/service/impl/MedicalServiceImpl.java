@@ -1,6 +1,7 @@
 package com.coco.service.impl;
 
 import com.coco.common.pojo.EUDataGridResult;
+import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
 import com.coco.mapper.*;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -49,60 +51,75 @@ public class MedicalServiceImpl implements MedicalService {
         medicalMapper.insert(medical);
         return TaotaoResult.ok();
     }
-//    @Override
-//    public Page<CaseHistory> getCaseHistory(Integer pageNumber, BigDecimal petId){
-//        Page<CaseHistory> page = new Page<>(pageNumber);
-//        TbMedicalExample example = new TbMedicalExample();
-//        TbMedicalExample.Criteria criteria = example.createCriteria();
-//        criteria.andPetidEqualTo(petId);
-//        Integer count = medicalMapper.countByExample(example);
-//        System.out.println("count:" + count);
-//        example.setOrderByClause("id desc");
-//        PageHelper.startPage(pageNumber, page.getPageSize());
-//        List<CaseHistory> list = new ArrayList<>();
-//        List<TbMedical> medicalList = medicalMapper.selectByExampleWithBLOBs(example);
-//        for(TbMedical medical : medicalList){
-//            CaseHistory caseHistory = new CaseHistory();
-//            caseHistory.setId(medical.getId());
-//            caseHistory.setStatus(medical.getStatus());
-//            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
-//            String registerTime = null;
-//            if(medical.getUpdated() != null){
-//                registerTime = sdf.format(medical.getUpdated());
-//            }else{
-//                registerTime = sdf.format(medical.getRegistertime());
-//            }
-//            if(medical.getPrice() != null){
-//                caseHistory.setPrice(medical.getPrice());
-//            }
-//            caseHistory.setMedicalTime(registerTime);
-//            caseHistory.setRecipe(medical.getRecipe());
-//            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
-//            caseHistory.setName(pet.getName());
-//            if(medical.getDoctorid() != null){
-//                TbEmployee employee = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
-//                caseHistory.setDoctorName(employee.getName());
-//            }
-//            list.add(caseHistory);
-//        }
-//        page.setTotalPageItems(count);
-//        page.setList(list);
-//        return page;
-//    }
-//    @Override
-//    public TaotaoResult cancelMedical(BigDecimal caseHistoryId){
-//        TbMedical medical = medicalMapper.selectByPrimaryKey(caseHistoryId);
-//        Short zero = 0;
-//        medical.setStatus(zero);
-//        medicalMapper.updateByPrimaryKey(medical);
-//        return TaotaoResult.ok();
-//    }
-//    @Override
-//    public BigDecimal getPetId(BigDecimal caseHistoryId){
-//        TbMedical medical = medicalMapper.selectByPrimaryKey(caseHistoryId);
-//        BigDecimal petId = medical.getPetid();
-//        return petId;
-//    }
+    @Override
+    public Page<CaseHistory> getCaseHistory(Integer pageNumber, BigDecimal petId){
+        Page<CaseHistory> page = new Page<>(pageNumber);
+        TbMedicalExample example = new TbMedicalExample();
+        TbMedicalExample.Criteria criteria = example.createCriteria();
+        criteria.andPetidEqualTo(petId);
+        Integer count = medicalMapper.countByExample(example);
+        System.out.println("count:" + count);
+        example.setOrderByClause("id desc");
+        PageHelper.startPage(pageNumber, page.getPageSize());
+        List<CaseHistory> list = new ArrayList<>();
+        List<TbMedical> medicalList = medicalMapper.selectByExample(example);
+        for(TbMedical medical : medicalList){
+            CaseHistory caseHistory = new CaseHistory();
+            caseHistory.setId(medical.getId());
+            TbPets pet = petsMapper.selectByPrimaryKey(medical.getPetid());
+            caseHistory.setPetName(pet.getName());
+            caseHistory.setSickName(medical.getSickname());
+            if(medical.getOfficeid() != null){
+                BigDecimal officeId = new BigDecimal(medical.getOfficeid());
+                TbPositionCat positionCat = positionCatMapper.selectByPrimaryKey(officeId);
+                caseHistory.setOffice(positionCat.getName());
+            }
+            caseHistory.setStatus(medical.getStatus());
+            if(medical.getDoctorid() != null){
+                TbEmployee employee = employeeMapper.selectByPrimaryKey(medical.getDoctorid());
+                caseHistory.setDoctorName(employee.getName());
+            }
+            if(medical.getBedroom() != null){
+                TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
+                caseHistory.setBedRoom(sickRoom.getName());
+            }
+            caseHistory.setPrice(medical.getPrice());
+            caseHistory.setWords(medical.getWords());
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+            String startDate = null;
+            String endDate = null;
+            if(medical.getCreated() != null){
+                startDate = sdf.format(medical.getCreated());
+                caseHistory.setStartDate(startDate);
+            }else{
+                startDate = sdf.format(medical.getRegistertime());
+                caseHistory.setStartDate(startDate);
+            }
+            caseHistory.setStartDate(startDate);
+            if(medical.getUpdated() != null){
+                endDate = sdf.format(medical.getCreated());
+                caseHistory.setEndDate(endDate);
+            }
+            list.add(caseHistory);
+        }
+        page.setTotalPageItems(count);
+        page.setList(list);
+        return page;
+    }
+    @Override
+    public TaotaoResult cancelMedical(BigDecimal caseHistoryId){
+        TbMedical medical = medicalMapper.selectByPrimaryKey(caseHistoryId);
+        Short zero = 0;
+        medical.setStatus(zero);
+        medicalMapper.updateByPrimaryKey(medical);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public BigDecimal getPetId(BigDecimal caseHistoryId){
+        TbMedical medical = medicalMapper.selectByPrimaryKey(caseHistoryId);
+        BigDecimal petId = medical.getPetid();
+        return petId;
+    }
     @Override
     public EUDataGridResult getTreatList(int page, int rows,BigDecimal userId){
         TbMedicalExample example = new TbMedicalExample();

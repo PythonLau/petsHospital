@@ -6,13 +6,18 @@ import java.math.BigDecimal;
  * Created by Administrator on 2017/3/30 0030.
  */
 public class CaseHistory {
-    BigDecimal id;
-    String name;
-    String doctorName;
-    String recipe;
-    String medicalTime;
-    BigDecimal price;
-    Short status;
+    private BigDecimal id;
+    private String PetName;
+    private String sickName;
+    private String office;
+    private String registerTime;
+    private Short status;
+    private String doctorName;
+    private String bedRoom;
+    private BigDecimal price;
+    private String startDate;
+    private String endDate;
+    private String words;
 
     public BigDecimal getId() {
         return id;
@@ -22,12 +27,44 @@ public class CaseHistory {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPetName() {
+        return PetName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPetName(String petName) {
+        PetName = petName;
+    }
+
+    public String getSickName() {
+        return sickName;
+    }
+
+    public void setSickName(String sickName) {
+        this.sickName = sickName;
+    }
+
+    public String getOffice() {
+        return office;
+    }
+
+    public void setOffice(String office) {
+        this.office = office;
+    }
+
+    public String getRegisterTime() {
+        return registerTime;
+    }
+
+    public void setRegisterTime(String registerTime) {
+        this.registerTime = registerTime;
+    }
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
     }
 
     public String getDoctorName() {
@@ -38,20 +75,12 @@ public class CaseHistory {
         this.doctorName = doctorName;
     }
 
-    public String getRecipe() {
-        return recipe;
+    public String getBedRoom() {
+        return bedRoom;
     }
 
-    public void setRecipe(String recipe) {
-        this.recipe = recipe;
-    }
-
-    public String getMedicalTime() {
-        return medicalTime;
-    }
-
-    public void setMedicalTime(String medicalTime) {
-        this.medicalTime = medicalTime;
+    public void setBedRoom(String bedRoom) {
+        this.bedRoom = bedRoom;
     }
 
     public BigDecimal getPrice() {
@@ -62,11 +91,27 @@ public class CaseHistory {
         this.price = price;
     }
 
-    public Short getStatus() {
-        return status;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStatus(Short status) {
-        this.status = status;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getWords() {
+        return words;
+    }
+
+    public void setWords(String words) {
+        this.words = words;
     }
 }

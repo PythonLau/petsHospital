@@ -158,70 +158,54 @@
     <div class="main" style="width: 100%;">
         <div class="container" style="width: 100%;">
             <div class="content">
-                <table class="cart-table highlight centered" style="margin-left:0px; width:100%;" border="0" cellspacing="0" cellpadding="0">
+                <table class="cart-table highlight centered" style="margin-left:0px; width:100%">
                     <thead>
                     <tr>
-                        <th>病历id</th>
-                        <th>病因</th>
-                        <th>治疗类型</th>
-                        <th>科室</th>
-                        <th>主治医生</th>
-                        <th>床位</th>
-                        <th>费用</th>
-                        <th>评价</th>
-                        <th>开始时间</th>
-                        <th>最后治疗时间</th>
-                        <th>操作</th>
+                        <th width="6%">记录id</th>
+                        <th width="15%">记录名称</th>
+                        <th width="5%">治疗类型</th>
+                        <th width="5%">手术室</th>
+                        <th width="5%">还需治疗天数</th>
+                        <th width="28%">处方</th>
+                        <th width="5%">价格</th>
+                        <th width="8%">开始时间</th>
+                        <th width="10%">最后治疗时间</th>
+                        <th width="6%">状态</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${list}" var="caseHistory">
+                    <c:forEach items="${list}" var="medicalRecord">
                         <tr style="height: 333px">
-                            <td width="8%">${caseHistory.id}</td>
-                            <td width="18%">${caseHistory.sickName}</td>
-                            <td width="6%">
+                            <td width="6%">${medicalRecord.id}</td>
+                            <td width="15%">${medicalRecord.sickName}</td>
+                            <td width="5%">
                                 <c:choose>
-                                    <c:when test="${caseHistory.bedRoom == null}">
-                                        非住院治疗
+                                    <c:when test="${medicalRecord.room == null}">
+                                        普通治疗
                                     </c:when>
                                     <c:otherwise>
-                                        住院治疗
+                                        手术治疗
                                     </c:otherwise>
                                 </c:choose>
                             </td>
-                            <td width="5%">${caseHistory.office}</td>
-                            <td width="8%">${caseHistory.doctorName}</td>
-                            <td width="5%">${caseHistory.bedRoom}</td>
-                            <td width="5%">${caseHistory.price}</td>
-                            <td width="23%">${caseHistory.words}</td>
-                            <td width="10%">
-                                ${caseHistory.startDate}
-                                <c:if test="${caseHistory.status == 1}">
-                                    （挂号）
+                            <td width="5%">${medicalRecord.room}</td>
+                            <td width="5%">${medicalRecord.needdays}</td>
+                            <td width="28%">${medicalRecord.recipe}</td>
+                            <td width="5%">${medicalRecord.price}</td>
+                            <td width="8%">${medicalRecord.created}</td>
+                            <td width="10%">${medicalRecord.updated}</td>
+                            <td width="6%">
+                                <c:if test="${medicalRecord.status == 4}">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">已结束</button>
                                 </c:if>
-                            </td>
-                            <td width="8%">
-                                <c:if test="${caseHistory.endDate != null}">
-                                    ${caseHistory.endDate}
+                                <c:if test="${medicalRecord.status == 3}">
+                                    <button class="layui-btn layui-btn-primary layui-btn-mini">已缴费</button>
                                 </c:if>
-                            </td>
-                            <td width="18%">
-                                <c:if test="${caseHistory.status == 1}">
-                                    <a href="javascript:if(confirm('确实要取消挂号吗?'))location='/user/cancelMedical/${caseHistory.id}'">
-                                        <button class="layui-btn layui-btn-mini layui-btn-normal">取消挂号</button>
-                                    </a>
+                                <c:if test="${medicalRecord.status == 1 || medicalRecord.status == 2}">
+                                    <button class="layui-btn layui-btn-mini layui-btn-normal">治疗中</button>
                                 </c:if>
-                                <c:if test="${caseHistory.status == 0}">
-                                    <button class="layui-btn layui-btn-primary layui-btn-mini">已取消</button>
-                                </c:if>
-                                <c:if test="${caseHistory.status == 2 || caseHistory.status == 3
-                                || caseHistory.status == 4 || caseHistory.status == 5}">
-                                    <a href="/user/medicalDetail/1?medicalId=${caseHistory.id}">
-                                        <button class="layui-btn layui-btn-mini layui-btn-normal">详情</button>
-                                    </a>
-                                    <c:if test="${caseHistory.status == 4}">
-                                        <button class="layui-btn layui-btn-mini layui-btn-normal">评价</button>
-                                    </c:if>
+                                <c:if test="${medicalRecord.status == 0}">
+                                    <button class="layui-btn layui-btn-primary layui-btn-mini">不接受</button>
                                 </c:if>
                             </td>
                         </tr>

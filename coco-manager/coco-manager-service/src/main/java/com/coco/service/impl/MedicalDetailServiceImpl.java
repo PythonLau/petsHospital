@@ -1,6 +1,7 @@
 package com.coco.service.impl;
 
 import com.coco.common.pojo.EUDataGridResult;
+import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
 import com.coco.common.utils.IDUtils;
 import com.coco.mapper.TbMedicalDetailMapper;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,7 +66,7 @@ public class MedicalDetailServiceImpl implements MedicalDetailService{
             medicalDetailView.setCreated(medicalDetail.getCreated());
             medicalDetailView.setUpdated(medicalDetail.getUpdated());
             medicalDetailView.setStatus(medicalDetail.getStatus());
-            if(medicalDetail.getStatus() == 2){
+            if(medicalDetail.getRoom() != null){
                 TbOperatingRoom operatingRoom = operatingRoomMapper.selectByPrimaryKey(medicalDetail.getRoom());
                 medicalDetailView.setRoom(operatingRoom.getName());
             }
@@ -98,7 +100,7 @@ public class MedicalDetailServiceImpl implements MedicalDetailService{
             medicalDetailView.setUpdated(medicalDetail.getUpdated());
             medicalDetailView.setNeeddays(medicalDetail.getNeeddays());
             medicalDetailView.setStatus(medicalDetail.getStatus());
-            if(medicalDetail.getStatus() == 2){
+            if(medicalDetail.getRoom() != null){
                 TbOperatingRoom operatingRoom = operatingRoomMapper.selectByPrimaryKey(medicalDetail.getRoom());
                 medicalDetailView.setRoom(operatingRoom.getName());
             }
@@ -133,5 +135,42 @@ public class MedicalDetailServiceImpl implements MedicalDetailService{
         medical.setPrice(price);
         medicalMapper.updateByPrimaryKey(medical);
         return TaotaoResult.ok();
+    }
+    @Override
+    public Page<medicalRecord> getMedicalRecord(Integer pageNumber, BigDecimal medicalId){
+        Page<medicalRecord> page = new Page<>(pageNumber);
+        TbMedicalDetailExample example = new TbMedicalDetailExample();
+        TbMedicalDetailExample.Criteria criteria = example.createCriteria();
+        criteria.andMedicalidEqualTo(medicalId);
+        Integer count = medicalDetailMapper.countByExample(example);
+        example.setOrderByClause("id desc");
+        PageHelper.startPage(pageNumber, page.getPageSize());
+        List<medicalRecord> list = new ArrayList<>();
+        List<TbMedicalDetail> medicalDetailList = medicalDetailMapper.selectByExampleWithBLOBs(example);
+        for(TbMedicalDetail medicalDetail : medicalDetailList){
+            medicalRecord record = new medicalRecord();
+            record.setId(medicalDetail.getId());
+            record.setMedicalId(medicalDetail.getMedicalid());
+            record.setSickName(medicalDetail.getSickname());
+            record.setRecipe(medicalDetail.getRecipe());
+            if(medicalDetail.getRoom() != null){
+                TbOperatingRoom operatingRoom = operatingRoomMapper.selectByPrimaryKey(medicalDetail.getRoom());
+                record.setRoom(operatingRoom.getName());
+            }
+            record.setNeeddays(medicalDetail.getNeeddays());
+            record.setPrice(medicalDetail.getPrice());
+            record.setStatus(medicalDetail.getStatus());
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
+            if(medicalDetail.getCreated() != null){
+                record.setCreated(sdf.format(medicalDetail.getCreated()));
+            }
+            if(medicalDetail.getUpdated() != null){
+                record.setUpdated(sdf.format(medicalDetail.getUpdated()));
+            }
+            list.add(record);
+        }
+        page.setTotalPageItems(count);
+        page.setList(list);
+        return page;
     }
 }
