@@ -13,7 +13,7 @@
             <tr>
                 <td>床位选择:</td>
                 <td>
-                    <a href="javascript:void(0)" class="easyui-linkbutton prescribeAcceptSelectBed">选择职位</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton prescribeAcceptSelectBed">选择床位</a>
                     <input type="hidden" name="bedroom" style="width: 280px;"></input>
                 </td>
             </tr>
@@ -24,7 +24,7 @@
                         <option value="2">非住院治疗</option>
                         <option value="3">住院治疗</option>
                     </select>
-                    <input name="status"/>
+                    <input name="status" type="hidden"/>
                 </td>
             </tr>
         </table>
@@ -46,10 +46,13 @@
 
         $.post("/doctor/medical/accept",$("#employeeEditForm").serialize(), function(data){
             if(data.status == 200){
-                $.messager.alert('提示','修改员工成功!','info',function(){
-                    $("#employeeEditWindow").window('close');
+                $.messager.alert('提示','受理挂号成功!','info',function(){
+                    $("#prescribeAcceptWindow").window('close');
                     $("#registerList").datagrid("reload");
                 });
+            }
+            if(data.status == 500){
+                $.messager.alert('提示',data.msg);
             }
         });
     }

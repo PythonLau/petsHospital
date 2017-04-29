@@ -3,7 +3,7 @@
     <select id="search_condition">
         <option value="id">病历ID</option>
     </select>
-    <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    <input id="search_key" style="line-height:18px;border:1px solid #ccc">
     开始时间<input type="date" id="beginDate" name="beginDate">
     结束时间<input type="date" id="endDate" name="endDate">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
@@ -21,7 +21,7 @@
     </tr>
     </thead>
 </table>
-<div id="prescribeAcceptWindow" class="easyui-window" title="处理该病历" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/prescribe-accept'" style="width:80%;height:80%;padding:10px;">
+<div id="prescribeAcceptWindow" class="easyui-window" title="受理挂号" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/prescribe-accept'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 
@@ -37,7 +37,7 @@
     }
 
     var toolbar = [{
-        text:'处理病历',
+        text:'受理',
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();
@@ -65,35 +65,6 @@
 
 
         }
-    },{
-        text:'开处方',
-        iconCls:'icon-edit',
-        handler:function(){
-            var ids = getSelectionsIds();
-            if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个挂号单号才能开处方!');
-                return ;
-            }
-            if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个挂号单号!');
-                return ;
-            }
-
-            $("#prescribeWindow").window({
-                onLoad :function(){
-                    //回显数据
-                    var data = $("#registerList").datagrid("getSelections")[0];
-                    $("#prescribeForm").form("load",data);
-
-                    TAOTAO.init({
-                        "pics" : data.image,
-                        "cid" : data.cid,
-                    });
-                }
-            }).window("open");
-
-
-        }
     }];
 </script>
 <script>
@@ -110,7 +81,7 @@
         }
         var search_params = {"search_condition":search_condition,"search_key":search_key,"beginDate":beginDate,"endDate":endDate,"rows":pageSize,'pageNumber':pageNumber};
         $.ajax({
-            url: "/doctor/medical/search",
+            url: "/doctor/treat/search",
             type: "POST",
             contentType: "application/json",
             dataType: "json",

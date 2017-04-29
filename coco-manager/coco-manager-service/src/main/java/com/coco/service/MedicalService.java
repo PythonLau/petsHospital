@@ -3,6 +3,7 @@ package com.coco.service;
 import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.Page;
 import com.coco.common.pojo.TaotaoResult;
+import com.coco.common.pojo.searchParamsWithTime;
 import com.coco.pojo.CaseHistory;
 import com.coco.pojo.TbMedical;
 
@@ -20,15 +21,9 @@ public interface MedicalService {
     EUDataGridResult getTreatList(int page, int rows,BigDecimal userId);
     TaotaoResult acceptMedical(TbMedical medical);
     EUDataGridResult getMedicalListByDoctor(Integer page,Integer rows,BigDecimal userId);
-//    TaotaoResult createPrescribe(TbMedical medical, BigDecimal doctorId);
     EUDataGridResult getMedicalOrderList(Integer page, Integer rows);
 //    TaotaoResult updatePrescribeByManager(BigDecimal medicalId,Short status,BigDecimal price);
-//    EUDataGridResult searchWithKeyOnly(String search_condition,String search_key, Integer page,Integer rows);
-//    EUDataGridResult searchWithMedicalTimeOnly(Date beginDate,Date endDate,Integer page,Integer rows);
-//    EUDataGridResult searchWithKeyAndMedicalTime(String search_condition,String search_key,
-//                                                 Date beginDate,Date endDate,Integer page,Integer rows);
-//    EUDataGridResult searchWithKeyOnlyByDoctor(String search_condition,String search_key, Integer page,Integer rows);
-//    EUDataGridResult searchWithMedicalTimeOnlyByDoctor(Date beginDate,Date endDate,Integer page,Integer rows);
-//    EUDataGridResult searchWithKeyAndMedicalTimeByDoctor(String search_condition,String search_key,
-//                                                 Date beginDate,Date endDate,Integer page,Integer rows);
+    EUDataGridResult searchMedicalByManager(searchParamsWithTime search_params);
+    EUDataGridResult searchMedicalByDoctor(searchParamsWithTime search_params,BigDecimal doctorId);
+    EUDataGridResult searchTreatByDoctor(searchParamsWithTime search_params,BigDecimal doctorId);
 }

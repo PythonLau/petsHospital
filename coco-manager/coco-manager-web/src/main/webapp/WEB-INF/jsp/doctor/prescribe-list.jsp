@@ -2,6 +2,7 @@
 <div id="search" style="padding:3px">
     <select id="search_condition">
         <option value="id">病历ID</option>
+        <option value="status">状态</option>
     </select>
     <input id="search_key" style="line-height:26px;border:1px solid #ccc">
     开始时间<input type="date" id="beginDate" name="beginDate">

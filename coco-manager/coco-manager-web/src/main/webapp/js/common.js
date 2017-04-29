@@ -338,7 +338,6 @@ var TT = TAOTAO = {
     },
 
     InitPrescribeAcceptSelectBed : function(data){
-        alert("初始化床位选择控件")
         $(".prescribeAcceptSelectBed").each(function(i,e){
             var _ele = $(e);
             if(data && data.bedroom){

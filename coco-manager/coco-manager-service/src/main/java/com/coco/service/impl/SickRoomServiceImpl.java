@@ -44,4 +44,9 @@ public class SickRoomServiceImpl implements SickRoomService {
         //返回结果
         return resultList;
     }
+    @Override
+    public Short getSickRoomStatus(BigDecimal sickRoomId){
+        TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(sickRoomId);
+        return sickRoom.getStatus();
+    }
 }

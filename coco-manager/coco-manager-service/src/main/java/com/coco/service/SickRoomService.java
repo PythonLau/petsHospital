@@ -10,4 +10,5 @@ import java.util.List;
  */
 public interface SickRoomService {
     List<EUTreeNode> getBedRoomListByDoctor(BigDecimal parentId);
+    Short getSickRoomStatus(BigDecimal sickRoomId);
 }
