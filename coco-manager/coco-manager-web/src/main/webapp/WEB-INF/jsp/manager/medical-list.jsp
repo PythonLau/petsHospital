@@ -5,7 +5,7 @@
         <option value="positionName">部门名称</option>
         <option value="status">状态</option>
     </select>
-    <input id="search_key" style="line-height:26px;border:1px solid #ccc">
+    <input id="search_key" style="line-height:18px;border:1px solid #ccc">
     开始时间<input type="date" id="beginDate" name="beginDate">
     结束时间<input type="date" id="endDate" name="endDate">
     <a href="#" class="easyui-linkbutton" plain="true" onclick="doSearch('1','10')">搜索</a>
@@ -19,7 +19,8 @@
         <th data-options="field:'petName',width:130">宠物名字</th>
         <th data-options="field:'sickname',width:180">病因</th>
         <th data-options="field:'status',width:73,formatter:TAOTAO.formatMedicalStatus">状态</th>
-        <th data-options="field:'bedRoom',width:66">床位</th>
+        <th data-options="field:'bedroom',width:33">床位</th>
+        <th data-options="field:'bedRoomName',width:66">床位名称</th>
         <th data-options="field:'price',width:66">价格</th>
         <th data-options="field:'nickName',width:130">主人昵称</th>
         <th data-options="field:'telePhone',width:130">主人电话</th>
@@ -32,6 +33,7 @@
 </table>
 <div id="prescribeWindow" class="easyui-window" title="处理该病历信息" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/medical-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
+
 
 <script>
 
@@ -47,7 +49,7 @@
     }
 
     var toolbar = [{
-        text:'查看',
+        text:'查看治疗记录',
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();
@@ -60,6 +62,32 @@
                 return ;
             }
             window.open('/manager/medical/' + ids);
+        }
+    },{
+        text:'处理',
+        iconCls:'icon-edit',
+        handler:function(){
+            var ids = getSelectionsIds();
+            if(ids.length == 0){
+                $.messager.alert('提示','必须选择一个病历才能处理!');
+                return ;
+            }
+            if(ids.indexOf(',') > 0){
+                $.messager.alert('提示','只能选择一个病历!');
+                return ;
+            }
+            $("#prescribeWindow").window({
+                onLoad :function(){
+                    //回显数据
+                    var data = $("#medicalList").datagrid("getSelections")[0];
+                    $("#employeeEditForm").form("load",data);
+
+                    TAOTAO.init({
+                        "pics" : data.image,
+                        "cid" : data.cid,
+                    });
+                }
+            }).window("open");
         }
     }];
 </script>

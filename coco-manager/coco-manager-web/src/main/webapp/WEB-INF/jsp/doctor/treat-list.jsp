@@ -21,7 +21,7 @@
     </tr>
     </thead>
 </table>
-<div id="prescribeAcceptWindow" class="easyui-window" title="受理挂号" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/prescribe-accept'" style="width:80%;height:80%;padding:10px;">
+<div id="prescribeAcceptWindow" class="easyui-window" title="受理挂号" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/doctor/medical-accept'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 

@@ -340,6 +340,13 @@ updated date DEFAULT sysdate, -- '创建时间'
 PRIMARY KEY (id)
 )
 
+select * from tb_sick_room
+
+update tb_sick_room
+set status = 1
+where id = 3
+
+commit
 
 INSERT INTO tb_sick_room(id,parent_id,name,status,sort_order,is_parent) VALUES (1, 0, '整形部', 1, 1, 1);
 
@@ -434,7 +441,11 @@ commit
 
 
 
-select * from tb_medical
+select * from tb_medical;
+
+
+select * from tb_sick_room
+
 
 truncate table tb_medical
 

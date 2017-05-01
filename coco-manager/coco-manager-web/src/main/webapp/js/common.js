@@ -31,13 +31,21 @@ var TT = TAOTAO = {
     },
     // 格式化时间
     formatDateTime : function(val,row){
-        var now = new Date(val);
-        return now.format("yyyy-MM-dd hh:mm:ss");
+        if(val != null){
+            var now = new Date(val);
+            return now.format("yyyy-MM-dd hh:mm:ss");
+        }else{
+            return null;
+        }
     },
 
     formatDateTime1 : function(val,row){
-        var now = new Date(val);
-        return now.format("yyyy-MM-dd");
+        if(val != null){
+            var now = new Date(val);
+            return now.format("yyyy-MM-dd");
+        }else{
+            return null;
+        }
     },
 
     // 格式化商品的状态

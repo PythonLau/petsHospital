@@ -34,6 +34,8 @@ public class MedicalServiceImpl implements MedicalService {
     private TbPositionCatMapper positionCatMapper;
     @Autowired
     private TbSickRoomMapper sickRoomMapper;
+    @Autowired
+    private TbMedicalDetailMapper medicalDetailMapper;
     public TaotaoResult registerMedical(BigDecimal id, Long cid, String name, Date registerDate){
         TbMedical medical = new TbMedical();
         Long medicalId = IDUtils.genItemId();
@@ -45,6 +47,7 @@ public class MedicalServiceImpl implements MedicalService {
         medical.setPrice(price);
         medical.setRegistertime(registerDate);
         medical.setCreated(new Date());
+        medical.setUpdated(new Date());
         Short one = 1;
         medical.setStatus(one);
         medicalMapper.insert(medical);
@@ -219,15 +222,16 @@ public class MedicalServiceImpl implements MedicalService {
         System.out.println("床位:" + medical.getBedroom());
         if(medical.getBedroom() != null){
             updateMedical.setBedroom(medical.getBedroom());
+            TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
+            sickRoom.setStatus(zero);
+            sickRoomMapper.updateByPrimaryKey(sickRoom);
         }
         updateMedical.setSickname(medical.getSickname());
         updateMedical.setDoctorid(medical.getDoctorid());
         updateMedical.setStatus(medical.getStatus());
         updateMedical.setCreated(new Date());
+        updateMedical.setUpdated(new Date());
         medicalMapper.updateByPrimaryKey(updateMedical);
-        TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
-        sickRoom.setStatus(zero);
-        sickRoomMapper.updateByPrimaryKey(sickRoom);
         return TaotaoResult.ok();
     }
     @Override
@@ -259,7 +263,8 @@ public class MedicalServiceImpl implements MedicalService {
             tr.setStatus(medical.getStatus());
             if(medical.getBedroom() != null){
                 TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
-                tr.setBedRoom(sickRoom.getName());
+                tr.setBedroom(sickRoom.getId());
+                tr.setBedRoomName(sickRoom.getName());
             }
             treatList.add(tr);
         }
@@ -269,19 +274,6 @@ public class MedicalServiceImpl implements MedicalService {
         result.setTotal(pageInfo.getTotal());
         return result;
     }
-//    @Override
-//    public TaotaoResult createPrescribe(TbMedical medical,BigDecimal doctorId){
-//        String recipe = medical.getRecipe();
-//        BigDecimal medicalId = medical.getId();
-//        TbMedical tbMedical = medicalMapper.selectByPrimaryKey(medicalId);
-//        tbMedical.setRecipe(recipe);
-//        tbMedical.setDoctorid(doctorId);
-//        Short two = 2;
-//        tbMedical.setStatus(two);
-//        tbMedical.setUpdated(new Date());
-//        medicalMapper.updateByPrimaryKeyWithBLOBs(tbMedical);
-//        return TaotaoResult.ok();
-//    }
     @Override
     public EUDataGridResult getMedicalOrderList(Integer page, Integer rows){
         TbMedicalExample example = new TbMedicalExample();
@@ -309,7 +301,8 @@ public class MedicalServiceImpl implements MedicalService {
             tr.setStatus(medical.getStatus());
             if(medical.getBedroom() != null){
                 TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
-                tr.setBedRoom(sickRoom.getName());
+                tr.setBedroom(sickRoom.getId());
+                tr.setBedRoomName(sickRoom.getName());
             }
             treatList.add(tr);
         }
@@ -381,7 +374,8 @@ public class MedicalServiceImpl implements MedicalService {
             tr.setStatus(medical.getStatus());
             if(medical.getBedroom() != null){
                 TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
-                tr.setBedRoom(sickRoom.getName());
+                tr.setBedroom(sickRoom.getId());
+                tr.setBedRoomName(sickRoom.getName());
             }
             treatList.add(tr);
         }
@@ -444,7 +438,8 @@ public class MedicalServiceImpl implements MedicalService {
             tr.setStatus(medical.getStatus());
             if(medical.getBedroom() != null){
                 TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
-                tr.setBedRoom(sickRoom.getName());
+                tr.setBedroom(sickRoom.getId());
+                tr.setBedRoomName(sickRoom.getName());
             }
             treatList.add(tr);
         }
@@ -453,5 +448,101 @@ public class MedicalServiceImpl implements MedicalService {
         PageInfo<treat> pageInfo = new PageInfo<>(treatList);
         result.setTotal(pageInfo.getTotal());
         return result;
+    }
+    @Override
+    public TaotaoResult updateMedicalByDoctor(TbMedical medical){
+        Short zero = 0;
+        Short one = 1;
+        TbMedical updateMedical = medicalMapper.selectByPrimaryKey(medical.getId());
+        if(medical.getStatus() == 3){
+            TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(medical.getBedroom());
+            sickRoom.setStatus(zero);
+            sickRoomMapper.updateByPrimaryKey(sickRoom);
+            if(updateMedical.getBedroom() != null){
+                if(!(updateMedical.getBedroom().equals(medical.getBedroom()))){
+                    TbSickRoom sickRoom1 = sickRoomMapper.selectByPrimaryKey(updateMedical.getBedroom());
+                    sickRoom1.setStatus(one);
+                    sickRoomMapper.updateByPrimaryKey(sickRoom1);
+                }
+            }
+            updateMedical.setBedroom(medical.getBedroom());
+        }else{
+            if(updateMedical.getBedroom() != null){
+                TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(updateMedical.getBedroom());
+                sickRoom.setStatus(one);
+                sickRoomMapper.updateByPrimaryKey(sickRoom);
+                updateMedical.setBedroom(null);
+            }
+        }
+        updateMedical.setSickname(medical.getSickname());
+        updateMedical.setStatus(medical.getStatus());
+        updateMedical.setUpdated(new Date());
+        medicalMapper.updateByPrimaryKey(updateMedical);
+        return TaotaoResult.ok();
+    }
+    @Override
+    public boolean IsChangeBedRoom(TbMedical medical){
+        TbMedical updateMedical = medicalMapper.selectByPrimaryKey(medical.getId());
+        if(updateMedical.getBedroom() != null){
+            if(updateMedical.getBedroom().equals(medical.getBedroom())){
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
+    public boolean judgeMedicalCanChangeFour(BigDecimal medicalId){
+        Short one = 1;
+        Short three = 3;
+        TbMedicalDetailExample example = new TbMedicalDetailExample();
+        TbMedicalDetailExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusBetween(one,three);
+        List<TbMedicalDetail> medicalDetailList = medicalDetailMapper.selectByExample(example);
+        if(medicalDetailList.size() == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    @Override
+    public boolean judgeMedicalCanChangeZero(BigDecimal medicalId){
+        Short one = 1;
+        Short four = 4;
+        TbMedicalDetailExample example = new TbMedicalDetailExample();
+        TbMedicalDetailExample.Criteria criteria = example.createCriteria();
+        criteria.andStatusBetween(one,four);
+        List<TbMedicalDetail> medicalDetailList = medicalDetailMapper.selectByExample(example);
+        if(medicalDetailList.size() == 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    @Override
+    public TaotaoResult updateMedicalByManager(TbMedical medical){
+        Short one = 1;
+        boolean flag1 = true;
+        boolean flag2 = true;
+        if(medical.getStatus() == 4){
+            flag1 = judgeMedicalCanChangeFour(medical.getId());
+            System.out.println(flag1);
+        }
+        if(medical.getStatus() == 0){
+            flag2 = judgeMedicalCanChangeZero(medical.getId());
+            System.out.println(flag2);
+        }
+        if(flag1&&flag2){
+            TbMedical updateMedical = medicalMapper.selectByPrimaryKey(medical.getId());
+            if(updateMedical.getBedroom() != null){
+                TbSickRoom sickRoom = sickRoomMapper.selectByPrimaryKey(updateMedical.getBedroom());
+                sickRoom.setStatus(one);
+                sickRoomMapper.updateByPrimaryKey(sickRoom);
+            }
+            updateMedical.setStatus(medical.getStatus());
+            medicalMapper.updateByPrimaryKey(updateMedical);
+            return TaotaoResult.ok();
+        }else{
+            return TaotaoResult.build(500,"该病历还有未处理完的治疗记录");
+        }
     }
 }

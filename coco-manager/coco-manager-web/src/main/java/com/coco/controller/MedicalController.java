@@ -100,15 +100,22 @@ public class MedicalController {
         Object userId = session.getAttribute("doctor");
         BigDecimal user_Id = (BigDecimal)userId;
         Short zero = 0;
-        Short one = 1;
-        Short status = sickRoomService.getSickRoomStatus(medical.getBedroom());
-        if(status == zero){
-            return TaotaoResult.build(500,"该床位已被其他医生选择");
-        }else{
-            medical.setDoctorid(user_Id);
-            TaotaoResult result = medicalService.acceptMedical(medical);
-            return result;
+        if(medical.getSickname() == null){
+            return TaotaoResult.build(500,"请填写宠物病因");
         }
+        if(medical.getStatus() == 3){
+            if(medical.getBedroom() == null){
+                return TaotaoResult.build(500,"请选择床位");
+            }else{
+                Short status = sickRoomService.getSickRoomStatus(medical.getBedroom());
+                if(status == zero){
+                    return TaotaoResult.build(500,"该床位已被其他医生选择");
+                }
+            }
+        }
+        medical.setDoctorid(user_Id);
+        TaotaoResult result = medicalService.acceptMedical(medical);
+        return result;
     }
 
     @RequestMapping("/doctor/prescribe/list")
@@ -144,17 +151,12 @@ public class MedicalController {
         EUDataGridResult result = medicalService.getMedicalOrderList(page, rows);
         return result;
     }
-//    @RequestMapping("/manager/medical/update")
-//    @ResponseBody
-//    public TaotaoResult updatePrescribeByManager(CaseHistory caseHistory, HttpSession session) throws Exception{
-//        BigDecimal medicalId = caseHistory.getId();
-//        Short status = caseHistory.getStatus();
-//        BigDecimal price = caseHistory.getPrice();
-//        System.out.println(status);
-//        System.out.println(price);
-//        TaotaoResult result = medicalService.updatePrescribeByManager(medicalId,status,price);
-//        return result;
-//    }
+    @RequestMapping("/manager/medical/update")
+    @ResponseBody
+    public TaotaoResult updateMedicalByManager(TbMedical medical) throws Exception{
+        TaotaoResult result = medicalService.updateMedicalByManager(medical);
+        return result;
+    }
     @RequestMapping("/manager/medical/search")
     @ResponseBody
     public EUDataGridResult searchMedicalByManager(@RequestBody searchParamsWithTime search_params) throws Exception {
@@ -171,7 +173,13 @@ public class MedicalController {
                                                   HttpServletRequest request, HttpServletResponse response) throws Exception{
         Object userId = session.getAttribute("doctor");
         BigDecimal user_Id = (BigDecimal)userId;
-        if(search_params.getSearch_key().length() == 0 && (search_params.getBeginDate() == null || search_params.getEndDate() == null)){
+        String search_key = search_params.getSearch_key();
+        Date beginDate = search_params.getBeginDate();
+        Date endDate = search_params.getEndDate();
+        System.out.println(search_key.length());
+        System.out.println(beginDate == null || endDate == null);
+        if(search_key.length() == 0 && (beginDate == null || endDate == null)){
+            System.out.println("返回null");
             return null;
         }else{
             EUDataGridResult result = medicalService.searchMedicalByDoctor(search_params,user_Id);
@@ -190,5 +198,29 @@ public class MedicalController {
             EUDataGridResult result = medicalService.searchTreatByDoctor(search_params,user_Id);
             return result;
         }
+    }
+    @RequestMapping("/doctor/medical/update")
+    @ResponseBody
+    public TaotaoResult updateMedicalByDoctor(TbMedical medical){
+        Short zero = 0;
+        if(medical.getSickname() == null){
+            return TaotaoResult.build(500,"请填写宠物病因");
+        }
+        if(medical.getStatus() == 3){
+            if(medical.getBedroom() == null){
+                System.out.println("11111111");
+                return TaotaoResult.build(500,"请选择床位");
+            }else{
+                boolean IsChange = medicalService.IsChangeBedRoom(medical);
+                if(!IsChange){
+                    Short status = sickRoomService.getSickRoomStatus(medical.getBedroom());
+                    if(status == zero){
+                        return TaotaoResult.build(500,"该床位已被其他医生选择");
+                    }
+                }
+            }
+        }
+        TaotaoResult result = medicalService.updateMedicalByDoctor(medical);
+        return result;
     }
 }

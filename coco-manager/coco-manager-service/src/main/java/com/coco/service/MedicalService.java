@@ -22,8 +22,12 @@ public interface MedicalService {
     TaotaoResult acceptMedical(TbMedical medical);
     EUDataGridResult getMedicalListByDoctor(Integer page,Integer rows,BigDecimal userId);
     EUDataGridResult getMedicalOrderList(Integer page, Integer rows);
-//    TaotaoResult updatePrescribeByManager(BigDecimal medicalId,Short status,BigDecimal price);
     EUDataGridResult searchMedicalByManager(searchParamsWithTime search_params);
     EUDataGridResult searchMedicalByDoctor(searchParamsWithTime search_params,BigDecimal doctorId);
     EUDataGridResult searchTreatByDoctor(searchParamsWithTime search_params,BigDecimal doctorId);
+    TaotaoResult updateMedicalByDoctor(TbMedical medical);
+    boolean IsChangeBedRoom(TbMedical medical);
+    TaotaoResult updateMedicalByManager(TbMedical medical);
+    boolean judgeMedicalCanChangeFour(BigDecimal medicalId);
+    boolean judgeMedicalCanChangeZero(BigDecimal medicalId);
 }

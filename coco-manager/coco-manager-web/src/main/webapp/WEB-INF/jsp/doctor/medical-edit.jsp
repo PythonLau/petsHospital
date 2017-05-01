@@ -8,14 +8,22 @@
         <table cellpadding="5">
             <tr>
                 <td>病因:</td>
-                <td><input class="easyui-textbox" type="text" name="sickname" readonly="true" data-options="required:true" style="width: 280px;"></input></td>
+                <td><input class="easyui-textbox" type="text" name="sickname"  data-options="required:true" style="width: 280px;"></input></td>
+            </tr>
+            <tr>
+                <td>床位选择:</td>
+                <td>
+                    <a href="javascript:void(0)" class="easyui-linkbutton prescribeAcceptSelectBed">选择床位</a>
+                    <input type="hidden" name="bedroom" style="width: 280px;"></input>
+                </td>
             </tr>
             <tr>
                 <td>治疗类型:</td>
                 <td>
                     <select id="statusEditSelect" name="statusEditSelect">
                         <option value="0">不接受治疗</option>
-                        <option value="4">治疗结束</option>
+                        <option value="2">非住院治疗</option>
+                        <option value="3">住院治疗</option>
                     </select>
                     <input name="status" type="hidden"/>
                 </td>
@@ -37,11 +45,11 @@
         $("#employeeEditForm [name=status]").val($("#employeeEditForm [name=statusEditSelect]").val());
         alert("执行了两条");
 
-        $.post("/manager/medical/update",$("#employeeEditForm").serialize(), function(data){
+        $.post("/doctor/medical/update",$("#employeeEditForm").serialize(), function(data){
             if(data.status == 200){
-                $.messager.alert('提示','处理病历成完毕!','info',function(){
-                    $("#prescribeWindow").window('close');
-                    $("#medicalList").datagrid("reload");
+                $.messager.alert('提示','处理病历完毕!','info',function(){
+                    $("#prescribeHandleWindow").window('close');
+                    $("#registerList").datagrid("reload");
                 });
             }
             if(data.status == 500){

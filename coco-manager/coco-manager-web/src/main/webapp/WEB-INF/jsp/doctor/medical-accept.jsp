@@ -14,7 +14,7 @@
                 <td>床位选择:</td>
                 <td>
                     <a href="javascript:void(0)" class="easyui-linkbutton prescribeAcceptSelectBed">选择床位</a>
-                    <input type="hidden" name="bedroom" style="width: 280px;"></input>
+                    <input type="hidden" name="bedRoom" style="width: 280px;"></input>
                 </td>
             </tr>
             <tr>

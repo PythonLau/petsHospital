@@ -13,7 +13,8 @@ public class treat {
     private String telePhone;
     private String nickName;
     private String sickname;
-    private String bedRoom;
+    private String bedRoomName;
+    private BigDecimal bedroom;
     private BigDecimal price;
     private String word;
     private Short status;
@@ -37,12 +38,20 @@ public class treat {
         this.sickname = sickname;
     }
 
-    public String getBedRoom() {
-        return bedRoom;
+    public String getBedRoomName() {
+        return bedRoomName;
     }
 
-    public void setBedRoom(String bedRoom) {
-        this.bedRoom = bedRoom;
+    public void setBedRoomName(String bedRoomName) {
+        this.bedRoomName = bedRoomName;
+    }
+
+    public BigDecimal getBedroom() {
+        return bedroom;
+    }
+
+    public void setBedroom(BigDecimal bedroom) {
+        this.bedroom = bedroom;
     }
 
     public BigDecimal getPrice() {
