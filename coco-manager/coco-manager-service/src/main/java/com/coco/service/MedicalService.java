@@ -30,4 +30,6 @@ public interface MedicalService {
     TaotaoResult updateMedicalByManager(TbMedical medical);
     boolean judgeMedicalCanChangeFour(BigDecimal medicalId);
     boolean judgeMedicalCanChangeZero(BigDecimal medicalId);
+    TbMedical getMedicalById(BigDecimal medicalId);
+    TaotaoResult evaluateMedical(BigDecimal id,String words);
 }

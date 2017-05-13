@@ -220,7 +220,12 @@
                                         <button class="layui-btn layui-btn-mini layui-btn-normal">详情</button>
                                     </a>
                                     <c:if test="${caseHistory.status == 4}">
-                                        <button class="layui-btn layui-btn-mini layui-btn-normal">评价</button>
+                                        <a href="/user/evaluateMedical/${caseHistory.id}">
+                                            <button class="layui-btn layui-btn-mini">评价</button>
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${caseHistory.status == 5}">
+                                        <button class="layui-btn layui-btn-primary layui-btn-mini">已评价</button>
                                     </c:if>
                                 </c:if>
                             </td>

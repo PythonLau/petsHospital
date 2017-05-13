@@ -51,7 +51,10 @@
 
             $.post("/manager/medicalDetail/update",$("#prescribeForm").serialize(), function(data){
                 if(data.status == 200){
-                    $.messager.alert('提示','开处方成功!');
+                    $.messager.alert('提示','处理病历成完毕!','info',function(){
+                        $("#prescribeWindow").window('close');
+                        $("#itemList").datagrid("reload");
+                    });
                 }
             });
         }

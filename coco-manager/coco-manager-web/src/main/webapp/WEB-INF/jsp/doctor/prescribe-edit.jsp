@@ -66,7 +66,13 @@
 
             $.post("/doctor/medicalDetail/save",$("#prescribeForm").serialize(), function(data){
                 if(data.status == 200){
-                    $.messager.alert('提示','开处方成功!');
+                    $.messager.alert('提示','开处方成功!','info',function(){
+                        $("#prescribeWindow").window('close');
+                        $("#registerList").datagrid("reload");
+                    });
+                }
+                if(data.status == 500){
+                    $.messager.alert('提示',data.msg);
                 }
             });
         },

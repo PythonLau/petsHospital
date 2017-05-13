@@ -545,4 +545,18 @@ public class MedicalServiceImpl implements MedicalService {
             return TaotaoResult.build(500,"该病历还有未处理完的治疗记录");
         }
     }
+    @Override
+    public TbMedical getMedicalById(BigDecimal medicalId){
+        TbMedical medical = medicalMapper.selectByPrimaryKey(medicalId);
+        return medical;
+    }
+    @Override
+    public TaotaoResult evaluateMedical(BigDecimal id,String words){
+        Short five = 5;
+        TbMedical medical = medicalMapper.selectByPrimaryKey(id);
+        medical.setWords(words);
+        medical.setStatus(five);
+        medicalMapper.updateByPrimaryKey(medical);
+        return TaotaoResult.ok();
+    }
 }

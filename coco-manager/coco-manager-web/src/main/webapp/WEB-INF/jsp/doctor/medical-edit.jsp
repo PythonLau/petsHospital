@@ -21,7 +21,6 @@
                 <td>治疗类型:</td>
                 <td>
                     <select id="statusEditSelect" name="statusEditSelect">
-                        <option value="0">不接受治疗</option>
                         <option value="2">非住院治疗</option>
                         <option value="3">住院治疗</option>
                     </select>

@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-<table class="easyui-datagrid" id="itemList" title="商品列表"
+<table class="easyui-datagrid" id="itemList" title="治疗记录列表"
        data-options="singleSelect:false,collapsible:true,pagination:true,url:'${requestScope.url}',method:'get',pageSize:10,toolbar:toolbar">
     <thead>
     <tr>
@@ -41,7 +41,7 @@
     </tr>
     </thead>
 </table>
-<div id="prescribeWindow" class="easyui-window" title="治疗" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/medicalDetail-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="prescribeWindow" class="easyui-window" title="处理" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/manager/medicalDetail-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 
@@ -57,7 +57,7 @@
     }
 
     var toolbar = [{
-        text:'治疗',
+        text:'处理',
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();

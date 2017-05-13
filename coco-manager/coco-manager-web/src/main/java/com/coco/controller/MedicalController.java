@@ -223,4 +223,24 @@ public class MedicalController {
         TaotaoResult result = medicalService.updateMedicalByDoctor(medical);
         return result;
     }
+    @RequestMapping("/user/evaluateMedical/{caseHistoryId}")
+    public String getOrder(@PathVariable String caseHistoryId,Model model,HttpSession session,
+                           HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BigDecimal caseHistory_Id = new BigDecimal(caseHistoryId);
+        TbMedical medical = medicalService.getMedicalById(caseHistory_Id);
+        String sickName = medical.getSickname();
+        request.setAttribute("sickName",sickName);
+        model.addAttribute("medical",medical);
+        return "/user/evaluateMedical";
+    }
+    @RequestMapping("/user/evaluateMedical")
+    public void evaluateMedical(String id,String words,HttpSession session,
+                                  HttpServletRequest request, HttpServletResponse response) throws Exception{
+        BigDecimal medicalId = new BigDecimal(id);
+        BigDecimal petId = medicalService.getPetId(medicalId);
+        TaotaoResult result = medicalService.evaluateMedical(medicalId,words);
+        if(result.getStatus() == 200){
+            request.getRequestDispatcher("/user/showMedical/1?petId=" + petId).forward(request,response);
+        }
+    }
 }
