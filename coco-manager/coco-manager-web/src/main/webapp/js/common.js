@@ -39,6 +39,14 @@ var TT = TAOTAO = {
         }
     },
 
+    formatBedStatus : function(val,rows){
+        if(val == 1){
+            return "空余(1)";
+        }else if(val == 0){
+            return "占用(0)";
+        }
+    },
+
     formatDateTime1 : function(val,row){
         if(val != null){
             var now = new Date(val);

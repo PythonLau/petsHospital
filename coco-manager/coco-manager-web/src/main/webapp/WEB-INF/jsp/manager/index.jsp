@@ -20,6 +20,15 @@
 <body class="easyui-layout">
     <div data-options="region:'west',title:'菜单',split:true" style="width:180px;">
     	<ul id="menu" class="easyui-tree" style="margin-top: 10px;margin-left: 5px;">
+			<li>
+				<span>房间管理</span>
+				<ul>
+					<li data-options="attributes:{'url':'bed-tree'}">床位架构</li>
+					<li data-options="attributes:{'url':'room-tree'}">手术室架构</li>
+					<li data-options="attributes:{'url':'bed-list'}">床位情况</li>
+					<li data-options="attributes:{'url':'room-list'}">手术室情况</li>
+				</ul>
+			</li>
          	<li>
          		<span>库存管理</span>
          		<ul>

@@ -1,5 +1,6 @@
 package com.coco.service;
 
+import com.coco.common.pojo.EUDataGridResult;
 import com.coco.common.pojo.EUTreeNode;
 
 import java.math.BigDecimal;
@@ -10,4 +11,6 @@ import java.util.List;
  */
 public interface OperatingRoomService {
     List<EUTreeNode> getOperatingRoomList(BigDecimal parentId);
+    List<EUTreeNode> getRoomTreeListByManager(BigDecimal parentId);
+    EUDataGridResult getRoomListByManager(Integer page,Integer rows);
 }

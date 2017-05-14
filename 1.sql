@@ -444,6 +444,7 @@ commit
 select * from tb_medical;
 
 
+
 select * from tb_sick_room
 
 
@@ -451,7 +452,7 @@ truncate table tb_medical
 
 update tb_medical
 set status = 3
-
+commit
 
 
 select recipe from tb_medical
