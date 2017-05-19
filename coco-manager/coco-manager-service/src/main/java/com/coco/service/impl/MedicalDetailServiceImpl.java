@@ -34,6 +34,12 @@ public class MedicalDetailServiceImpl implements MedicalDetailService{
     private TbOperatingRoomMapper operatingRoomMapper;
     @Override
     public TaotaoResult saveMedicalDetail(TbMedicalDetail medicalDetail){
+        Short zero = 0;
+        if(medicalDetail.getRoom() != null){
+            TbOperatingRoom operatingRoom = operatingRoomMapper.selectByPrimaryKey(medicalDetail.getRoom());
+            operatingRoom.setStatus(zero);
+            operatingRoomMapper.updateByPrimaryKey(operatingRoom);
+        }
         medicalDetail.setMedicalid(medicalDetail.getId());
         Long medicalDetailId = IDUtils.genItemId();
         BigDecimal medical_Detail_Id = new BigDecimal(medicalDetailId);
@@ -114,9 +120,18 @@ public class MedicalDetailServiceImpl implements MedicalDetailService{
     }
     @Override
     public TaotaoResult updateMedicalDetailByManager(TbMedicalDetail medicalDetail){
+        Short zero = 0;
+        Short one = 1;
         Short four = 4;
         BigDecimal price = new BigDecimal(0);
         TbMedicalDetail updateMedicalDetail = medicalDetailMapper.selectByPrimaryKey(medicalDetail.getId());
+        if((medicalDetail.getStatus() == zero) || (medicalDetail.getStatus() == four)){
+            if(updateMedicalDetail.getRoom() != null){
+                TbOperatingRoom operatingRoom = operatingRoomMapper.selectByPrimaryKey(updateMedicalDetail.getRoom());
+                operatingRoom.setStatus(one);
+                operatingRoomMapper.updateByPrimaryKey(operatingRoom);
+            }
+        }
         updateMedicalDetail.setPrice(medicalDetail.getPrice());
         updateMedicalDetail.setStatus(medicalDetail.getStatus());
         medicalDetailMapper.updateByPrimaryKey(updateMedicalDetail);

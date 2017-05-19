@@ -39,16 +39,16 @@
     }
 
     var toolbar = [{
-        text:'设定级别',
+        text:'编辑',
         iconCls:'icon-edit',
         handler:function(){
             var ids = getSelectionsIds();
             if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个病历才能处理!');
+                $.messager.alert('提示','必须选择一个床位才能处理!');
                 return ;
             }
             if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个病历!');
+                $.messager.alert('提示','只能选择一个床位!');
                 return ;
             }
 
@@ -64,25 +64,6 @@
                     });
                 }
             }).window("open");
-
-
-        }
-    },{
-        text:'测试',
-        iconCls:'icon-edit',
-        handler:function(){
-            var ids = getSelectionsIds();
-            if(ids.length == 0){
-                $.messager.alert('提示','必须选择一个病历才能处理!');
-                return ;
-            }
-            if(ids.indexOf(',') > 0){
-                $.messager.alert('提示','只能选择一个病历!');
-                return ;
-            }
-            alert(ids);
-            window.location.href = '/test/' + ids;
-
         }
     }];
 </script>

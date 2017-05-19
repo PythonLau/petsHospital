@@ -27,7 +27,7 @@
                 var _tree = $(this);
                 if(node.id == 0){
                     // 新增节点
-                    $.post("/item/cat/create",{parentId:node.parentId,name:node.text},function(data){
+                    $.post("/manager/room/create",{parentId:node.parentId,name:node.text},function(data){
                         if(data.status == 200){
                             _tree.tree("update",{
                                 target : node.target,
@@ -38,7 +38,7 @@
                         }
                     });
                 }else{
-                    $.post("/item/cat/update",{id:node.id,name:node.text});
+                    $.post("/manager/room/update",{id:node.id,name:node.text});
                 }
             }
         });
@@ -62,7 +62,7 @@
         }else if(item.name === "delete"){
             $.messager.confirm('确认','确定删除名为 '+node.text+' 的分类吗？',function(r){
                 if(r){
-                    $.post("/item/cat/delete/",{id:node.id},function(data){
+                    $.post("/manager/room/delete",{id:node.id},function(data){
                         if(data.status == 200){
                             tree.tree("remove",node.target);
                             $.messager.alert('提示',data.msg);

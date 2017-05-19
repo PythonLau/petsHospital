@@ -4,7 +4,7 @@
 <script type="text/javascript" charset="utf-8" src="/js/kindeditor-4.1.10/lang/zh_CN.js"></script>
 <div style="padding:10px 10px 10px 10px">
     <form id="prescribeForm" class="itemForm" method="post">
-        <input name="medicalid">
+        <input name="medicalid" type="hidden">
         <table cellpadding="5">
             <tr>
                 <td>治疗记录Id:</td>

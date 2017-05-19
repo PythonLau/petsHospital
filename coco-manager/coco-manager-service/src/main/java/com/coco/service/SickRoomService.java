@@ -16,4 +16,7 @@ public interface SickRoomService {
     List<EUTreeNode> getBedTreeByManager(BigDecimal parentId);
     EUDataGridResult getBedListByManager(Integer page,Integer rows);
     TaotaoResult createBed(BigDecimal parentId, String name);
+    TaotaoResult updateBed(BigDecimal id,String name);
+    TaotaoResult deleteBed(BigDecimal id);
+    boolean judgeDeleteBed(BigDecimal id);
 }

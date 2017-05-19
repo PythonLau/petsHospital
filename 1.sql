@@ -380,6 +380,8 @@ updated date DEFAULT sysdate, -- '创建时间'
 PRIMARY KEY (id)
 )
 
+select * from tb_operating_room
+
 INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (1, 0, '整形部', 1, 1, 1);
 
 INSERT INTO tb_operating_room(id,parent_id,name,status,sort_order,is_parent) VALUES (2, 1, 'B-301', 1, 1, 1);
@@ -443,6 +445,7 @@ commit
 
 select * from tb_medical;
 
+delete from tb_medical where status = 1
 
 
 select * from tb_sick_room

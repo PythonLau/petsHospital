@@ -41,6 +41,19 @@ public class SickRoomController {
     @RequestMapping("/manager/bed/create")
     @ResponseBody
     public TaotaoResult createBed(BigDecimal parentId, String name){
-
+        TaotaoResult result = sickRoomService.createBed(parentId,name);
+        return result;
+    }
+    @RequestMapping("/manager/bed/update")
+    @ResponseBody
+    public TaotaoResult updateBed(BigDecimal id,String name){
+        TaotaoResult result = sickRoomService.updateBed(id,name);
+        return result;
+    }
+    @RequestMapping("/manager/bed/delete")
+    @ResponseBody
+    public TaotaoResult deleteBed(BigDecimal id){
+        TaotaoResult result = sickRoomService.deleteBed(id);
+        return result;
     }
 }

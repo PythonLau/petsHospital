@@ -6,6 +6,7 @@ import com.coco.common.pojo.TaotaoResult;
 import com.coco.pojo.TbMedicalDetail;
 import com.coco.pojo.medicalRecord;
 import com.coco.service.MedicalDetailService;
+import com.coco.service.OperatingRoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +26,25 @@ import java.math.BigDecimal;
 public class MedicalDetailController {
     @Autowired
     private MedicalDetailService medicalDetailService;
+    @Autowired
+    private OperatingRoomService operatingRoomService;
     @RequestMapping("/doctor/medicalDetail/save")
     @ResponseBody
     public TaotaoResult saveMedicalDetail(TbMedicalDetail medicalDetail){
+        Short zero = 0;
+        if(medicalDetail.getSickname() == null){
+            return TaotaoResult.build(500,"请填写治疗项目名称");
+        }
+        if(medicalDetail.getStatus() == 2){
+            if(medicalDetail.getRoom() == null){
+                return TaotaoResult.build(500,"请选择手术室");
+            }else{
+                Short status = operatingRoomService.getOperatingRoomStatus(medicalDetail.getRoom());
+                if(status == zero){
+                    return TaotaoResult.build(500,"该手术室已被其他医生选择");
+                }
+            }
+        }
         TaotaoResult result = medicalDetailService.saveMedicalDetail(medicalDetail);
         return result;
     }
